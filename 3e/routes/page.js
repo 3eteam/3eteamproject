@@ -1,52 +1,36 @@
 const express = require('express');
-const {Post,Hashtag}=require('../models');
+const {isLoggedIn, isNotLoggedIN} = require('./middlewares');
+
 const router = express.Router();
 
-
-
-
-
 router.use((req,res,next)=>{
- res.locals.user=null;
- res.locals.addlist=[];
+ res.locals.user = req.user;
+ res.locals.followerCount = 0;
+ res.locals.followingCount = 0;
+ res.locals.followerIdList = [];
+//  res.locals.user=null;
+//  res.locals.addlist=[];
     
     next();
 
 });
-
-router.get('/addlist,',(req,res)=>{
-    res.render('addlist',{title:'장바구니'});
-    console.log(2);
+router.get('/profile', isLoggedIn, (req, res)=>{
+    res.render('profile', {title:'내 정보 - NodeBird'});
+});
+router.get('/join', isNotLoggedIn, (req, res)=>{
+    res.render('join', {title:'회원가입 - NodeBird'});
 });
 
-router.get('/',(req,res,next)=>{ 
+
+
+// router.get('/addlist,',(req,res)=>{
+//     res.render('addlist',{title:'장바구니'});
+// });
+
+// router.get('/',(req,res,next)=>{ 
   
-    res.render('main',{
-        title:'3e',
-       
-    });
-});
-
-
-router.get('/hashtag',async(req,res,next)=>{
-    const query =req.query.hashtag;
-    if(!query){
-        return res.redirect('/');
-    }
-    try{
-        const hashtag = await Hashtag.findOne({where:{title:query}});
-        let posts = [];
-        if(hashtag){
-            posts =await hashtag.getPosts({include:[{model:User}]});
-        }
-        return res.render('main',{
-            title:`${query} | 3e `,
-            twits:posts,
-        });
-    }catch(error){
-        console.error(error);
-        return next(error);
-    }
-})
-
-module.exports=router;
+//     res.render('main',{
+//         title:'3e'
+//     })
+// });
+// module.exports=router;
