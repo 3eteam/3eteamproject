@@ -9,8 +9,11 @@ const dotenv=require('dotenv');
 
 
 
+
 dotenv.config();
 const pageRouter=require('./routes/page');
+const postRouter=require('./routes/post');
+const {sequelize} = require('./models');
 
 const app=express();
 app.set('port',process.env.PORT || 8001);
@@ -19,10 +22,19 @@ nunjucks.configure('views',{
     express:app,
     watch:true,
 });
+
+sequelize.sync({force:false})
+.then(()=>{
+    console.log('데이터베이스 연결 성공');
+})
+.catch((err)=>{
+    console.error(err);
+});
 //라우터
 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname,'public')));
+app.use('img',express.static(path.join(__dirname,'uploads')));
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use(cookieParser(process.env.COOKIE_SECRET));
@@ -37,6 +49,7 @@ app.use(session({
 }));
 
 app.use('/',pageRouter);
+app.use('/post',postRouter);
 
 
 app.use((req,res,next)=>{
