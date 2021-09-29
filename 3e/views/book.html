@@ -1,0 +1,195 @@
+<style>
+        body {
+            font-family: sans-serif;
+        }
+
+        body *,
+        body *:before,
+        body *:after {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body .wrapper {
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        body .clearfix:after {
+            content: " ";
+            clear: both;
+            display: table;
+        }
+
+.slider {
+    margin-bottom: 30px;
+}
+
+.slider .header {
+    margin-bottom: 25px;
+}
+
+.slider .header .title {
+    font-size: 25px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    color: #262626;
+}
+
+.slider .header .desc {
+    margin-left: 10px;
+}
+
+.slider .content .sliders {
+    margin: 0 -15px;
+}
+
+.slider .content .sliders:after {
+    clear: both;
+    content: " ";
+    display: table;
+}
+
+.slider .content .sliders .slider {
+    float: left;
+    width: 100%;
+    padding: 0 15px;
+}
+
+.slider .content .sliders .slider .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #eee;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 100%;
+    height: 430px;
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size : cover;
+}
+
+.slider .content .sliders .slider .swiper-container {
+    position: relative;
+}
+
+.slider .content .sliders .slider .swiper-container .bottom {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 25px 0 25px 25px;
+    z-index: 1;
+}
+
+.slider .content .sliders .slider .swiper-container .bottom .title {
+    float: left;
+}
+
+.slider .content .sliders .slider .swiper-container .bottom .controller {
+    float: right;
+}
+
+.slider .content .sliders .slider .swiper-container .bottom .controller .swiper-button-next,
+.slider .content .sliders .slider .swiper-container .bottom .controller .swiper-button-prev {
+    padding: 0;
+    position: relative;
+    --swiper-navigation-color: #fff;
+    margin: 0 0 0 20px;
+    float: right;
+    height: auto;
+}
+
+.slider .content .sliders .slider .swiper-container .bottom .controller .swiper-button-prev {
+    margin-left: 0;
+}
+
+.slider .content .sliders .slider .swiper-container .bottom .controller .swiper-button-next:after,
+.slider .content .sliders .slider .swiper-container .bottom .controller .swiper-button-prev:after {
+    font-size: 16px;
+}
+
+@media(max-width:991px) {
+    .slider .content .sliders .slider {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
+
+@media(max-width:767px) {
+    .slider .header .desc {
+        display: block;
+        margin: 15px 0 0 0;
+    }
+}
+</style>
+
+
+<div class="slider">
+    <div class="header">
+        <div class="wrapper">
+            <a class="title">Model Photo</a>
+            <span class="desc">LookBook</span>
+        </div>
+    </div>
+    <div class="content">
+        <div class="wrapper">
+            <div class="sliders">
+                <div class="slider">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" style="background-image:url(https://i.esdrop.com/d/cl3pewp2aooj/2FFFPL8JNN.png)">
+                            </div>
+                            <div class="swiper-slide" style="background-image:url(https://i.esdrop.com/d/cl3pewp2aooj/KoSWyFcP5Y.png)">
+                            </div>
+                            <div class="swiper-slide" style="background-image:url(https://i.esdrop.com/d/cl3pewp2aooj/RMw1usB9sF.png)"></div>
+                            <div class="swiper-slide" style="background-image:url(https://i.esdrop.com/d/cl3pewp2aooj/olEt9VHk6a.png)"></div>
+                        </div>
+                        <div class="bottom">
+                            <div class="title">NOCAP Photo</div>
+                            <div class="controller">
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    var swiper = new Swiper(".slider .swiper-container", {
+        autoHeight: true,
+        loop: true,
+        autoplay: {
+            delay: 5000,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
+})();
+</script>

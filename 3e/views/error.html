@@ -1,3 +1,11 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>{{message}}</h1>
+<h2>{{error.status}}</h2>
+<pre>{{error.stack}}</pre>
+{% endblock %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,3 +18,4 @@
     에러발생
 </body>
 </html>
+
