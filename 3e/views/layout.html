@@ -1,99 +1,69 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>{{title}}</title>
-    <meta name="viewport" content="width=device-width, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="/main.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.js"></script>
-  <title>{{title}}</title>
-  <link defer href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    <script defer src="/js/main.js"></script>
-  </head>
-  <body>
-    {% include "header.html" %}
-  
-  {% block content %}
-  {% endblock %}
+{% extends 'layout.html' %}
 
-    <div class="main_content pt-3 row">
-        
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 bg-primary" style="height:30px;">
-        
-        브랜드명
-        
-        </div>
-        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 bg-success" style="height:600px;">상품사진</div>
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 bg-secondary" style="height:600px;">랭킹</div>
-        <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 bg-danger" style="height:500px;">
-          {% include "book.html" %}
-        </div>
-        <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 bg-info" style="height:500px;">커뮤니티(최근게시글순)</div>
-        <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 bg-warning" style="height:400px;">
-          {% include "news.html" %}
-        </div>
-        
-    </div>
-  {% include "body.html" %}
-
-  {% include "footer.html" %}
-
-  {% block script %}
-  {% endblock %}
-    <div class="container">
-      <div class="profile-wrap">
-        <div class="profile">
-          {% if user and user.id %}
-            <div class="user-name">{{'안녕하세요! ' + user.nick + '님'}}</div>
-            <div class="half">
-              <div>팔로잉</div>
-              <div class="count following-count">{{followingCount}}</div>
-            </div>
-            <div class="half">
-              <div>팔로워</div>
-              <div class="count follower-count">{{followerCount}}</div>
-            </div>
-          <input id="my-id" type="hidden" value="{{user.id}}">
-          <a id="my-profile" href="/profile" class="btn">내 프로필</a>
-          <a id="logout" href="/auth/logout" class="btn">로그아웃</a>
-        {% else %}
-          <form id="login-form" action="/auth/login" method="post">
-            <div class="input-group">
-              <label for="email">이메일</label>
-              <input id="email" type="email" name="email" required autofocus>
-            </div>
-            <div class="input-group">
-              <label for="password">비밀번호</label>
-              <input id="password" type="password" name="password" required>
-            </div>
-            <a id="join" href="/join" class="btn">회원가입</a>
-            <button id="login" type="submit" class="btn">로그인</button>
-            <a id="kakao" href="/auth/kakao" class="btn">카카오톡</a>
-          </form>
-        {% endif %}
-        </div>
-        <footer>
-          Made by&nbsp;
-          <a href="https://www.zerocho.com" target="_blank">ZeroCho</a>
-        </footer>
+{% block content %}
+    <div class="timeline">
+      {% if user %}
+       
+      {% endif %}
+      <div class="twits">
+        <form id="hashtag-form" action="/hashtag">
+          <input type="text" name="hashtag" placeholder="태그 검색">
+          <button class="btn">검색</button>
+        </form>
+        {% for twit in twits %}
+          <div class="twit">
+            <input type="hidden" value="{{twit.User.id}}" class="twit-user-id">
+            <input type="hidden" value="{{twit.id}}" class="twit-id">
+            <div class="twit-author">{{twit.User.nick}}</div>
+            {% if not followerIdList.includes(twit.User.id) and twit.User.id !== user.id %}
+              <button class="twit-follow">팔로우하기</button>
+            {% endif %}
+            <div class="twit-content">{{twit.content}}</div>
+            {% if twit.img %}
+              <div class="twit-img"><img src="{{twit.img}}" alt="섬네일"></div>
+            {% endif %}
+          </div>
+        {% endfor %}
       </div>
-      {% block content %}
-      {% endblock %}
     </div>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script>
-      window.onload = () => {
-        if (new URL(location.href).searchParams.get('loginError')) {
-          alert(new URL(location.href).searchParams.get('loginError'));
+{% endblock %}
+
+{% block script %}
+  <script>
+    if (document.getElementById('img')) {
+      document.getElementById('img').addEventListener('change', function(e) {
+        const formData = new FormData();
+        console.log(this, this.files);
+        formData.append('img', this.files[0]);
+        axios.post('/post/img', formData)
+          .then((res) => {
+            document.getElementById('img-url').value = res.data.url;
+            document.getElementById('img-preview').src = res.data.url;
+            document.getElementById('img-preview').style.display = 'inline';
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      });
+    }
+    document.querySelectorAll('.twit-follow').forEach(function(tag) {
+      tag.addEventListener('click', function() {
+        const myId = document.querySelector('#my-id');
+        if (myId) {
+          const userId = tag.parentNode.querySelector('.twit-user-id').value;
+          if (userId !== myId.value) {
+            if (confirm('팔로잉하시겠습니까?')) {
+              axios.post(`/user/${userId}/follow`)
+                .then(() => {
+                  location.reload();
+                })
+                .catch((err) => {
+                  console.error(err);
+                });
+            }
+          }
         }
-      };
-    </script>
-    {% block script %}
-    {% endblock %}
-  </body>
-</html>
+      });
+    });
+  </script>
+{% endblock %}

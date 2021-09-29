@@ -5,6 +5,10 @@
   padding-left:200px;
   font-size: 20px;
   font-weight:bold;
+  
+  }
+  body{
+    color: white;
   }
 </style>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -49,6 +53,36 @@
               <li class="nav-item">
                 <a class="nav-link disabled">캡튜닝</a>
               </li>
+            <div class="half">
+              <div class="profile-wrap">
+                <div class="profile">
+                  {% if user and user.id %}
+                    <div class="user-name">{{'안녕하세요! ' + user.nick + '님'}}</div>
+                    <div class="half">
+                      
+                    </div>
+                    <div class="half">
+                    
+                    </div>
+                  <input id="my-id" type="hidden" value="{{user.id}}">
+                  <a id="my-profile" href="/profile" class="btn" style="color: white;">내 프로필</a>
+                  <a id="logout" href="/auth/logout" class="btn" style="color: white;">로그아웃</a>
+                {% else %}
+                  <form id="login-form" action="/auth/login" method="post">
+                    <div class="input-group">
+                      <label for="email">이메일</label>
+                      <input id="email" type="email" name="email" required autofocus style="color: white;">
+                    </div>
+                    <div class="input-group">
+                      <label for="password">비밀번호</label>
+                      <input id="password" type="password" name="password" required style="color: white;">
+                    </div>
+                    <a id="join" href="/join" class="btn" style="color: white;">회원가입</a>
+                    <button id="login" type="submit" class="btn" style="color: white;">로그인</button>
+                    <a id="kakao" href="/auth/kakao" class="btn"style="color: white;">카카오톡</a>
+                  </form>
+                {% endif %}
+                </div>
               <form class="d-flex align-self-center">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Search</button>
@@ -59,4 +93,12 @@
           </div>
         </div>
       </nav>
+      <script>
+        window.onload = () => {
+          if (new URL(location.href).searchParams.get('loginError')) {
+            alert(new URL(location.href).searchParams.get('loginError'));
+          }
+        };
+      </script>
+      
 </header>
