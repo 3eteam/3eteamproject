@@ -7,6 +7,7 @@ const nunjucks = require('nunjucks');
 const dotenv = require('dotenv');
 const passport = require('passport');
 
+
 dotenv.config();
 const pageRouter = require('./routes/page');
 const authRouter = require('./routes/auth');
@@ -15,7 +16,24 @@ const userRouter = require('./routes/user');
 const { sequelize } = require('./models');
 const passportConfig = require('./passport');
 
+const http = require("http")
 const app = express();
+const server = http.createServer(app);
+const socketIO = require("socket.io")
+const moment = require("moment")
+const io = socketIO(server);
+
+io.on("connection",(socket)=>{
+  socket.on("chatting",(data)=>{
+      const { name, msg } = data;
+      io.emit("chatting", {
+          name,
+          msg,
+          time: moment(new Date()).format("h:ss A")
+      })
+  })
+})
+
 passportConfig(); // 패스포트 설정
 app.set('port', process.env.PORT || 8001);
 app.set('view engine', 'html');
@@ -30,10 +48,7 @@ sequelize.sync({ force: false })
   .catch((err) => {
     console.error(err);
   });
-  app.get('/main', function (req, res)
-  {
-      res.render('main.html');
-  });
+
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/img', express.static(path.join(__dirname, 'uploads')));
@@ -56,6 +71,7 @@ app.use('/', pageRouter);
 app.use('/auth', authRouter);
 app.use('/post', postRouter);
 app.use('/user', userRouter);
+
 app.use((req, res, next) => {
   const error =  new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
   error.status = 404;
@@ -69,6 +85,8 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
+
 app.listen(app.get('port'), () => {
   console.log(app.get('port'), '번 포트에서 대기중');
 });
+
