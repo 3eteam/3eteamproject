@@ -30,7 +30,10 @@ sequelize.sync({ force: false })
   .catch((err) => {
     console.error(err);
   });
-
+  app.get('/main', function (req, res)
+  {
+      res.render('main.html');
+  });
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/img', express.static(path.join(__dirname, 'uploads')));
@@ -53,7 +56,6 @@ app.use('/', pageRouter);
 app.use('/auth', authRouter);
 app.use('/post', postRouter);
 app.use('/user', userRouter);
-
 app.use((req, res, next) => {
   const error =  new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
   error.status = 404;

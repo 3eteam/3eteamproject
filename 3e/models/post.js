@@ -15,6 +15,22 @@ module.exports = class Post extends Sequelize.Model {
         type: Sequelize.STRING(200),
         allowNull: true,
       },
+      tags: {
+        type: Sequelize.STRING(200),
+        allowNull: false,
+      },
+      price: {
+        type: Sequelize.STRING(200),
+        allowNull: false,
+      },
+      capname: {
+        type: Sequelize.STRING(200),
+        allowNull: false,
+      },
+      brandname: {
+        type: Sequelize.STRING(200),
+        allowNull: false,
+      },
     }, {
       sequelize,
       timestamps: true,

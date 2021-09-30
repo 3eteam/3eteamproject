@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "hyun",
-    "password": "123412341234",
-    "database": "space",
-    "host": "127.0.0.1",
+    "username": "admin",
+    "password": "q1w2q1w2",
+    "database": "nocap",
+    "host": "nocap.ccoy47i3d7fu.ap-northeast-2.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {

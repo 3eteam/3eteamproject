@@ -6,8 +6,16 @@
         <div>
           <form id="twit-form" action="/post" method="post" enctype="multipart/form-data">
             <div class="input-group">
-                <label for="">저품넘버</label>
-                <input id= "idnumber" name ="idnumber" type="text">
+              <label for="">제품명</label>
+              <input id= "capname" name ="capname" type="text">
+              <label for="">저품넘버</label>
+              <input id= "idnumber" name ="idnumber" type="text">
+              <label for="">제품가격</label>
+              <input id= "price" name ="price" type="text">
+                <label for="">태크</label>
+                <input id= "tags" name ="tags" type="text">
+                <label for="">브랜드</label>
+              <input id= "brandname" name ="brandname" type="text">
                 <label for="">제품정보</label>
               <textarea id="twit" name="content" maxlength="140"></textarea>
             </div>
@@ -17,17 +25,24 @@
             </div>
             <div>
               <label id="img-label" for="img">사진 업로드</label>
+              
+              
               <input id="img" type="file" accept="image/*">
               <button id="twit-btn" type="submit" class="btn">짹짹</button>
+              
             </div>
           </form>
+          
         </div>
       {% endif %}
       <div class="twits">
+        
         <form id="hashtag-form" action="/hashtag">
           <input type="text" name="hashtag" placeholder="태그 검색">
           <button class="btn">검색</button>
+          
         </form>
+        
         {% for twit in twits %}
           <div class="twit">
             <input type="hidden" value="{{twit.User.id}}" class="twit-user-id">

@@ -11,7 +11,6 @@ router.use((req, res, next) => {
   res.locals.followerIdList = req.user ? req.user.Followings.map(f => f.id) : [];
   next();
 });
-
 router.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile', { title: '내 정보 - 3e' });
 });
@@ -41,6 +40,26 @@ router.get('/', async (req, res, next) => {
     next(err);
   }
 });
+router.get('/hashtag', async (req, res, next) => {
+  try {
+    const posts = await Post.findAll({
+      include: {
+        model: User,
+        attributes: ['id', 'nick'],
+      },
+      order: [['createdAt', 'DESC']],
+    });
+    res.render('catlist', {
+      title: '3e',
+      twits: posts,
+    });
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
+
+
 
 router.get('/hashtag', async (req, res, next) => {
   const query = req.query.hashtag;

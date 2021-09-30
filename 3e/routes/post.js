@@ -43,6 +43,10 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
       img: req.body.url,
       UserId: req.user.id,
       idnumber:req.body.idnumber,
+      tags:req.body.tags,
+      price:req.body.price,
+      capname:req.body.capname,
+      brandname:req.body.brandname,
     });
     const hashtags = req.body.content.match(/#[^\s#]*/g);
     if (hashtags) {
@@ -55,7 +59,7 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
       );
       await post.addHashtags(result.map(r => r[0]));
     }
-    res.redirect('/');
+    res.redirect('/catlist');
   } catch (error) {
     console.error(error);
     next(error);
