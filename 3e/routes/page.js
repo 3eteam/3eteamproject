@@ -19,6 +19,9 @@ router.get('/profile', isLoggedIn, (req, res) => {
 router.get('/join', isNotLoggedIn, (req, res) => {
   res.render('join', { title: '회원가입 - 3e' });
 });
+router.get('/catlist', isLoggedIn, (req, res) => {
+  res.render('catlist', { title: '회원가입 - 3e' });
+});
 
 router.get('/', async (req, res, next) => {
   try {
@@ -51,7 +54,7 @@ router.get('/hashtag', async (req, res, next) => {
       posts = await hashtag.getPosts({ include: [{ model: User }] });
     }
 
-    return res.render('main', {
+    return res.render('catlist', {
       title: `${query} | 3e`,
       twits: posts,
     });

@@ -67,6 +67,7 @@
                   <input id="my-id" type="hidden" value="{{user.id}}">
                   <a id="my-profile" href="/profile" class="btn" style="color: white;">내 프로필</a>
                   <a id="logout" href="/auth/logout" class="btn" style="color: white;">로그아웃</a>
+                  <a id="catlist" href="/catlist" class="btn" style="color: white;">관리자모드</a>
                 {% else %}
                   <form id="login-form" action="/auth/login" method="post">
                     <div class="input-group">
@@ -78,6 +79,7 @@
                       <input id="password" type="password" name="password" required style="color: white;">
                     </div>
                     <a id="join" href="/join" class="btn" style="color: white;">회원가입</a>
+                    
                     <button id="login" type="submit" class="btn" style="color: white;">로그인</button>
                     <a id="kakao" href="/auth/kakao" class="btn"style="color: white;">카카오톡</a>
                   </form>
