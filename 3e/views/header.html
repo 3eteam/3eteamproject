@@ -51,11 +51,17 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link disabled">캡튜닝</a>
+                <a class="nav-link" href="#">게시판</a>
               </li>
             <div class="half">
               <div class="profile-wrap">
-                <div class="profile">
+              <form class="d-flex align-self-center">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+              <a class="navbar-brand" href="#">N O C A P</a>
+            </form>
+            </ul>
+            <div class="profile">
                   {% if user and user.id %}
                     <div class="user-name">{{'안녕하세요! ' + user.nick + '님'}}</div>
                     <div class="half">
@@ -85,13 +91,6 @@
                   </form>
                 {% endif %}
                 </div>
-              <form class="d-flex align-self-center">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-              <a class="navbar-brand" href="#">N O C A P</a>
-            </form>
-            </ul>
-            
           </div>
         </div>
       </nav>
