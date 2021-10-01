@@ -18,13 +18,16 @@
     
     
       {% block content %}
-      {% endblock %}
-    </div>
+      {% endblock %} 
     
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
 
+    {% include "footer.html" %}
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     {% block script %}
     {% endblock %}
-     {% include "footer.html" %}
+
   </body>
 </html>
