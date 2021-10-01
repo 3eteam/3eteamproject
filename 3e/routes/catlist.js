@@ -29,7 +29,7 @@ router.get('/', async (req, res, next) => {
       },
       order: [['createdAt', 'DESC']],
     });
-    res.render('layout', {
+    res.render('catlist', {
       title: '3e',
       twits: posts,
     });
