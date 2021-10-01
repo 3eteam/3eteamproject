@@ -7,9 +7,6 @@
   font-weight:bold;
   
   }
-  body{
-    color: white;
-  }
 </style>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -63,7 +60,7 @@
             </ul>
             <div class="profile">
                   {% if user and user.id %}
-                    <div class="user-name">{{'안녕하세요! ' + user.nick + '님'}}</div>
+                    <div class="user-name" style="color: white;">{{'안녕하세요! ' + user.nick + '님'}}</div>
                     <div class="half">
                       
                     </div>

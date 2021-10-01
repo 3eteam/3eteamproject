@@ -15,6 +15,7 @@ db.User = User;
 db.Post = Post;
 db.Hashtag = Hashtag;
 
+
 User.init(sequelize);
 Post.init(sequelize);
 Hashtag.init(sequelize);

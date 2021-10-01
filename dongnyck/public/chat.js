@@ -1,8 +1,6 @@
 "use strict"
 const socket = io();
 
-console.log(io);
-
 const nickname = document.querySelector("#nickname")
 const chatlist = document.querySelector(".chatting-list")
 const chatInput = document.querySelector(".chatting-input");
@@ -44,7 +42,7 @@ function LiModel(name, msg, time){
         li.classList.add(nickname.value === this.name ? "sent": "received")
         const dom = `<span class="profile">
         <span class="user">${this.name}</span>
-        <img class="image" src="https://placeimg.com/50/50/any" alt="any">
+        <img class="image" src="https://i.esdrop.com/d/cl3pewp2aooj/qiMRGourwH.jpg" alt="any">
     </span>
     <span class="message">${this.msg}</span>
     <span class="time">${this.time}</span>`;

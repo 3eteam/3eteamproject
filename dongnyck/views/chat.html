@@ -1,4 +1,7 @@
 <style>
+  * {
+    color: #fff;
+  }
 .wrapper {
   height: 100%;
   width: 100%;
@@ -6,8 +9,12 @@
   flex-direction: column;
   overflow: hidden;
 }
+
+#nickname {
+  color: #fff;
+}
 .user-container {
-  background: #a9bdce;
+  background: #292929;
   flex: 1;
   display: flex;
   justify-content: flex-start;
@@ -25,7 +32,7 @@
 }
 .display-container {
   flex: 12;
-  background: #b2c7d9;
+  background: #000000;
   overflow-y: scroll;
 }
 .input-container {
@@ -38,7 +45,6 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 0.3rem;
   width: 100%;
 }
 .chatting-input {
@@ -46,6 +52,7 @@
   height: 100%;
   flex: 8;
   border: none;
+  color: #262626;
 }
 .send-button {
   flex: 1;
@@ -53,6 +60,7 @@
   border: none;
   height: 100%;
   border-radius: 3px;
+  color: #262626;
 }
 
 .chatting-list li {
@@ -88,6 +96,7 @@
   font-size: 12px;
   margin: 0 5px;
   flex: 7;
+  color: #262626;
 }
 
 .time {
@@ -111,8 +120,13 @@
 
 <div class="wrapper">
         <div class="user-container">
+          {% if user and user.id %}
+            <label for="nickname" style="color: #fff;">대화명</label>
+            <input type="text" style="background-color: rgb(83, 82, 82);" id="nickname" placeholder="대화명을입력하라우" value='{{user.nick}}' readonly>
+          {% else %}
             <label for="nickname">대화명</label>
-            <input type="text" id="nickname">
+            <input type="text" id="nickname" placeholder="대화명을입력하라우" value={{user.nick}}>
+          {% endif %}
         </div>
         <div class="display-container">
             <ul class="chatting-list">
