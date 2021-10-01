@@ -9,7 +9,7 @@ const passport = require('passport');
 
 
 dotenv.config();
-
+const boardRouter = require('./routes/board');
 const authRouter = require('./routes/auth');
 const postRouter = require('./routes/post');
 const userRouter = require('./routes/user');
@@ -17,6 +17,24 @@ const { sequelize } = require('./models');
 const passportConfig = require('./passport');
 const mainRouter = require('./routes/main');
 const catlistRouter = require('./routes/catlist');
+const makerRouter =require('./routes/maker');
+const nikeRouter =require('./routes/nike');
+const adidasRouter =require('./routes/adidas');
+const carharttRouter =require('./routes/carhartt');
+const championRouter =require('./routes/champion');
+const neweraRouter =require('./routes/newera');
+const searchRouter =require('./routes/search');
+const capdetailRouter =require('./routes/capdetail');
+const boardwriteRouter =require('./routes/boardwrite');
+const showcaseRouter =require('./routes/showcase');
+const covernatRouter = require('./routes/covernat');
+const magazineRouter = require('./routes/magazine');
+const alllistRouter = require('./routes/alllist');
+
+
+
+
+
 
 const http = require("http")
 const app = express();
@@ -69,13 +87,30 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+//라우터
 app.use('/', mainRouter);
 
 app.use('/auth', authRouter);
 app.use('/post', postRouter);
 app.use('/user', userRouter);
 app.use('/catlist',catlistRouter);
+app.use('/board', boardRouter);
+app.use('/boardwrite', boardwriteRouter);
+app.use('/maker',makerRouter);
+app.use('/nike',nikeRouter);
+app.use('/adidas',adidasRouter);
+app.use('/carhartt',carharttRouter);
+app.use('/champion',championRouter);
+app.use('/covernat',covernatRouter);
+app.use('/search',searchRouter);
+app.use('/capdetail',capdetailRouter);
+app.use('/showcase',showcaseRouter);
+app.use('/magazine',magazineRouter);
+app.use('/newera',neweraRouter);
+app.use('/alllist',alllistRouter);
+
+
+
 
 app.use((req, res, next) => {
   const error =  new Error(`${req.method} ${req.url} 라우터가 없습니다.`);

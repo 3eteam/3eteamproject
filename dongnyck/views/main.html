@@ -1,9 +1,10 @@
 
-  
-  {% include "layout.html" %}
+  {% extends 'layout.html' %}
+  <!-- {% include "layout.html" %} -->
  
 
-
+  {% block content %}
+  
     <div class="main_content pt-3 row">
         
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 bg-primary" style="height:30px;">
@@ -24,3 +25,4 @@
         </div>
         
     </div>
+  {% endblock %} 
