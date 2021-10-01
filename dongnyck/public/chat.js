@@ -41,11 +41,11 @@ function LiModel(name, msg, time){
         const li = document.createElement("li");
         li.classList.add(nickname.value === this.name ? "sent": "received")
         const dom = `<span class="profile">
-        <span class="user">${this.name}</span>
+        <span class="user" style="color: #fff;">${this.name}</span>
         <img class="image" src="https://i.esdrop.com/d/cl3pewp2aooj/qiMRGourwH.jpg" alt="any">
     </span>
     <span class="message">${this.msg}</span>
-    <span class="time">${this.time}</span>`;
+    <span class="time" style="color: #fff;">${this.time}</span>`;
     li.innerHTML = dom;
     chatlist.appendChild(li)
     }
