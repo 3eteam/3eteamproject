@@ -74,7 +74,9 @@
                   <input id="my-id" type="hidden" value="{{user.id}}">
                   <a id="my-profile" href="/profile" class="btn" style="color: white;">내 프로필</a>
                   <a id="logout" href="/auth/logout" class="btn" style="color: white;">로그아웃</a>
+                  {% if user.id < 6%}
                   <a id="catlist" href="/catlist" class="btn" style="color: white;">관리자모드</a>
+                  {% endif %}
                 {% else %}
                   <form id="login-form" action="/auth/login" method="post">
                     <div class="input-group">
