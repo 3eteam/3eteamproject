@@ -5,23 +5,24 @@
 
   {% block content %}
   
-    <div class="main_content pt-3 row">
+    <div class="main_content row">
         
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 bg-primary" style="height:30px;">
-        
-        브랜드명
-        
+        <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 bg-primary" style="height:30px;">
+        </div> -->
+        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 bg-success" style="height:700px;">상품사진
+          
         </div>
-        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 bg-success" style="height:600px;">상품사진</div>
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 bg-secondary" style="height:600px;">
-          {% include "chat.html" %}
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 bg-secondary" style="height:700px;">
+          {% include "mh.html" %}
         </div>
-        <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 bg-danger" style="height:500px;">
-          {% include "book.html" %}
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 bg-danger" style="height:500px;">
+          <!-- {% include "book.html" %} -->
         </div>
-        <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 bg-info" style="height:500px;">커뮤니티(최근게시글순)</div>
-        <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 bg-warning" style="height:400px;">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 bg-info" style="height:500px;">커뮤니티(최근게시글순)
           {% include "news.html" %}
+        </div>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 bg-warning" style="height:400px;">
+          {% include "chat.html" %}
         </div>
         
     </div>
