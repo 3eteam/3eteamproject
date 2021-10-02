@@ -43,6 +43,8 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
       img: req.body.url,
       UserId: req.user.id,
       idnumber:req.body.idnumber,
+      brand: req.body.brand,
+      tag: req.body.tag,
     });
     const hashtags = req.body.content.match(/#[^\s#]*/g);
     if (hashtags) {

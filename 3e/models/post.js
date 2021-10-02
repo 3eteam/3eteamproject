@@ -3,15 +3,23 @@ const Sequelize = require('sequelize');
 module.exports = class Post extends Sequelize.Model {
   static init(sequelize) {
     return super.init({
-      content: {
+      content: {//제품설명
         type: Sequelize.STRING(140),
         allowNull: false,
       },
-      idnumber: {
+      idnumber: {//제품넘버
         type: Sequelize.STRING(140),
         allowNull: false,
       },
-      img: {
+      img: {//이미지
+        type: Sequelize.STRING(200),
+        allowNull: true,
+      },
+      tag: {//제품태그
+        type: Sequelize.STRING(200),
+        allowNull: true,
+      },
+      brand: {//브랜드
         type: Sequelize.STRING(200),
         allowNull: true,
       },
