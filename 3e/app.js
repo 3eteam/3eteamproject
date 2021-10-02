@@ -30,6 +30,7 @@ const showcaseRouter =require('./routes/showcase');
 const covernatRouter = require('./routes/covernat');
 const magazineRouter = require('./routes/magazine');
 const alllistRouter = require('./routes/alllist');
+const cartRouter = require('./routes/cart');
 
 
 
@@ -108,6 +109,7 @@ app.use('/showcase',showcaseRouter);
 app.use('/magazine',magazineRouter);
 app.use('/newera',neweraRouter);
 app.use('/alllist',alllistRouter);
+app.use('/cart',cartRouter);
 
 
 

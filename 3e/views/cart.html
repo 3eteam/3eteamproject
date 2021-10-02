@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    
+        {% if user and user.id %}
+          <div class="user-name" style="color:black;">{{ user.nick + '님'}}</div>
+
+      
+      {% endif %}
+      </div>
+{% endblock %}
