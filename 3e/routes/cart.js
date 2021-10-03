@@ -7,10 +7,34 @@ router.use((req, res, next) => {
     
     next();
   });
-  
-router.get('/',(req,res)=>{
-    res.render('cart');
-});
+const upload2 = multer();
+router.post('/cart', isLoggedIn, upload2.none(), async (req, res, next) => {
+  try {
+    console.log(req.user);
+    const post = await Cart.create({
+      
+      content: req.body.content,
+      img: req.body.url,
+      capnumber:req.body.capnumber,
+      brand: req.body.brand,
+      capname:req.body.capname,
+      price:req.body.price,
+      quantity:req.body.quantity,
+
+
+
+    });
+    const hashtags = req.body.content.match(/#[^\s#]*/g);
+    
+    res.redirect('/');
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});  
+// router.get('/',(req,res)=>{
+//     res.render('cart');
+// });
 
 router.get('/', async (req, res, next) => {
     try {
@@ -32,30 +56,5 @@ router.get('/', async (req, res, next) => {
   });
 
 
-  const upload2 = multer();
-router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
-  try {
-    console.log(req.user);
-    const post = await Post.create({
-      
-      content: req.body.content,
-      img: req.body.url,
-      capnumber:req.body.capnumber,
-      brand: req.body.brand,
-      tag: req.body.tag,
-      capname:req.body.capname,
-      price:req.body.price,
-      quantity:req.body.quantity,
-
-
-
-    });
-    const hashtags = req.body.content.match(/#[^\s#]*/g);
-    
-    res.redirect('/');
-  } catch (error) {
-    console.error(error);
-    next(error);
-  }
-});
+  
 module.exports=router;
