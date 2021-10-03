@@ -1,8 +1,7 @@
 {% extends 'layout.html' %}
 
-
 {% block content %}
-    
+    <div class="timeline">
       <div class="twits">
         <form id="hashtag-form" action="/hashtag">
           <input type="text" name="hashtag" placeholder="태그 검색">
@@ -12,14 +11,9 @@
           <div class="twit">
             <input type="hidden" value="{{twit.User.id}}" class="twit-user-id">
             <input type="hidden" value="{{twit.id}}" class="twit-id">
-            <div class="twit-author">{{twit.User.nick}}</div>
-            {% if not followerIdList.includes(twit.User.id) and twit.User.id !== user.id %}
               <button class="twit-follow">팔로우하기</button>
-            {% endif %}
             <div class="twit-content">{{twit.content}}</div>
-            {% if twit.img %}
-                
-                
+            {% if user.brand === 'adidas'%}
               <div class="twit-img"><img src="{{twit.img}}" alt="섬네일"></div>
             {% endif %}
           </div>
@@ -66,5 +60,4 @@
       });
     });
   </script>
-
 {% endblock %}
