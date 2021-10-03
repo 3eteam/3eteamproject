@@ -61,7 +61,7 @@
 }
 
 .chatting-list li {
-  width: 90%;
+  /* width: 90%; */
   padding: 0.3rem;
   display: flex;
   justify-content: flex-start;
@@ -77,11 +77,12 @@
   flex: 1;
 }
 .profile .user {
-  font-size: 10px;
+  font-size: 14px;
   margin-bottom: 0.3rem;
+  color: #fff;
 }
 .profile .image {
-  border-radius: 50%;
+  border-radius: 30%;
   object-fit: cover;
   width: 50px;
   height: 50px;
@@ -90,15 +91,16 @@
 .message {
   border-radius: 5px;
   padding: 0.5rem;
-  font-size: 12px;
+  font-size: 15px;
   margin: 0 5px;
-  flex: 7;
   color: #262626;
+  text-align: right;
 }
 
 .time {
   font-size: 10px;
   margin: 0 5px;
+  color: #fff;
 }
 
 .sent {
@@ -108,6 +110,7 @@
 
 .sent .message {
   background: #ffeb33;
+  
 }
 
 .received .message {
@@ -138,61 +141,6 @@
         </div>
     </div>
 
-<!-- <script>
-
-const socket = io();
-
-const nickname = document.querySelector("#nickname")
-const chatlist = document.querySelector(".chatting-list")
-const chatInput = document.querySelector(".chatting-input");
-const sendButton = document.querySelector(".send-button");
-const displyContainer = document.querySelector(".display-container");
-
-chatInput.addEventListener("keypress", (event)=>{
-    if(event.keyCode === 13) {
-        send()
-    }
-
-})
-
-function send(){
-    const param = {
-        name: nickname.value,
-        msg: chatInput.value
-    }
-    socket.emit("chatting", param)
-}
-
-sendButton.addEventListener("click", send)
-
-
-
-socket.on("chatting", (data) => {
-    const { name, msg, time } = data;
-    const item = new LiModel(name, msg, time);
-    item.makeLi()
-    displyContainer.scrollTo(0, displyContainer.scrollHeight)
-})
-
-function LiModel(name, msg, time){
-    this.name = name;
-    this.msg = msg;
-    this.time = time;
-    this.makeLi = ()=>{
-        const li = document.createElement("li");
-        li.classList.add(nickname.value === this.name ? "sent": "received")
-        const dom = `<span class="profile">
-        <span class="user">${this.name}</span>
-        <img class="image" src="https://placeimg.com/50/50/any" alt="any">
-    </span>
-    <span class="message">${this.msg}</span>
-    <span class="time">${this.time}</span>`;
-    li.innerHTML = dom;
-    chatlist.appendChild(li)
-    }
-}
-
-</script> -->
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="./chat.js"></script>

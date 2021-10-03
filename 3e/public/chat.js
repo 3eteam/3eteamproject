@@ -13,7 +13,6 @@ chatInput.addEventListener("keypress", (event)=>{
     if(event.keyCode === 13) {
         send()
     }
-
 })
 
 function send(){
@@ -22,6 +21,7 @@ function send(){
         msg: chatInput.value
     }
     socket.emit("chatting", param)
+    chatInput.value = ''
 }
 
 sendButton.addEventListener("click", send)
@@ -44,7 +44,7 @@ function LiModel(name, msg, time){
         li.classList.add(nickname.value === this.name ? "sent": "received")
         const dom = `<span class="profile">
         <span class="user">${this.name}</span>
-        <img class="image" src="https://placeimg.com/50/50/any" alt="any">
+        <img class="image" src="https://i.esdrop.com/d/cl3pewp2aooj/KLxhBUlwtC.jpeg" alt="any">
     </span>
     <span class="message">${this.msg}</span>
     <span class="time">${this.time}</span>`;
