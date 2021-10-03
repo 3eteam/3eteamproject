@@ -1,13 +1,15 @@
 <style>
 .wrapper {
-  height: 100%;
-  
+  height: 98%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
 #nickname {
+  color: black;
+}
+.nname {
   color: #fff;
 }
 .user-container {
@@ -16,7 +18,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 0.5rem;
+  padding: 0.3rem;
 }
 .user-container label {
   font-size: 14px;
@@ -61,35 +63,33 @@
 }
 
 .chatting-list li {
-  /* width: 90%; */
-  /* padding: 0.3rem; */
+  width: 90%;
+  padding: 0.3rem;
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
   margin-top: 0.5rem;
   
-  
 }
 
 .profile {
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   flex: 1;
-
-  margin-right: 0px;
-  
 }
 .profile .user {
   font-size: 14px;
   margin-bottom: 0.3rem;
   color: #fff;
 }
-.profile.image {
+.profile .image {
   border-radius: 30%;
   object-fit: cover;
-  width: 10px;
+  width: 50px;
   height: 50px;
+  padding: 4px;
 }
 
 .message {
@@ -98,10 +98,7 @@
   font-size: 15px;
   margin: 0 5px;
   color: #262626;
-  text-align: right;
-  margin-right: auto;
-  
-  
+  flex: 7;
 }
 
 .time {
@@ -111,33 +108,37 @@
 }
 
 .sent {
-  /* flex-direction: row-reverse; */
-  vertical-align: auto;
-  
- 
-
-  text-align: right;
-
-
+  flex-direction: row-reverse;
+  padding-top: 3px;
+  float: right;
+  width: 100%;
 }
 
 .sent .message {
   background: #ffeb33;
-  
 }
 
 .received .message {
   background: #fff;
+}
+
+.received {
+  float:left;
+  width: 98%;
+}
+
+.dhm {
+  color: #fff;
 }
 </style>
 
 <div class="wrapper">
         <div class="user-container">
           {% if user and user.id %}
-            <label for="nickname" style="color: #fff;">대화명</label>
+            <label for="nickname" class="nname">대화명</label>
             <input type="text" style="background-color: rgb(83, 82, 82);" id="nickname" placeholder="대화명을입력하라우" value='{{user.nick}}' readonly>
           {% else %}
-            <label for="nickname">대화명</label>
+            <label for="nickname" class="dhm">대화명</label>
             <input type="text" id="nickname" placeholder="대화명을입력하라우" value={{user.nick}}>
           {% endif %}
         </div>
