@@ -41,7 +41,6 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
       
       content: req.body.content,
       img: req.body.url,
-      UserId: req.user.id,
       capnumber:req.body.capnumber,
       brand: req.body.brand,
       tag: req.body.tag,

@@ -1,42 +1,61 @@
 const express = require('express');
 
 const router  = express.Router();
-
-router.get('/',(req,res)=>{
-    res.render('nike');
-});
-
-
-
 const { Post, User, Hashtag } = require('../models');
-
-
-router.use((req, res, next) => {
-  res.locals.user = req.user;
+// router.get('/',(req,res)=>{
+//     res.render('nike');
+// });
+// router.use((req, res, next) => {
+//   res.locals.user = req.user;
   
-  next();
-});
+//   next();
+// });
 
 
-router.get('/', async (req, res, next) => {
+
+
+router.get('/',  async (req, res, next) => {
   try {
-    const adidas = await Post.findAll({
-      include: {
-        model: User,
-        attributes: ['id', 'nick'],
-      },
-    
-      order: [['createdAt', 'DESC']],
-    });
-    res.render('nike', {
-      title: '3e',
-      twits: posts,
-    });
-  } catch (err) {
-    console.error(err);
-    next(err);
+    const posts = await Post.findAll({ 
+    include: {
+      model: Post,
+      attributes: ['brand'],
+    },
+  
+    order: [['createdAt', 'DESC']],
+  });
+  res.render('nike', {
+    title: '3e',
+    twits: posts,
+  });
+  } catch (error) {
+    console.error(error);
+    next(error);
   }
 });
+
+
+
+
+// router.get('/', async (req, res, next) => {
+//   try {
+//     const adidas = await Post.findAll({
+//       include: {
+//         model: Post,
+//         attributes: ['brand'],
+//       },
+    
+//       order: [['createdAt', 'DESC']],
+//     });
+//     res.render('nike', {
+//       title: '3e',
+//       twits: posts,
+//     });
+//   } catch (err) {
+//     console.error(err);
+//     next(err);
+//   }
+// });
 
 router.get('/hashtag', async (req, res, next) => {
   const query = req.query.hashtag;

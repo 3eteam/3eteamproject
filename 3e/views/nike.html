@@ -11,10 +11,12 @@
           <div class="twit">
             <input type="hidden" value="{{twit.User.id}}" class="twit-user-id">
             <input type="hidden" value="{{twit.id}}" class="twit-id">
+              
+              {% if twit.brand === 'nike' %}
               <button class="twit-follow">팔로우하기</button>
             <div class="twit-content">{{twit.content}}</div>
-            {% if user.brand === 'adidas'%}
               <div class="twit-img"><img src="{{twit.img}}" alt="섬네일"></div>
+              아아
             {% endif %}
           </div>
         {% endfor %}

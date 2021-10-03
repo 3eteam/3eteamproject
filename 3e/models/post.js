@@ -30,6 +30,7 @@ module.exports = class Post extends Sequelize.Model {
       brand: {//브랜드
         type: Sequelize.STRING(200),
         allowNull: true,
+        
       },
       
       quantity: {//수량
@@ -49,6 +50,7 @@ module.exports = class Post extends Sequelize.Model {
   }
 
   static associate(db) {
+   db.Post.hasMany(db.Post);
     db.Post.belongsTo(db.User);
     db.Post.belongsToMany(db.Hashtag, { through: 'PostHashtag' });
   }
