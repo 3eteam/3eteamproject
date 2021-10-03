@@ -167,11 +167,10 @@ footer { text-align: center; }
   align-items: flex-end;
   margin-top: 0.5rem;
 }
-
 .profile {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: end;
   justify-content: center;
   flex: 1;
 }
