@@ -17,7 +17,18 @@
     <script>
       window.GitpleConfig = {"appCode":"jwvlvvKRAlBZJf8Nb3VLTO1olv3wd3"};
       !function(){function e(){function e(){var e=t.contentDocument,a=e.createElement("script");a.type="text/javascript",a.async=!0,a.src=window[n]&&window[n].url?window[n].url+"/inapp-web/gitple-loader.js":"https://app.gitple.io/inapp-web/gitple-loader.js",a.charset="UTF-8",e.head&&e.head.appendChild(a)}var t=document.getElementById(a);t||((t=document.createElement("iframe")).id=a,t.style.display="none",t.style.width="0",t.style.height="0",t.addEventListener?t.addEventListener("load",e,!1):t.attachEvent?t.attachEvent("onload",e):t.onload=e,document.body.appendChild(t))}var t=window,n="GitpleConfig",a="gitple-loader-frame";if(!window.Gitple){document;var i=function(){i.ex&&i.ex(arguments)};i.q=[],i.ex=function(e){i.processApi?i.processApi.apply(void 0,e):i.q&&i.q.push(e)},window.Gitple=i,t.attachEvent?t.attachEvent("onload",e):t.addEventListener("load",e,!1)}}();
-      Gitple('boot');
+      Gitple('boot', {
+      id: '12345', // [필수] 상담고객 식별 ID
+      name: '홍길동',
+      email: 'gildong1@gmail.com',
+      phone: '010-1234-1234',
+      meta: {      // [선택] 아래 세부 정보 참고
+    'Company': 'Gitple',
+    'Link': '<a href="https://gitple.io/" target="_blank">내부정보</a>',
+    '고객정보': '<a href="https://myService/api/customer?id=12345" target="_blank">고객정보</a>',
+    '이슈생성': '<a href="https://github.com/gitple/cs/issues/new?title=이슈제목&body=고객이슈내용" target="_blank">이슈생성</a>'
+  }
+});
       </script>
   </head>
 <body>
