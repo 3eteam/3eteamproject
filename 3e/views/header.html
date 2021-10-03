@@ -1,101 +1,101 @@
 <header>
-<style type="text/css">
-  .navbar-brand {
-  text-align: center;
-  padding-left:200px;
-  font-size: 20px;
-  font-weight:bold;
-  
-  }
-  .navbar {
-    background-color: #000000;
-  }
-  .btn-outline-success{
-    height: 40px;
-  }
-  .form-control {
-    height: 40px;
-    width: 150px;
-  }
-  .emaill {
-    color: white;
-  }
-  .passw {
-    color: white;
-  }
-</style>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
-          <!-- <a href="/">
-            <img src="https://i.esdrop.com/d/cl3pewp2aooj/cfWCN3E6Jz.png" width="70px" class="img-fluid" alt="...">
-          </a> -->
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-xl-9 col-lg-9 col-md-9 col-sm-9">
-            
-            <div class="half">
-              <div class="profile-wrap">
-              <form class="d-flex align-self-center">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-              <li class="nav-item">
-                <a class="nav-link" href="/alllist">전체상품</a>
-              </li>
+  <style type="text/css">
+    .navbar-brand {
+    text-align: center;
+    padding-left:200px;
+    font-size: 20px;
+    font-weight:bold;
+    
+    }
+    .navbar {
+      background-color: #000000;
+    }
+    .btn-outline-success{
+      height: 40px;
+    }
+    .form-control {
+      height: 40px;
+      width: 150px;
+    }
+    .emaill {
+      color: white;
+    }
+    .passw {
+      color: white;
+    }
+  </style>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+          <div class="container-fluid">
+            <!-- <a href="/">
+              <img src="https://i.esdrop.com/d/cl3pewp2aooj/cfWCN3E6Jz.png" width="70px" class="img-fluid" alt="...">
+            </a> -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-xl-9 col-lg-9 col-md-9 col-sm-9">
               
-              <li class="nav-item">
-                <a class="nav-link" href="/board">게시판</a>
-              </li>
-              </form>
-            </ul>
-            <div class="profile">
-                  {% if user and user.id %}
-                  <div class="user-name" style="color: white;">{{'안녕하세요! ' + user.nick + '님'}}</div>
-                  <div class="half">
-                      
-                  </div>
-                  <div class="half">
-                    
-                  </div>
-                  <input id="my-id" type="hidden" value="{{user.id}}">
-                  <a id="my-profile" href="/profile" class="btn" style="color: white;">내 프로필</a>
-                  <a id="logout" href="/auth/logout" class="btn" style="color: white;">로그아웃</a>
-                  {% if user.id < 6%}
-                  <a id="catlist" href="/catlist" class="btn" style="color: white;">관리자모드</a>
-                  <a href="/cart">장바구니</a>
-                  {% endif %}
-                {% else %}
-                <form id="login-form" action="/auth/login" method="post">
-                  <div class="d-flex align-self-center">
-                    <div class="input-group">
-                        <label for="email" class="emaill">이메일</label>
-                        <input id="email" type="email" name="email" required autofocus style="color: white;">
-                    </div>
-                    <div class="input-group">
-                      <label for="password" class="passw">비밀번호</label>
-                      <input id="password" type="password" name="password" required style="color: white;">
-                    </div>
-                  </div>
-                <span class="user-if">
-                    <a id="join" href="/join" class="btn" style="color: white;">회원가입</a>
-                    <button id="login" type="submit" class="btn" style="color: white;">로그인</button>
-                    <a id="kakao" href="/auth/kakao" class="btn"style="color: white;">카카오톡</a>
-                    
-                </span>
+              <div class="half">
+                <div class="profile-wrap">
+                <form class="d-flex align-self-center">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+                <li class="nav-item">
+                  <a class="nav-link" href="/alllist">전체상품</a>
+                </li>
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="/board">게시판</a>
+                </li>
                 </form>
-                {% endif %}
-                </div>
+              </ul>
+              <div class="profile">
+                    {% if user and user.id %}
+                    <div class="user-name" style="color: white;">{{'안녕하세요! ' + user.nick + '님'}}</div>
+                    <div class="half">
+                        
+                    </div>
+                    <div class="half">
+                      
+                    </div>
+                    <input id="my-id" type="hidden" value="{{user.id}}">
+                    <a id="my-profile" href="/profile" class="btn" style="color: white;">내 프로필</a>
+                    <a id="logout" href="/auth/logout" class="btn" style="color: white;">로그아웃</a>
+                    {% if user.id < 6%}
+                    <a id="catlist" href="/catlist" class="btn" style="color: white;">관리자모드</a>
+                    <a href="/cart">장바구니</a>
+                    {% endif %}
+                  {% else %}
+                  <form id="login-form" action="/auth/login" method="post">
+                    <div class="d-flex align-self-center">
+                      <div class="input-group">
+                          <label for="email" class="emaill">이메일</label>
+                          <input id="email" type="email" name="email" required autofocus style="color: white;">
+                      </div>
+                      <div class="input-group">
+                        <label for="password" class="passw">비밀번호</label>
+                        <input id="password" type="password" name="password" required style="color: white;">
+                      </div>
+                    </div>
+                  <span class="user-if">
+                      <a id="join" href="/join" class="btn" style="color: white;">회원가입</a>
+                      <button id="login" type="submit" class="btn" style="color: white;">로그인</button>
+                      <a id="kakao" href="/auth/kakao" class="btn"style="color: white;">카카오톡</a>
+                      
+                  </span>
+                  </form>
+                  {% endif %}
+                  </div>
+            </div>
           </div>
-        </div>
-      </nav>
-      
-      <script>
-        window.onload = () => {
-          if (new URL(location.href).searchParams.get('loginError')) {
-            alert(new URL(location.href).searchParams.get('loginError'));
-          }
-        };
-      </script>
-      
-</header>
+        </nav>
+        
+        <script>
+          window.onload = () => {
+            if (new URL(location.href).searchParams.get('loginError')) {
+              alert(new URL(location.href).searchParams.get('loginError'));
+            }
+          };
+        </script>
+        
+  </header>
