@@ -11,7 +11,7 @@
           <div class="cap">
             {% if cap.brand === 'nike' %}
               <button class="twit-follow">구매하기</button>
-              <a href="/cart" class="twit-follow">장바구니에 담기</a>
+              <button id="cap-brand" type="submit" class="btn" name="{cap.brand}" value="{cap.brand}">장바구니 담기</button>
             <div class="cap-content">{{cap.content}}</div>
             <div class="cap-content">{{cap.brand}}</div>
             <div class="cap-content">{{cap.capname}}</div>

@@ -63,27 +63,27 @@
                   <a id="logout" href="/auth/logout" class="btn" style="color: white;">로그아웃</a>
                   {% if user.id < 6%}
                   <a id="catlist" href="/catlist" class="btn" style="color: white;">관리자모드</a>
+                  <a href="/cart">장바구니</a>
                   {% endif %}
                 {% else %}
-                  <form id="login-form" action="/auth/login" method="post">
-                    <div class="d-flex align-self-center">
-                      <div class="input-group">
-                          <label for="email" class="emaill">이메일</label>
-                          <input id="email" type="email" name="email" required autofocus style="color: white;">
-                      </div>
-                      <div class="input-group">
-                        <label for="password" class="passw">비밀번호</label>
-                        <input id="password" type="password" name="password" required style="color: white;">
-                      </div>
+                <form id="login-form" action="/auth/login" method="post">
+                  <div class="d-flex align-self-center">
+                    <div class="input-group">
+                        <label for="email" class="emaill">이메일</label>
+                        <input id="email" type="email" name="email" required autofocus style="color: white;">
                     </div>
-                    
-                  </form>
-                  <span class="user-if">
+                    <div class="input-group">
+                      <label for="password" class="passw">비밀번호</label>
+                      <input id="password" type="password" name="password" required style="color: white;">
+                    </div>
+                  </div>
+                <span class="user-if">
                     <a id="join" href="/join" class="btn" style="color: white;">회원가입</a>
                     <button id="login" type="submit" class="btn" style="color: white;">로그인</button>
                     <a id="kakao" href="/auth/kakao" class="btn"style="color: white;">카카오톡</a>
-                    <a href="/cart">장바구니</a>
-                  </span>
+                    
+                </span>
+                </form>
                 {% endif %}
                 </div>
           </div>
