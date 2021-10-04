@@ -25,7 +25,7 @@ router.get('/', async (req, res, next) => {
           model: Cart,
           attributes: ['capname', 'capnumber'],
         },
-        order: [['createdAt', 'DESC']],
+        order: [['createdAt', 'DESC','capname']],
       });
       res.render('cart', {
         title: '3e',
@@ -45,9 +45,15 @@ router.post('/', upload2.none(), async (req, res, next) => {
     const cart = await Cart.create({
       
       
+      content: req.body.content,
+      img: req.body.url,
+      capnumber:req.body.capnumber,
       brand: req.body.brand,
-      
-      
+      tag: req.body.tag,
+      capname:req.body.capname,
+      price:req.body.price,
+      quantity:req.body.quantity,
+
 
 
     });
