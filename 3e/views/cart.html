@@ -9,14 +9,14 @@
         <!-- </form> -->
         {% for cart in carts %}
         <form action="/cart" method="POST">
-          <div class="cart">
+          <div class="carts">
             {% if cartbrand === 'nike' %}
-           <input type="hidden" name="capname" value="{{'cap.capname'}}">{{cap.price +'원'}}
-           <input type="hidden" name="capnumber" value="{{cap.capnumber}}">{{cap.capnumber}}
-           <div class="cap-brand" name="brand" value="{{cap.brand}}" contenteditable="true">{{cap.brand}}</div>
-            <div class="cap-content">{{cap.content}}</div>
-            <input type="hidden" name="price" value="{{cap.price +'원'}}">{{cap.price +'원'}}
-            <input type="hidden" name="img" value="{{cap.img}}">{{cap.img}}
+           <input type="hidden" name="capname" value="{{'carts.capname'}}">{{carts.price +'원'}}
+           <input type="hidden" name="capnumber" value="{{carts.capnumber}}">{{carts.capnumber}}
+           <div class="cap-brand" name="brand" value="{{carts.brand}}" >{{carts.brand}}</div>
+            <div class="cap-content">{{carts.content}}</div>
+            <input type="hidden" name="price" value="{{carts.price +'원'}}">{{carts.price +'원'}}
+            <input type="hidden" name="img" value="{{carts.img}}">{{cap.img}}
             <div class="cap-img"><img src="{{cap.img}}" alt="섬네일">
             <button class="twit-follow">구매하기</button>
               <button id="cap-brand" type="submit" class="btn" name="{{cap.brand}}" value="{{cap.brand}}">장바구니 담기</button>
@@ -48,24 +48,24 @@
           });
       });
     }
-    document.querySelectorAll('.twit-follow').forEach(function(tag) {
-      tag.addEventListener('click', function() {
-        const myId = document.querySelector('#my-id');
-        if (myId) {
-          const userId = tag.parentNode.querySelector('.twit-user-id').value;
-          if (userId !== myId.value) {
-            if (confirm('팔로잉하시겠습니까?')) {
-              axios.post(`/user/${userId}/follow`)
-                .then(() => {
-                  location.reload();
-                })
-                .catch((err) => {
-                  console.error(err);
-                });
-            }
-          }
-        }
-      });
-    });
+    // document.querySelectorAll('.twit-follow').forEach(function(tag) {
+    //   tag.addEventListener('click', function() {
+    //     const myId = document.querySelector('#my-id');
+    //     if (myId) {
+    //       const userId = tag.parentNode.querySelector('.twit-user-id').value;
+    //       if (userId !== myId.value) {
+    //         if (confirm('팔로잉하시겠습니까?')) {
+    //           axios.post(`/user/${userId}/follow`)
+    //             .then(() => {
+    //               location.reload();
+    //             })
+    //             .catch((err) => {
+    //               console.error(err);
+    //             });
+    //         }
+    //       }
+    //     }
+    //   });
+    // });
   </script>
 {% endblock %}

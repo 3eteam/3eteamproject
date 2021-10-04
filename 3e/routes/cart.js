@@ -12,21 +12,19 @@ const { isLoggedIn } = require('./middlewares');
 const router  = express.Router();
 
 
-router.use((req, res, next) => {
-    res.locals.user = req.user;
+// router.use((req, res, next) => {
+//     res.locals.user = req.user;
     
-    next();
-  });
+//     next();
+//   });
 
-  router.get('/',  async (req, res, next) => {
+  router.get('/',async (req, res, next) => {
     try {
       const posts = await Cart.findAll({ 
       include: {
         model: Cart,
-        attributes: ['price'],
+        attributes: ['capname'],
       },
-      
-    
       order: [['createdAt', 'DESC']],
     });
     res.render('cart', {
@@ -99,7 +97,7 @@ router.get('/hashtag', async (req, res, next) => {
 
     return res.render('cart', {
       title: `${query} | 3e`,
-      caps: posts,
+      carts: posts,
     });
   } catch (error) {
     console.error(error);
