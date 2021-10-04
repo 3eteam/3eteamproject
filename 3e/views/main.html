@@ -4,27 +4,45 @@
  
 
   {% block content %}
+  <style>
+  .bgimg{
+    margin: 0;
+    border: 0;
+    padding: 0; 
+    background-color: red;
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+  }
+  #bg {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    min-height: 100%;
+  }
+  </style>
   
     <div class="main_content row">
         
         <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 bg-primary" style="height:30px;">
         </div> -->
-        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 bg-success" style="height:700px;">상품사진
+        
+        
+        <!-- <div class="vh-100 d-inline-block col-xl-12 col-lg-12 col-md-12 col-sm-12 bg-danger bgimg">
+            
+        </div> -->
+        
+        <div class="vh-100 col-xl-9 col-lg-9 col-md-9 col-sm-9 bg-success" style="height:700px;">
           
         </div>
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 bg-secondary" style="height:700px;">
+        <div class="vh-100 col-xl-3 col-lg-3 col-md-3 col-sm-3" style="height:700px;">
           {% include "mh.html" %}
         </div>
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 bg-danger" style="height:500px;">
-          <!-- {% include "book.html" %} -->
-        </div>
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 bg-info" style="height:500px;">커뮤니티(최근게시글순)
+        <div class="vh-100 col-xl-9 col-lg-9 col-md-9 col-sm-9 bg-light" style="height:400px;">상품사진
           {% include "news.html" %}
         </div>
-        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 bg-success" style="height:400px;">상품사진
-          
-        </div>
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 bg-warning" style="height:400px;">
+        <div class="vh-100 col-xl-3 col-lg-3 col-md-3 col-sm-3 bg-warning" style="height:400px;">
           {% include "chat.html" %}
         </div>
         
