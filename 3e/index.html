@@ -62,6 +62,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
 <body> 
+    
     <section>
         <div class=”embed-responsive embed-responsive-16by9“>
             <video autoplay loop controls muted class=”embed-responsive-item“>
@@ -78,25 +79,23 @@
             </span>
         </h2>
     </section>
-    <script>
-        var autoplayVideoInterval = setInterval("autoplayVideo()",200);
+
+<script>
+    var autoplayVideoInterval = setInterval("autoplayVideo()", 200);
 
 
-function autoplayVideo()
-{
-var promise = document.querySelector('video').play();
-if (promise !== undefined)
-{
-promise.then(function (_)
-{
-// Autoplay started!
-clearInterval(autoplayVideoInterval);
+    function autoplayVideo() {
+        var promise = document.querySelector('video').play();
+        if (promise !== undefined) {
+            promise.then(function (_) {
+                // Autoplay started!
+                clearInterval(autoplayVideoInterval);
 
-}).catch(function (error) {// Autoplay was prevented.
-// Show a "Play" button so that user can start playback.
-});
-}
-}
-    </script>
+            }).catch(function (error) {// Autoplay was prevented.
+                // Show a "Play" button so that user can start playback.
+            });
+        }
+    }
+</script>
 </body>
 </html>
