@@ -48,6 +48,7 @@ module.exports = class Cart extends Sequelize.Model {
   static associate(db) {
    db.Cart.hasMany(db.Cart);
     db.Cart.belongsTo(db.User);
+    db.Cart.belongsTo(db.Post);
     db.Cart.belongsToMany(db.Hashtag, { through: 'PostHashtag' });
   }
 };

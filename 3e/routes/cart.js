@@ -22,10 +22,10 @@ router.get('/', async (req, res, next) => {
     try {
       const posts = await Post.findAll({
         include: {
-          model: Cart,
+          model: Post,
           attributes: ['capname', 'capnumber'],
         },
-        order: [['createdAt', 'DESC','capname']],
+        order: [['createdAt', 'DESC']],
       });
       res.render('cart', {
         title: '3e',
@@ -77,7 +77,7 @@ router.get('/hashtag', async (req, res, next) => {
       posts = await hashtag.getPosts({ include: [{ model: User }] });
     }
 
-    return res.render('catlist', {
+    return res.render('cart', {
       title: `${query} | 3e`,
       caps: posts,
     });

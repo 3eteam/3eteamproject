@@ -15,13 +15,13 @@
   <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
-  <script defer src="/js/main.js"></script>
+  <script defer src="/main.js"></script>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css'>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap"rel="stylesheet'>
-  <link rel="stylesheet" href="/public/style.css">
-  <script src="/public/jquery-3.6.0.min.js"></script>
-  <script src="/public/jquery.fullPage.js"></script>
-  <script src="/public/fullpage.js"></script>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/jquery-3.6.0.min.js" defer></script>
+  <script src="/jquery.fullPage.js" defer></script>
+  <script src="/fullpage.js" defer></script>
 
   <script>
     window.GitpleConfig = { "appCode": "jwvlvvKRAlBZJf8Nb3VLTO1olv3wd3" };
@@ -61,7 +61,32 @@
   {% block script %}
   {% endblock %}
   <script>
-    
+           window.onload = () => {
+          if (new URL(location.href).searchParams.get('loginError')) {
+            alert(new URL(location.href).searchParams.get('loginError'));
+          }
+        };
+
+        $(document).ready(function () {
+
+            var $header = $('header');
+            $(window).scroll(function () {
+              if ($(this).scrollTop() > 0) {
+                $header.addClass('sticky');
+                console.log("내려감");
+              } else {
+                $header.removeClass('sticky');
+              }
+            });
+
+          })
+
+        $(function(){
+        var $wind = $(window),
+          header = $('.page-header'),
+          headerOffsetTop = header.offset().top;
+          console.log(headerOffsetTop);
+      })
   </script>
 </body>
 
