@@ -18,24 +18,44 @@ router.use((req, res, next) => {
     next();
   });
 
-router.get('/', async (req, res, next) => {
+  router.get('/',  async (req, res, next) => {
     try {
-      const posts = await Post.findAll({
-        include: {
-          model: Post,
-          attributes: ['capname', 'capnumber'],
-        },
-        order: [['createdAt', 'DESC']],
-      });
-      res.render('cart', {
-        title: '3e',
-        cart: posts,
-      });
-    } catch (err) {
-      console.error(err);
-      next(err);
+      const posts = await Cart.findAll({ 
+      include: {
+        model: Cart,
+        attributes: ['price'],
+      },
+      
+    
+      order: [['createdAt', 'DESC']],
+    });
+    res.render('cart', {
+      title: '3e',
+      carts: posts,
+    });
+    } catch (error) {
+      console.error(error);
+      next(error);
     }
   });
+  // router.get('/', async (req, res, next) => {
+  //   try {
+  //     const posts = await Post.findAll({
+  //       include: {
+  //         model: Cart,
+  //         attributes: ['capname', 'capnumber'],
+  //       },
+  //       order: [['createdAt', 'DESC']],
+  //     });
+  //     res.render('cart', {
+  //       title: '3e',
+  //       carts: posts,
+  //     });
+  //   } catch (err) {
+  //     console.error(err);
+  //     next(err);
+  //   }
+  // });
 
 
   const upload2 = multer();
@@ -87,3 +107,7 @@ router.get('/hashtag', async (req, res, next) => {
   }
 });
 module.exports=router;
+
+
+
+
