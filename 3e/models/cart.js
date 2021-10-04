@@ -9,11 +9,11 @@ module.exports = class Cart extends Sequelize.Model {
       },
       capnumber: {//제품넘버
         type: Sequelize.STRING(140),
-        allowNull: false,
+        allowNull: true,
       },
       price: {//가격
         type: Sequelize.STRING(140),
-        allowNull: false,
+        allowNull: true,
       },
       img: {//이미지
         type: Sequelize.STRING(200),
@@ -46,8 +46,8 @@ module.exports = class Cart extends Sequelize.Model {
   }
 
   static associate(db) {
-   db.Post.hasMany(db.Post);
-    db.Post.belongsTo(db.User);
-    db.Post.belongsToMany(db.Hashtag, { through: 'PostHashtag' });
+   db.Cart.hasMany(db.Cart);
+    db.Cart.belongsTo(db.User);
+    db.Cart.belongsToMany(db.Hashtag, { through: 'PostHashtag' });
   }
 };

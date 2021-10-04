@@ -6,18 +6,21 @@
         <!-- <form id="hashtag-form" action="/hashtag">
           <input type="text" name="hashtag" placeholder="태그 검색">
           <button class="btn">검색</button> -->
-        </form>
+        <!-- </form> -->
         {% for cap in caps %}
+        <form action="/cart" method="POST">
           <div class="cap">
             {% if cap.brand === 'nike' %}
-              <button class="twit-follow">구매하기</button>
-              <button id="cap-brand" type="submit" class="btn" name="{cap.brand}" value="{cap.brand}">장바구니 담기</button>
+              
             <div class="cap-content">{{cap.content}}</div>
-            <div class="cap-content">{{cap.brand}}</div>
-            <div class="cap-content">{{cap.capname}}</div>
+            <div class="cap-content" name="brand">{{cap.brand}}</div>
+            <div class="cap-content" name="capname">{{cap.capname}}</div>
             <div class="cap-content">{{cap.capnumber}}</div>
             <div class="cap-content">{{cap.price +'원'}}</div>
               <div class="cap-img"><img src="{{cap.img}}" alt="섬네일"></div>
+              <button class="twit-follow">구매하기</button>
+              <button id="cap-brand" type="submit" class="btn" name="{{cap.brand}}" value="{{cap.brand}}">장바구니 담기</button>
+            </form>
             {% endif %}
           </div>
         {% endfor %}
