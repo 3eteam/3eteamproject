@@ -1,0 +1,146 @@
+
+<style type="text/css">
+ 
+  header {
+    color: black;
+  }
+  .navbar-brand {
+  text-align: center;
+  padding-left:200px;
+  font-size: 20px;
+  font-weight:bold;
+  }
+  
+  /* .navbar {
+    background-color: #000000;
+  } */
+  .btn-outline-success{
+    height: 40px;
+  }
+  .form-control {
+    height: 40px;
+    width: 150px;
+  }
+  .logo-name {
+    padding-right: 10px;
+    font-weight:bold;
+  }
+  header {
+    position: absolute;
+    z-index: 999;
+    list-style: none;
+    text-decoration: none;
+  }
+  .page-header .sticky {
+    position: fixed;
+    top: 0;
+    background: #fff;
+    box-shadow: 0 2px 2px rgba(0,0,0,.3);
+    background-color: black;
+  }
+
+  /* header .sticky {
+
+  } */
+  a:link { color: black; text-decoration: none;}
+  a:visited { color: black; text-decoration: none;}
+  a:hover { color: black; text-decoration: underline;}
+</style>
+<header class="page-header">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <!-- <a href="/">
+            <img src="https://i.esdrop.com/d/cl3pewp2aooj/cfWCN3E6Jz.png" width="70px" class="img-fluid" alt="...">
+          </a> -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-xl-9 col-lg-9 col-md-9 col-sm-9">
+            
+            <div class="half">
+              <div class="profile-wrap">
+              <form class="d-flex align-self-center">
+                <span class="logo-name"><h3>N O C A P</h3></span>
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+              <li class="nav-item">
+                <a class="nav-link" href="/alllist">전체상품</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="/board">게시판</a>
+              </li>
+              </form>
+            </ul>
+            <div class="profile">
+                  {% if user and user.id %}
+                  <div class="user-name">{{'안녕하세요! ' + user.nick + '님'}}</div>
+                  <div class="half">
+                      
+                  </div>
+                  <div class="half">
+                    
+                  </div>
+                  <input id="my-id" type="hidden" value="{{user.id}}">
+                  <a id="my-profile" href="/profile" class="btn">내 프로필</a>
+                  <a id="logout" href="/auth/logout" class="btn">로그아웃</a>
+                  {% if user.id < 6%}
+                  <a id="catlist" href="/catlist" class="btn">관리자모드</a>
+                  <a href="/cart">장바구니</a>
+                  {% endif %}
+                {% else %}
+                <form id="login-form" action="/auth/login" method="post">
+                  <div class="d-flex align-self-center">
+                    <div class="input-group">
+                        <label for="email" class="emaill">이메일</label>
+                        <input id="email" type="email" name="email" required autofocus>
+                    </div>
+                    <div class="input-group">
+                      <label for="password" class="passw">비밀번호</label>
+                      <input id="password" type="password" name="password" required>
+                    </div>
+                  </div>
+                <span class="user-if">
+                    <a id="join" href="/join" class="btn">회원가입</a>
+                    <button id="login" type="submit" class="btn">로그인</button>
+                    <a id="kakao" href="/auth/kakao" class="btn">카카오톡</a>
+                    
+                </span>
+                </form>
+                {% endif %}
+                </div>
+          </div>
+        </div>
+      </nav>
+    <script src="/public/jquery-3.6.0.min.js"></script>
+      <script>
+        window.onload = () => {
+          if (new URL(location.href).searchParams.get('loginError')) {
+            alert(new URL(location.href).searchParams.get('loginError'));
+          }
+        };
+
+        // $(document).ready(function () {
+
+        //     var $header = $('header');
+        //     $(window).scroll(function () {
+        //       if ($(this).scrollTop() > 0) {
+        //         $header.addClass('sticky');
+        //         console.log("내려감");
+        //       } else {
+        //         $header.removeClass('sticky');
+        //       }
+        //     });
+
+        //   })
+
+        $(function(){
+        var $wind = $(window),
+          header = $('.page-header'),
+          headerOffsetTop = header.offset().top;
+          console.log(headerOffsetTop);
+        })
+      </script>
+      
+</header>

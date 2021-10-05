@@ -1,0 +1,243 @@
+<style>
+        body {
+            font-family: sans-serif;
+        }
+
+        body *,
+        body *:before,
+        body *:after {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body .wrapper {
+            width: 1140px;
+            margin: 0 auto;
+            max-width: 100%;
+            padding: 0 15px;
+        }
+
+        body .clearfix:after {
+            content: " ";
+            clear: both;
+            display: table;
+        }
+
+        .news {
+    margin-bottom: 30px;
+}
+
+.news .header {
+    padding: 0 10px 15px 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 22px;
+}
+
+.news .header:after {
+    content: " ";
+    display: table;
+    clear: both
+}
+
+.news .header .left {
+    float: left;
+}
+
+.news .header .left>.title {
+    color: #262626;
+    font-size: 25px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.news .header .left>.desc {
+    color: #6a6a6a;
+}
+
+.news .header .right {
+    float: right;
+}
+
+.news .header .right>button {
+    cursor: pointer;
+    border: 1px solid #1259a7;
+    background: #1259a7;
+    color: #fff;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    padding: 0;
+    font-size: 14px;
+}
+
+.news .header .right>button:hover {
+    background: #146ece;
+}
+
+.news .contents .item {
+    padding-left: 305px;
+    position: relative;
+}
+
+.news .contents .item .preview {
+    position: absolute;
+    cursor: pointer;
+    display: inline-block;
+    left: 0;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    text-decoration: none;
+}
+
+.news .contents .item .preview>.cover {
+    opacity: 0;
+    transition: opacity 0.25s;
+    display: table;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    text-align: center;
+    color: #fff;
+}
+
+.news .contents .item .preview:hover>.cover {
+    opacity: 1;
+}
+
+.news .contents .item .preview>.cover>.inner {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.news .contents .item .preview>.cover>.inner>.header {
+    padding-bottom: 11px;
+    display: inline-block;
+}
+
+.news .contents .item>ul {
+    list-style: none;
+    margin: 0;
+    position: relative;
+    padding: 0 10px;
+}
+
+.news .contents .item>ul>li {
+    padding: 5px 0;
+    position: relative;
+    padding-right: 100px;
+}
+
+.news .contents .item>ul>li>a {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    cursor: pointer;
+    display: block;
+}
+
+.news .contents .item>ul>li>a:hover {
+    text-decoration: underline;
+}
+
+.news .contents .item>ul>li>span {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    font-size: 90%;
+}
+
+@media(max-width:991px) {
+    .news .contents .item {
+        padding-left: 0;
+    }
+
+    .news .contents .item .preview {
+        position: relative;
+        width: 100%;
+        height: 190px;
+        margin-bottom: 10px;
+    }
+}
+
+@media(max-width:991px) {
+    .news .header .left>.title {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .news .header .left>.desc {
+        display: block;
+    }
+
+    .news .header .right>button {
+        margin-top: 21px;
+    }
+}
+</style>
+
+<div class="news">
+    <div class="wrapper">
+        <div class="header">
+            <div class="left">
+                <span class="title">Magazine</span>
+                <span class="desc">최신 매거진</span>
+            </div>
+            <div class="right">
+                <button>MORA</button>
+            </div>
+        </div>
+        <div class="contents">
+            <div class="item">
+                <a class="preview" style="background-image: #262626">
+                <img src="https://image.musinsa.com/mfile_s01/2021/09/28/75e7310fbf0513a3c2fce85318856a0f.jpg.0?v20210928101002" class="preview" class="img-fluid" alt="...">
+                    <span class="cover">
+                        <span class="inner">
+                            <span class="title">Magazine</span>
+                            <br><br>
+                            <span class="date">2021-09-28</span>
+                        </span>
+                    </span>
+                </a>
+                <ul>
+                    <li>
+                        <a>요즘 대세 마르디 메크르디</a>
+                        <span>2051-09-28</span>
+                    </li>
+                    <li>
+                        <a>CAP HOT!이슈!!!</a>
+                        <span>2021-09-28</span>
+                    </li>
+                    <li>
+                        <a>가을의 정취를 담은</a>
+                        <span>2021-09-28</span>
+                    </li>
+                    <li>
+                        <a>스타일링 팁은 우리가 줄게요</a>
+                        <span>2021-09-28</span>
+                    </li>
+                    <li>
+                        <a>취향따라 골라보는 가을VER.</a>
+                        <span>2021-09-28</span>
+                    </li>
+                    <li>
+                        <a>모자 브랜드별 스타일링</a>
+                        <span>2021-09-28</span>
+                    </li>
+                    <li>
+                        <a>우리가 찾아 헤맨 캐주얼 무드</a>
+                        <span>2021-09-28</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
