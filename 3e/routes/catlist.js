@@ -12,13 +12,13 @@ router.use((req, res, next) => {
   next();
 });
 
-router.get('/profile', isLoggedIn, (req, res) => {
-  res.render('profile', { title: '내 정보 - 3e' });
-});
+// router.get('/profile', isLoggedIn, (req, res) => {
+//   res.render('profile', { title: '내 정보 - 3e' });
+// });
 
-router.get('/join', isNotLoggedIn, (req, res) => {
-  res.render('join', { title: '회원가입 - 3e' });
-});
+// router.get('/join', isNotLoggedIn, (req, res) => {
+//   res.render('join', { title: '회원가입 - 3e' });
+// });
 
 router.get('/', async (req, res, next) => {
   try {
