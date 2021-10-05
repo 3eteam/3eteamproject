@@ -38,8 +38,6 @@ module.exports = class User extends Sequelize.Model {
   }
 
   static associate(db) {
-        //sj 게시글작성 추가
-    // db.User.hasMany(db.User);
     db.User.hasMany(db.Post);
     db.User.belongsToMany(db.User, {
       foreignKey: 'followingId',
@@ -51,11 +49,5 @@ module.exports = class User extends Sequelize.Model {
       as: 'Followings',
       through: 'Follow',
     });
-    //   //sj 게시판 만들기 시도
-    // db.User.belongsToMany(db.User, {
-    //   foreignKey: 'comment',
-    //   as: 'comment',
-    //   through: 'comments',
-    // });
   }
 };
