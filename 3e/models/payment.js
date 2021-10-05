@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-module.exports = class Cart extends Sequelize.Model {
+module.exports = class Payment extends Sequelize.Model {
   static init(sequelize) {
     return super.init({
       capname: {//제픔명
@@ -12,7 +12,7 @@ module.exports = class Cart extends Sequelize.Model {
         allowNull: true,
       },
       price: {//가격
-        type: Sequelize.INTEGER(140),
+        type: Sequelize.STRING(140),
         allowNull: true,
       },
       img: {//이미지
@@ -37,8 +37,8 @@ module.exports = class Cart extends Sequelize.Model {
       sequelize,
       timestamps: true,
       underscored: false,
-      modelName: 'Cart',
-      tableName: 'carts',
+      modelName: 'Payment',
+      tableName: 'payments',
       paranoid: false,
       charset: 'utf8mb4',
       collate: 'utf8mb4_general_ci',
@@ -46,8 +46,8 @@ module.exports = class Cart extends Sequelize.Model {
   }
 
   static associate(db) {
-   db.Cart.hasMany(db.Cart);
-    db.Cart.belongsTo(db.User);
-    db.Cart.belongsToMany(db.Hashtag, { through: 'PostHashtag' });
+   db.Payment.hasMany(db.Payment);
+    db.Payment.belongsTo(db.User);
+
   }
 };
