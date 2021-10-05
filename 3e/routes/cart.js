@@ -22,8 +22,8 @@ router.use((req, res, next) => {
     try {
       const posts = await Cart.findAll({ 
       include: {
-        model: Cart,
-        attributes: ['capname','capnumber'],
+        model: User,
+        attributes: ['id'],
       },
       order: [['createdAt', 'DESC']],
     });

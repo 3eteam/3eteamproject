@@ -17,10 +17,10 @@ const { Post, User, Hashtag } = require('../models');
 router.get('/',  async (req, res, next) => {
   try {
     const posts = await Post.findAll({ 
-    include: {
-      model: Post,
-      attributes: ['brand'],
-    },
+    // include: {
+    //   model: Post,
+    //   attributes: ['brand'],
+    // },
   
     order: [['createdAt', 'DESC']],
   });

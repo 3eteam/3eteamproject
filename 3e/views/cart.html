@@ -1,11 +1,12 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-{% for cart in carts %}
-<form action="/" method="POST">
+<div class="carts">
+  {% for carts in cart %}
+<form action="/" method="">
   <div class="cart">
-    {% if cart.price === '30000원' %}
-   <input type="hidden" name="capname" value="{{'cart.capname'}}">{{cart.price +'원'}}
+    {% if carts.price %}
+   <input type="hidden" name="capname" value="{{'cart.capname'}}">{{carts.price +'원'}}
    <input type="hidden" name="capnumber" value="{{cart.capnumber}}">{{cart.capnumber}}
    <div class="cart-brand" name="brand" value="{{cart.brand}}" contenteditable="true">{{cap.brand}}</div>
     <div class="cap-content">{{cart.content}}</div>
@@ -20,8 +21,10 @@
     </form>
     {% endif %}
   </div>
+  <p>안녕하세요</p>
 {% endfor %}
-   <div>{{carts.capname}}</div>
+</div>
+   <div>{{cart.capname}}</div>
     <p>안녕하세요</p>
 {% endblock %}
 {% block script %}
