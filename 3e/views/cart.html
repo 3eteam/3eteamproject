@@ -1,30 +1,30 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="carts">
-  {% for carts in cart %}
+<div class="carts" style="padding-top: 200px;">
+
 <form action="/" method="">
+  {% for carts in cart %}
+
   <div class="cart">
-    {% if carts.price %}
-   <input type="hidden" name="capname" value="{{'cart.capname'}}">{{carts.price +'원'}}
-   <input type="hidden" name="capnumber" value="{{cart.capnumber}}">{{cart.capnumber}}
-   <div class="cart-brand" name="brand" value="{{cart.brand}}" contenteditable="true">{{cap.brand}}</div>
+
+   <input type="hidden" name="capname" value="{{'carts.capname'}}">{{carts.capname}}
+   <input type="hidden" name="capnumber" value="{{carts.capnumber}}">{{carts.capnumber}}
+   <div class="cart-brand" name="brand" value="{{carts.brand}}" contenteditable="true">{{carts.brand}}</div>
     <div class="cap-content">{{cart.content}}</div>
-    <input type="text">
-    <input type="hidden" name="price" value="{{cap.price +'원'}}">{{cap.price +'원'}}
-    <input type="hidden" name="img" value="{{cap.img}}">{{cap.img}}
+    <input type="hidden" name="price" value="{{carts.price +'원'}}">{{carts.price +'원'}}
+    <input type="hidden" name="img" value="{{cap.img}}">{{carts.img}}
     <div class="cap-img"><img src="{{cap.img}}" alt="섬네일">
-    <button class="twit-follow">구매하기</button>
-      <button id="cap-brand" type="submit" class="btn" name="{{cap.brand}}" value="{{cap.brand}}">장바구니 담기</button>
+      {% endfor %}
+    <button class="twit-follow" type="submit" class="btn">구매하기</button>
+
       
 
     </form>
-    {% endif %}
+
   </div>
-  <p>안녕하세요</p>
-{% endfor %}
 </div>
-   <div>{{cart.capname}}</div>
+
     <p>안녕하세요</p>
 {% endblock %}
 {% block script %}
