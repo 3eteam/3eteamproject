@@ -51,11 +51,11 @@ module.exports = class User extends Sequelize.Model {
       as: 'Followings',
       through: 'Follow',
     });
-    //   //sj 게시판 만들기 시도
-    // db.User.belongsToMany(db.User, {
-    //   foreignKey: 'comment',
-    //   as: 'comment',
-    //   through: 'comments',
-    // });
+      //sj 게시판 만들기 시도
+    db.User.belongsToMany(db.User, {
+      foreignKey: 'comment',
+      as: 'comment',
+      through: 'comments',
+    });
   }
 };
