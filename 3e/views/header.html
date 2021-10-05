@@ -113,34 +113,34 @@
           </div>
         </div>
       </nav>
-    <script src="/jquery-3.6.0.min.js"></script>
-      <script defer>
+    <script src="/public/jquery-3.6.0.min.js"></script>
+      <script>
         window.onload = () => {
           if (new URL(location.href).searchParams.get('loginError')) {
             alert(new URL(location.href).searchParams.get('loginError'));
           }
         };
 
-        $(document).ready(function () {
+        // $(document).ready(function () {
 
-            var $header = $('header');
-            $(window).scroll(function () {
-              if ($(this).scrollTop() > 0) {
-                $header.addClass('sticky');
-                console.log("내려감");
-              } else {
-                $header.removeClass('sticky');
-              }
-            });
+        //     var $header = $('header');
+        //     $(window).scroll(function () {
+        //       if ($(this).scrollTop() > 0) {
+        //         $header.addClass('sticky');
+        //         console.log("내려감");
+        //       } else {
+        //         $header.removeClass('sticky');
+        //       }
+        //     });
 
-          })
+        //   })
 
         $(function(){
         var $wind = $(window),
           header = $('.page-header'),
           headerOffsetTop = header.offset().top;
           console.log(headerOffsetTop);
-      });
+        })
       </script>
       
 </header>

@@ -1,6 +1,4 @@
-//sj 게시글작성 추가분(전체)
 const express = require('express');
-const Comment = require('../models/comment');
 
 const router  = express.Router();
 
@@ -46,10 +44,4 @@ router.post('/', async (req, res, next) => {
       }
     });
   
-// Class Comment extends Sequelize.Model{};
-// Class boardwrite extends Sequelize.Model{};
-// Comment.hasMany(boardwrite);
-// boardwrite.belongsTo(Comment);
-
-
 module.exports=router;

@@ -1,35 +1,29 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    <div class="timeline">
-      <div class="carts">
-        <!-- <form id="hashtag-form" action="/hashtag">
-          <input type="text" name="hashtag" placeholder="태그 검색">
-          <button class="btn">검색</button> -->
-        <!-- </form> -->
-        {% for cart in carts %}
-        <form action="/cart" method="POST">
-          <div class="carts">
-            {% if cartbrand === 'nike' %}
-           <input type="hidden" name="capname" value="{{'carts.capname'}}">{{carts.price +'원'}}
-           <input type="hidden" name="capnumber" value="{{carts.capnumber}}">{{carts.capnumber}}
-           <div class="cap-brand" name="brand" value="{{carts.brand}}" >{{carts.brand}}</div>
-            <div class="cap-content">{{carts.content}}</div>
-            <input type="hidden" name="price" value="{{carts.price +'원'}}">{{carts.price +'원'}}
-            <input type="hidden" name="img" value="{{carts.img}}">{{cap.img}}
-            <div class="cap-img"><img src="{{cap.img}}" alt="섬네일">
-            <button class="twit-follow">구매하기</button>
-              <button id="cap-brand" type="submit" class="btn" name="{{cap.brand}}" value="{{cap.brand}}">장바구니 담기</button>
-              
+{% for cart in carts %}
+<form action="/" method="POST">
+  <div class="cart">
+    {% if cart.price === '30000원' %}
+   <input type="hidden" name="capname" value="{{'cart.capname'}}">{{cart.price +'원'}}
+   <input type="hidden" name="capnumber" value="{{cart.capnumber}}">{{cart.capnumber}}
+   <div class="cart-brand" name="brand" value="{{cart.brand}}" contenteditable="true">{{cap.brand}}</div>
+    <div class="cap-content">{{cart.content}}</div>
+    <input type="text">
+    <input type="hidden" name="price" value="{{cap.price +'원'}}">{{cap.price +'원'}}
+    <input type="hidden" name="img" value="{{cap.img}}">{{cap.img}}
+    <div class="cap-img"><img src="{{cap.img}}" alt="섬네일">
+    <button class="twit-follow">구매하기</button>
+      <button id="cap-brand" type="submit" class="btn" name="{{cap.brand}}" value="{{cap.brand}}">장바구니 담기</button>
+      
 
-            </form>
-            {% endif %}
-          </div>
-        {% endfor %}
-      </div>
-    </div>
+    </form>
+    {% endif %}
+  </div>
+{% endfor %}
+   <div>{{carts.capname}}</div>
+    <p>안녕하세요</p>
 {% endblock %}
-
 {% block script %}
   <script>
     if (document.getElementById('img')) {
