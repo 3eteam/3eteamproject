@@ -14,9 +14,10 @@
                       <div class="card" style="width: 303px;">
                         <div class="box">
                           <div class="img imgswap">
-                            <img class="img-won" src="{{cap.img}}"
-                              alt="Hover Effect">
+                            <img class="img-won" src="{{cap.img}}" alt="Hover Effect">
+ 
                             <img src="https://i.ibb.co/gTPTj3r/ezgif-com-gif-maker.gif" alt="Hover Effect">
+                            <input type="hidden" name="img" value="{{cap.img}}">
                           </div>
                           <div class="info">
                             <div class="cap-brand" name="brand" value="{{cap.brand}}" contenteditable="true">{{cap.brand}}</div>
@@ -30,7 +31,7 @@
                           </div>
                         </div>
                         <div class="card-body">
-                          <input type="hidden" name="capname" value="{{'cap.capname'}}">{{cap.capname}}
+                          <input type="hidden" name="capname" value="{{cap.capname}}">{{cap.capname}}
                           <div class="cap-content">{{cap.content}}</div>
                           <p class="card-text">
                             <span class="badge bg-dark">검정</span>

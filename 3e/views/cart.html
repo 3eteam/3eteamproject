@@ -1,9 +1,4 @@
 {% extends 'layout.html' %}
-
-{% block css %}
-<!-- <link href="/public/cart.css" rel="stylesheet"> -->
-{% endblock %}
-
 <!-- <div class="carts" style="padding-top: 200px;">
 
 <form action="/payment" method="POST">
@@ -28,6 +23,106 @@
 
 
 {% block content %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&family=Noto+Serif+KR:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap');
+
+.shoppingCart-section {
+    background-color: rgba(0,0,0,0);
+    margin: 0 auto;
+    width: 950px;
+    min-width: 700px;
+    padding-bottom: 30px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.shoppingCart-items-table tr:first-child td, .shoppingCart-items-table tr:nth-child(2) td{
+    height: 10px;
+    padding: 10px;
+}
+
+.shoppingCart-items-table tr:first-child{
+    border: 1px solid rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.03);
+}
+
+.shoppingCart-item-img img {
+    height: 100%;
+}
+
+.shoppingCart-item a {
+    display:inline-block;
+    height: 15px;
+    padding-bottom:30px;
+}
+
+.shoppingCart-items-table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+.shoppingCart-items-table tr {
+    border-top: 1px solid rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+.shoppingCart-items-table  tr:last-child{
+    border-top: 1px solid rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    background-color:rgba(0,0,0,0.03);
+}
+.shoppingCart-items-table tr:last-child td{
+    height: 30px;
+    padding: 20px;
+}
+
+.shoppingCart-items-table td {
+    height: 100px;
+}
+.shoppingCart-items-table td button{
+    display:block;
+}
+.shoppingCart-items-table {
+    width:100%;
+}
+
+.buy-all{
+    float:right;
+    cursor:pointer;
+    color: white;
+    border: 2px solid tan;
+    background-color: rosybrown;
+    border:none;
+    height: 30px;
+    width: 80px;
+    margin-top:20px;
+}
+
+.buy-item, .delete-item{
+    cursor:pointer;
+    color: white;
+    border: 2px solid tan;
+    background-color: rosybrown;
+    border:none;
+    height: 25px;
+    width: 50px;
+    margin-bottom:3px;
+}
+
+.shoppingCart-header {
+    width: 100%;
+    text-align:center;
+    margin-bottom: 30px;
+}
+
+.shoppingCart-header > h3 {
+    font-family: 'Sunflower', sans-serif;
+    background-color: white;
+    border-bottom: 3px solid rgb(230, 214, 197);
+    color: rgb(59, 57, 57);
+    display: inline-block;
+    font-size: 25px;
+}
+</style>
+<form action="/payment" method="POST">
 <section class="shoppingCart-section" style="padding-top: 200px;">
     <div class=shoppingCart-header>
         <h3> Shopping Cart </h3>
@@ -59,7 +154,7 @@
             {% set totalPrice = totalPrice + carts.price %}
             <tr>
                 <td class="shoppingCart-item-img">
-                    <img src="/images/product/{{cap.img}}.jpg" />
+                    <img src="uploads/{{carts.brand}}1.jpg" />
                 </td>
                 <td>
                     <a class="item-name">{{carts.capname}}</a>
@@ -79,15 +174,99 @@
                     <a>총액</a>
                 </td>
                 <td>
+                    
                     <a class="item-price-all">￦{{totalPrice}}</a>
                 </td>
                 <td></td>
             </tr>
         </table>
+        <input type="hidden" name="capnumber" value="{{totalPrice}}">
         <button class="buy-all">모두 구매</button>
     </div>
 </section>
-{% endblock %}
-{% block js %}
-<script type="text/javascript" src="/public/main.js"></script>
+</form>
+<script>
+ var buyButton = document.getElementsByClassName('buy-item');
+for (var i = 0; i < buyButton.length;i++) {
+    buyButton[i].addEventListener('click', (event) => {
+        const item = [Number(event.currentTarget.getAttribute('value'))];
+        buy(item);
+    });
+}
+const buyAllButton = document.getElementsByClassName('buy-all')[0];
+if (buyAllButton) {
+    buyAllButton.addEventListener('click', (event) => {
+        const items = [];
+        for (var i = 0; i < buyButton.length; i++) {
+            items.push(Number(buyButton[i].getAttribute('value')));
+        }
+        buy(items);
+    });
+}
+const buyURL = '/buy';
+function buy(items) {
+    if (!confirm('정말구매하시겠습니까? 이가격에요..?')) {
+        return false;
+    }
+    const option = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ buys: items }),
+    }
+    fetch(buyURL, option)
+        .then(res => {
+            res.json().then(data => {
+                if (data.res) {
+                    alert("구매 완료하였습니다.\n" +
+                        "[정선아]에게[" + data.priceStr + "]원을 송금하시면 배송됩니다.");
+                    location.reload();
+                }
+                else {
+                    alert("구매 실패하였습니다.");
+                }
+            })
+        });
+}
+
+
+var deleteButton = document.getElementsByClassName('delete-item');
+var deleteItemlist = [];
+for (var i = 0; i < deleteButton.length; i++) {
+    deleteButton[i].addEventListener('click', (event) => {
+        const item = Number(event.currentTarget.getAttribute('value'));
+        delitem(item);
+    });
+}
+const deleteURL = '/buy/delete';
+function delitem(item) {
+    const option = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ deletes: item }),
+    }
+    fetch(deleteURL, option)
+        .then(res => {
+            res.json().then(data => {
+                if (data.res) {
+                    alert("삭제 완료하였습니다.");
+                    location.reload();
+                }
+                else {
+                    alert("삭제 실패하였습니다.");
+                }
+            })
+        });
+}
+
+
+
+var price = document.getElementsByClassName('item-price-all')[0];
+if (price) {
+    price.innerHTML = price.innerHTML.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+</script>
 {% endblock %}
