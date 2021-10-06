@@ -1,24 +1,34 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="profile" style="padding-top:200px ;">
-  {{payment.capnumber + '님'}}
-  {% if user and user.id  %}
-    <div class="user-names" style="color: black;">{{user.nick + '님'}}</div>
+<div class="profile">
+  {% if user and user.id %}
+    <div class="user-name" style="color: black;">{{'안녕하세요! ' + user.nick + '님'}}</div>
     <div class="half">
       
     </div>
-    <div class="half">{{payments.capnumber + '님'}}
+    <div class="half">
     
     </div>
   <input id="my-id" type="hidden" value="{{user.id}}">
-
   <div id="my-profile" href="/profile" class="btn" style="color:black;">등급</div>
   <a id="logout" href="/auth/logout" class="btn" style="color:black;">포인트</a>
-  
-
+{% else %}
+  <form id="login-form" action="/auth/login" method="post">
+    <div class="input-group">
+      <label for="email">이메일</label>
+      <input id="email" type="email" name="email" required autofocus style="color:black;">
+    </div>
+    <div class="input-group">
+      <label for="password">비밀번호</label>
+      <input id="password" type="password" name="password" required style="color:black;">
+    </div>
+    <a id="join" href="/join" class="btn" style="color:black;">회원가입</a>
+    
+    <button id="login" type="submit" class="btn" style="color:black;">로그인</button>
+    <a id="kakao" href="/auth/kakao" class="btn"style="color: white;">카카오톡</a>
+  </form>
 {% endif %}
-{% for payment in payments  %}
-{{payment.capnumber + '님'}}
-{%  endfor %}
+</div>
+  
 {% endblock %}

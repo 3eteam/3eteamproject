@@ -18,10 +18,13 @@
   font-size: 20px;
   font-weight:bold;
   }
+  .container-fluid {
+    padding: 0;
+  }
   
-  /* .navbar {
-    background-color: #000000;
-  } */
+  .navbar {
+    padding: 0;
+  }
   .btn-outline-success{
     height: 40px;
   }
@@ -46,9 +49,15 @@
     box-shadow: 0 2px 2px rgba(0,0,0,.3);
     background-color: black;
   }
+  .page-header {
+    width: 100%;
+  }
   .logo_nc {
-    width: 150px;
-    padding-right: 50px;
+    position: relative;
+    top: 13px;
+    left: 10px;
+    width: 90px;
+    padding-right: 5px;
   }
 
   /* header .sticky {
@@ -58,14 +67,22 @@
   a:visited { color: black; text-decoration: none;}
   a:hover { color: black; text-decoration: underline;}
 
-  span.line {
-    background: url(https://i.esdrop.com/d/cl3pewp2aooj/npd2WEPCXH.svg) 0 0 transparent no-repeat;
-    background-size: 100% auto;
-    height: 9px;
-    width: calc(100% - 575px);
-    padding: 0 30px;
-    vertical-align: middle;
+  .line {
     display: inline-block;
+    width: 900px;
+    height: 50px;
+    position: relative;
+    top: 20px;
+  }
+
+  .profilee {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    width: 200px;
+    height: 100px;
   }
 
   /* h1 {
@@ -74,9 +91,39 @@
     font-weight: 400;
     color: red;
   } */
+
+  .profile_p {
+    width: 50px;
+    padding-left: 20px;
+  }
+
+  .pro_table ul {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    top: 100px;
+    left: -150px;
+    border: 1px solid rgb(189, 187, 187);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+  }
+
+  .pro_table li a {
+    color: rgb(148, 148, 148);
+    padding-bottom: 20px;
+    height: 10px;
+    text-decoration: none;
+  }
+  
+
+
+
 </style>
 <header class="page-header">
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg" style="height: 50px;">
         <div class="container-fluid">
           <!-- <a href="/">
             <img src="https://i.esdrop.com/d/cl3pewp2aooj/cfWCN3E6Jz.png" width="70px" class="img-fluid" alt="...">
@@ -91,9 +138,9 @@
               <div class="profile-wrap">
               <form class="d-flex align-self-center">
                 <span class="logo-name"><a href="/"><img class="logo_nc" src="https://i.esdrop.com/d/cl3pewp2aooj/OBaZNw8TQW.png" alt="" srcset=""></a></span>
-                <span class="line"></span>
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+                <img class="line" src="https://i.esdrop.com/d/cl3pewp2aooj/npd2WEPCXH.svg" alt="" srcset="">
+              <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button> -->
               <li class="nav-item">
                 <a class="nav-link" href="/alllist">전체상품</a>
               </li>
@@ -103,7 +150,15 @@
               </li>
               </form>
             </ul>
-            <div class="profile">
+            <div>
+              <div class="profilee">
+                <a href=""><img class="profile_p pro" id="hoverr" src="https://i.esdrop.com/d/cl3pewp2aooj/6BJxlkrxjQ.png" alt="" srcset=""></a>
+                <a href=""><img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/gvWpYo8EWg.png" alt="" srcset=""></a>
+                <a href=""><img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/4T5DRRcWOI.png" alt="" srcset=""></a>
+                
+              </div>
+              
+              
                   {% if user and user.id %}
                   <div class="user-name">{{'안녕하세요! ' + user.nick + '님'}}</div>
                   <div class="half">
@@ -120,29 +175,26 @@
                   <a href="/cart">장바구니</a>
                   {% endif %}
                 {% else %}
-                <form id="login-form" action="/auth/login" method="post">
-                  <div class="d-flex align-self-center">
-                    <div class="input-group">
-                        <label for="email" class="emaill">이메일</label>
-                        <input id="email" type="email" name="email" required autofocus>
-                    </div>
-                    <div class="input-group">
-                      <label for="password" class="passw">비밀번호</label>
-                      <input id="password" type="password" name="password" required>
-                    </div>
-                  </div>
-                <span class="user-if">
-                    <a id="join" href="/join" class="btn">회원가입</a>
-                    <button id="login" type="submit" class="btn">로그인</button>
-                    <a id="kakao" href="/auth/kakao" class="btn">카카오톡</a>
-                    
-                </span>
-                </form>
+                 
+
+                <div class="pro_table" id="hoverrr">
+                  <ul>
+                    <li><a href="/login">로그인</a></li>
+                    <li><a href="/join">회원가입</a></li>
+                    <li><a href="/profile">마이페이지</a></li>
+                    <li><a href="">주문조회</a></li>
+                  </ul>
+                </div>
+
+                
                 {% endif %}
+                
                 </div>
           </div>
         </div>
       </nav>
+    </header>
+
     <script src="/public/jquery-3.6.0.min.js"></script>
       <script>
         window.onload = () => {
@@ -169,8 +221,8 @@
         var $wind = $(window),
           header = $('.page-header'),
           headerOffsetTop = header.offset().top;
-          console.log(headerOffsetTop);
         })
+
+        
+        
       </script>
-      
-</header>

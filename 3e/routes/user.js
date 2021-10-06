@@ -2,7 +2,7 @@ const express = require('express');
 
 const { isLoggedIn } = require('./middlewares');
 const User = require('../models/user');
-const Payment =require('../models/payment')
+
 const router = express.Router();
 
 router.post('/:id/follow', isLoggedIn, async (req, res, next) => {
@@ -19,23 +19,5 @@ router.post('/:id/follow', isLoggedIn, async (req, res, next) => {
     next(error);
   }
 });
-router.get('/',  async (req, res, next) => {
-  try {
-    const posts = await Payment.findAll({ 
-    include: {
-      model: Payment,
-      attributes: ['capnumber'],
-    },
-  
-    order: [['createdAt', 'DESC']],
-  });
-  res.render('profile', {
-    title: '3e',
-    payments: posts,
-  });
-  } catch (error) {
-    console.error(error);
-    next(error);
-  }
-});
+
 module.exports = router;
