@@ -17,6 +17,12 @@ router.get('/profile', isLoggedIn, (req, res) => {
 router.get('/join', isNotLoggedIn, (req, res) => {
   res.render('join', { title: '회원가입 - 3e' });
 });
+router.get('/login', isNotLoggedIn, (req, res) => {
+  res.render('login', { title: '회원가입 - 3e' });
+});
+router.get('/logout', isLoggedIn, (req, res) => {
+  res.render('logout', { title: '회원가입 - 3e' });
+});
 
 router.get('/', async (req, res, next) => {
   try {
