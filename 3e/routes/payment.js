@@ -17,24 +17,24 @@ router.use((req, res, next) => {
     next();
   });
 
-  router.get('/',async (req, res, next) => {
-    try {
-      const posts = await Cart.findAll({ 
-      include: {
-        model: User,
-        attributes: ['id'],
-      },
-      order: [['createdAt', 'DESC']],
-    });
-    res.render('payment', {
-      title: '3e',
-      cart: posts,
-    });
-    } catch (error) {
-      console.error(error);
-      next(error);
-    }
-  });
+  // router.get('/',async (req, res, next) => {
+  //   try {
+  //     const posts = await Payment.findAll({ 
+  //     // include: {
+  //     //   model: User,
+  //     //   attributes: ['id'],
+  //     // },
+  //     order: [['createdAt', 'DESC']],
+  //   });
+  //   res.render('profile', {
+  //     title: '3e',
+  //     payments: posts,
+  //   });
+  //   } catch (error) {
+  //     console.error(error);
+  //     next(error);
+  //   }
+  // });
  
   const upload2 = multer();
 router.post('/', upload2.none(), async (req, res, next) => {
@@ -63,27 +63,7 @@ router.post('/', upload2.none(), async (req, res, next) => {
     next(error);
   }
 });
-// router.get('/hashtag', async (req, res, next) => {
-//   const query = req.query.hashtag;
-//   if (!query) {
-//     return res.redirect('/');
-//   }
-//   try {
-//     const hashtag = await Hashtag.findOne({ where: { title: query } });
-//     let posts = [];
-//     if (hashtag) {
-//       posts = await hashtag.getPosts({ include: [{ model: User }] });
-//     }
 
-//     return res.render('cart', {
-//       title: `${query} | 3e`,
-//       cart: posts,
-//     });
-//   } catch (error) {
-//     console.error(error);
-//     return next(error);
-//   }
-// });
 module.exports=router;
 
 
