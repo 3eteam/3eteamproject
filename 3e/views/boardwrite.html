@@ -1,45 +1,51 @@
-{% extends 'layout.html' %}
+<!-- {% extends 'layout.html' %} -->
 
 {% block content %}
-<div>
+<!-- <div>
     <form id="user-form" action="/boardwrite" method="POST">
       <fieldset>
         <legend>사용자 등록</legend>
         <div><input id="email" type="text" placeholder="이메일"></div>
-        <div><input id="password" type="password" placeholder="비밀번호"></div>
+        <div><input id="password" type="password" placeholder="비밀번호"></div> -->
         <!-- <div><input id="married" type="checkbox"><label for="married">결혼 여부</label></div> -->
-        <button type="submit">등록</button>
+        <!-- <button type="submit">등록</button>
       </fieldset>
     </form>
   </div>
-  <br>
-  <table id="user-list">
+  <br> -->
+  <!-- <table id="user-list">
     <thead>
     <tr>
       <th>아이디</th>
       <th>이메일</th>
-      <th>비밀번호</th>
+      <th>비밀번호</th> -->
       <!-- <th>결혼여부</th> -->
-    </tr>
+    <!-- </tr>
     </thead>
     <tbody>
       {% for user in users %}
       <tr>
         <td>{{user.id}}</td>
         <td>{{user.email}}</td>
-        <td>{{user.password}}</td>
+        <td>{{user.password}}</td> -->
         <!-- <td>{{ '기혼' if user.married else '미혼'}}</td> -->
-      </tr>
+      <!-- </tr>
       {% endfor %}
     </tbody>
-  </table>
+  </table> -->
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
   <br>
   <div>
     <form id="comment-form" action="/boardwrite" method="POST">
       <fieldset>
-        <legend>댓글 등록</legend>
-        <div><input id="nick" type="text" placeholder="사용자 닉네임" name="id"></div>
-        <div><input id="comment" type="text" placeholder="댓글" name="comment"></div>
+        <legend>게시글 작성</legend>
+        <!-- <div><input id="nick" type="text" placeholder="사용자 닉네임" name="nick"></div> -->
+        <div><input id="comment" type="text" placeholder="내용" name="comment"></div>
         <button type="submit">등록</button>
       </fieldset>
     </form>
@@ -50,7 +56,7 @@
     <tr>
       <th>아이디</th>
       <th>작성자</th>
-      <th>댓글</th>
+      <th>게시글</th>
       <th>수정</th>
       <th>삭제</th>
     </tr>

@@ -1,4 +1,3 @@
-// sj 댓글게시 추가부분(전체)
 const Sequelize = require('sequelize');
 
 module.exports = class Comment extends Sequelize.Model {
@@ -25,6 +24,6 @@ module.exports = class Comment extends Sequelize.Model {
   }
 
   static associate(db) {
-    db.Comment.belongsTo(db.User, { foreignKey: 'commenter', targetKey: 'id' });
+    db.Comment.belongsTo(db.User, { foreignKey: 'nick', targetKey: 'id' });
   }
 };
