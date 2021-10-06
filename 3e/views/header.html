@@ -1,4 +1,4 @@
-
+{% block content %}
 <style type="text/css">
 
 @font-face {
@@ -51,6 +51,7 @@
   }
   .page-header {
     width: 100%;
+    margin-top: 20px;
   }
   .logo_nc {
     position: relative;
@@ -78,11 +79,12 @@
   .profilee {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    align-items: baseline;
+    justify-content: flex-start;
     flex: 1;
     width: 200px;
     height: 100px;
+    margin-top: 20px;
   }
 
   /* h1 {
@@ -101,8 +103,22 @@
     position: relative;
     width: 150px;
     height: 150px;
-    top: 100px;
-    left: -150px;
+    top: 50px;
+    left: -190px;
+    border: 1px solid rgb(189, 187, 187);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+  }
+
+  .pro_table2 ul {
+    position: relative;
+    width: 150px;
+    height: 250px;
+    top: 50px;
+    left: -190px;
     border: 1px solid rgb(189, 187, 187);
     text-align: center;
     display: flex;
@@ -118,10 +134,14 @@
     text-decoration: none;
   }
   
+  .user-name {
+    font-weight: 900;
+  }
 
 
 
 </style>
+
 <header class="page-header">
     <nav class="navbar navbar-expand-lg" style="height: 50px;">
         <div class="container-fluid">
@@ -151,40 +171,49 @@
               </form>
             </ul>
             <div>
-              <div class="profilee">
+              <!-- <div class="profilee">
                 <a href=""><img class="profile_p pro" id="hoverr" src="https://i.esdrop.com/d/cl3pewp2aooj/6BJxlkrxjQ.png" alt="" srcset=""></a>
                 <a href=""><img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/gvWpYo8EWg.png" alt="" srcset=""></a>
                 <a href=""><img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/4T5DRRcWOI.png" alt="" srcset=""></a>
                 
-              </div>
+              </div> -->
               
               
                   {% if user and user.id %}
-                  <div class="user-name">{{'안녕하세요! ' + user.nick + '님'}}</div>
-                  <div class="half">
-                      
-                  </div>
-                  <div class="half">
-                    
+                  <div class="profilee">
+                    <a href=""><img class="profile_p pro" id="hoverr" src="https://i.esdrop.com/d/cl3pewp2aooj/6BJxlkrxjQ.png" alt="" srcset=""></a>
+                    <a href="/cart"><img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/gvWpYo8EWg.png" alt="" srcset=""></a>
+                    <a href=""><img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/4T5DRRcWOI.png" alt="" srcset=""></a>
+                    <div class="pro_table2" id="hoverrr">
+                      <ul>
+                        <li><div class="user-name">{{user.nick + '님'}}</div></li>
+                        <li><a id="logout" href="/auth/logout" class="btn">로그아웃</a></li>
+                        <li><a href="/join" class="btn">회원가입</a></li>
+                        <li><a id="my-profile" href="/profile" class="btn">마이페이지</a></li>
+                        <li><a href="/login" class="btn">주문조회</a></li>
+                        {% if user.id < 6%}
+                        <li><a id="catlist" href="/catlist" class="btn">관리자모드</a></li>
+                        {% endif %}
+                      </ul>
+                    </div>
                   </div>
                   <input id="my-id" type="hidden" value="{{user.id}}">
-                  <a id="my-profile" href="/profile" class="btn">내 프로필</a>
-                  <a id="logout" href="/auth/logout" class="btn">로그아웃</a>
-                  {% if user.id < 6%}
-                  <a id="catlist" href="/catlist" class="btn">관리자모드</a>
-                  <a href="/cart">장바구니</a>
-                  {% endif %}
                 {% else %}
                  
-
-                <div class="pro_table" id="hoverrr">
-                  <ul>
-                    <li><a href="/login">로그인</a></li>
-                    <li><a href="/join">회원가입</a></li>
-                    <li><a href="/profile">마이페이지</a></li>
-                    <li><a href="">주문조회</a></li>
-                  </ul>
+                <div class="profilee">
+                  <a href=""><img class="profile_p pro" id="hoverr" src="https://i.esdrop.com/d/cl3pewp2aooj/6BJxlkrxjQ.png" alt="" srcset=""></a>
+                  <a href=""><img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/gvWpYo8EWg.png" alt="" srcset=""></a>
+                  <a href=""><img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/4T5DRRcWOI.png" alt="" srcset=""></a>
+                  <div class="pro_table" id="hoverrr">
+                    <ul>
+                      <li><a href="/login">로그인</a></li>
+                      <li><a href="/join">회원가입</a></li>
+                      <li><a href="/login">마이페이지</a></li>
+                      <li><a href="/login">주문조회</a></li>
+                    </ul>
+                  </div>
                 </div>
+                
 
                 
                 {% endif %}
@@ -194,8 +223,10 @@
         </div>
       </nav>
     </header>
-
     <script src="/public/jquery-3.6.0.min.js"></script>
+    
+    <script defer type="text/javascript" src="./header.js"></script>
+    
       <script>
         window.onload = () => {
           if (new URL(location.href).searchParams.get('loginError')) {
@@ -226,3 +257,5 @@
         
         
       </script>
+
+{% endblock %}
