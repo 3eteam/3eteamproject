@@ -46,7 +46,7 @@ router.post('/', upload2.none(), async (req, res, next) => {
       
       
       content: req.body.content,
-      img: req.body.url,
+      img: req.body.img,
       capnumber:req.body.capnumber,
       brand: req.body.brand,
       tag: req.body.tag,
@@ -89,6 +89,7 @@ router.get('/hashtag', async (req, res, next) => {
 
 
 module.exports=router;
+
 
 
 
