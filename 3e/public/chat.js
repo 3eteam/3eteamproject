@@ -1,7 +1,6 @@
 "use strict"
 const socket = io();
 
-console.log(io);
 
 const nickname = document.querySelector("#nickname")
 const chatlist = document.querySelector(".chatting-list")
