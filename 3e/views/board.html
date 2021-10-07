@@ -9,12 +9,60 @@
 <br>
 <br>
 <br>
-<div>{{comments.comment}}</div>
+<div class=board-header>
+        <h1> 게시판 </h1>
+    </div>
+    <br>
+<!-- <div>{{comments.comment}}</div>
 {% for comment in comments %}
          
-                divdd
+        다시!!
         
-        {% endfor %}
+        {% endfor %} -->
+
+
+
 <button class="clicktowrite" onclick="location.href='boardwrite'">글 작성</button>
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<form action="/boardwrite" method="POST">
+        <section class="board-section">
+            <div class="board-list" style="border: 2px;">
+                <table class="board-list-table">
+                    <tr>
+                        <td>
+                            <h2>게시글 목록</h2>
+                        </td>
+                    </tr>
+                    <br>
+                    <br>
+                    <tr>
+                        <td>
+                            <a>번호</a>
+                        </td>
+                        <td>
+                            <a>작성자</a>
+                        </td>
+                        <td>
+                            <a>내용</a>
+                        </td>
+                        <td></td>
+                    </tr>
+                    {% for comment in comments%}
+                    <tr>
+                        <td>
+                            <div class="board-list-num">{{comment.id}}</div>
+                        </td>
+                        <td>
+                            <div class="board-list-name">{{user.nick}}</div>
+                        </td>
+                        <td>
+                            <div class="board-list-content">{{comment.comment}}</div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </section>
+        </form>
 
 {% endblock %}
