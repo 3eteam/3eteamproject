@@ -33,6 +33,7 @@ router.get('/', async (req, res, next) => {
     });
     res.render('main', {
       title: '3e',
+      caps:posts,
      });
   } catch (err) {
     console.error(err);

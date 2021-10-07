@@ -12,12 +12,13 @@
 
 
              <div class="user-name">{{user.nick +'님 마이페이지' }}</div>
+             <div class="user-name">주문 정보</div>
             {% for payment  in payments %}
             <div>{{'주문가격:'+payment.capnumber}}</div>
                 
        
           {% endfor %}
-   
+  
 </div>
   
 {% endblock %}
