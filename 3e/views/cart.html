@@ -181,7 +181,9 @@
             </tr>
         </table>
         <input type="hidden" name="capnumber" value="{{totalPrice}}">
-        <button class="buy-all">모두 구매</button>
+        <input type="hidden" name="capname" value="{{user.nick}}">
+        <button class="buy-all">모두 구매</button>{{user.nick}}
+
     </div>
 </section>
 </form>

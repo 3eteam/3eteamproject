@@ -18,9 +18,9 @@ router.get('/',async (req, res, next) => {
     },
     order: [['createdAt', 'DESC']],
   });
-  res.render('boardwrite', {
+  res.render('board', {
     title: '3e',
-    comment: posts,
+    comments: posts,
   });
   } catch (error) {
     console.error(error);
@@ -38,7 +38,7 @@ router.post('/', async (req, res, next) => {
         // id: req.body.id,
         comment: req.body.comment,
       });
-      res.status(201).json(comment);
+      res.redirect('/board');//json(comment);
     } catch (err) {
       console.error(err);
       next(err);
