@@ -55,7 +55,7 @@
   }
   .logo_nc {
     position: relative;
-    top: 13px;
+    top: 0px;
     left: 10px;
     width: 90px;
     padding-right: 5px;
@@ -73,7 +73,7 @@
     width: 900px;
     height: 50px;
     position: relative;
-    top: 20px;
+    top: 0px;
   }
 
   .profilee {
@@ -85,6 +85,12 @@
     width: 200px;
     height: 100px;
     margin-top: 20px;
+    position: relative;
+    top: 10px;
+  }
+
+  .profilee:hover{
+    cursor: pointer;
   }
 
   /* h1 {
@@ -93,6 +99,8 @@
     font-weight: 400;
     color: red;
   } */
+
+
 
   .profile_p {
     width: 50px;
@@ -103,8 +111,8 @@
     position: relative;
     width: 150px;
     height: 150px;
-    top: 50px;
-    left: -190px;
+    top: 40px;
+    left: -40px;
     border: 1px solid rgb(189, 187, 187);
     text-align: center;
     display: flex;
@@ -118,7 +126,7 @@
     width: 150px;
     height: 250px;
     top: 50px;
-    left: -190px;
+    left: -40px;
     border: 1px solid rgb(189, 187, 187);
     text-align: center;
     display: flex;
@@ -133,11 +141,22 @@
     height: 10px;
     text-decoration: none;
   }
+
+  .pro_table2 li a {
+    color: rgb(148, 148, 148);
+    padding-bottom: 20px;
+    height: 10px;
+    text-decoration: none;
+  }
   
   .user-name {
     font-weight: 900;
   }
 
+  #hoverrr{
+    display: none;
+    position: absolute;
+  }
 
 
 </style>
@@ -161,13 +180,13 @@
                 <img class="line" src="https://i.esdrop.com/d/cl3pewp2aooj/npd2WEPCXH.svg" alt="" srcset="">
               <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Search</button> -->
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="/alllist">전체상품</a>
               </li>
               
               <li class="nav-item">
                 <a class="nav-link" href="/board">게시판</a>
-              </li>
+              </li> -->
               </form>
             </ul>
             <div>
@@ -188,7 +207,8 @@
                       <ul>
                         <li><div class="user-name">{{user.nick + '님'}}</div></li>
                         <li><a id="logout" href="/auth/logout" class="btn">로그아웃</a></li>
-                        <li><a href="/join" class="btn">회원가입</a></li>
+                        <li><a href="/alllist" class="btn">전체상품</a></li>
+                        <li><a href="/board" class="btn">게시판</a></li>
                         <li><a id="my-profile" href="/profile" class="btn">마이페이지</a></li>
                         <li><a href="/login" class="btn">주문조회</a></li>
                         {% if user.id < 6%}
@@ -202,7 +222,7 @@
                  
                 <div class="profilee">
                   <a href=""><img class="profile_p pro" id="hoverr" src="https://i.esdrop.com/d/cl3pewp2aooj/6BJxlkrxjQ.png" alt="" srcset=""></a>
-                  <a href=""><img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/gvWpYo8EWg.png" alt="" srcset=""></a>
+                  <a href="/cart"><img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/gvWpYo8EWg.png" alt="" srcset=""></a>
                   <a href=""><img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/4T5DRRcWOI.png" alt="" srcset=""></a>
                   <div class="pro_table" id="hoverrr">
                     <ul>

@@ -121,6 +121,10 @@
     display: inline-block;
     font-size: 25px;
 }
+
+.input-container {
+    border: 1px solid black;
+}
 </style>
 <form action="/payment" method="POST">
 <section class="shoppingCart-section" style="padding-top: 200px;">
@@ -181,9 +185,7 @@
             </tr>
         </table>
         <input type="hidden" name="capnumber" value="{{totalPrice}}">
-        <input type="hidden" name="capname" value="{{user.nick}}">
-        <button class="buy-all">모두 구매</button>{{user.nick}}
-
+        <button class="buy-all">모두 구매</button>
     </div>
 </section>
 </form>

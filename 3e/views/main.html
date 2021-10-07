@@ -1,6 +1,5 @@
 
   {% extends 'layout.html' %}
-  <!-- {% include "layout.html" %} -->
  
 
   {% block content %}
@@ -8,22 +7,6 @@
   <script src="/public/jquery-3.6.0.min.js"></script>
   <script src="/public/jquery.fullPage.js"></script>
   <script src="/public/fullpage.js"></script>
-
-  <script>
-    // $(document).ready(function () {
-
-    //     var $header = $('header');
-    //     $(window).scroll(function () {
-    //       if ($(this).scrollTop() > 0) {
-    //         $header.addClass('sticky');
-    //         console.log("내려감");
-    //       } else {
-    //         $header.removeClass('sticky');
-    //       }
-    //     });
-
-    //   })
-  </script>
 
   <style>
   .bgimg{
@@ -47,7 +30,7 @@
   html,body {width:100%;height:100%;margin:0px;padding:0px;overflow:hidden;font-family:sans-serif;}
 	
 	#fullpage {position:relative;top:0px;z-index:9;width:100%;height:100%;}
-	.fullsection{width:100%;height:100%;position:relative;}
+	.fullsection{width:100%;height:100%;position:relative;display: flex;}
 
 	ul, li{margin:0;padding:0;list-style:none}
 	.quick {position:fixed;right:20px;top:50%;transform:translateY(-50%); z-index:100000}
@@ -72,35 +55,50 @@
     <div class="fullsection full1" pageNum="1">
       <div class="vh-100 col-xl-12 col-lg-12 col-md-12 col-sm-12 main1" style="height:700px;">
         <div class="temtem">
-          {% include "mh.html" %}
-        </div>
-        <div class="temtem2">  
           
+        </div>
+        <div class="temtem2">
           {% include "mh.html" %}
         </div>
       </div>
     </div>
+    <div class="main_content">
     <div class="fullsection full2" pageNum="2">
-      {% include "chat.html" %}
-    </div>
-    <div class="fullsection full3" pageNum="3">
-      
-      <div class="vh-100 col-xl-12 col-lg-12 col-md-12 col-sm-12 bg-success" style="height:700px;">
-        
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mt-5 bg-primary" style="height:600px;">
+        <br>
+        <br>
         {% include "news.html" %}
+      </div>
+      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 mt-5 bg-success" style="height:600px;">
+        <br>
+        <br>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 mt-5 bg-warning" style="height:600px;">
+        <br>
+        <br>
         {% include "chat.html" %}
+      </div>
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 bg-warning" style="height:200px;">
       </div>
     </div>
   </div>
-    <div class="main_content row">
+     <div class="fullsection full3" pageNum="3">
+      
+      <div class="vh-100 col-xl-12 col-lg-12 col-md-12 col-sm-12 bg-success" style="height:700px;">
         
-        <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 bg-primary" style="height:30px;">
-        </div> -->
+        
+      </div>
+    </div>
+  </div>
+    <!-- <div class="main_content row">
+        
+         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 bg-primary" style="height:30px;">
+        </div> 
         
         
-        <!-- <div class="vh-100 d-inline-block col-xl-12 col-lg-12 col-md-12 col-sm-12 bg-danger bgimg">
+         <div class="vh-100 d-inline-block col-xl-12 col-lg-12 col-md-12 col-sm-12 bg-danger bgimg">
             
-        </div> -->
+        </div> 
       
           
           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3" style="height:700px;">
@@ -108,18 +106,18 @@
           </div>
         
           
-          <div class="vh-100 col-xl-9 col-lg-9 col-md-9 col-sm-9 bg-light" style="height:400px;">상품사진
+          <div class="vh-100 col-xl-9 col-lg-9 col-md-9 col-sm-9 bg-light" id="ns" style="height:400px;">상품사진
             {% include "news.html" %}
           </div>
         
          
           <div class="vh-100 col-xl-3 col-lg-3 col-md-3 col-sm-3 bg-warning" style="height:400px;">
             {% include "chat.html" %}
-          </div>
+          </div> 
         
           
        
-    </div>
+    </div> -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 <script>
@@ -205,14 +203,7 @@ function quickClick(){
 		return false;
 	});
 }
-function brand (num){
-  
-if(num =1){
-  if($('.temtem2') != '{% include "nike.html" %}'){
-    innertexw
-  }
-	
-}};
+
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   {% endblock %} 

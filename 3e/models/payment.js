@@ -47,9 +47,7 @@ module.exports = class Payment extends Sequelize.Model {
 
   static associate(db) {
    db.Payment.hasMany(db.Payment);
-   db.Payment.belongsTo(db.Post);
-   db.Payment.belongsTo(db.Cart);
-   db.Payment.belongsTo(db.User);
-   db.Payment.belongsToMany(db.Hashtag, { through: 'PostHashtag' });
+    db.Payment.belongsTo(db.User);
+
   }
 };
