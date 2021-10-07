@@ -23,40 +23,46 @@
 
 
 <button class="clicktowrite" onclick="location.href='boardwrite'">글 작성</button>
+<br>
+
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <form action="/boardwrite" method="POST">
         <section class="board-section">
             <div class="board-list" style="border: 2px;">
                 <table class="board-list-table">
-                    <tr>
-                        <td>
-                            <h2>게시글 목록</h2>
-                        </td>
-                    </tr>
+                    <br>
+                        <h2>게시글 목록</h2>
                     <br>
                     <br>
                     <tr>
-                        <td>
+                        <td class="board-num" style="width: 50px; text-align: center;">
                             <a>번호</a>
                         </td>
-                        <td>
+                        <td class="board-name" style="text-align: center;">
                             <a>작성자</a>
                         </td>
                         <td>
                             <a>내용</a>
+                        </td>
+                        <td>
+                            <a>작성시간</a>
                         </td>
                         <td></td>
                     </tr>
                     {% for comment in comments%}
                     <tr>
                         <td>
-                            <div class="board-list-num">{{comment.id}}</div>
+                            <div class="board-list-num" style="text-align: center; margin: 40px;">{{comment.id}}</div>
                         </td>
                         <td>
-                            <div class="board-list-name">{{user.nick}}</div>
+                                <!-- 수정 요망 -->
+                            <div class="board-list-name" style="text-align: center; margin: 40px;">{{user.nick}}</div>
                         </td>
                         <td>
                             <div class="board-list-content">{{comment.comment}}</div>
+                        </td>
+                        <td>
+                                <div class="board-list-time">{{comment.created_at}}</div>
                         </td>
                     </tr>
                     {% endfor %}

@@ -31,7 +31,6 @@ const covernatRouter = require('./routes/covernat');
 const magazineRouter = require('./routes/magazine');
 const alllistRouter = require('./routes/alllist');
 const cartRouter = require('./routes/cart');
-const profileRouter =require('./routes/profile')
 
 
 
@@ -41,8 +40,15 @@ const profileRouter =require('./routes/profile')
 const http = require("http")
 const app = express();
 const server = http.createServer(app);
-const socketIO = require("socket.io")
-const moment = require("moment")
+
+
+const moment = require("moment");
+require('moment-timezone')
+moment.tz.setDefault("Asia/Seoul");
+// exports.moment=moment;
+
+
+const socketIO = require("socket.io");
 const io = socketIO(server);
 
 io.on("connection",(socket)=>{
@@ -111,7 +117,7 @@ app.use('/magazine',magazineRouter);
 app.use('/newera',neweraRouter);
 app.use('/alllist',alllistRouter);
 app.use('/cart',cartRouter);
-app.use('/profile',profileRouter);
+
 
 
 

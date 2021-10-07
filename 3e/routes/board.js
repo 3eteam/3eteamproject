@@ -1,12 +1,14 @@
 const express = require('express');
 const { Comment, User } = require('../models');
 const router  = express.Router();
+const { isLoggedIn } = require('./middlewares');
+
 
 
 // router.get('/',(req,res)=>{
 //     res.render('board');
 // });
-router.get('/',async (req, res, next) => {
+router.get('/', async (req, res, next) => {
     try {
       const posts = await Comment.findAll({ 
       include: {

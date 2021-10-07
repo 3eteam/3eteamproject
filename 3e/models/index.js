@@ -10,7 +10,21 @@ const Comment = require('./comment');
 
 const db = {};
 const sequelize = new Sequelize(
-  config.database, config.username, config.password, config,
+  config.database, 
+  config.username, 
+  config.password, 
+  config, 
+  config.MYSQL_URL,
+  config.MYSQL_USER,
+  config.MYSQL_PASS,
+  {
+    host: process.env.MYSQL_URL,
+    dialect: "mysql",
+    timezone: "+09:00", // DB에 저장할 때 시간 설정
+    dialectOptions: {
+    timezone: "+09:00", // DB에서 가져올 때 시간 설정
+    },
+}
 );
 
 db.sequelize = sequelize;
