@@ -1,23 +1,168 @@
 {% extends 'layout.html' %}
 
+
 {% block content %}
 
 
-<div class="container" style="padding-top:200px;">
+<div class="container" style="padding-top:200px; font-size: 20px;">
   <div class="row">
-    <div style="text-align: center;">
-
-
-      <div class="user-name">{{user.nick +'님 마이페이지' }}</div>
-      <div class="user-name">주문 정보</div>
-     {% for payment  in payments %}
-     <div>{{'주문가격:'+payment.capnumber}}</div>
-         
-
-   {% endfor %}
-
-</div>
+    <div class="col-12">
+      <div style="text-align: center; font-size: 40px;">
+        <div class="user-name">{{user.nick +'님 마이페이지' }}</div>
+      </div>
+    </div>
   </div>
-</div>
+  <div class="row">
+    <div class="col-12">
+      <div class="level_summ ">
+        <div class="member_txt2">
+          <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은<br><span class="color"
+            id="group_name"><span class="xans-member-var-group_name">아이언</span></span> 등급입니다.
+        </div>
+        <img src="/1-1.png" alt="">
+      </div>
+      <div>
+        <a href=""> 멤버쉽 등급별 혜택보기</a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="user-name">주문 정보</div>
+  <div class="myShopping_activity">
+
+    <div class="my_title">나의 쇼핑 활동</div>
+    {% set totalPrice = 0 %}
+    {% for payment in payments %}
+    {% set totalPrice = totalPrice + payment.capnumber %}
+    <div>{{'주문가격:'+payment.capnumber}}</div>
+
+
+
+    {% endfor %}
+    <div>{{'전체 총 주문가격:'+totalPrice}}</div>
+
+    <div class="myItem">
+      <div class="item">
+        <a href="https://whoisnerdy.com/member/modify.html">
+          <p><img src="./NERDY_files/myicon_01.png" alt=""></p>
+          회원정보 수정
+        </a>
+      </div>
+      <div class="item">
+        <a href="https://whoisnerdy.com/myshop/board_list.html">
+          <p><img src="./NERDY_files/myicon_03.png" alt=""></p>
+          게시물 관리
+        </a>
+      </div>
+      <div class="item">
+        <a href="https://whoisnerdy.com/myshop/board_list.html">
+          <p><img src="./NERDY_files/myicon_02.png" alt=""></p>
+          문의 내역
+        </a>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+
+
+
+
+
   
+  <div class="level_detail ">
+    <!-- 등급별 혜택 표시 -->
+    <div class="member_txt4">
+      <img src="./NERDY_files/ico_medicube.png" alt=""> <span class="xans-member-var-group_name">아이언</span>등급 혜택
+    </div>
+
+    <div class="member_txt3" id="level_mypage">적립율 1%</div>
+
+    <div class="xans-element- xans-myshop xans-myshop-asyncbenefit myGraph ">
+      <div class="myLevel_graph">
+        <div class="graph_bg">
+          <div class="bar " id="myGrp" style="width: 0%;"></div>
+        </div>
+      </div>
+      <!-- .myLevel_graph -->
+      <div class=" gradeGuide" id="sGradeAutoDisplayArea">
+        <div class=" sAutoGradeDisplay">
+          <span id="needVal"><span class="xans-member-var-sGradeIncreasePrice">2원</span></span> 추가 구매시 다음달 <span
+            class="xans-member-var-sNextGrade">브론즈</span> 달성
+        </div>
+      </div>
+    </div>
+
+    <div class="member_benefit">
+      <a href="https://whoisnerdy.com/board/free/read.html?no=33981&amp;board_no=1">멤버십 등급별 혜택 보기</a>
+    </div>
+  </div>
+
+  <div class="xans-element- xans-layout xans-layout-statelogon my_mileage ">
+    <div class="item">
+      <p>사용가능한 적립금</p>
+      <div class="xans-element- xans-myshop xans-myshop-asyncbankbook money "><a
+          href="https://whoisnerdy.com/myshop/mileage/historyList.html"><span
+            id="xans_myshop_bankbook_avail_mileage">1,000원</span></a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<!---->
+
+<div id="contents">
+
+
+
+
+
+
+
+  <div class="xans-element- xans-layout xans-layout-logincheck ">
+    <!--
+      $url = /member/login.html
+  -->
+  </div>
+
+
+
+  <div style="display: none;" class="xans-element- xans-myshop xans-myshop-benefit ">
+    <div class="xans-element- xans-myshop xans-myshop-bankbook "><span id="myTotal">0</span>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  <div class="myshopMain">
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+  <!---->
+</div>
+
+
+
+
+
+</div>
+
+
 {% endblock %}
