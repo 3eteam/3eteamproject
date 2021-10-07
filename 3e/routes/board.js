@@ -13,7 +13,7 @@ router.get('/',async (req, res, next) => {
         model: User,
         attributes: ['id'],
       },
-    //   order: [['createdAt', 'DESC']],
+      order: [['id', 'DESC']],
     });
     res.render('board', {
       title: '3e',
