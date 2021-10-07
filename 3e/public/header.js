@@ -1,7 +1,10 @@
 $('#hoverr').hover(function(){
-    $('#hoverrr').css('display','none');
-},function(){
-    $('#hoverrr').css('display','block');
+    $('#hoverrr').css('display','flex');
 })
 
-console.log("되냐?");
+$('#hoverrr').hover(function(){
+    $('#hoverrr').css('display','flex');
+},function(){
+    $('#hoverrr').css('display','none');
+})
+

@@ -59,5 +59,4 @@ router.get('/kakao/callback', passport.authenticate('kakao', {
   res.redirect('/');
 });
 
-
 module.exports = router;
