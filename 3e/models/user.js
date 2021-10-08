@@ -7,15 +7,35 @@ module.exports = class User extends Sequelize.Model {
         type: Sequelize.STRING(40),
         allowNull: true,
         unique: true,
-      },
-      nick: {
-        type: Sequelize.STRING(15),
-        allowNull: false,
+        // isEmail:true,
       },
       password: {
         type: Sequelize.STRING(100),
         allowNull: true,
       },
+      nick: {
+        type: Sequelize.STRING(15),
+        allowNull: false,
+      },
+      phone: {
+        type: Sequelize.STRING(50),
+        allowNull: false,
+        // isNumeric:true,
+      },
+      birth: {
+        type: Sequelize.STRING(20),
+        allowNull: false,
+        // isDate:true,
+      },
+      address: {
+        type: Sequelize.STRING(300),
+        allowNull: false,
+      },
+      // //불리언값은 둘 중 하나로 넣어야 될거 같음 안 그럼 오류남
+      // sex: {  
+      //   type: Sequelize.BOOLEAN,
+      //   allowNull: false,
+      // },
       provider: {
         type: Sequelize.STRING(10),
         allowNull: false,
@@ -51,7 +71,5 @@ module.exports = class User extends Sequelize.Model {
       as: 'Followings',
       through: 'Follow',
     });
-     
-   
   }
 };
