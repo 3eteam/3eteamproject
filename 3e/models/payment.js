@@ -12,7 +12,7 @@ module.exports = class Payment extends Sequelize.Model {
         allowNull: true,
       },
       price: {//가격
-        type: Sequelize.STRING(140),
+        type: Sequelize.INTEGER(140),
         allowNull: true,
       },
       img: {//이미지

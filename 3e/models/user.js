@@ -40,6 +40,7 @@ module.exports = class User extends Sequelize.Model {
   static associate(db) {
     db.User.hasMany(db.Post);
     db.User.hasMany(db.Cart);
+    db.User.hasMany(db.Comment);
     db.User.belongsToMany(db.User, {
       foreignKey: 'followingId',
       as: 'Followers',
@@ -50,11 +51,7 @@ module.exports = class User extends Sequelize.Model {
       as: 'Followings',
       through: 'Follow',
     });
-      //sj 게시판 만들기 시도
-    db.User.belongsToMany(db.User, {
-      foreignKey: 'comment',
-      as: 'comment',
-      through: 'comments',
-    });
+     
+   
   }
 };

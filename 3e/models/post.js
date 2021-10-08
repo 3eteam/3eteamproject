@@ -16,7 +16,7 @@ module.exports = class Post extends Sequelize.Model {
         allowNull: false,
       },
       price: {//가격
-        type: Sequelize.STRING(140),
+        type: Sequelize.INTEGER(140),
         allowNull: false,
       },
       img: {//이미지
