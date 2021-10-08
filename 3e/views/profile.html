@@ -37,7 +37,7 @@
                 <br><span class="color" id="group_name"><span class="xans-member-var-group_name">아이언</span></span>
                 등급입니다.
               </div>
-              <img src="/1-1.png" alt="">
+              <img src="/ranks/아이언.png" alt="">
           </div>
 
           {% elif totalPrice >50000 and totalPrice <100000 %} 
@@ -46,7 +46,7 @@
               <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
               <br><span class="color" id="group_name"><span class="xans-member-var-group_name">브론즈</span></span> 등급입니다.
             </div>
-            <img src="/bronze.png" alt="">
+            <img src="/ranks/브론즈.png" alt="">
         </div>
         {% elif totalPrice >100000 and totalPrice <200000 %} 
         <div class="level_summ ">
@@ -54,7 +54,7 @@
             <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
             <br><span class="color" id="group_name"><span class="xans-member-var-group_name">실버</span></span> 등급입니다.
           </div>
-          <img src="/bronze.png" alt="">
+          <img src="/ranks/실버.png" alt="">
       </div>
       {% elif totalPrice >200000 and totalPrice <500000 %} 
       <div class="level_summ ">
@@ -62,7 +62,7 @@
           <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
           <br><span class="color" id="group_name"><span class="xans-member-var-group_name">골드</span></span> 등급입니다.
         </div>
-        <img src="/bronze.png" alt="">
+        <img src="/ranks/골드.png" alt="">
     </div>
     {% elif totalPrice >500000 and totalPrice <100000 %} 
     <div class="level_summ ">
@@ -70,7 +70,7 @@
         <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
         <br><span class="color" id="group_name"><span class="xans-member-var-group_name">플레티넘</span></span> 등급입니다.
       </div>
-      <img src="/bronze.png" alt="">
+      <img src="/ranks/플레티넘.png" alt="">
   </div>
   {% elif totalPrice >1000000 and totalPrice <5000000 %} 
   <div class="level_summ ">
@@ -78,7 +78,7 @@
       <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
       <br><span class="color" id="group_name"><span class="xans-member-var-group_name">마스터</span></span> 등급입니다.
     </div>
-    <img src="/bronze.png" alt="">
+    <img src="ranks/마스터.png" alt="">
 </div>
 {% elif totalPrice >5000000 and totalPrice %}
 <div class="level_summ ">
@@ -86,7 +86,7 @@
     <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
     <br><span class="color" id="group_name"><span class="xans-member-var-group_name">첼린저</span></span> 등급입니다.
   </div>
-  <img src="/bronze.png" alt="">
+  <img src="/ranks/챌린저.png" alt="">
 </div>
 {% endif %}
 <div>
