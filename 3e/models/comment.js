@@ -7,14 +7,15 @@ module.exports = class Comment extends Sequelize.Model {
         type: Sequelize.STRING(100),
         allowNull: false,
       },
-      created_at: {
-        type: Sequelize.DATE,
+      
+      img: {//이미지
+        type: Sequelize.STRING(200),
         allowNull: true,
-        defaultValue: Sequelize.NOW,
       },
     }, {
       sequelize,
-      timestamps: false,
+      timestamps: true,
+      underscored: false,
       modelName: 'Comment',
       tableName: 'comments',
       paranoid: false,

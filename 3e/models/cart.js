@@ -19,10 +19,7 @@ module.exports = class Cart extends Sequelize.Model {
         type: Sequelize.STRING(200),
         allowNull: true,
       },
-      tag: {//제품태그
-        type: Sequelize.STRING(200),
-        allowNull: true,
-      },
+     
       brand: {//브랜드
         type: Sequelize.STRING(200),
         allowNull: true,

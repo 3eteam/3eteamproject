@@ -40,7 +40,7 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
     const post = await Post.create({
       
       content: req.body.content,
-      img: req.body.url,
+      img: req.body.url,  
       capnumber:req.body.capnumber,
       brand: req.body.brand,
       tag: req.body.tag,

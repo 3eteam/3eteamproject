@@ -49,7 +49,6 @@ router.post('/', upload2.none(), async (req, res, next) => {
       img: req.body.img,
       capnumber:req.body.capnumber,
       brand: req.body.brand,
-      tag: req.body.tag,
       capname:req.body.capname,
       price:req.body.price,
       quantity:req.body.quantity,
