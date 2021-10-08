@@ -175,7 +175,6 @@
             
             <div class="half">
               <div class="profile-wrap">
-                <a href="/board">게시판</a>
               <form class="d-flex align-self-center">
                 <span class="logo-name"><a href="/"><img class="logo_nc" src="https://i.esdrop.com/d/cl3pewp2aooj/OBaZNw8TQW.png" alt="" srcset=""></a></span>
                 <img class="line" src="https://i.esdrop.com/d/cl3pewp2aooj/npd2WEPCXH.svg" alt="" srcset="">
@@ -245,9 +244,9 @@
       </nav>
     </header>
     <script src="/public/jquery-3.6.0.min.js"></script>
-    
+    {% block script %}
     <script defer type="text/javascript" src="./header.js"></script>
-    
+    {% endblock %}
       <script>
         window.onload = () => {
           if (new URL(location.href).searchParams.get('loginError')) {
