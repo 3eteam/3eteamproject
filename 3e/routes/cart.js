@@ -67,7 +67,7 @@ router.post('/', upload2.none(), async (req, res, next) => {
 router.get('/hashtag', async (req, res, next) => {
   const query = req.query.hashtag;
   if (!query) {
-    return res.redirect('/cart');
+    return res.redirect('/');
   }
   try {
     const hashtag = await Hashtag.findOne({ where: { title: query } });
@@ -86,43 +86,7 @@ router.get('/hashtag', async (req, res, next) => {
   }
 });
 
-router.post('/', async (req, res, next) => {
-  try {
-    const comment = await Comment.create({
-      commenter: req.body.id,
-      comment: req.body.comment,
-    });
-    console.log(comment);
-    res.status(201).json(comment);
-  } catch (err) {
-    console.error(err);
-    next(err);
-  }
-});
 
-router.route('/:id')
-  .patch(async (req, res, next) => {
-    try {
-      const result = await Comment.update({
-        comment: req.body.comment,
-      }, {
-        where: { id: req.params.id },
-      });
-      res.json(result);
-    } catch (err) {
-      console.error(err);
-      next(err);
-    }
-  })
-  .delete(async (req, res, next) => {
-    try {
-      const result = await Comment.destroy({ where: { id: req.params.id } });
-      res.json(result);
-    } catch (err) {
-      console.error(err);
-      next(err);
-    }
-  });
 module.exports=router;
 
 

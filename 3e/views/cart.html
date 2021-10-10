@@ -25,275 +25,339 @@
 {% block content %}
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&family=Noto+Serif+KR:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap');
 
-.shoppingCart-section {
-    background-color: rgba(0,0,0,0);
-    margin: 0 auto;
-    width: 950px;
-    min-width: 700px;
-    padding-bottom: 30px;
-    font-family: 'Noto Sans KR', sans-serif;
-}
+    .shoppingCart-section {
+        background-color: rgba(0, 0, 0, 0);
+        margin: 0 auto;
+        width: 950px;
+        min-width: 700px;
+        padding-bottom: 30px;
+        font-family: 'Noto Sans KR', sans-serif;
+    }
 
-.shoppingCart-items-table tr:first-child td, .shoppingCart-items-table tr:nth-child(2) td{
-    height: 10px;
-    padding: 10px;
-}
+    .shoppingCart-items-table tr:first-child td,
+    .shoppingCart-items-table tr:nth-child(2) td {
+        height: 10px;
+        padding: 10px;
+    }
 
-.shoppingCart-items-table tr:first-child{
-    border: 1px solid rgba(0,0,0,0.2);
-    background-color: rgba(0,0,0,0.03);
-}
+    .shoppingCart-items-table tr:first-child {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        background-color: rgba(0, 0, 0, 0.03);
+    }
 
-.shoppingCart-item-img img {
-    height: 100%;
-}
+    .shoppingCart-item-img img {
+        height: 100%;
+    }
 
-.shoppingCart-item a {
-    display:inline-block;
-    height: 15px;
-    padding-bottom:30px;
-}
+    .shoppingCart-item a {
+        display: inline-block;
+        height: 15px;
+        padding-bottom: 30px;
+    }
 
-.shoppingCart-items-table {
-    border-collapse:collapse;
-    border-spacing:0;
-}
-.shoppingCart-items-table tr {
-    border-top: 1px solid rgba(0,0,0,0.2);
-    border-bottom: 1px solid rgba(0,0,0,0.2);
-}
-.shoppingCart-items-table  tr:last-child{
-    border-top: 1px solid rgba(0,0,0,0.2);
-    border-bottom: 1px solid rgba(0,0,0,0.2);
-    background-color:rgba(0,0,0,0.03);
-}
-.shoppingCart-items-table tr:last-child td{
-    height: 30px;
-    padding: 20px;
-}
+    .shoppingCart-items-table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
 
-.shoppingCart-items-table td {
-    height: 100px;
-}
-.shoppingCart-items-table td button{
-    display:block;
-}
-.shoppingCart-items-table {
-    width:100%;
-}
+    .shoppingCart-items-table tr {
+        border-top: 1px solid rgba(0, 0, 0, 0.2);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
 
-.buy-all{
-    float:right;
-    cursor:pointer;
-    color: white;
-    border: 2px solid tan;
-    background-color: rosybrown;
-    border:none;
-    height: 30px;
-    width: 80px;
-    margin-top:20px;
-}
+    .shoppingCart-items-table tr:last-child {
+        border-top: 1px solid rgba(0, 0, 0, 0.2);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        background-color: rgba(0, 0, 0, 0.03);
+    }
 
-.buy-item, .delete-item{
-    cursor:pointer;
-    color: white;
-    border: 2px solid tan;
-    background-color: rosybrown;
-    border:none;
-    height: 25px;
-    width: 50px;
-    margin-bottom:3px;
-}
+    .shoppingCart-items-table tr:last-child td {
+        height: 30px;
+        padding: 20px;
+    }
 
-.shoppingCart-header {
-    width: 100%;
-    text-align:center;
-    margin-bottom: 30px;
-}
+    .shoppingCart-items-table td {
+        height: 100px;
+    }
 
-.shoppingCart-header > h3 {
-    font-family: 'Sunflower', sans-serif;
-    background-color: white;
-    border-bottom: 3px solid rgb(230, 214, 197);
-    color: rgb(59, 57, 57);
-    display: inline-block;
-    font-size: 25px;
-}
+    .shoppingCart-items-table td button {
+        display: block;
+    }
 
-.input-container {
-    border: 1px solid black;
-}
+    .shoppingCart-items-table {
+        width: 100%;
+    }
+
+    .buy-all {
+        float: right;
+        cursor: pointer;
+        color: white;
+        border: 2px solid tan;
+        background-color: rosybrown;
+        border: none;
+        height: 30px;
+        width: 80px;
+        margin-top: 20px;
+    }
+
+    .buy-item,
+    .delete-item {
+        cursor: pointer;
+        color: white;
+        border: 2px solid tan;
+        background-color: rosybrown;
+        border: none;
+        height: 25px;
+        width: 50px;
+        margin-bottom: 3px;
+    }
+
+    .shoppingCart-header {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .shoppingCart-header>h3 {
+        font-family: 'Sunflower', sans-serif;
+        background-color: white;
+        border-bottom: 3px solid rgb(230, 214, 197);
+        color: rgb(59, 57, 57);
+        display: inline-block;
+        font-size: 25px;
+    }
+
+    .input-container {
+        border: 1px solid black;
+    }
 </style>
-<form action="/payment" method="POST">
-<section class="shoppingCart-section" style="padding-top: 200px;">
-    <div class=shoppingCart-header>
-        <h3> Shopping Cart </h3>
-    </div>
-    <div class="shoppingCart-items">
-        <table class="shoppingCart-items-table">
-            <tr>
-                <td>
-                    일반 상품
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>
-                    <a>이미지</a>
-                </td>
-                <td>
-                    <a>상품 이름</a>
-                </td>
-                <td>
-                    <a>가격</a>
-                </td>
-                <td></td>
-            </tr>
-            {% set totalPrice = 0 %}
-            {% for carts in cart%}
-            {% set totalPrice = totalPrice + carts.price %}
-            <tr>
-                <td class="shoppingCart-item-img">
-                    <img src="{{carts.img}}" />
-                </td>
-                <td>
-                    <a class="item-name">{{carts.capname}}</a>
-                </td>
-                <td>
-                    <a class="item-price">￦{{carts.price}}</a>
-                </td>
-                <td>
-                    <button class="buy-item" value="{{carts.pid}}">구매</button>
-                    <button class="delete-item">삭제</button>
-                </td>
-            </tr>
-            {% endfor %}
-            <tr>
-                <td>[ 기본 배송 ]</td>
-                <td style="text-align:right">
-                    <a>총액</a>
-                </td>
-                <td>
-                    
-                    <a class="item-price-all">￦{{totalPrice}}</a>
-                </td>
-                <td></td>
-            </tr>
-        </table>
-        <input type="hidden" name="price" value="{{totalPrice}}">
-        <button class="buy-all">모두 구매</button>
-    </div>
-</section>
-</form>
 
-<div>
-    <form id="comment-form">
-      <fieldset>
-        <legend>댓글 등록</legend>
-        <div><input id="userid" type="text" placeholder="사용자 아이디"></div>
-        <div><input id="comment" type="text" placeholder="댓글"></div>
-        <button type="submit">등록</button>
-      </fieldset>
-    </form>
-  </div>
-  <br>
-  <table id="comment-list">
-    <thead>
-    <tr>
-      <th>아이디</th>
-      <th>작성자</th>
-      <th>댓글</th>
-      <th>수정</th>
-      <th>삭제</th>
-    </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<form action="/payment" method="POST">
+    <section class="shoppingCart-section" style="padding-top: 200px;">
+        <div class=shoppingCart-header>
+            <h3> Shopping Cart </h3>
+        </div>
+        <div class="shoppingCart-items">
+            <table class="shoppingCart-items-table">
+                <tr>
+                    <td>
+                        일반 상품
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <a>이미지</a>
+                    </td>
+                    <td>
+                        <a>상품 이름</a>
+                    </td>
+                    <td>
+                        <a>가격</a>
+                    </td>
+                    <td></td>
+                </tr>
+                {% set totalPrice = 0 %}
+                {% for carts in cart%}
+                {% set totalPrice = totalPrice + carts.price %}
+                <tr>
+                    <td class="shoppingCart-item-img">
+                        <img src="{{carts.img}}" />
+                    </td>
+                    <td>
+                        <a class="item-name">{{carts.capname}}</a>
+                    </td>
+                    <td>
+                        <a class="item-price">￦{{carts.price}}</a>
+                    </td>
+                    <td>
+                        <button class="buy-item" value="{{carts.pid}}">구매</button>
+                        <button class="delete-item">삭제</button>
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td>[ 기본 배송 ]</td>
+                    <td style="text-align:right">
+                        <a>총액</a>
+                    </td>
+                    <td>
+
+                        <a class="item-price-all">￦{{totalPrice}}</a>
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+            <input type="hidden" name="price" value="{{totalPrice}}">
+            
+        </div>
+    </section>
+</form>
+<button class="buy-all" id="btn1" value="{{totalPrice}}">모두 구매</button>
+<script src="https://cdn.bootpay.co.kr/js/bootpay-3.3.2.min.js" type="application/javascript"></script>
 
 <script>
- async function getComment(id) {
-    try {
-      const res = await axios.get(`/users/${id}/comments`);
-      const comments = res.data;
-      const tbody = document.querySelector('#comment-list tbody');
-      tbody.innerHTML = '';
-      comments.map(function (comment) {
-        // 로우 셀 추가
-        const row = document.createElement('tr');
-        let td = document.createElement('td');
-        td.textContent = comment.id;
-        row.appendChild(td);
-        td = document.createElement('td');
-        td.textContent = comment.User.name;
-        row.appendChild(td);
-        td = document.createElement('td');
-        td.textContent = comment.comment;
-        row.appendChild(td);
-        const edit = document.createElement('button');
-        edit.textContent = '수정';
-        edit.addEventListener('click', async () => { // 수정 클릭 시
-          const newComment = prompt('바꿀 내용을 입력하세요');
-          if (!newComment) {
-            return alert('내용을 반드시 입력하셔야 합니다');
-          }
-          try {
-            await axios.patch(`/comments/${comment.id}`, { comment: newComment });
-            getComment(id);
-          } catch (err) {
-            console.error(err);
-          }
-        });
-        const remove = document.createElement('button');
-        remove.textContent = '삭제';
-        remove.addEventListener('click', async () => { // 삭제 클릭 시
-          try {
-            await axios.delete(`/comments/${comment.id}`);
-            getComment(id);
-          } catch (err) {
-            console.error(err);
-          }
-        });
-        // 버튼 추가
-        td = document.createElement('td');
-        td.appendChild(edit);
-        row.appendChild(td);
-        td = document.createElement('td');
-        td.appendChild(remove);
-        row.appendChild(td);
-        tbody.appendChild(row);
-      });
-    } catch (err) {
-      console.error(err);
-    }
-  }
 
+    document.getElementById("btn1").addEventListener('click', hello);
 
-  document.getElementById('comment-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const id = e.target.userid.value;
-    const comment = e.target.comment.value;
-    if (!id) {
-      return alert('아이디를 입력하세요');
-    }
-    if (!comment) {
-      return alert('댓글을 입력하세요');
-    }
-    try {
-      await axios.post('/comments', { id, comment });
-      getComment(id);
-    } catch (err) {
-      console.error(err);
-    }
-    e.target.userid.value = '';
-    e.target.comment.value = '';
-  });
+    function hello() {
+        window.BootPay.request({
+            price: '{{totalPrice}}', //실제 결제되는 가격
+            application_id: "61625a957b5ba4002152c251",
+            name: 'nocap', //결제창에서 보여질 이름
+            pg: 'kcp',
+            method: 'card', //결제수단, 입력하지 않으면 결제수단 선택부터 화면이 시작합니다.
+            show_agree_window: 0, // 부트페이 정보 동의 창 보이기 여부
+            items: [
+                {
+                    item_name: '나는 아이템', //상품명
+                    qty: 1, //수량
+                    unique: '123', //해당 상품을 구분짓는 primary key
+                    price: 1000, //상품 단가
+                    cat1: 'TOP', // 대표 상품의 카테고리 상, 50글자 이내
+                    cat2: '티셔츠', // 대표 상품의 카테고리 중, 50글자 이내
+                    cat3: '라운드 티', // 대표상품의 카테고리 하, 50글자 이내
+                }
+            ],
+            user_info: {
+                username: '사용자 이름',
+                email: '사용자 이메일',
+                addr: '사용자 주소',
+                phone: '010-1234-4567'
+            },
+            order_id: '고유order_id_1234', //고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
+            params: { callback1: '그대로 콜백받을 변수 1', callback2: '그대로 콜백받을 변수 2', customvar1234: '변수명도 마음대로' },
+            account_expire_at: '2020-10-25', // 가상계좌 입금기간 제한 ( yyyy-mm-dd 포멧으로 입력해주세요. 가상계좌만 적용됩니다. )
+            extra: {
+                start_at: '2019-05-10', // 정기 결제 시작일 - 시작일을 지정하지 않으면 그 날 당일로부터 결제가 가능한 Billing key 지급
+                end_at: '2022-05-10', // 정기결제 만료일 -  기간 없음 - 무제한
+                vbank_result: 1, // 가상계좌 사용시 사용, 가상계좌 결과창을 볼지(1), 말지(0), 미설정시 봄(1)
+                quota: '0,2,3', // 결제금액이 5만원 이상시 할부개월 허용범위를 설정할 수 있음, [0(일시불), 2개월, 3개월] 허용, 미설정시 12개월까지 허용,
+                theme: 'purple', // [ red, purple(기본), custom ]
+                custom_background: '#00a086', // [ theme가 custom 일 때 background 색상 지정 가능 ]
+                custom_font_color: '#ffffff' // [ theme가 custom 일 때 font color 색상 지정 가능 ]
+            }
+        }).error(function (data) {
+            //결제 진행시 에러가 발생하면 수행됩니다.
+            console.log(data);
+        }).cancel(function (data) {
+            //결제가 취소되면 수행됩니다.
+            console.log(data);
+        }).ready(function (data) {
+            // 가상계좌 입금 계좌번호가 발급되면 호출되는 함수입니다.
+            console.log(data);
+        }).confirm(function (data) {
+            //결제가 실행되기 전에 수행되며, 주로 재고를 확인하는 로직이 들어갑니다.
+            //주의 - 카드 수기결제일 경우 이 부분이 실행되지 않습니다.
+            console.log(data);
+            var enable = true; // 재고 수량 관리 로직 혹은 다른 처리
+            if (enable) {
+                BootPay.transactionConfirm(data); // 조건이 맞으면 승인 처리를 한다.
+            } else {
+                BootPay.removePaymentWindow(); // 조건이 맞지 않으면 결제 창을 닫고 결제를 승인하지 않는다.
+            }
+        }).close(function (data) {
+            // 결제창이 닫힐때 수행됩니다. (성공,실패,취소에 상관없이 모두 수행됨)
+            console.log(data);
+        }).done(function (data) {
+            //결제가 정상적으로 완료되면 수행됩니다
+            //비즈니스 로직을 수행하기 전에 결제 유효성 검증을 하시길 추천합니다.
+            console.log(data);
+        });
+    };
 
 
 
 </script>
+
+
+<!-- <script>
+ var buyButton = document.getElementsByClassName('buy-item');
+for (var i = 0; i < buyButton.length;i++) {
+    buyButton[i].addEventListener('click', (event) => {
+        const item = [Number(event.currentTarget.getAttribute('value'))];
+        buy(item);
+    });
+}
+const buyAllButton = document.getElementsByClassName('buy-all')[0];
+if (buyAllButton) {
+    buyAllButton.addEventListener('click', (event) => {
+        const items = [];
+        for (var i = 0; i < buyButton.length; i++) {
+            items.push(Number(buyButton[i].getAttribute('value')));
+        }
+        buy(items);
+    });
+}
+const buyURL = '/buy';
+function buy(items) {
+    if (!confirm('정말구매하시겠습니까? 이가격에요..?')) {
+        return false;
+    }
+    const option = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ buys: items }),
+    }
+    fetch(buyURL, option)
+        .then(res => {
+            res.json().then(data => {
+                if (data.res) {
+                    alert("구매 완료하였습니다.\n" +
+                        "[정선아]에게[" + data.priceStr + "]원을 송금하시면 배송됩니다.");
+                    location.reload();
+                }
+                else {
+                    alert("구매 실패하였습니다.");
+                }
+            })
+        });
+}
+
+
+var deleteButton = document.getElementsByClassName('delete-item');
+var deleteItemlist = [];
+for (var i = 0; i < deleteButton.length; i++) {
+    deleteButton[i].addEventListener('click', (event) => {
+        const item = Number(event.currentTarget.getAttribute('value'));
+        delitem(item);
+    });
+}
+const deleteURL = '/buy/delete';
+function delitem(item) {
+    const option = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ deletes: item }),
+    }
+    fetch(deleteURL, option)
+        .then(res => {
+            res.json().then(data => {
+                if (data.res) {
+                    alert("삭제 완료하였습니다.");
+                    location.reload();
+                }
+                else {
+                    alert("삭제 실패하였습니다.");
+                }
+            })
+        });
+}
+
+
+
+var price = document.getElementsByClassName('item-price-all')[0];
+if (price) {
+    price.innerHTML = price.innerHTML.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+</script> -->
 {% endblock %}
