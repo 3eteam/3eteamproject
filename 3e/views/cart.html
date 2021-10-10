@@ -189,88 +189,111 @@
     </div>
 </section>
 </form>
+
+<div>
+    <form id="comment-form">
+      <fieldset>
+        <legend>댓글 등록</legend>
+        <div><input id="userid" type="text" placeholder="사용자 아이디"></div>
+        <div><input id="comment" type="text" placeholder="댓글"></div>
+        <button type="submit">등록</button>
+      </fieldset>
+    </form>
+  </div>
+  <br>
+  <table id="comment-list">
+    <thead>
+    <tr>
+      <th>아이디</th>
+      <th>작성자</th>
+      <th>댓글</th>
+      <th>수정</th>
+      <th>삭제</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 <script>
- var buyButton = document.getElementsByClassName('buy-item');
-for (var i = 0; i < buyButton.length;i++) {
-    buyButton[i].addEventListener('click', (event) => {
-        const item = [Number(event.currentTarget.getAttribute('value'))];
-        buy(item);
-    });
-}
-const buyAllButton = document.getElementsByClassName('buy-all')[0];
-if (buyAllButton) {
-    buyAllButton.addEventListener('click', (event) => {
-        const items = [];
-        for (var i = 0; i < buyButton.length; i++) {
-            items.push(Number(buyButton[i].getAttribute('value')));
-        }
-        buy(items);
-    });
-}
-const buyURL = '/buy';
-function buy(items) {
-    if (!confirm('정말구매하시겠습니까? 이가격에요..?')) {
-        return false;
-    }
-    const option = {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ buys: items }),
-    }
-    fetch(buyURL, option)
-        .then(res => {
-            res.json().then(data => {
-                if (data.res) {
-                    alert("구매 완료하였습니다.\n" +
-                        "[정선아]에게[" + data.priceStr + "]원을 송금하시면 배송됩니다.");
-                    location.reload();
-                }
-                else {
-                    alert("구매 실패하였습니다.");
-                }
-            })
+ async function getComment(id) {
+    try {
+      const res = await axios.get(`/users/${id}/comments`);
+      const comments = res.data;
+      const tbody = document.querySelector('#comment-list tbody');
+      tbody.innerHTML = '';
+      comments.map(function (comment) {
+        // 로우 셀 추가
+        const row = document.createElement('tr');
+        let td = document.createElement('td');
+        td.textContent = comment.id;
+        row.appendChild(td);
+        td = document.createElement('td');
+        td.textContent = comment.User.name;
+        row.appendChild(td);
+        td = document.createElement('td');
+        td.textContent = comment.comment;
+        row.appendChild(td);
+        const edit = document.createElement('button');
+        edit.textContent = '수정';
+        edit.addEventListener('click', async () => { // 수정 클릭 시
+          const newComment = prompt('바꿀 내용을 입력하세요');
+          if (!newComment) {
+            return alert('내용을 반드시 입력하셔야 합니다');
+          }
+          try {
+            await axios.patch(`/comments/${comment.id}`, { comment: newComment });
+            getComment(id);
+          } catch (err) {
+            console.error(err);
+          }
         });
-}
-
-
-var deleteButton = document.getElementsByClassName('delete-item');
-var deleteItemlist = [];
-for (var i = 0; i < deleteButton.length; i++) {
-    deleteButton[i].addEventListener('click', (event) => {
-        const item = Number(event.currentTarget.getAttribute('value'));
-        delitem(item);
-    });
-}
-const deleteURL = '/buy/delete';
-function delitem(item) {
-    const option = {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ deletes: item }),
-    }
-    fetch(deleteURL, option)
-        .then(res => {
-            res.json().then(data => {
-                if (data.res) {
-                    alert("삭제 완료하였습니다.");
-                    location.reload();
-                }
-                else {
-                    alert("삭제 실패하였습니다.");
-                }
-            })
+        const remove = document.createElement('button');
+        remove.textContent = '삭제';
+        remove.addEventListener('click', async () => { // 삭제 클릭 시
+          try {
+            await axios.delete(`/comments/${comment.id}`);
+            getComment(id);
+          } catch (err) {
+            console.error(err);
+          }
         });
-}
+        // 버튼 추가
+        td = document.createElement('td');
+        td.appendChild(edit);
+        row.appendChild(td);
+        td = document.createElement('td');
+        td.appendChild(remove);
+        row.appendChild(td);
+        tbody.appendChild(row);
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+
+  document.getElementById('comment-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const id = e.target.userid.value;
+    const comment = e.target.comment.value;
+    if (!id) {
+      return alert('아이디를 입력하세요');
+    }
+    if (!comment) {
+      return alert('댓글을 입력하세요');
+    }
+    try {
+      await axios.post('/comments', { id, comment });
+      getComment(id);
+    } catch (err) {
+      console.error(err);
+    }
+    e.target.userid.value = '';
+    e.target.comment.value = '';
+  });
 
 
 
-var price = document.getElementsByClassName('item-price-all')[0];
-if (price) {
-    price.innerHTML = price.innerHTML.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
 </script>
 {% endblock %}
