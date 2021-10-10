@@ -15,21 +15,21 @@ module.exports = class User extends Sequelize.Model {
       },
       nick: {
         type: Sequelize.STRING(15),
-        allowNull: false,
+        allowNull: true,
       },
       phone: {
         type: Sequelize.STRING(50),
-        allowNull: false,
+        allowNull: true,
         // isNumeric:true,
       },
       birth: {
         type: Sequelize.STRING(20),
-        allowNull: false,
+        allowNull: true,
         // isDate:true,
       },
       address: {
         type: Sequelize.STRING(300),
-        allowNull: false,
+        allowNull: true,
       },
       // //불리언값은 둘 중 하나로 넣어야 될거 같음 안 그럼 오류남
       // sex: {  
