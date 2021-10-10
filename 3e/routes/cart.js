@@ -67,7 +67,7 @@ router.post('/', upload2.none(), async (req, res, next) => {
 router.get('/hashtag', async (req, res, next) => {
   const query = req.query.hashtag;
   if (!query) {
-    return res.redirect('/');
+    return res.redirect('/cart');
   }
   try {
     const hashtag = await Hashtag.findOne({ where: { title: query } });
