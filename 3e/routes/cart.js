@@ -85,7 +85,29 @@ router.get('/hashtag', async (req, res, next) => {
     return next(error);
   }
 });
-
+router.route('/:id')
+    // .patch(isLoggedIn, async (req, res, next) => {
+    //   try {
+    //     const result = await Cart.update({
+    //       comment: req.body.comment,
+    //     }, {
+    //       where: { id: req.params.id },
+    //     });
+    //     res.json(result);
+    //   } catch (err) {
+    //     console.error(err);v
+    //     next(err);
+    //   }
+    // })
+    .delete(isLoggedIn,async (req, res, next) => {
+      try {
+        const result = await Cart.destroy();
+        res.json(result);
+      } catch (err) {
+        console.error(err);
+        next(err);
+      }
+    });
 
 module.exports=router;
 

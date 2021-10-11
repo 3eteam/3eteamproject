@@ -135,7 +135,7 @@
 </style>
 
 
-<form action="/payment" method="POST">
+
     <section class="shoppingCart-section" style="padding-top: 200px;">
         <div class=shoppingCart-header>
             <h3> Shopping Cart </h3>
@@ -177,7 +177,7 @@
                     </td>
                     <td>
                         <button class="buy-item" value="{{carts.pid}}">구매</button>
-                        <button class="delete-item">삭제</button>
+                        <button id="delete" value="{{carts.price}}" name="commenter" onclick="getComment(name)" >삭제</button>
                     </td>
                 </tr>
                 {% endfor %}
@@ -194,13 +194,40 @@
                 </tr>
             </table>
             <input type="hidden" name="price" value="{{totalPrice}}">
-            
+            <input type="hidden" name="comment" value="{{totalPrice}}">
         </div>
     </section>
-</form>
-<button class="buy-all" id="btn1" value="{{totalPrice}}">모두 구매</button>
-<script src="https://cdn.bootpay.co.kr/js/bootpay-3.3.2.min.js" type="application/javascript"></script>
+    <form action="/payment" method="POST">
 
+        <button class="buy-all" id="btn1" value="{{totalPrice}}">모두 구매</button>
+</form>
+
+<script src="https://cdn.bootpay.co.kr/js/bootpay-3.3.2.min.js" type="application/javascript"></script>
+<script>
+    
+   async function getComment(id) {
+    try {
+     
+      
+       
+       
+       addEventListener('click', async () => { // 삭제 클릭 시
+          try {
+            await axios.delete(`/cart/${id}/user`);
+            getComment(id);
+          } catch (err) {
+            console.error(err);
+          }
+        });
+        // 버튼 추가
+       
+     
+    } catch (err) {
+      console.error(err);
+    }
+  }     
+  
+</script>
 <script>
 
     document.getElementById("btn1").addEventListener('click', hello);
@@ -294,7 +321,7 @@ if (buyAllButton) {
         buy(items);
     });
 }
-const buyURL = '/buy';
+const buyURL = '/payment';
 function buy(items) {
     if (!confirm('정말구매하시겠습니까? 이가격에요..?')) {
         return false;

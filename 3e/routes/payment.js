@@ -57,7 +57,7 @@ router.post('/', upload2.none(), async (req, res, next) => {
     });
   
     
-    res.redirect('/');
+    res.redirect('/cart');
   } catch (error) {
     console.error(error);
     next(error);

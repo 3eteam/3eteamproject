@@ -43,7 +43,7 @@ module.exports = class Cart extends Sequelize.Model {
   }
 
   static associate(db) {
-   db.Cart.hasMany(db.Cart);
+    db.Cart.belongsTo(db.User, { foreignKey: 'commenter', targetKey: 'id' });
     db.Cart.belongsTo(db.User);
     db.Cart.belongsToMany(db.Hashtag, { through: 'PostHashtag' });
   }
