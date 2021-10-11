@@ -2,7 +2,7 @@ const passport = require('passport');
 const local = require('./localStrategy');
 const kakao = require('./kakaoStrategy');
 const User = require('../models/user');
-
+const Cart = require('../models/cart');
 module.exports = () => {
   passport.serializeUser((user, done) => {
     done(null, user.id);
@@ -12,13 +12,9 @@ module.exports = () => {
     User.findOne({
       where: { id },
       include: [{
-        model: User,
-        attributes: ['id', 'nick'],
-        as: 'Followers',
-      }, {
-        model: User,
-        attributes: ['id', 'nick'],
-        as: 'Followings',
+        model: Cart,
+        attributes: ['id',],
+
       }],
     })
       .then(user => done(null, user))

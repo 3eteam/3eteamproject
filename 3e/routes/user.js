@@ -19,5 +19,23 @@ router.post('/:id/follow', isLoggedIn, async (req, res, next) => {
     next(error);
   }
 });
+router.get('/',async (req, res, next) => {
+  try {
+    const posts = await Cart.findAll({ 
+    include: {
+      model: User,
+      attributes: ['id'],
+    },
+    order: [['createdAt', 'DESC']],
+  });
+  res.render('cart', {
+    title: '3e',
+    cart: posts,
+  });
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
 
 module.exports = router;

@@ -18,14 +18,17 @@ router.use((req, res, next) => {
     next();
   });
 
-  router.get('/',async (req, res, next) => {
+  router.get('/',isLoggedIn,async (req, res, next) => {
     try {
+      console.log(req.user.id);
       const posts = await Cart.findAll({ 
       include: {
         model: User,
-        attributes: ['id'],
+        
+        attributes:['id']
+      
       },
-      order: [['createdAt', 'DESC']],
+    
     });
     res.render('cart', {
       title: '3e',
@@ -41,6 +44,7 @@ router.use((req, res, next) => {
   const upload2 = multer();
 router.post('/', upload2.none(), async (req, res, next) => {
   try {
+    const userid= res.locals.user;
     console.log(req.user);
     const cart = await Cart.create({
       
@@ -52,6 +56,8 @@ router.post('/', upload2.none(), async (req, res, next) => {
       capname:req.body.capname,
       price:req.body.price,
       quantity:req.body.quantity,
+       UserId:userid.id,
+    
 
 
 
@@ -64,27 +70,27 @@ router.post('/', upload2.none(), async (req, res, next) => {
     next(error);
   }
 });
-router.get('/hashtag', async (req, res, next) => {
-  const query = req.query.hashtag;
-  if (!query) {
-    return res.redirect('/');
-  }
-  try {
-    const hashtag = await Hashtag.findOne({ where: { title: query } });
-    let posts = [];
-    if (hashtag) {
-      posts = await hashtag.getPosts({ include: [{ model: User }] });
-    }
+// router.get('/hashtag', async (req, res, next) => {
+//   const query = req.query.hashtag;
+//   if (!query) {
+//     return res.redirect('/');
+//   }
+//   try {
+//     const hashtag = await Hashtag.findOne({ where: { title: query } });
+//     let posts = [];
+//     if (hashtag) {
+//       posts = await hashtag.getPosts({ include: [{ model: User }] });
+//     }
 
-    return res.render('cart', {
-      title: `${query} | 3e`,
-      cart: posts,
-    });
-  } catch (error) {
-    console.error(error);
-    return next(error);
-  }
-});
+//     return res.render('cart', {
+//       title: `${query} | 3e`,
+//       cart: posts,
+//     });
+//   } catch (error) {
+//     console.error(error);
+//     return next(error);
+//   }
+// });
 router.route('/:id')
     // .patch(isLoggedIn, async (req, res, next) => {
     //   try {
@@ -101,7 +107,7 @@ router.route('/:id')
     // })
     .delete(isLoggedIn,async (req, res, next) => {
       try {
-        const result = await Cart.destroy();
+        const result = await Cart.destroy({where:{id:req.params.id}});
         res.json(result);
       } catch (err) {
         console.error(err);
