@@ -60,5 +60,14 @@ router.get('/hashtag', async (req, res, next) => {
     return next(error);
   }
 });
-
+router.route('/:id').get(async(req,res)=>{
+  try {
+    
+     await Post.destroy({where:{id:req.params.id}});
+        res.redirect('/catlist');
+  } catch (err) {
+    console.error(err);
+        next(err);
+  }
+});
 module.exports = router;
