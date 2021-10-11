@@ -42,7 +42,7 @@ router.post('/', async (req, res, next) => {
         img:req.body.url,
         comment: req.body.comment,
         // 닉네임이나 이메일을 쓰고 싶으면 어떡하지
-        UserId: identity.email,
+        UserId: identity.id,
       
       });
       res.redirect('/board');

@@ -1,6 +1,3 @@
-{% block content %}
-<style type="text/css">
-
 @font-face {
     font-family: 'scriptoramamarkdownjfregular';
     src: url('/fonts/design.jasonwalcott.scriptorama_markdown_jf-webfont.woff') format('woff2'),
@@ -176,9 +173,10 @@
 
 
 .light_box {
-  display: block;
   position: fixed;
   top:0; left: 0;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   opacity: 0;
   z-index: -10;
@@ -187,8 +185,6 @@
 .light_box.visible{
   opacity: 1;
   z-index: 10;
-  width: 100%;
-  height: 100%;
   transition: all 0.7s;
 }
 
@@ -483,7 +479,7 @@ input[type="radio"]
 {
     position: absolute;
     left: 14px;
-    width: 217px;
+    width: 165px;
     height: 21px;
     opacity: 0;
     background-color: #fff;
@@ -523,7 +519,6 @@ input[type="radio"]
 #options-view-button:not(:checked) ~ #options .option input[type="radio"]:checked ~ .opt-val
 {
     top: -40px;
-    width: 180px;
 }
 
 .option:nth-child(1) input[type="radio"]:checked ~ .label:before
@@ -692,192 +687,3 @@ input[type="radio"]
   border-radius: 4px;
   box-shadow: 0 10px 20px -5px rgba(20, 50, 64, 0.76);
 }
-</style>
-
-<header class="page-header">
-    <nav class="navbar navbar-expand-lg" style="height: 50px;">
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-xl-9 col-lg-9 col-md-9 col-sm-9">
-            
-            <div class="half">
-              <div class="profile-wrap">
-              <form class="d-flex align-self-center">
-                <span class="logo-name"><a href="/"><img class="logo_nc" src="https://i.esdrop.com/d/cl3pewp2aooj/OBaZNw8TQW.png" alt="" srcset=""></a></span>
-                <img class="line" src="https://i.esdrop.com/d/cl3pewp2aooj/npd2WEPCXH.svg" alt="" srcset="">
-              </form>
-
-
-              <form id="app-cover">
-                <div id="select-box">
-                        <input type="checkbox" id="options-view-button">
-                        <div id="select-button" class="brd">
-                                <div id="selected-value">
-                                    <span> 브 랜 드 관</span>
-                                </div>
-                                <div id="chevrons">
-                                        <i class="fas fa-chevron-up"></i>
-                                        <i class="fas fa-chevron-down"></i>
-                                </div>
-                        </div>
-                        <div id="options">
-                                <div class="option">
-                                        <input class="s-c top" type="radio" name="platform" value="codepen" onclick="javascript:hospital('nike')">
-                                        <input class="s-c bottom" type="radio" name="platform" value="codepen">
-                                        <i class="fab fa-codepen"></i>
-                                        <span class="label">O S O I</span>
-                                        <span class="opt-val">O S O I</span>
-                                </div>
-                                <div class="option">
-                                        <input class="s-c top" type="radio" name="platform" value="dribbble">
-                                        <input class="s-c bottom" type="radio" name="platform" value="dribbble">
-                                        <i class="fab fa-dribbble"></i>
-                                        <span class="label">N I K E</span>
-                                        <span class="opt-val">N I K E</span>
-                                </div>
-                                <div class="option">
-                                        <input class="s-c top" type="radio" name="platform" value="behance">
-                                        <input class="s-c bottom" type="radio" name="platform" value="behance">
-                                        <i class="fab fa-behance"></i>
-                                        <span class="label">A D I D A S</span>
-                                        <span class="opt-val">A D I D A S</span>
-                                </div>
-                                <div class="option">
-                                        <input class="s-c top" type="radio" name="platform" value="hackerrank">
-                                        <input class="s-c bottom" type="radio" name="platform" value="hackerrank">
-                                        <i class="fab fa-hackerrank"></i>
-                                        <span class="label">O S O I</span>
-                                        <span class="opt-val">O S O I</span>
-                                </div>
-                                <div class="option">
-                                        <input class="s-c top" type="radio" name="platform" value="stackoverflow">
-                                        <input class="s-c bottom" type="radio" name="platform" value="stackoverflow">
-                                        <i class="fab fa-stack-overflow"></i>
-                                        <span class="label">O S O I</span>
-                                        <span class="opt-val">O S O I</span>
-                                </div>
-                                <div class="option">
-                                        <input class="s-c top" type="radio" name="platform" value="freecodecamp">
-                                        <input class="s-c bottom" type="radio" name="platform" value="freecodecamp">
-                                        <i class="fab fa-free-code-camp"></i>
-                                        <span class="label">O S O I</span>
-                                        <span class="opt-val">O S O I</span>
-                                </div>
-                                <div id="option-bg"></div>
-                        </div>
-                </div>
-        </form>
-
-
-
-
-            </ul>
-            <div>
-              
-              
-                  {% if user and user.id %}
-                  <div class="profilee">
-                    <a href=""><img class="profile_p pro" id="hoverr" src="https://i.esdrop.com/d/cl3pewp2aooj/6BJxlkrxjQ.png" alt="" srcset=""></a>
-                    <a href="/cart"><img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/gvWpYo8EWg.png" alt="" srcset=""></a>
-                    <div class="gallery_box">
-                      <div class="col">
-                          <a href="#">
-                              <img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/4T5DRRcWOI.png" alt="더미이미지">
-                          </a>
-                      </div>
-                    </div>
-                    <div class="pro_table2" id="hoverrr">
-                      <ul>
-                        <li><div class="user-name">{{user.nick + '님'}}</div></li>
-                        <li><a id="logout" href="/auth/logout" class="btn">로그아웃</a></li>
-                        <li><a href="/alllist" class="btn">전체상품</a></li>
-                        <li><a href="/board" class="btn">게시판</a></li>
-                        <li><a id="my-profile" href="/profile" class="btn">마이페이지</a></li>
-                        <li><a href="/login" class="btn">주문조회</a></li>
-                        {% if user.id < 6%}
-                        <li><a id="catlist" href="/catlist" class="btn">관리자모드</a></li>
-                        {% endif %}
-                      </ul>
-                    </div>
-                  </div>
-                  <input id="my-id" type="hidden" value="{{user.id}}">
-                {% else %}
-                 
-                <div class="profilee">
-                  <a href=""><img class="profile_p pro" id="hoverr" src="https://i.esdrop.com/d/cl3pewp2aooj/6BJxlkrxjQ.png" alt="" srcset=""></a>
-                  <a href="/cart"><img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/gvWpYo8EWg.png" alt="" srcset=""></a>
-
-
-                  <div class="gallery_box">
-                    <div class="col">
-                        <a href="#">
-                            <img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/4T5DRRcWOI.png" alt="더미이미지">
-                        </a>
-                    </div>
-                  </div>
-                 
-
-
-
-                  <div class="pro_table" id="hoverrr">
-                    <ul>
-                      <li><a href="/login">로그인</a></li>
-                      <li><a href="/join">회원가입</a></li>
-                      <li><a href="/login">마이페이지</a></li>
-                      <li><a href="/login">주문조회</a></li>
-                    </ul>
-                  </div>
-                </div>
-                
-
-                
-                {% endif %}
-                
-                </div>
-          </div>
-        </div>
-      </nav>
-
-    
-      <!-- 팝업 될 곳 -->
-      <div class="light_box">
-        
-        <input class="light_text" type="text">
-        <img class="light_ser" src="https://i.esdrop.com/d/cl3pewp2aooj/4T5DRRcWOI.png">
-        <!-- <img class="light_exit" src="https://i.esdrop.com/d/cl3pewp2aooj/L802XbEqdW.png"> -->
-      </div>
-
-    </header>
-    {% block script %}
-    <script defer type="text/javascript" src="./header.js"></script>
-    {% endblock %}
-
-      <script type="text/javascript"> 
-      function hospital(v) { 
-       location.href=""+v; 
-      } 
-      </script>
-      
-
-      <script>
-
-        window.onload = () => {
-          if (new URL(location.href).searchParams.get('loginError')) {
-            alert(new URL(location.href).searchParams.get('loginError'));
-          }
-        };
-
-        $(function(){
-        var $wind = $(window),
-          header = $('.page-header'),
-          headerOffsetTop = header.offset().top;
-        })
-
-        
-        
-      </script>
-
-{% endblock %}
