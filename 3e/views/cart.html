@@ -170,27 +170,28 @@
              
 
             {% for carts in cart%}
-                {% set totalPrice = totalPrice + carts.price %}
+                {% set totalPrice = totalPrice + carts.Cart.price %}
                 <tr>
                     <td class="shoppingCart-item-img">
-                        <img src="{{carts.img}}" />
+                        <img src="{{carts.Cart.img}}" />
                     </td>
                     <td>
-                        <a class="item-name">{{carts.capname}}</a>
+                        <a class="item-name">{{carts.Cart.capname}}</a>
                     </td>
                     <td>
-                        <a class="item-price">￦{{carts.price}}</a>  {{carts.UserId}}
+                        <a class="item-price">￦{{carts.Cart.price}}</a>  
                    
                     </td>
                     <td>
-               
-  
+                        <!-- <button id="delete" value="{{user.id}}" name="id"  > -->
+                        <!-- onclick="removeComment(value)" -->
                         
-                        <button id="delete" value="{{user.id}}" name="id" onclick="removeComment(value)" >삭제</button>
+                        <a href="/cart\{{carts.Cart.id}}">삭제</a> 
                     </td>
                 </tr>
                 {% endfor %}
-       
+                
+
             <tr>
                 <td>[ 기본 배송 ]</td>
                 <td style="text-align:right">
@@ -209,9 +210,9 @@
 </section>
 <form action="/payment" method="POST">
 
-    <button class="buy-all" id="btn1" value="{{totalPrice}}">모두 구매</button>
+    
 </form>
-
+<button class="buy-all" id="btn1" value="{{totalPrice}}">모두 구매</button>
 <script src="https://cdn.bootpay.co.kr/js/bootpay-3.3.2.min.js" type="application/javascript"></script>
 <script>
 

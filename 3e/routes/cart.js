@@ -20,19 +20,23 @@ router.use((req, res, next) => {
 
   router.get('/',isLoggedIn,async (req, res, next) => {
     try {
+      const user =res.locals.user;
       console.log(req.user.id);
-      const posts = await Cart.findAll({ 
+      // const cart2 = await Cart.findAll({});
+      const posts = await User.findAll({ 
       include: {
-        model: User,
+        model: Cart,
         
-        attributes:['id']
-      
+        attributes:['id','price','capname','img'],
+        where:{UserId:user.id},
       },
     
     });
+    
     res.render('cart', {
       title: '3e',
       cart: posts,
+      
     });
     } catch (error) {
       console.error(error);
@@ -91,7 +95,16 @@ router.post('/', upload2.none(), async (req, res, next) => {
 //     return next(error);
 //   }
 // });
-router.route('/:id')
+router.route('/:id').get(async(req,res)=>{
+  try {
+    
+     await Cart.destroy({where:{id:req.params.id}});
+        res.redirect('/cart');
+  } catch (err) {
+    console.error(err);
+        next(err);
+  }
+});
     // .patch(isLoggedIn, async (req, res, next) => {
     //   try {
     //     const result = await Cart.update({
@@ -105,15 +118,15 @@ router.route('/:id')
     //     next(err);
     //   }
     // })
-    .delete(isLoggedIn,async (req, res, next) => {
-      try {
-        const result = await Cart.destroy({where:{id:req.params.id}});
-        res.json(result);
-      } catch (err) {
-        console.error(err);
-        next(err);
-      }
-    });
+    // .delete(isLoggedIn,async (req, res, next) => {
+    //   try {
+    //     const result = await Cart.destroy({where:{id:req.params.id}});
+    //     res.json(result);
+    //   } catch (err) {
+    //     console.error(err);
+    //     next(err);
+    //   }
+    // });
 
 module.exports=router;
 
