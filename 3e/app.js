@@ -53,6 +53,7 @@ const socketIO = require("socket.io");
 const io = socketIO(server);
 
 io.on("connection",(socket)=>{
+
   socket.on("chatting",(data)=>{
       const { name, msg } = data;
       io.emit("chatting", {
@@ -60,7 +61,7 @@ io.on("connection",(socket)=>{
           msg,
           time: moment(new Date()).format("h:ss A")
       })
-  })
+  });
 })
 
 passportConfig(); // 패스포트 설정

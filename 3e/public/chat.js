@@ -8,6 +8,10 @@ const chatInput = document.querySelector(".chatting-input");
 const sendButton = document.querySelector(".send-button");
 const displyContainer = document.querySelector(".display-container");
 
+
+
+
+
 chatInput.addEventListener("keypress", (event)=>{
     if(event.keyCode === 13) {
         send()
@@ -32,6 +36,9 @@ socket.on("chatting", (data) => {
     const item = new LiModel(name, msg, time);
     item.makeLi()
     displyContainer.scrollTo(0, displyContainer.scrollHeight)
+    
+    socket.broadcast.emit("chatting", '{{user.nick}}');
+    
 })
 
 function LiModel(name, msg, time){
