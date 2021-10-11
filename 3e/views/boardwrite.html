@@ -1,38 +1,8 @@
-<!-- {% extends 'layout.html' %} -->
+{% extends 'layout.html' %}
 
 {% block content %}
-<!-- <div>
-    <form id="user-form" action="/boardwrite" method="POST">
-      <fieldset>
-        <legend>사용자 등록</legend>
-        <div><input id="email" type="text" placeholder="이메일"></div>
-        <div><input id="password" type="password" placeholder="비밀번호"></div> -->
-        <!-- <div><input id="married" type="checkbox"><label for="married">결혼 여부</label></div> -->
-        <!-- <button type="submit">등록</button>
-      </fieldset>
-    </form>
-  </div>
-  <br> -->
-  <!-- <table id="user-list">
-    <thead>
-    <tr>
-      <th>아이디</th>
-      <th>이메일</th>
-      <th>비밀번호</th> -->
-      <!-- <th>결혼여부</th> -->
-    <!-- </tr>
-    </thead>
-    <tbody>
-      {% for user in users %}
-      <tr>
-        <td>{{user.id}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.password}}</td> -->
-        <!-- <td>{{ '기혼' if user.married else '미혼'}}</td> -->
-      <!-- </tr>
-      {% endfor %}
-    </tbody>
-  </table> -->
+
+  <br>
   <br>
   <br>
   <br>
@@ -44,8 +14,16 @@
     <form id="comment-form" action="/boardwrite" method="POST">
       <fieldset>
         <legend>게시글 작성</legend>
+        <div class="img-preview">
+          <img id="img-preview1" src="" width="250" alt="미리보기">
+          <input id="img-url" type="hidden" style="display: none;" name="url">
+        </div>
         <!-- <div><input id="nick" type="text" placeholder="사용자 닉네임" name="nick"></div> -->
-        <div><input id="comment" type="text" placeholder="내용" name="comment"></div>
+        <div>
+          <input id="comment" type="text" placeholder="내용" name="comment">
+          <label id="img-label1" for="img">사진 업로드</label>
+          <input id="img" type="file" accept="image/*">
+        </div>
         <button type="submit">등록</button>
       </fieldset>
     </form>
@@ -65,6 +43,43 @@
   </table>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="/sequelize.js"></script>
-<!-- <button id="cap-brand" type="submit" class="btn" name="{{cap.brand}}" value="{{cap.brand}}">장바구니 담기</button> -->
+  <script>
+   
+    if (document.getElementById('img')) {
+      document.getElementById('img').addEventListener('change', function(e) {
+        const formData = new FormData();
+        console.log(this, this.files);
+        formData.append('img', this.files[0]);
+        axios.post('/post/img', formData)
+          .then((res) => {
+            document.getElementById('img-url').value = res.data.url;
+            document.getElementById('img-preview').src = res.data.url;
+            document.getElementById('img-preview').style.display = 'inline';
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      });
+    }
+    document.querySelectorAll('.twit-follow').forEach(function(tag) {
+      tag.addEventListener('click', function() {
+        const myId = document.querySelector('#my-id');
+        if (myId) {
+          const userId = tag.parentNode.querySelector('.twit-user-id').value;
+          if (userId !== myId.value) {
+            if (confirm('팔로잉하시겠습니까?')) {
+              axios.post(`/user/${userId}/follow`)
+                .then(() => {
+                  location.reload();
+                })
+                .catch((err) => {
+                  console.error(err);
+                });
+            }
+          }
+        }
+      });
+    });
+  </script>
 {% endblock %}
 

@@ -9,7 +9,10 @@ const multer=require('multer');
 
 
 //boardwrite로 렌더링(작성하려면 loggedin 상태여야 함)
-
+router.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
 
 try {
   fs.readdirSync('uploads');
@@ -33,11 +36,13 @@ const upload = multer({
 
 router.post('/', async (req, res, next) => {
     try {
+      const identity = res.locals.user;
       console.log(req.user);
       const comment = await Comment.create({
-        // 닉네임을 쓰고 싶으면 어떡하지
         img:req.body.url,
         comment: req.body.comment,
+        // 닉네임이나 이메일을 쓰고 싶으면 어떡하지
+        UserId: identity.email,
       
       });
       res.redirect('/board');
@@ -46,10 +51,12 @@ router.post('/', async (req, res, next) => {
       next(err);
     }
   });
+// 이미지 넣는 법
 router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
   console.log(req.file);
   res.json({ url: `/img/${req.file.filename}` });
 });
+// 업로드
 const upload2 = multer();
 router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
   try {
@@ -58,7 +65,7 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
       
       comment: req.body.comment,
       img: req.body.url,  
-  
+      // id: req.user.id
      
 
     });

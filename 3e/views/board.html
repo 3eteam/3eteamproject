@@ -1,74 +1,336 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class=board-header>
-        <h1> 게시판 </h1>
-    </div>
-    <br>
-<!-- <div>{{comments.comment}}</div>
-{% for comment in comments %}
-         
-        다시!!
-        
-        {% endfor %} -->
 
+    <style>
+        body {
+            font-family: sans-serif;
+        }
 
+        body *,
+        body *:before,
+        body *:after {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
 
-<button class="clicktowrite" onclick="location.href='boardwrite'">글 작성</button>
-<br>
+        body .wrapper {
+            width: 1140px;
+            margin: 0 auto;
+            max-width: 100%;
+            padding: 0 15px;
+        }
 
-<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<form action="/boardwrite" method="POST">
-        <section class="board-section">
-            <div class="board-list" style="border: 2px;">
-                <table class="board-list-table">
-                    <br>
-                        <h2>게시글 목록</h2>
-                    <br>
-                    <br>
-                    <tr>
-                        <td class="board-num" style="width: 50px; text-align: center;">
-                            <a>번호</a>
-                        </td>
-                        <td class="board-name" style="text-align: center;">
-                            <a>작성자</a>
-                        </td>
-                        <td>
-                            <a>내용</a>
-                        </td>
-                        <td>
-                            <a>작성시간</a>
-                        </td>
-                        <td></td>
-                    </tr>
-                    {% for comment in comments%}
-                    <tr>
-                        <td>
-                            <div class="board-list-num" style="text-align: center; margin: 40px;">{{comment.id}}</div>
-                        </td>
-                        <td>
-                                <!-- 수정 요망 -->
-                            <div class="board-list-name" style="text-align: center; margin: 40px;">{{user.nick}}</div>
-                        </td>
-                        <td>
-                            <div class="board-list-content">{{comment.comment}}</div>
-                        </td>
-                        <td>
-                                <div class="board-list-time">{{comment.created_at}}</div>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </table>
+        body .clearfix:after {
+            content: " ";
+            clear: both;
+            display: table;
+        }
+        .board {
+    margin-bottom: 30px;
+}
+
+.board .header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.board .header .title {
+    font-size: 25px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    color: #1259a7;
+}
+
+.board .header .desc {
+    margin-top: 10px;
+}
+
+.board .article table {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+.board .article table th,
+.board .article table td {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.board .article table th {
+    background: #f7f7f7;
+}
+
+.board .article table td.title {
+    text-align: left;
+}
+
+.board .article table td a {
+    cursor: pointer;
+}
+
+.board .article table td.title span {
+    display: inline-block;
+    padding: 3px 5px;
+    color: #fff;
+    font-size: 10px;
+    margin-left: 3px;
+}
+
+.board .article table td.title span.new {
+    background: #f71d1d;
+}
+
+.board .article table td.title span.update {
+    background: #1259a7;
+}
+
+.board .article table td a:hover {
+    text-decoration: underline;
+}
+
+.board .article .search {
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: right;
+}
+
+.board .article .search .count {
+    float: left;
+    border: 1px solid #ddd;
+    padding: 12px;
+}
+
+.board .article .search .bundle {
+    width: 370px;
+    margin-left: auto;
+}
+
+.board .article .search .bundle select {
+    height: 42px;
+    border: 1px solid #ddd;
+    vertical-align: middle;
+    border-radius: 0;
+    padding: 0 5px;
+    float: left;
+    width: 35%;
+}
+
+.board .article .search .bundle input {
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    border-left: 0;
+    border-radius: 0;
+    height: 42px;
+    padding: 0 10px;
+    float: left;
+    width: 53.5%;
+}
+
+.board .article .search button {
+    border: 1px solid #1259a7;
+    background: #1259a7;
+    vertical-align: middle;
+    color: #fff;
+    height: 42px;
+    cursor: pointer;
+    padding: 0 13px;
+    float: left;
+    width: 11.5%;
+}
+
+.board .article .pages {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.board .article .pages ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.board .article .pages ul>li {
+    display: inline-block;
+}
+
+.board .article .pages ul>li>a {
+    cursor: pointer;
+    display: inline-block;
+    padding: 8px 13px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+}
+
+.board .article .pages ul>li>a:hover {
+    background: #eee;
+}
+
+.board .article .pages ul>li.active>a {
+    background: #1259a7;
+    border-color: #1259a7;
+    color: #fff
+}
+
+@media(max-width:767px) {
+    .board .article table .check,
+    .board .article table .num,
+    .board .article table .date,
+    .board .article table .views {
+        display: none;
+    }
+
+    .board .article .search .count {
+        display: none;
+    }
+
+    .board .article .search .bundle {
+        width: 100%;
+    }
+}
+</style>
+
+<body>
+    <div class="board">
+        <div class="header">
+            <div class="wrapper">
+                <a class="title" href="/">NOCAP</a>
+                <div class="desc">생각을 자유롭게 공유해주세요</div>
             </div>
-        </section>
-        </form>
+        </div>
+        <div class="article">
+            <div class="wrapper">
+                <table>
+                    <form action="/board" method="POST">
+                    <thead>
+                        <tr>
+                            <th class="num">게시글 번호</th>
+                            <th>제 목 / 내 용</th>
+                            <th>작성자</th>
+                            <th class="date">작성일자</th>
+                            <th class="views">조회수</th>
+                        </tr>
+                    </thead>
+                    
+                        <tr>
+                            <td class="num">4</td>
+                            <td class="title">
+                                <a>이거를</a>
+                                <span class="new">NEW</span>
+                            </td>
+                            <td>3e</td>
+                            <td class="date">2021-08-10</td>
+                            <td class="views">42</td>
+                        </tr>
+                        <tr>
+                            <td class="num">3</td>
+                            <td class="title">
+                                <a>어떻게</a>
+                                <span class="new">NEW</span>
+                            </td>
+                            <td>동녘</td>
+                            <td class="date">2021-08-09</td>
+                            <td class="views">37</td>
+                        </tr>
+                        <tr>
+                            <td class="num">2</td>
+                            <td class="title">
+                                <a>바꾸지</a>
+                                <span class="update">UPDATE</span>
+                            </td>
+                            <td>경현</td>
+                            <td class="date">2021-08-08</td>
+                            <td class="views">33</td>
+                        </tr>
+                        <tr>
+                            <td class="num">1</td>
+                            <td class="title">
+                                <a>화이팅</a>
+                            </td>
+                            <td>성재</td>
+                            <td class="date">2021-08-08</td>
+                            <td class="views">30</td>
+                        </tr>
+                        
+                    </tbody>
+                    <!-- <tbody>     -->
+                    {% for comment in comments %}
+                    <tr>
+                        <td class="board-list-num">
+                            <div>
+                                {{comment.id}}
+                            </div>
+                        </td>
+                        <td class="board-list-content">
+                            <div>
+                            <a>{{comment.comment}}</a>
+                            </div>
+                        </td>
+                        <!-- nick이 뜰 수 있게 수정 요망 -->
+                        <td class="board-list-name">
+                            <div>
+                                {{comment.UserId}}
+                            </div>
+                        </td>
+                        <td class="board-list-time">
+                            <div>{{comment.createdAt}}</div>
+                        </td>
+                        <!-- 조회수로 수정 요망 -->
+                        <td class="views">무한</td>
+                    </tr>
+                    
+                    {% endfor %}
+                </form>
+                    <tbody>
+                </table>
+
+                <!-- DB에 저장하고 boardwrite로 페이지를 넘겨주는 버튼 -->
+                <div>
+                <button class="boardwrite" onclick="location.href='boardwrite'">글 작성</button>
+                <button class="delete-item">삭제</button>
+                </div>
+                <!-- page 개수 -->
+                <div class="pages">
+                    <ul>
+                        <li class="active">
+                            <a>1</a>
+                        </li>
+                        <li>
+                            <a>2</a>
+                        </li>
+                        <li>
+                            <a>3</a>
+                        </li>
+                        <li>
+                            <a>4</a>
+                        </li>
+                        <li>
+                            <a>5</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- <script>
+        $(".board th input[type=checkbox]").on("click", function() {
+            var checked = $(this).prop("checked");
+            $(this).closest("thead").siblings("tbody").find("td input[type=checkbox]").each(function() {
+                $(this).prop("checked", checked);
+            })
+        })
+    </script> -->
+
+</body>
 
 {% endblock %}
+
+
