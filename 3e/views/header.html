@@ -1,66 +1,58 @@
 {% block content %}
 <style type="text/css">
-  @font-face {
+
+@font-face {
     font-family: 'scriptoramamarkdownjfregular';
     src: url('/fonts/design.jasonwalcott.scriptorama_markdown_jf-webfont.woff') format('woff2'),
-      url('/fonts/design.jasonwalcott.scriptorama_markdown_jf-webfont.woff2') format('woff');
+         url('/fonts/design.jasonwalcott.scriptorama_markdown_jf-webfont.woff2') format('woff');
     font-weight: normal;
     font-style: normal;
-  }
-
+}
+ 
   header {
     color: black;
   }
-
   .navbar-brand {
-    text-align: center;
-    padding-left: 200px;
-    font-size: 20px;
-    font-weight: bold;
+  text-align: center;
+  padding-left:200px;
+  font-size: 20px;
+  font-weight:bold;
   }
-
   .container-fluid {
     padding: 0;
   }
-
+  
   .navbar {
     padding: 0;
   }
-
-  .btn-outline-success {
+  .btn-outline-success{
     height: 40px;
   }
-
   .form-control {
     height: 40px;
     width: 150px;
   }
-
   .logo-name {
     padding-right: 10px;
-    font-weight: bold;
+    font-weight:bold;
   }
-
   header {
     position: absolute;
     z-index: 999;
     list-style: none;
     text-decoration: none;
   }
-
   .page-header .sticky {
     position: fixed;
     top: 0;
     background: #fff;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, .3);
+    box-shadow: 0 2px 2px rgba(0,0,0,.3);
     background-color: black;
   }
-
   .page-header {
     width: 100%;
     margin-top: 20px;
   }
-
   .logo_nc {
     position: relative;
     top: 0px;
@@ -72,20 +64,9 @@
   /* header .sticky {
 
   } */
-  a:link {
-    color: black;
-    text-decoration: none;
-  }
-
-  a:visited {
-    color: black;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: black;
-    text-decoration: underline;
-  }
+  a:link { color: black; text-decoration: none;}
+  a:visited { color: black; text-decoration: none;}
+  a:hover { color: black; text-decoration: underline;}
 
   .line {
     display: inline-block;
@@ -109,7 +90,7 @@
     left: -30px;
   }
 
-  .profilee:hover {
+  .profilee:hover{
     cursor: pointer;
   }
 
@@ -132,7 +113,7 @@
     position: relative;
     width: 150px;
     height: 150px;
-    top: 40px;
+    top: 75px;
     left: -40px;
     border: 1px solid rgb(189, 187, 187);
     text-align: center;
@@ -141,13 +122,14 @@
     flex-wrap: nowrap;
     justify-content: space-around;
     list-style: none;
+    padding: 0;
   }
 
   .pro_table2 ul {
     position: relative;
     width: 150px;
     height: 250px;
-    top: 50px;
+    top: 85px;
     left: -40px;
     border: 1px solid rgb(189, 187, 187);
     text-align: center;
@@ -171,121 +153,109 @@
     height: 10px;
     text-decoration: none;
   }
-
+  
   .user-name {
     font-weight: 900;
   }
 
-  #hoverrr {
+  #hoverrr{
     display: none;
     position: absolute;
   }
 
   /* 돋보기기이이이ㅣ이이이이이이잉 */
 
-  .gallery_box::after {
-    display: block;
-    content: '';
-    clear: both;
-  }
-
-  .gallery_box .col a {
-    display: block;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .gallery_box .col a div {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    opacity: 0;
-  }
+.gallery_box::after { display: block; content: ''; clear: both;}
+.gallery_box .col a { display: block; overflow: hidden; position: relative;}
+.gallery_box .col a div {
+  position: relative;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+}
 
 
-  .light_box {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    opacity: 0;
-    z-index: -10;
-    cursor: pointer;
-  }
-
-  .light_box.visible {
-    opacity: 1;
-    z-index: 10;
-    width: 100%;
-    height: 100%;
-    transition: all 0.7s;
-  }
+.light_box {
+  display: block;
+  position: fixed;
+  top:0; left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  z-index: -10;
+  cursor: pointer;
+}
+.light_box.visible{
+  opacity: 1;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  transition: all 0.7s;
+}
 
 
-  .light_ser {
-    width: 70px;
-    position: absolute;
-    top: 50%;
-    left: 66%;
-    max-height: 90%;
-    max-width: 90%;
-    transform: translate(-50%, -50%);
-    width: 50px;
-  }
+.light_ser {
+  width: 70px;
+  position: absolute; 
+  top: 50%; left: 66%;
+  max-height: 90%;
+  max-width: 90%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+}
 
-  .light_exit {
-    width: 100px;
-  }
+.light_exit {
+  width: 100px;
+}
 
-  .light_text {
-    position: absolute;
-    width: 700px;
-    height: 60px;
-    top: 50%;
-    left: 50%;
-    max-height: 90%;
-    max-width: 90%;
-    transform: translate(-50%, -50%);
-  }
+.light_text {
+  position: absolute; 
+  width: 700px;
+  height: 60px;
+  top: 50%; left: 50%;
+  max-height: 90%;
+  max-width: 90%;
+  transform: translate(-50%, -50%);
+}
 
 
 
 
 
 
-  /* 드롭다운 */
+/* 드롭다운 */
 
 
 
 
 
-  *:focus {
+*:focus
+{
     outline: none;
-  }
+}
 
-  html,
-  body {
+html, body
+{
     height: 100%;
     min-height: 100%;
-  }
+}
 
-  body {
+body
+{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding-bottom: 100px;
     margin: 0;
     background-color: #ebf3f3;
-  }
+}
 
-  .brd {
+.brd
+{
     border: 1px solid #e2eded;
     border-color: #eaf1f1 #e4eded #dbe7e7 #e4eded;
-  }
+}
 
-  #info {
+#info
+{
     position: absolute;
     top: 0;
     right: 0;
@@ -295,9 +265,10 @@
     text-align: center;
     padding: 14px;
     background-color: #f3f9f9;
-  }
+}
 
-  #app-cover {
+#app-cover
+{
     position: absolute;
     top: -100px;
     right: 0;
@@ -305,18 +276,20 @@
     width: 200px;
     height: 42px;
     margin: 100px auto 0 auto;
-  }
+}
 
-  #select-button {
+#select-button
+{
     position: relative;
     height: 16px;
     padding: 12px 14px;
     background-color: #fff;
     border-radius: 4px;
     cursor: pointer;
-  }
+}
 
-  #options-view-button {
+#options-view-button
+{
     position: absolute;
     top: 0;
     right: 0;
@@ -328,56 +301,63 @@
     opacity: 0;
     cursor: pointer;
     z-index: 3;
-  }
+}
 
-  #selected-value {
+#selected-value
+{
     font-size: 16px;
     line-height: 1;
     margin-right: 26px;
     position: relative;
     top: -10px;
     font-weight: 900;
-  }
+}
 
-  .option i {
+.option i
+{
     width: 16px;
     height: 16px;
-  }
+}
 
-  .option,
-  .label {
+.option, .label
+{
     color: #2d3667;
     font-size: 16px;
-  }
+}
 
-  #chevrons {
+#chevrons
+{
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     width: 12px;
     padding: 9px 14px;
-  }
+}
 
-  #chevrons i {
+#chevrons i
+{
     display: block;
     height: 50%;
     color: #d1dede;
     font-size: 12px;
     text-align: right;
-  }
+}
 
-  #options-view-button:checked+#select-button #chevrons i {
+#options-view-button:checked + #select-button #chevrons i
+{
     color: #2d3667;
-  }
+}
 
-  .options {
+.options
+{
     position: absolute;
     left: 0;
     width: 250px;
-  }
+}
 
-  #options {
+#options
+{
     position: absolute;
     top: 42px;
     right: 0;
@@ -386,59 +366,69 @@
     margin: 0 auto;
     background-color: #fff;
     border-radius: 4px;
-  }
+}
 
-  #options-view-button:checked~#options {
+#options-view-button:checked ~ #options
+{
     border: 1px solid #e2eded;
     border-color: #eaf1f1 #e4eded #dbe7e7 #e4eded;
-  }
+}
 
-  .option {
+.option
+{
     position: relative;
     line-height: 1;
     transition: 0.3s ease all;
     z-index: 2;
-  }
+}
 
-  .option i {
+.option i
+{
     position: absolute;
     left: 14px;
     padding: 0;
     display: none;
-  }
+}
 
-  #options-view-button:checked~#options .option i {
+#options-view-button:checked ~ #options .option i
+{
     display: block;
     padding: 12px 0;
-  }
+}
 
-  .label {
+.label
+{
     display: none;
     padding: 0;
     margin-left: 27px;
-  }
+}
 
-  #options-view-button:checked~#options .label {
+#options-view-button:checked ~ #options .label
+{
     display: block;
-    padding: 12px 14px;
-  }
+    padding: 12px 14px;    
+}
 
-  .s-c {
+.s-c
+{
     position: absolute;
     left: 0;
     width: 100%;
     height: 50%;
-  }
+}
 
-  .s-c.top {
+.s-c.top
+{
     top: 0;
-  }
+}
 
-  .s-c.bottom {
+.s-c.bottom
+{
     bottom: 0;
-  }
+}
 
-  input[type="radio"] {
+input[type="radio"]
+{
     position: absolute;
     right: 0;
     left: 0;
@@ -447,57 +437,51 @@
     margin: 0;
     opacity: 0;
     cursor: pointer;
-  }
+}
 
-  .s-c:hover~i {
+.s-c:hover ~ i
+{
     color: #fff;
     opacity: 0;
-  }
+}
 
-  .s-c:hover {
+.s-c:hover
+{
     height: 100%;
     z-index: 1;
-  }
+}
 
-  .s-c.bottom:hover+i {
+.s-c.bottom:hover + i
+{
     bottom: -25px;
     animation: moveup 0.3s ease 0.1s forwards;
-  }
+}
 
-  .s-c.top:hover~i {
+.s-c.top:hover ~ i
+{
     top: -25px;
     animation: movedown 0.3s ease 0.1s forwards;
-  }
+}
 
-  @keyframes moveup {
-    0% {
-      bottom: -25px;
-      opacity: 0;
-    }
+@keyframes moveup
+{
+    0%{ bottom: -25px; opacity: 0;}
+    100%{ bottom: 0; opacity: 1;}
+}
 
-    100% {
-      bottom: 0;
-      opacity: 1;
-    }
-  }
+@keyframes movedown
+{
+    0%{ top: -25px; opacity: 0;}
+    100%{ top: 0; opacity: 1;}
+}
 
-  @keyframes movedown {
-    0% {
-      top: -25px;
-      opacity: 0;
-    }
-
-    100% {
-      top: 0;
-      opacity: 1;
-    }
-  }
-
-  .label {
+.label
+{
     transition: 0.3s ease all;
-  }
+}
 
-  .opt-val {
+.opt-val
+{
     position: absolute;
     left: 14px;
     width: 217px;
@@ -505,26 +489,29 @@
     opacity: 0;
     background-color: #fff;
     transform: scale(0);
-  }
+}
 
-  .option input[type="radio"]:checked~.opt-val {
+.option input[type="radio"]:checked ~ .opt-val
+{
     opacity: 1;
     transform: scale(1);
-  }
+}
 
-  .option input[type="radio"]:checked~i {
+.option input[type="radio"]:checked ~ i
+{
     top: 0;
     bottom: auto;
     opacity: 1;
     animation: unset;
-  }
+}
 
-  .option input[type="radio"]:checked~i,
-  .option input[type="radio"]:checked~.label {
-    color: #fff;
-  }
+.option input[type="radio"]:checked ~ i, .option input[type="radio"]:checked ~ .label
+{
+    color:#fff;
+}
 
-  .option input[type="radio"]:checked~.label:before {
+.option input[type="radio"]:checked ~ .label:before
+{
     content: '';
     position: absolute;
     top: 0;
@@ -532,88 +519,108 @@
     bottom: 0;
     left: 0;
     z-index: -1;
-  }
+}
 
-  #options-view-button:not(:checked)~#options .option input[type="radio"]:checked~.opt-val {
+#options-view-button:not(:checked) ~ #options .option input[type="radio"]:checked ~ .opt-val
+{
     top: -40px;
     width: 180px;
-  }
+}
 
-  .option:nth-child(1) input[type="radio"]:checked~.label:before {
+.option:nth-child(1) input[type="radio"]:checked ~ .label:before
+{
     background-color: #000;
     border-radius: 4px 4px 0 0;
-  }
+}
 
-  .option:nth-child(1) input[type="radio"]:checked~.opt-val {
+.option:nth-child(1) input[type="radio"]:checked ~ .opt-val
+{
     top: -31px;
-  }
+}
 
-  .option:nth-child(2) input[type="radio"]:checked~.label:before {
+.option:nth-child(2) input[type="radio"]:checked ~ .label:before
+{
     background-color: #ea4c89;
-  }
+}
 
-  .option:nth-child(2) input[type="radio"]:checked~.opt-val {
+.option:nth-child(2) input[type="radio"]:checked ~ .opt-val
+{
     top: -71px;
-  }
+}
 
-  .option:nth-child(3) input[type="radio"]:checked~.label:before {
+.option:nth-child(3) input[type="radio"]:checked ~ .label:before
+{
     background-color: #0057ff;
-  }
+}
 
-  .option:nth-child(3) input[type="radio"]:checked~.opt-val {
+.option:nth-child(3) input[type="radio"]:checked ~ .opt-val
+{
     top: -111px;
-  }
+}
 
-  .option:nth-child(4) input[type="radio"]:checked~.label:before {
+.option:nth-child(4) input[type="radio"]:checked ~ .label:before
+{
     background-color: #32c766;
-  }
+}
 
-  .option:nth-child(4) input[type="radio"]:checked~.opt-val {
+.option:nth-child(4) input[type="radio"]:checked ~ .opt-val
+{
     top: -151px;
-  }
+}
 
-  .option:nth-child(5) input[type="radio"]:checked~.label:before {
+.option:nth-child(5) input[type="radio"]:checked ~ .label:before
+{
     background-color: #f48024;
-  }
+}
 
-  .option:nth-child(5) input[type="radio"]:checked~.opt-val {
+.option:nth-child(5) input[type="radio"]:checked ~ .opt-val
+{
     top: -191px;
-  }
+}
 
-  .option:nth-child(6) input[type="radio"]:checked~.label:before {
+.option:nth-child(6) input[type="radio"]:checked ~ .label:before
+{
     background-color: #006400;
     border-radius: 0 0 4px 4px;
-  }
+}
 
-  .option:nth-child(6) input[type="radio"]:checked~.opt-val {
+.option:nth-child(6) input[type="radio"]:checked ~ .opt-val
+{
     top: -231px;
-  }
+}
 
-  .option .fa-codepen {
+.option .fa-codepen
+{
     color: #000;
-  }
+}
 
-  .option .fa-dribbble {
+.option .fa-dribbble
+{
     color: #ea4c89;
-  }
+}
 
-  .option .fa-behance {
+.option .fa-behance
+{
     color: #0057ff;
-  }
+}
 
-  .option .fa-hackerrank {
+.option .fa-hackerrank
+{
     color: #32c766;
-  }
+}
 
-  .option .fa-stack-overflow {
+.option .fa-stack-overflow
+{
     color: #f48024;
-  }
+}
 
-  .option .fa-free-code-camp {
+.option .fa-free-code-camp
+{
     color: #006400;
-  }
+}
 
-  #option-bg {
+#option-bg
+{
     position: absolute;
     top: 0;
     right: 0;
@@ -622,260 +629,260 @@
     transition: 0.3s ease all;
     z-index: 1;
     display: none;
-  }
+}
 
-  #options-view-button:checked~#options #option-bg {
+#options-view-button:checked ~ #options #option-bg
+{
     display: block;
-  }
+}
 
-  .option:hover .label {
+.option:hover .label
+{
     color: #fff;
-  }
+}
 
-  .option:nth-child(1):hover~#option-bg {
+.option:nth-child(1):hover ~ #option-bg
+{
     top: 0;
     background-color: #000;
     border-radius: 4px 4px 0 0;
-  }
+}
 
-  .option:nth-child(2):hover~#option-bg {
+.option:nth-child(2):hover ~ #option-bg
+{
     top: 40px;
     background-color: #ea4c89;
-  }
+}
 
-  .option:nth-child(3):hover~#option-bg {
+.option:nth-child(3):hover ~ #option-bg
+{
     top: 80px;
     background-color: #0057ff;
-  }
+}
 
-  .option:nth-child(4):hover~#option-bg {
+.option:nth-child(4):hover ~ #option-bg
+{
     top: 120px;
     background-color: #32c766;
-  }
+}
 
-  .option:nth-child(5):hover~#option-bg {
+.option:nth-child(5):hover ~ #option-bg
+{
     top: 160px;
     background-color: #f48024;
-  }
+}
 
-  .option:nth-child(6):hover~#option-bg {
+.option:nth-child(6):hover ~ #option-bg
+{
     top: 200px;
     background-color: #006400;
     border-radius: 0 0 4px 4px;
-  }
+}
 
-  #ytd-url {
-    display: block;
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    padding: 10px 14px;
-    margin: 20px;
-    color: #fff;
-    font-size: 14px;
-    text-decoration: none;
-    background-color: #143240;
-    border-radius: 4px;
-    box-shadow: 0 10px 20px -5px rgba(20, 50, 64, 0.76);
-  }
+#ytd-url {
+  display: block;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 10px 14px;
+  margin: 20px;
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  background-color: #143240;
+  border-radius: 4px;
+  box-shadow: 0 10px 20px -5px rgba(20, 50, 64, 0.76);
+}
 </style>
 
 <header class="page-header">
-  <nav class="navbar navbar-expand-lg" style="height: 50px;">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-xl-9 col-lg-9 col-md-9 col-sm-9">
-
-          <div class="half">
-            <div class="profile-wrap">
+    <nav class="navbar navbar-expand-lg" style="height: 50px;">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-xl-9 col-lg-9 col-md-9 col-sm-9">
+            
+            <div class="half">
+              <div class="profile-wrap">
               <form class="d-flex align-self-center">
-                <span class="logo-name"><a href="/"><img class="logo_nc"
-                      src="https://i.esdrop.com/d/cl3pewp2aooj/OBaZNw8TQW.png" alt="" srcset=""></a></span>
+                <span class="logo-name"><a href="/"><img class="logo_nc" src="https://i.esdrop.com/d/cl3pewp2aooj/OBaZNw8TQW.png" alt="" srcset=""></a></span>
                 <img class="line" src="https://i.esdrop.com/d/cl3pewp2aooj/npd2WEPCXH.svg" alt="" srcset="">
               </form>
 
 
               <form id="app-cover">
                 <div id="select-box">
-                  <input type="checkbox" id="options-view-button">
-                  <div id="select-button" class="brd">
-                    <div id="selected-value">
-                      <span> 브 랜 드 관</span>
+                        <input type="checkbox" id="options-view-button">
+                        <div id="select-button" class="brd">
+                                <div id="selected-value">
+                                    <span> 브 랜 드 관</span>
+                                </div>
+                                <div id="chevrons">
+                                        <i class="fas fa-chevron-up"></i>
+                                        <i class="fas fa-chevron-down"></i>
+                                </div>
+                        </div>
+                        <div id="options">
+                                <div class="option">
+                                        <input class="s-c top" type="radio" name="platform" value="codepen" onclick="javascript:hospital('nike')">
+                                        <input class="s-c bottom" type="radio" name="platform" value="codepen">
+                                        <i class="fab fa-codepen"></i>
+                                        <span class="label">O S O I</span>
+                                        <span class="opt-val">O S O I</span>
+                                </div>
+                                <div class="option">
+                                        <input class="s-c top" type="radio" name="platform" value="dribbble">
+                                        <input class="s-c bottom" type="radio" name="platform" value="dribbble">
+                                        <i class="fab fa-dribbble"></i>
+                                        <span class="label">N I K E</span>
+                                        <span class="opt-val">N I K E</span>
+                                </div>
+                                <div class="option">
+                                        <input class="s-c top" type="radio" name="platform" value="behance">
+                                        <input class="s-c bottom" type="radio" name="platform" value="behance">
+                                        <i class="fab fa-behance"></i>
+                                        <span class="label">A D I D A S</span>
+                                        <span class="opt-val">A D I D A S</span>
+                                </div>
+                                <div class="option">
+                                        <input class="s-c top" type="radio" name="platform" value="hackerrank">
+                                        <input class="s-c bottom" type="radio" name="platform" value="hackerrank">
+                                        <i class="fab fa-hackerrank"></i>
+                                        <span class="label">O S O I</span>
+                                        <span class="opt-val">O S O I</span>
+                                </div>
+                                <div class="option">
+                                        <input class="s-c top" type="radio" name="platform" value="stackoverflow">
+                                        <input class="s-c bottom" type="radio" name="platform" value="stackoverflow">
+                                        <i class="fab fa-stack-overflow"></i>
+                                        <span class="label">O S O I</span>
+                                        <span class="opt-val">O S O I</span>
+                                </div>
+                                <div class="option">
+                                        <input class="s-c top" type="radio" name="platform" value="freecodecamp">
+                                        <input class="s-c bottom" type="radio" name="platform" value="freecodecamp">
+                                        <i class="fab fa-free-code-camp"></i>
+                                        <span class="label">O S O I</span>
+                                        <span class="opt-val">O S O I</span>
+                                </div>
+                                <div id="option-bg"></div>
+                        </div>
+                </div>
+        </form>
+
+
+
+
+            </ul>
+            <div>
+              
+              
+                  {% if user and user.id %}
+                  <div class="profilee">
+                    <a href=""><img class="profile_p pro" id="hoverr" src="https://i.esdrop.com/d/cl3pewp2aooj/6BJxlkrxjQ.png" alt="" srcset=""></a>
+                    <a href="/cart"><img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/gvWpYo8EWg.png" alt="" srcset=""></a>
+                    <div class="gallery_box">
+                      <div class="col">
+                          <a href="#">
+                              <img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/4T5DRRcWOI.png" alt="더미이미지">
+                          </a>
+                      </div>
                     </div>
-                    <div id="chevrons">
-                      <i class="fas fa-chevron-up"></i>
-                      <i class="fas fa-chevron-down"></i>
+                    <div class="pro_table2" id="hoverrr">
+                      <ul>
+                        <li><div class="user-name">{{user.nick + '님'}}</div></li>
+                        <li><a id="logout" href="/auth/logout" class="btn">로그아웃</a></li>
+                        <li><a href="/alllist" class="btn">전체상품</a></li>
+                        <li><a href="/board" class="btn">게시판</a></li>
+                        <li><a id="my-profile" href="/profile" class="btn">마이페이지</a></li>
+                        <li><a href="/login" class="btn">주문조회</a></li>
+                        {% if user.id < 6%}
+                        <li><a id="catlist" href="/catlist" class="btn">관리자모드</a></li>
+                        {% endif %}
+                      </ul>
                     </div>
                   </div>
-                  <div id="options">
-                    <div class="option">
-                      <input class="s-c top" type="radio" name="platform" value="codepen"
-                        onclick="javascript:hospital('nike')">
-                      <input class="s-c bottom" type="radio" name="platform" value="codepen">
-                      <i class="fab fa-codepen"></i>
-                      <span class="label">O S O I</span>
-                      <span class="opt-val">O S O I</span>
+                  <input id="my-id" type="hidden" value="{{user.id}}">
+                {% else %}
+                 
+                <div class="profilee">
+                  <a href=""><img class="profile_p pro" id="hoverr" src="https://i.esdrop.com/d/cl3pewp2aooj/6BJxlkrxjQ.png" alt="" srcset=""></a>
+                  <a href="/cart"><img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/gvWpYo8EWg.png" alt="" srcset=""></a>
+
+
+                  <div class="gallery_box">
+                    <div class="col">
+                        <a href="#">
+                            <img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/4T5DRRcWOI.png" alt="더미이미지">
+                        </a>
                     </div>
-                    <div class="option">
-                      <input class="s-c top" type="radio" name="platform" value="dribbble">
-                      <input class="s-c bottom" type="radio" name="platform" value="dribbble">
-                      <i class="fab fa-dribbble"></i>
-                      <span class="label">N I K E</span>
-                      <span class="opt-val">N I K E</span>
-                    </div>
-                    <div class="option">
-                      <input class="s-c top" type="radio" name="platform" value="behance">
-                      <input class="s-c bottom" type="radio" name="platform" value="behance">
-                      <i class="fab fa-behance"></i>
-                      <span class="label">A D I D A S</span>
-                      <span class="opt-val">A D I D A S</span>
-                    </div>
-                    <div class="option">
-                      <input class="s-c top" type="radio" name="platform" value="hackerrank">
-                      <input class="s-c bottom" type="radio" name="platform" value="hackerrank">
-                      <i class="fab fa-hackerrank"></i>
-                      <span class="label">O S O I</span>
-                      <span class="opt-val">O S O I</span>
-                    </div>
-                    <div class="option">
-                      <input class="s-c top" type="radio" name="platform" value="stackoverflow">
-                      <input class="s-c bottom" type="radio" name="platform" value="stackoverflow">
-                      <i class="fab fa-stack-overflow"></i>
-                      <span class="label">O S O I</span>
-                      <span class="opt-val">O S O I</span>
-                    </div>
-                    <div class="option">
-                      <input class="s-c top" type="radio" name="platform" value="freecodecamp">
-                      <input class="s-c bottom" type="radio" name="platform" value="freecodecamp">
-                      <i class="fab fa-free-code-camp"></i>
-                      <span class="label">O S O I</span>
-                      <span class="opt-val">O S O I</span>
-                    </div>
-                    <div id="option-bg"></div>
+                  </div>
+                 
+
+
+
+                  <div class="pro_table" id="hoverrr">
+                    <ul>
+                      <li><a href="/login">로그인</a></li>
+                      <li><a href="/join">회원가입</a></li>
+                      <li><a href="/login">마이페이지</a></li>
+                      <li><a href="/login">주문조회</a></li>
+                    </ul>
                   </div>
                 </div>
-              </form>
+                
 
-
-
-
-        </ul>
-        <div>
-
-
-          {% if user and user.id %}
-          <div class="profilee">
-            <a href=""><img class="profile_p pro" id="hoverr" src="https://i.esdrop.com/d/cl3pewp2aooj/6BJxlkrxjQ.png"
-                alt="" srcset=""></a>
-            <a href="/cart"><img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/gvWpYo8EWg.png" alt=""
-                srcset=""></a>
-            <div class="gallery_box">
-              <div class="col">
-                <a href="#">
-                  <img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/4T5DRRcWOI.png" alt="더미이미지">
-                </a>
-              </div>
-            </div>
-            <div class="pro_table2" id="hoverrr">
-              <ul>
-                <li>
-                  <div class="user-name">{{user.nick + '님'}}</div>
-                </li>
-                <li><a id="logout" href="/auth/logout" class="btn">로그아웃</a></li>
-                <li><a href="/alllist" class="btn">전체상품</a></li>
-                <li><a href="/board" class="btn">게시판</a></li>
-                <li><a id="my-profile" href="/profile" class="btn">마이페이지</a></li>
-                <li><a href="/login" class="btn">주문조회</a></li>
-                {% if user.id < 6%} <li><a id="catlist" href="/catlist" class="btn">관리자모드</a></li>
-                  {% endif %}
-              </ul>
-            </div>
+                
+                {% endif %}
+                
+                </div>
           </div>
-          <input id="my-id" type="hidden" value="{{user.id}}">
-          {% else %}
-
-          <div class="profilee">
-            <a href=""><img class="profile_p pro" id="hoverr" src="https://i.esdrop.com/d/cl3pewp2aooj/6BJxlkrxjQ.png"
-                alt="" srcset=""></a>
-            <a href="/cart"><img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/gvWpYo8EWg.png" alt=""
-                srcset=""></a>
-
-
-            <div class="gallery_box">
-              <div class="col">
-                <a href="#">
-                  <img class="profile_p" src="https://i.esdrop.com/d/cl3pewp2aooj/4T5DRRcWOI.png" alt="더미이미지">
-                </a>
-              </div>
-            </div>
-
-
-
-
-            <div class="pro_table" id="hoverrr">
-              <ul>
-                <li><a href="/login">로그인</a></li>
-                <li><a href="/join">회원가입</a></li>
-                <li><a href="/login">마이페이지</a></li>
-                <li><a href="/login">주문조회</a></li>
-              </ul>
-            </div>
-          </div>
-
-
-
-          {% endif %}
-
         </div>
-      </div>
-    </div>
-  </nav>
+      </nav>
 
-
-  <!-- 팝업 될 곳  검색창-->
-  <div class="light_box">
-    <form id="hashtag-form" action="/search/hashtag">
-      <input type="text" name="hashtag" placeholder="태그 검색">
-      <button class="btn">검색</button>
-    </form>
     
+      <!-- 팝업 될 곳 -->
+      <div class="light_box">
+        <form id="hashtag-form" action="/search/hashtag">
+          <input type="text" name="hashtag" placeholder="태그 검색">
+          <button class="btn">검색</button>
+        </form>
 
-    <img class="light_ser" src="https://i.esdrop.com/d/cl3pewp2aooj/4T5DRRcWOI.png">
-    <!-- <img class="light_exit" src="https://i.esdrop.com/d/cl3pewp2aooj/L802XbEqdW.png"> -->
-  </div>
+        
+        <img class="light_ser" src="https://i.esdrop.com/d/cl3pewp2aooj/4T5DRRcWOI.png">
+        <!-- <img class="light_exit" src="https://i.esdrop.com/d/cl3pewp2aooj/L802XbEqdW.png"> -->
+      </div>
 
-</header>
-{% block script %}
-<script defer type="text/javascript" src="./header.js"></script>
-{% endblock %}
+    </header>
+    {% block script %}
+    <script defer type="text/javascript" src="./header.js"></script>
+    {% endblock %}
 
-<script type="text/javascript">
-  function hospital(v) {
-    location.href = "" + v;
-  }
-</script>
+      <script type="text/javascript"> 
+      function hospital(v) { 
+       location.href=""+v; 
+      } 
+      </script>
+      
 
+      <script>
 
-<script>
+        window.onload = () => {
+          if (new URL(location.href).searchParams.get('loginError')) {
+            alert(new URL(location.href).searchParams.get('loginError'));
+          }
+        };
 
-  window.onload = () => {
-    if (new URL(location.href).searchParams.get('loginError')) {
-      alert(new URL(location.href).searchParams.get('loginError'));
-    }
-  };
+        $(function(){
+        var $wind = $(window),
+          header = $('.page-header'),
+          headerOffsetTop = header.offset().top;
+        })
 
-  $(function () {
-    var $wind = $(window),
-      header = $('.page-header'),
-      headerOffsetTop = header.offset().top;
-  })
-
-
-
-</script>
+        
+        
+      </script>
 
 {% endblock %}

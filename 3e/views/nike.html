@@ -1671,10 +1671,14 @@
     justify-content: center;
   }
 
-  .btn {
+  #cap-brand {
     position: relative;
-    top: -140px;
+    top: -145px;
+    left: 110px;
     opacity: 0;
+    height: 50px;
+    width: 50px;
+    padding: 0;
   }
 
   .sale {
@@ -1776,13 +1780,12 @@
           transition-delay: 0s, 0.25s, 0s;
 }
 
-.btn {
+.btn1 {
   background: none;
   border: none;
   cursor: pointer;
   line-height: 1.5;
   font: 700 1.2rem 'Roboto Slab', sans-serif;
-  padding: 1em 2em;
   letter-spacing: 0.05rem;
 }
 
@@ -1863,7 +1866,6 @@
                       </div>
                       <div class="card-body">
                         <input type="hidden" name="capname" value="{{cap.capname}}">{{cap.capname}}
-                        <div class="cap-content">{{cap.content}}</div>
                         <p class="card-text">
                           <span class="badge bg-dark">검정</span>
                           <span class="badge bg-light">화이트</span>
@@ -1875,9 +1877,9 @@
 
 
 
-                        <button id="cap-brand" type="submit" class="btn" name="{{cap.brand}}" value="{{cap.brand}}" style="color: black;">장바구니
+                        <button id="cap-brand" type="submit" class="btn" name="{{cap.brand}}" value="{{cap.brand}}" style="color: black;">
                           담기</button>
-                        <button type="button" class="btn draw-border modalsasun js-stopBtn2" data-bs-toggle="modal"
+                        <button type="button" class="btn1 draw-border modalsasun js-stopBtn2" data-bs-toggle="modal"
                           data-bs-target="#exampleModal">
                           상세상품
                         </button>
@@ -1933,7 +1935,8 @@
 
 
                                     <div>
-                                      오소이 TONI MINI 백입니다.<br>
+                                      <div class="cap-content">{{cap.content}}</div>
+                                      <!-- 오소이 TONI MINI 백입니다.<br>
                                       미니멀하고 모던한 형태 및 견고하고 실용적인 상하 구성의 하드웨어 <br>"BAU"는 BAU SERIES의 아이덴티티가 됩니다.
                                       BAU는 결합 및 분리시 간결하게 떨어지는 쉐입과 안정적인 디자인을 위해 반대로 기능적이고 구조적인 요소가 복잡하고 정교하게 숨어 있는 형태로 설계되었습니다.<br>
                                       완성도 있는 제품을 위하여 자체 디자인 및 개발한 OSOI만의 장식입니다.<br>
@@ -1941,7 +1944,7 @@
                                       곡선의 실루엣과 입체감이 느껴지는 웨어러블한 스타일의 백입니다.<br>
                                       터치감이 부드럽고 유연하며, 넉넉한 수납력으로 실용성을 더했습니다.<br>
                                       BAU를 결합 또는 분리하여 스트랩 길이를 조절할 수 있습니다. <br>(크로스 바디로 연출이 불가합니다.)<br>
-                                      *디자인의 특성상 분리된 BAU 장식은 별도의 고정 장치가 없음을 <br>참고 부탁드립니다.<br>
+                                      *디자인의 특성상 분리된 BAU 장식은 별도의 고정 장치가 없음을 <br>참고 부탁드립니다.<br> -->
                                     </div>
 
 
@@ -1955,16 +1958,7 @@
                             </div>
                           </div>
                         </div>
-
-
-
-
-                        <!-- <a href="#" class="btn btn-sm btn-outline-secondary">장바구니</a> -->
-                        <div class="cap-content">{{cap.content}}</div>
-                        <!-- <input type="hidden" name="id" value="{{user.id}}"> -->
                         <input type="hidden" name="price" value="{{cap.price +'원'}}">
-                        <button id="cap-brand" type="submit" class="btn" name="{{cap.brand}}" value="{{cap.brand}}">장바구니
-                          담기</button>
 
 
                       </div>
