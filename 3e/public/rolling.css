@@ -1,0 +1,41 @@
+html, body {
+	width: 100%;
+	min-height: 100%;
+	height: 100%;
+}
+
+.rolling_wrap {
+	position: absolute;
+	width: 110%;
+	min-height: 700px;
+	height: 200px;
+	
+	margin: auto;
+	margin-top: 200px;
+	overflow: hidden;
+}
+
+.rolling_wrap a {
+	position: absolute;
+	
+	width: 400px;
+	height: 100%;
+	margin-left: 5px;
+	margin-right: 5px;
+	overflow: hidden;
+}
+
+.rolling_wrap a img {
+	width: 100%;
+	height: 100%;
+}
+
+/* #main_sdimg{
+	width: 400px;
+} */
+
+.animation-text {
+    position: absolute;
+    z-index: 10;
+    margin: 0 auto;
+}

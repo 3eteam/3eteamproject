@@ -10,7 +10,7 @@
 
   <style>
   .bgimg{
-    background-image: url('https://i.esdrop.com/d/cl3pewp2aooj/5gtA1DyiDg.jpg');
+    /* background-image: url('https://image.musinsa.com/images/campaign_img/2021100718312100000035811.png'); */
     margin: 0;
     border: 0;
     padding: 0;
@@ -20,7 +20,7 @@
     height: 100vh;
   }
   .bgimg2{ 
-    background-image: url('https://i.esdrop.com/d/cl3pewp2aooj/5gtA1DyiDg.jpg');
+    background-color: #ffcc00;
     margin: 0;
     border: 0;
     padding: 0;
@@ -34,6 +34,16 @@
     top: 0; 
     left: 0; 
     min-height: 100%;
+  }
+
+  .main2 {
+    display: flex;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    border-radius: 20px;
+    flex-direction: column;
   }
 
     /* 풀페이지! */
@@ -60,6 +70,58 @@
     width: 30%;
   }
 
+  #slide{
+
+  position:relative;
+
+  width: 500px;
+
+  }
+
+  #slide li{
+
+  position:absolute;
+
+  top:0;
+
+  left:0;
+
+  display:none;
+
+  -webkit-display:block;
+
+  }
+
+  #slide img{
+
+  width:330px;
+
+  height: 300px;
+  margin: 10px;
+
+  } 
+
+  .kakalink img{
+    width: 330px;
+    height: 140px;
+    flex-direction: column;
+  }
+
+  .kakalink {
+    position: relative;
+    top: 320px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+  }
+
+  .chaat {
+    position: relative;
+    width: 580px;
+    height: 450px;
+    top: -140px;
+    left: 350px;
+  }
+
 
   </style>
   <div id="fullpage">
@@ -67,11 +129,10 @@
     <div class="fullsection full1" pageNum="1">
       <div class="vh-100 col-xl-12 col-lg-12 col-md-12 col-sm-12 main1" style="height:700px;">
         <div class="bgimg">
-            {% include "chat.html" %}
           
           <div class="ccc">
+            {% include "blog2.html" %}
           </div>
-          {% include "mh.html" %}
         </div>
         <div class="temtem">
         </div>
@@ -82,37 +143,61 @@
     </div>
     <div class="main_content">
       <div class="bgimg2">
-    <div class="fullsection full2" pageNum="2">
-      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mt-5" style="height:600px;">
-        <br>
-        <br>
-        
-      </div>
-      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 mt-5" style="height:600px;">
-        <br>
-        <br>
-      </div>
-      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 mt-5" style="height:600px;">
-        <br>
-        <br>
-      </div>
-      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12" style="height:200px;">
-      </div>
-    </div>
+        <div class="fullsection full2" pageNum="2">
+          <div class="vh-60 col-xl-11 col-lg-11 col-md-11 col-sm-11 bg-white main2" style="height:470px;">
+
+              <div id="slide" val="1" mx="2">
+                <li id="img1"><img src="https://i.esdrop.com/d/cl3pewp2aooj/DGQe9N5fSK.jpg" alt=""/></li>
+                <li id="img2"><img src="https://i.esdrop.com/d/cl3pewp2aooj/UouIaHu316.jpg" alt=""/></li>
+              </div>
+              <div class="kakalink">
+                <a href=""><img src="https://i.esdrop.com/d/cl3pewp2aooj/sNDfIupA2v.jpg" alt="" srcset=""></a>
+              </div>
+              <div class="chaat">
+                {% include "chat.html" %}
+              </div>
+          </div>
+        </div>
     </div>
   </div>
      <div class="fullsection full3" pageNum="3">
       
-      <div class="vh-100 col-xl-12 col-lg-12 col-md-12 col-sm-12 bg-success" style="height:700px;">
-        
-        
-      </div>
+      
     </div>
   </div>
     
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+  <script type="text/javascript"> 
+
+    imgslide(); //페이지가 로딩될때 함수를 실행합니다
+    
+    function imgslide(){
+    
+      $val = $("#slide").attr("val"); //현재 이미지 번호를 가져옵니다
+    
+      $mx = $("#slide").attr("mx"); //총 이미지 개수를 가져옵니다
+    
+      $("#img"+$val).hide(); //현재 이미지를 사라지게 합니다.
+    
+      if( $val == $mx ){ $val = 1; } //현재이미지가 마지막 번호라면 1번으로 되돌립니다.
+    
+      else{ $val++; } //마지막 번호가 아니라면 카운트를 증가시켜줍니다
+    
+      $("#img"+$val).fadeIn(500); //변경된 번호의 이미지영역을 나타나게 합니다.괄호 안에 숫자는 페이드인 되는 시간을 나타냅니다.
+    
+      $("#slide").attr('val',$val); //변경된 이미지영역의 번호를 부여합니다.
+    
+      setTimeout('imgslide()',4000); //1초 뒤에 다시 함수를 호출합니다.(숫자값 1000당 1초)
+    
+    }
+    
+    </script>
+
 <script>
+
+
 $(document).ready(function(){
 	fullset();
 	quickClick();
