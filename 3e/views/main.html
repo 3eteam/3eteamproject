@@ -122,6 +122,13 @@
     height: 450px;
     position: relative;
   }
+  .board-wrap{
+    position: relative;
+    width: 380px;
+    height: 450px;
+    top: -440px;
+    left: 600px;
+  }
 
   </style>
   <div id="fullpage">
@@ -156,9 +163,26 @@
               <div class="chaat">
                 {% include "chat.html" %}
               </div>
-              <div class="iphone">
+              <div class="board-wrap">
+              {% for comment in comments %}
+              <tr>
+                  <td class="board-list-content">
+                      <div>
+                      <a class="board-list-content-link" href="/boarddetail/{{comment.id}}">{{comment.title}}</a>
+                      </div>
+                  </td>
+                  <td class="board-list-name">
+                      <div>
+                          {{comment.User.nick}}
+                      </div>
+                  </td>
+              </tr>
+              {% endfor %}
+            </div>
+
+              <!-- <div class="iphone">
                 <img src="https://i.esdrop.com/d/cl3pewp2aooj/9gAa4LY8Y0.png" alt="" srcset="">
-              </div>
+              </div> -->
           </div>
         </div>
     </div>

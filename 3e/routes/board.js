@@ -1,6 +1,6 @@
 const express = require('express');
 const { Comment, User } = require('../models');
-
+const { isLoggedIn } = require('./middlewares');
 const router  = express.Router();
 
 
@@ -8,10 +8,9 @@ router.use((req, res, next) => {
   res.locals.user = req.user;
   next();
 });
-
+//게시글 전체 데이터 가져와서 불러오기
 router.get('/', async (req, res, next) => {
     try {
-      const identity = res.locals.user;
       const posts = await Comment.findAll({ 
       include: {
         model: User,
@@ -29,10 +28,27 @@ router.get('/', async (req, res, next) => {
       next(error);
     }
   });
-  router.route('/:id').get(async(req,res)=>{
+
+  //  // 본인 게시글 수정하는 부분
+  // router.route('/:id/edit').get(isLoggedIn, async(req,res, next)=>{
+  //   try {
+  //      await Comment.update({
+  //        where : {id : req.params.id}
+  //     });
+  //         res.redirect('/board');
+  //   } catch (err) {
+  //     console.error(err);
+  //         next(err);
+  //   }
+  // });
+
+  
+ // 본인 게시글 삭제하는 부분
+  router.route('/:id').get(isLoggedIn, async(req,res, next)=>{
     try {
-      
-       await Comment.destroy({where:{id:req.params.id}});
+       await Comment.destroy({
+         where : {id : req.params.id}
+      });
           res.redirect('/board');
     } catch (err) {
       console.error(err);
