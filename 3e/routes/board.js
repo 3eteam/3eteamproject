@@ -32,5 +32,14 @@ router.get('/', async (req, res, next) => {
       next(error);
     }
   });
-
+  router.route('/:id').get(async(req,res)=>{
+    try {
+      
+       await Comment.destroy({where:{id:req.params.id}});
+          res.redirect('/board');
+    } catch (err) {
+      console.error(err);
+          next(err);
+    }
+  });
 module.exports=router;

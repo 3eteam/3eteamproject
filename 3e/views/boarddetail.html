@@ -215,6 +215,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"
                 <div class="desc">상세 페이쥐이이이이이이이이이이</div>
             </div>
         </div>
+        
         {% if comments %}
         <div class="article">
             <div class="wrapper">
@@ -256,10 +257,16 @@ src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"
                 </table>
                 <br>
                 <br>
-                <button class="delete-item">삭제</button>
+              
                 </div>
             </div>
         {% endif %}
+        <div >
+            {% if comments.UserId === user.id%}
+                <a href="/board\{{comments.id}}">삭제</a> 
+                {% endif %}
+        </div>
+                
         </div>
     </div>
 <script>
