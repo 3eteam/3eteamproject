@@ -194,7 +194,7 @@
                     </td>
                 </tr>
                 {% endfor %}
-                
+            
 
             <tr>
                 <td>[ 기본 배송 ]</td>
@@ -212,37 +212,17 @@
         <input type="hidden" name="comment" value="{{totalPrice}}">
     </div>
 </section>
-<form action="/payment" method="POST">
-
-    
+<form action="/payment" method="POST" target="param">
+    <input type="hidden" name="price" value="{{totalPrice}}">
+    <button  type="submit"class="buy-all"onclick="hello()">모두 구매</button>
+   
 </form>
-<button class="buy-all" id="btn1" value="{{totalPrice}}">모두 구매</button>
+<iframe id="if" name="param"></iframe>
+
 <script src="https://cdn.bootpay.co.kr/js/bootpay-3.3.2.min.js" type="application/javascript"></script>
 <script>
 
-    async function removeComment(id) {
-
-
-
-
-        addEventListener('click', async () => { // 삭제 클릭 시
-            try {
-                await axios.delete(`/cart/${user.id}`);
-                removeComment(id);
-            } catch (err) {
-                console.error(err);
-            }
-        });
-        // 버튼 추가
-
-
-    }
-
-
-</script>
-<script>
-
-    document.getElementById("btn1").addEventListener('click', hello);
+    // document.getElementById("btn1").addEventListener('click', hello);
 
     function hello() {
         window.BootPay.request({
@@ -316,30 +296,16 @@
 
 
 <script>
-    var buyButton = document.getElementsByClassName('buy-item');
-    for (var i = 0; i < buyButton.length; i++) {
-        buyButton[i].addEventListener('click', (event) => {
-            const item = [Number(event.currentTarget.getAttribute('value'))];
-            buy(item);
-        });
-    }
-    const buyAllButton = document.getElementsByClassName('buy-all')[0];
-    if (buyAllButton) {
-        buyAllButton.addEventListener('click', (event) => {
-            const items = [];
-            for (var i = 0; i < buyButton.length; i++) {
-                items.push(Number(buyButton[i].getAttribute('value')));
-            }
-            buy(items);
-        });
-    }
+   
     const buyURL = '/payment';
     function buy(items) {
         if (!confirm('정말구매하시겠습니까? 이가격에요..?')) {
             return false;
         }
         const option = {
+           
             method: "POST",
+  
             headers: {
                 'Content-Type': 'application/json',
             },
