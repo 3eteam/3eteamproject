@@ -12,6 +12,12 @@ router.get('/:id', async (req, res, next) => {
     try {
       const posts = await Comment.findOne({
         //해당 게시글을 id값(unique)을 통해 불러오는 방법
+        include: {
+          model: User,
+          
+          attributes:['id','nick'],
+         
+        },
         where:{id : req.params.id},
     });
       res.render('boarddetail', {
