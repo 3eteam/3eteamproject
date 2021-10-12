@@ -4,7 +4,8 @@
     "password": "q1w2q1w2",
     "database": "nocap",
     "host": "nocap.ccoy47i3d7fu.ap-northeast-2.rds.amazonaws.com",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "timezone": "+09:00"
   },
   "test": {
     "username": "root",

@@ -39,9 +39,11 @@ router.post('/', async (req, res, next) => {
       const identity = res.locals.user;
       console.log(req.user);
       const comment = await Comment.create({
-        img:req.body.url,
+        // 닉네임을 쓰고 싶으면 어떡하지
+        title: req.body.title,
         comment: req.body.comment,
-        // 닉네임이나 이메일을 쓰고 싶으면 어떡하지
+        img:req.body.url,
+        viewcount:req.body.viewcount,
         UserId: identity.id,
       
       });
@@ -51,22 +53,23 @@ router.post('/', async (req, res, next) => {
       next(err);
     }
   });
-// 이미지 넣는 법
 router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
   console.log(req.file);
   res.json({ url: `/img/${req.file.filename}` });
 });
-// 업로드
 const upload2 = multer();
 router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
   try {
+    const identity = res.locals.user;
     console.log(req.user);
     const post = await Comment.create({
       
+      title: req.body.title,
       comment: req.body.comment,
+      viewcount: req.body.viewcount,
       img: req.body.url,  
-      // id: req.user.id
-     
+      UserId: identity.id,
+      createdAt: req.body.createdAt
 
     });
     const hashtags = req.body.comment.match(/#[^\s#]*/g);
@@ -92,7 +95,7 @@ router.get('/', isLoggedIn, async (req, res, next) => {
     const posts = await Comment.findAll({ 
     include: {
       model: User,
-      attributes: ['id'],
+      attributes: ['id', 'email'],
     },
     order: [['createdAt', 'DESC']],
   });
@@ -109,29 +112,29 @@ router.get('/', isLoggedIn, async (req, res, next) => {
 
 
 
-  
-  router.route('/:id')
-    .patch(isLoggedIn, async (req, res, next) => {
-      try {
-        const result = await Comment.update({
-          comment: req.body.comment,
-        }, {
-          where: { id: req.params.id },
-        });
-        res.json(result);
-      } catch (err) {
-        console.error(err);v
-        next(err);
-      }
-    })
-    .delete(isLoggedIn, async (req, res, next) => {
-      try {
-        const result = await Comment.destroy({ where: { id: req.params.id } });
-        res.json(result);
-      } catch (err) {
-        console.error(err);
-        next(err);
-      }
-    });
+  // // 본인 게시글 수정, 삭제하는 부분
+  // router.route('/:id')
+  //   .patch(isLoggedIn, async (req, res, next) => {
+  //     try {
+  //       const result = await Comment.update({
+  //         comment: req.body.comment,
+  //       }, {
+  //         where: { id: req.params.id },
+  //       });
+  //       res.json(result);
+  //     } catch (err) {
+  //       console.error(err);v
+  //       next(err);
+  //     }
+  //   })
+  //   .delete(isLoggedIn, async (req, res, next) => {
+  //     try {
+  //       const result = await Comment.destroy({ where: { id: req.params.id } });
+  //       res.json(result);
+  //     } catch (err) {
+  //       console.error(err);
+  //       next(err);
+  //     }
+  //   });
   
 module.exports=router;

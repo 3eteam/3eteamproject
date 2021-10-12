@@ -3,6 +3,10 @@
 {% block content %}
 
     
+<script
+type="text/javascript"
+src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"
+></script>
     <style>
         body {
             font-family: sans-serif;
@@ -208,101 +212,63 @@
         <div class="header">
             <div class="wrapper">
                 <a class="title" href="/">NOCAP</a>
-                <div class="desc">생각을 자유롭게 공유해주세요</div>
+                <div class="desc">상세 페이쥐이이이이이이이이이이</div>
             </div>
         </div>
+        {% if comments %}
         <div class="article">
             <div class="wrapper">
-                <table>
-                    <form action="/board" method="POST">
-                        <tr>
-                            <th class="num">게시글 번호</th>
-                            <th>제 목</th>
-                            <th>작성자</th>
-                            <th class="date">작성일자</th>
-                            <th class="views">조회수</th>
-                        </tr>
-                    
-                    {% for comment in comments %}
-                    <tr>
-                        <td class="board-list-num">
-                            <div>
-                                {{comment.id}}
-                                <!-- cf) 이미지 넣는 방식 <img src="{{comment.img}}" /> -->
-                            </div>
-                        </td>
-                        <!-- 해당 타이틀의 글의 세부내용으로 가기 -->
-                        <td class="board-list-content">
-                            <div>
-                            <a class="board-list-content-link" href="/boarddetail/{{comment.id}}">{{comment.title}}</a>
-                            </div>
-                        </td>
-                        <!-- user모델과 연동해서 작성한 사람 nick이 뜰 수 있게 수정 요망 -->
-                        <td class="board-list-name">
-                            <div>
-                                {{comment.UserId}}
-                            </div>
-                        </td>
-                        <td class="board-list-time">
-                            <div class="board-list-time1">{{comment.createdAt}}</div>
-                        </td>
-                        <!-- 조회수로 수정 요망 -->
-                        <td class="viewcount">
-                            <div class="board-list-viewcount">{{comment.viewcount}}</div>
-                        </td>
-                    </tr>
-                    
-                    {% endfor %}
-                    <tr>
-                        <td class="num">0</td>
-                        <td class="title">
-                            <a>이상한말 하지 말아주세여</a>
-                            <span class="update">공지</span>
-                        </td>
-                        <td>관리자 일동</td>
-                        <td class="date">2021-10-05</td>
-                        <td class="views">33</td>
-                    </tr>
-                </form>
-                    <tbody>
-                </table>
-
                 <br>
-                <!-- boardwrite로 페이지를 넘겨주는 버튼 -->
-                <div>
-                <button class="boardwrite" onclick="location.href='boardwrite'">글 작성</button>
+                <br>
+                <br>
+                <!-- 이미지 넣을 곳 만들어 놓기 -->
+                <table style="border: 2px solid #1259a7;">
+                  <tr>
+                    <th>번호</th>
+                    <td>{{comments.id}}</td>
+                    <th>조회수</th>
+                    <td>{{comments.viewcount}}</td>
+                    <th>글쓴이</th>
+                    <td>{{comments.UserId}}</td>
+                  </tr>
+                  <tr>
+                    <th>제목</th>
+                    <td colspan="5">{{comments.title}}</td>
+                  </tr>
+                  <tr>
+                    <th>작성일</th>
+                    <td colspan="2">{{comments.createdAt}}</td>
+                    <th>수정일</th>
+                    <td colspan="2">{{comments.updatedAt}}</td>
+                  </tr>
+                  <tr>
+                    <th>이미지</th>
+                    <td colspan="6" height="400" style="max-width: 600px; max-height: 600px;"><img src="{{comments.img}}" /></td>
+                  </tr>
+                  <tr>
+                    <td colspan="6" height="400" style="text-align: left;" >{{comments.comment}}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="6">
+                      <a href="/board"> 목록 </a>
+                    </td>
+                  </tr>
+                </table>
+                <br>
+                <br>
                 <button class="delete-item">삭제</button>
                 </div>
-                <!-- page 개수 -->
-                <div class="pages">
-                    <ul>
-                        <li class="active">
-                            <a>1</a>
-                        </li>
-                        <li>
-                            <a>2</a>
-                        </li>
-                        <li>
-                            <a>3</a>
-                        </li>
-                        <li>
-                            <a>4</a>
-                        </li>
-                        <li>
-                            <a>5</a>
-                        </li>
-                    </ul>
-                </div>
             </div>
+        {% endif %}
         </div>
     </div>
 <script>
-        
-        // const view = document.getElementsByClassName("board-list-viewcount");
-        // const count = view.innerText;
-        
-</script>
-
+    // 작성일자 뒤에 필요없는 부분 날려주는 js
+    const date = document.getElementsByClassName("board-list-time1");
+    const chgDate = date.innerText;
+    const classdate = moment(chgDate).format("YYYY-MM-DD");
+    date.innerText = classdate;
+    </script>
 </body>
 
 {% endblock %}

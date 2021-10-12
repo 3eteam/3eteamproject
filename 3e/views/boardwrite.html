@@ -18,9 +18,12 @@
           <img id="img-preview1" src="" width="250" alt="미리보기">
           <input id="img-url" type="hidden" style="display: none;" name="url">
         </div>
-        <!-- <div><input id="nick" type="text" placeholder="사용자 닉네임" name="nick"></div> -->
+        <!-- 입력값 넣는 곳 -->
         <div>
-          <input id="comment" type="text" placeholder="내용" name="comment">
+          제 목<input id="title" type="text" placeholder="제목" name="title">
+        </div>
+        <div>
+          내 용<input id="comment" type="textarea" placeholder="내용" name="comment">
           <label id="img-label1" for="img">사진 업로드</label>
           <input id="img" type="file" accept="image/*">
         </div>
@@ -29,7 +32,7 @@
     </form>
   </div>
   <br>
-  <table id="comment-list">
+  <!-- <table id="comment-list">
     <thead>
     <tr>
       <th>아이디</th>
@@ -38,7 +41,7 @@
       <th>수정</th>
       <th>삭제</th>
     </tr>
-    </thead>
+    </thead> -->
     <tbody></tbody>
   </table>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
