@@ -1,10 +1,7 @@
 const express = require('express');
 const { Comment, User } = require('../models');
-const { isLoggedIn } = require('./middlewares');
+
 const router  = express.Router();
-const fs = require('fs');
-const path = require('path');
-const multer=require('multer');
 
 
 router.use((req, res, next) => {

@@ -1,8 +1,7 @@
 
 const express = require('express');
 const multer = require('multer');
-const path = require('path');
-const fs = require('fs');
+
 
 const { Post, Hashtag ,Cart,User} = require('../models');
 const { isLoggedIn } = require('./middlewares');
@@ -22,7 +21,7 @@ router.use((req, res, next) => {
     try {
       const user =res.locals.user;
       console.log(req.user.id);
-      // const cart2 = await Cart.findAll({});
+    
       const posts = await User.findAll({ 
       include: {
         model: Cart,
@@ -74,27 +73,7 @@ router.post('/', upload2.none(), async (req, res, next) => {
     next(error);
   }
 });
-// router.get('/hashtag', async (req, res, next) => {
-//   const query = req.query.hashtag;
-//   if (!query) {
-//     return res.redirect('/');
-//   }
-//   try {
-//     const hashtag = await Hashtag.findOne({ where: { title: query } });
-//     let posts = [];
-//     if (hashtag) {
-//       posts = await hashtag.getPosts({ include: [{ model: User }] });
-//     }
 
-//     return res.render('cart', {
-//       title: `${query} | 3e`,
-//       cart: posts,
-//     });
-//   } catch (error) {
-//     console.error(error);
-//     return next(error);
-//   }
-// });
 router.route('/:id').get(async(req,res)=>{
   try {
     
@@ -105,29 +84,7 @@ router.route('/:id').get(async(req,res)=>{
         next(err);
   }
 });
-    // .patch(isLoggedIn, async (req, res, next) => {
-    //   try {
-    //     const result = await Cart.update({
-    //       comment: req.body.comment,
-    //     }, {
-    //       where: { id: req.params.id },
-    //     });
-    //     res.json(result);
-    //   } catch (err) {
-    //     console.error(err);v
-    //     next(err);
-    //   }
-    // })
-    // .delete(isLoggedIn,async (req, res, next) => {
-    //   try {
-    //     const result = await Cart.destroy({where:{id:req.params.id}});
-    //     res.json(result);
-    //   } catch (err) {
-    //     console.error(err);
-    //     next(err);
-    //   }
-    // });
-
+  
 module.exports=router;
 
 

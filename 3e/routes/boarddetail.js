@@ -24,12 +24,7 @@ router.get('/:id', async (req, res, next) => {
       title: '게시글 상세페이지 | 3e',
       comments: posts,
     });
-    // // 조회됐을 때 해당 id의 게시글 조회수 올리기
-    // const viewcount = Comment.viewcount;
-    // if(res){
-    //   viewcount++;
-    //   viewcount.save();
-    // }
+   
     } catch (error) {
       console.error(error);
       next(error);
