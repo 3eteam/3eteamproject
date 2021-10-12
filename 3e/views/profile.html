@@ -2,9 +2,652 @@
 
 
 {% block content %}
+<!-- <style>
+  body{
+  padding: 0;
+  margin: 0;
+}
+div{
+  box-sizing: border-box;
+}
+
+/* alert badge */
+.circle{
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 2.5px;
+  background-color: #ff0000;
+  position: absolute;
+  top: -5px;
+  left: 110%;
+}
+
+/* 녹색 텍스트 */
+.green{
+  color: #24855b;
+}
+
+.wrap{
+  background-color: #F8F8F8;  
+}
+/* 녹색배경 */
+.greenContainer{  
+  height: 132px;
+  background-color: #24855b;    
+  
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+}
+
+.greenContainer .name{
+   font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+} 
+.greenContainer .modify{
+  margin-left: auto;
+}
+
+/* 단골상점 , 상품후기 , 적립금 박스 */
+.summaryContainer{
+  background-color: white;  
+  display: flex;  
+  padding: 21px 16px;  
+  height: 90px;
+  margin-bottom: 10px;
+}
+/* 단골상점 , 상품후기 , 적립금 */
+.summaryContainer .item{
+  flex-grow: 1
+}
+/* 녹색 숫자 */
+.summaryContainer .number{
+  font-size: 19px;
+  font-weight: bold;
+  color: #24855b;
+}
+/* 텍스트 */
+.summaryContainer .item > div:nth-child(2){
+  font-size: 13px;
+}
+
+/* ================== 주문/배송조회 박스 시작 ==================== */
+.shippingStatusContainer{
+  padding: 21px 16px;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+/* 주문/배송조회 타이틀 */
+.shippingStatusContainer .title{
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* 장바구니 결제완료 배송중 구매확정 [로우] */
+.shippingStatusContainer .status{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 21px;
+}
+/* 장바구니 결제완료 배송중 구매확정 [아이템]  */
+.shippingStatusContainer .item{
+  display: flex;
+}
+
+.shippingStatusContainer .number{
+  font-size: 31px;
+  font-weight: 500;
+  text-align: center;
+}
+.shippingStatusContainer .text{
+  font-size: 12px;
+  font-weight: normal;
+  color: #c2c2c2;
+  text-align: center;
+}
+.shippingStatusContainer .icon{
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  width: 16px;
+  height: 16px;
+}
 
 
-<div class="container" style="padding-top:200px; font-size: 20px;">
+/*=================== 주문목록 ~ 찜한상품 리스트 ==================*/
+.listContainer{  
+  padding: 0;
+  background-color: #ffffff;
+  margin-bottom: 10px;
+}
+.listContainer .item{  
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  color: black;
+  text-decoration: none;  
+  height: 56px;
+  box-sizing: border-box;
+}
+.listContainer .icon{  
+  margin-right: 14px;
+}
+.listContainer .text{
+  font-size: 16px;
+  position: relative;
+}
+.listContainer .right{
+  margin-left: auto;
+}
+
+
+/*=================== 내지갑의 보유 적립금 들어가는 부분 ================*/
+.listContainer .smallLight{
+  font-size: 14px;
+  color: #c2c2c2;  
+}
+.listContainer .smallLight > span{
+  margin-left: 10px;
+}
+
+.listContainer .right .blct{
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+
+
+/* 공지사항 이용안내 고객센터 */
+.infoContainer{
+  background-color: white; 
+  display: flex;
+  height: 100px;
+  margin-bottom: 10px;    
+}
+
+.infoContainer .item{
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 13px;
+  text-decoration: none;
+  color: black;
+}
+.infoContainer .item > div:first-child{
+  margin-bottom: 2px;
+}
+
+
+
+/*  */
+.listContainer .item:hover{
+/*   background-color: #f8f8f8; */
+}
+.infoContainer .item:hover{
+/*   background-color: #f8f8f8; */
+} -->
+</style>
+<style>
+  img {
+    display: block;
+}
+
+.container {
+    max-width: 93.5rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.btn {
+    display: inline-block;
+    font: inherit;
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 0;
+    cursor: pointer;
+}
+
+.btn:focus {
+    outline: 0.5rem auto #4d90fe;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+/* Profile Section */
+
+.profile {
+    padding: 5rem 0;
+}
+
+.profile::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.profile-image {
+    float: left;
+    width: calc(33.333% - 1rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3rem;
+}
+
+.profile-image img {
+    border-radius: 50%;
+}
+
+.profile-user-settings,
+.profile-stats,
+.profile-bio {
+    float: left;
+    width: calc(66.666% - 2rem);
+}
+
+.profile-user-settings {
+    margin-top: 1.1rem;
+}
+
+.profile-user-name {
+    display: inline-block;
+    font-size: 3.2rem;
+    font-weight: 300;
+}
+
+.profile-edit-btn {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    border: 0.1rem solid #dbdbdb;
+    border-radius: 0.3rem;
+    padding: 0 2.4rem;
+    margin-left: 2rem;
+}
+
+.profile-settings-btn {
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+
+.profile-stats {
+    margin-top: 2.3rem;
+}
+
+.profile-stats li {
+    display: inline-block;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    margin-right: 4rem;
+    cursor: pointer;
+}
+
+.profile-stats li:last-of-type {
+    margin-right: 0;
+}
+
+.profile-bio {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-top: 2.3rem;
+}
+
+.profile-real-name,
+.profile-stat-count,
+.profile-edit-btn {
+    font-weight: 600;
+}
+
+/* Gallery Section */
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -1rem -1rem;
+    padding-bottom: 3rem;
+}
+
+.gallery-item {
+    position: relative;
+    flex: 1 0 22rem;
+    margin: 1rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+.gallery-item:hover .gallery-item-info,
+.gallery-item:focus .gallery-item-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.gallery-item-info {
+    display: none;
+}
+
+.gallery-item-info li {
+    display: inline-block;
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+.gallery-item-likes {
+    margin-right: 2.2rem;
+}
+
+.gallery-item-type {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2.5rem;
+    text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.1);
+}
+
+.fa-clone,
+.fa-comment {
+    transform: rotateY(180deg);
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Loader */
+
+.loader {
+    width: 5rem;
+    height: 5rem;
+    border: 0.6rem solid #999;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: loader 500ms linear infinite;
+}
+
+/* Media Query */
+
+@media screen and (max-width: 40rem) {
+    .profile {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 4rem 0;
+    }
+
+    .profile::after {
+        display: none;
+    }
+
+    .profile-image,
+    .profile-user-settings,
+    .profile-bio,
+    .profile-stats {
+        float: none;
+        width: auto;
+    }
+
+    .profile-image img {
+        width: 7.7rem;
+    }
+
+    .profile-user-settings {
+        flex-basis: calc(100% - 10.7rem);
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+    }
+
+    .profile-user-name {
+        font-size: 2.2rem;
+    }
+
+    .profile-edit-btn {
+        order: 1;
+        padding: 0;
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .profile-edit-btn {
+        margin-left: 0;
+    }
+
+    .profile-bio {
+        font-size: 1.4rem;
+        margin-top: 1.5rem;
+    }
+
+    .profile-edit-btn,
+    .profile-bio,
+    .profile-stats {
+        flex-basis: 100%;
+    }
+
+    .profile-stats {
+        order: 1;
+        margin-top: 1.5rem;
+    }
+
+    .profile-stats ul {
+        display: flex;
+        text-align: center;
+        padding: 1.2rem 0;
+        border-top: 0.1rem solid #dadada;
+        border-bottom: 0.1rem solid #dadada;
+    }
+
+    .profile-stats li {
+        font-size: 1.4rem;
+        flex: 1;
+        margin: 0;
+    }
+
+    .profile-stat-count {
+        display: block;
+    }
+}
+
+/* Spinner Animation */
+
+@keyframes loader {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/*
+
+The following code will only run if your browser supports CSS grid.
+
+Remove or comment-out the code block below to see how the browser will fall-back to flexbox & floated styling. 
+
+*/
+
+@supports (display: grid) {
+    .profile {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: repeat(3, auto);
+        grid-column-gap: 3rem;
+        align-items: center;
+    }
+
+    .profile-image {
+        grid-row: 1 / -1;
+    }
+
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+        grid-gap: 2rem;
+    }
+
+    .profile-image,
+    .profile-user-settings,
+    .profile-stats,
+    .profile-bio,
+    .gallery-item,
+    .gallery {
+        width: auto;
+        margin: 0;
+    }
+
+    @media (max-width: 40rem) {
+        .profile {
+            grid-template-columns: auto 1fr;
+            grid-row-gap: 1.5rem;
+        }
+
+        .profile-image {
+            grid-row: 1 / 2;
+        }
+
+        .profile-user-settings {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-gap: 1rem;
+        }
+
+        .profile-edit-btn,
+        .profile-stats,
+        .profile-bio {
+            grid-column: 1 / -1;
+        }
+
+        .profile-user-settings,
+        .profile-edit-btn,
+        .profile-settings-btn,
+        .profile-bio,
+        .profile-stats {
+            margin: 0;
+        }
+    }
+}
+
+</style>
+<div>
+
+	<div class="container">
+
+		<div class="profile">
+
+			<div class="profile-image">
+
+				<img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt="">
+
+			</div>
+
+			<div class="profile-user-settings">
+
+				<h1 class="profile-user-name">{{user.nick}}</h1>
+
+				<button class="btn profile-edit-btn">Edit Profile</button>
+
+				<button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
+
+			</div>
+
+			<div class="profile-stats">
+
+				<ul>
+					<li><span class="profile-stat-count">164</span> posts</li>
+					<li><span class="profile-stat-count">188</span> followers</li>
+					<li><span class="profile-stat-count">206</span> following</li>
+				</ul>
+
+			</div>
+
+			<div class="profile-bio">
+
+				<p><span class="profile-real-name">Jane Doe</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️</p>
+
+			</div>
+
+		</div>
+		<!-- End of profile section -->
+
+	</div>
+  <div class="container">
+
+		<div class="gallery">
+
+			<div class="gallery-item" tabindex="0">
+
+				<img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image" alt="">
+
+				<div class="gallery-item-info">
+
+					<ul>
+						<li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 56</li>
+						<li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
+					</ul>
+
+				</div>
+
+			</div>
+
+			<div class="gallery-item" tabindex="0">
+
+				<img src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop" class="gallery-image" alt="">
+
+				<div class="gallery-item-info">
+
+					<ul>
+						<li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 89</li>
+						<li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 5</li>
+					</ul>
+
+				</div>
+
+			</div>
+
+			<div class="gallery-item" tabindex="0">
+
+				<img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop" class="gallery-image" alt="">
+
+				<div class="gallery-item-type">
+
+					<span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
+
+				</div>
+
+				<div class="gallery-item-info">
+
+					<ul>
+						<li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 42</li>
+						<li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
+					</ul>
+
+				</div>
+
+			</div>
+
+	<!-- End of container -->
+
+</div>
+
+<!-- <div class="container" style="padding-top:200px; font-size: 20px;">
   <div class="row">
     <div class="col-12">
       <div style="text-align: center; font-size: 40px;">
@@ -118,7 +761,7 @@
 <div class="row">
   <div class="col-12">
     <div class="level_detail ">
-      <!-- 등급별 혜택 표시 -->
+      
       <div class="member_txt4">
       </div>
 
@@ -130,7 +773,7 @@
             <div class="bar " id="myGrp" style="width: 0%;"></div>
           </div>
         </div>
-        <!-- .myLevel_graph -->
+       
         <div class=" gradeGuide" id="sGradeAutoDisplayArea">
           <div class=" sAutoGradeDisplay">
             <span id="needVal"><span class="xans-member-var-sGradeIncreasePrice">2원</span></span> 추가 구매시 다음달 <span
@@ -166,15 +809,283 @@
 
 
 
-
+ -->
 
 
 </div>
-<!---->
+<div class="wrap">
+  <div class="greenContainer">
+    <div>
+      <div class="grade">GOLD</div>
+      <div class="name">Jaden</div>
+    </div>    
+    <div class="modify">i</div>    
+  </div>
+  <div class="summaryContainer">
+    <div class="item">
+        <div class="number">354</div>
+        <div>단골상점</div>
+      </div>
+      <div class="item">
+        <div class="number">354</div>
+        <div>상품후기</div>
+      </div>
+      <div class="item">
+        <div class="number">354</div>
+        <div>적립금(BLCT)</div>
+      </div>
+  </div>  
+  <div class="shippingStatusContainer">
+    <div class="title">
+      주문/배송조회
+    </div>
+    <div class="status">
+      
+      <div class="item">
+        <div>
+          <div class="green number">6</div>
+          <div class="text">장바구니</div>
+        </div>
+        <div class="icon"> > </div>
+      </div>     
+      <div class="item">
+        <div>
+          <div class="number">0</div>
+          <div class="text">결제완료</div>
+        </div>
+        <div class="icon"> > </div>
+      </div>     
+      <div class="item">
+        <div>
+          <div class="green number">1</div>
+          <div class="text">배송중</div>
+        </div>
+        <div class="icon"> > </div>
+      </div>     
+      <div class="item">
+        <div>
+          <div class="green number">3</div>
+          <div class="text">구매확정</div>
+        </div>
+      </div>     
+      
+    </div>
+    
+  </div>  
+  <div class="listContainer">
+    <a href="#" class="item">
+        <div class="icon">ii</div>
+        <div class="text">주문목록<span class="circle"></span></div>
+        <div class="right"> > </div>
+    </a>
+    <a href="#" class="item">
+        <div class="icon">ii</div>
+        <div class="text">상품후기</div>
+        <div class="right"> > </div>
+    </a>
+    <a href="#" class="item">
+        <div class="icon">ii</div>
+        <div class="text">상품문의</div>
+        <div class="right"> > </div>
+    </a>
+    <a href="#" class="item">
+        <div class="icon">ii</div>
+        <div class="text">단골상점</div>
+        <div class="right"> > </div>
+    </a>
+    <a href="#" class="item">
+        <div class="icon">ii</div>
+        <div class="text">찜한상품</div>
+        <div class="right"> > </div>
+    </a>
+  </div>
+  <div class="listContainer">
+    <a href="#" class="item">
+        <div class="icon">ii</div>
+        <div class="text">
+          <span>내지갑</span>
+          <span class="smallLight">
+            <span>|</span>
+            <span>보유 적립금</span>
+          </span>          
+        </div>                
+        <div class="right">
+          <span class="blct">175 BLCT</span>
+          > </div>
+    </a>
+    <a href="#" class="item">
+        <div class="icon">ii</div>
+        <div class="text">알림</div>
+        <div class="right"> > </div>
+    </a>
+    <a href="#" class="item">
+        <div class="icon">ii</div>
+        <div class="text">설정</div>
+        <div class="right"> > </div>
+    </a>   
+  </div>
+  <div class="infoContainer">
+    <a href="#" class="item">
+      <div>icon</div>
+      <div>공지사항</div>
+    </a>    
+    <a href="#" class="item">
+      <div>icos</div>
+      <div>이용안내</div>
+    </a>    
+    <a href="#" class="item">
+      <div>icon</div>
+      <div>고객센터</div>
+    </a>
+  </div>
+</div>
+
+<section id="container">
+
+  <header id="header">
+      <section class="h_inner">
+
+          <h1 class="logo">
+              <a href="index.html">
+                  <div class="sprite_insta_icon"></div>
+                  <div>
+                      <div class="sprite_write_logo"></div>
+                  </div>
+              </a>
+          </h1>
+
+          <div class="search_field">
+              <input type="text" placeholder="검색" tabindex="0">
+
+              <div class="fake_field">
+                  <span class=sprite_small_search_icon></span>
+                  <span>검색</span>
+              </div>
+          </div>
+
+
+          <div class="right_icons">
+              <a href="new_post.html"><div class="sprite_camera_icon"></div></a>
+              <a href="login.html"><div class="sprite_compass_icon"></div></a>
+              <a href="follow.html"><div class="sprite_heart_icon_outline"></div></a>
+              <a href="profile.html"><div class="sprite_user_icon_outline"></div></a>
+          </div>
+      </section>
+  </header>
+
+
+  <div id="main_container">
+
+      <section class="b_inner">
+
+          <div class="hori_cont">
+              <div class="profile_wrap">
+                  <div class="profile_img">
+                      <img src="imgs/thumb.jpeg" alt="착한호랑이">
+                  </div>
+              </div>
+
+              <div class="detail">
+                  <div class="top">
+                      <div class="user_name">KindTiger</div>
+                      <a href="profile_edit.html" class="profile_edit">프로필편집</a>
+                      <a href="#" class="logout">로그아웃</a>
+                  </div>
+
+                  <ul class="middle">
+                      <li>
+                          <span>게시물</span>
+                          3
+                      </li>
+                      <li>
+                          <span>팔로워</span>
+                          3
+                      </li>
+                      <li>
+                          <span>팔로우</span>
+                          3
+                      </li>
+                  </ul>
+                  <p class="about">
+                      <span class="nick_name">kindtigerrr</span>
+                      <span class="book_mark">bookmark</span>
+                  </p>
+
+              </div>
+          </div>
+
+          <div class="mylist_contents contents_container active">
+              <div class="pic">
+                  <a href="#"><img src="imgs/img_section/img01.jpg" alt=""></a>
+              </div>
+              <div class="pic">
+                  <a href="#"><img src="imgs/img_section/img02.jpg" alt=""></a>
+              </div>
+              <div class="pic">
+                  <a href="#"> <img src="imgs/img_section/img03.jpg" alt=""></a>
+              </div>
+              <div class="pic">
+                  <a href="#"> <img src="imgs/img_section/img02.jpg" alt=""></a>
+              </div>
+              <div class="pic">
+                  <a href="#"> <img src="imgs/img_section/img03.jpg" alt=""></a>
+              </div>
+              <div class="pic">
+                  <a href="#"> <img src="imgs/img_section/img01.jpg" alt=""></a>
+              </div>
+              <div class="pic">
+                  <a href="#"> <img src="imgs/img_section/img02.jpg" alt=""></a>
+              </div>
+              <div class="pic">
+                  <a href="#"> <img src="imgs/img_section/img03.jpg" alt=""></a>
+              </div>
+              <div class="pic">
+                  <a href="#"> <img src="imgs/img_section/img01.jpg" alt=""></a>
+              </div>
+          </div>
+
+
+          <div class="bookmark_contents contents_container">
+              <div class="pic">
+                  <a href="#"><img src="imgs/img_section/img03.jpg" alt=""></a>
+              </div>
+              <div class="pic">
+                  <a href="#"><img src="imgs/img_section/img01.jpg" alt=""></a>
+              </div>
+              <div class="pic">
+                  <a href="#"> <img src="imgs/img_section/img02.jpg" alt=""></a>
+              </div>
+              <div class="pic">
+                  <a href="#"> <img src="imgs/img_section/img01.jpg" alt=""></a>
+              </div>
+              <div class="pic">
+                  <a href="#"> <img src="imgs/img_section/img02.jpg" alt=""></a>
+              </div>
+              <div class="pic">
+                  <a href="#"> <img src="imgs/img_section/img03.jpg" alt=""></a>
+              </div>
+              <div class="pic">
+                  <a href="#"> <img src="imgs/img_section/img01.jpg" alt=""></a>
+              </div>
+              <div class="pic">
+                  <a href="#"> <img src="imgs/img_section/img02.jpg" alt=""></a>
+              </div>
+              <div class="pic">
+                  <a href="#"> <img src="imgs/img_section/img02.jpg" alt=""></a>
+              </div>
+          </div>
 
 
 
 
+      </section>
+  </div>
+
+
+</section>
+
+
+<div class="loader"></div>
 
 
 

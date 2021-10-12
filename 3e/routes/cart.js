@@ -67,7 +67,7 @@ router.post('/', upload2.none(), async (req, res, next) => {
     });
   
     
-    res.redirect('/');
+    res.redirect('/nike');
   } catch (error) {
     console.error(error);
     next(error);
@@ -78,6 +78,16 @@ router.route('/:id').get(async(req,res)=>{
   try {
     
      await Cart.destroy({where:{id:req.params.id}});
+        res.redirect('/cart');
+  } catch (err) {
+    console.error(err);
+        next(err);
+  }
+});
+router.route('/delete').get(async(req,res)=>{
+  try {
+    
+     await Cart.destroy();
         res.redirect('/cart');
   } catch (err) {
     console.error(err);
