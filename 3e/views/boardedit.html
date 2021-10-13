@@ -11,30 +11,34 @@
   <br>
   <br>
   <div>
-    <form id="comment-form" action="/boardwrite" method="POST">
+    <form id="comment-form" method="POST">
       <fieldset>
-        <legend>게시글 작성</legend>
+        <legend>게시글 수정</legend>
         <div class="img-preview">
           <img id="img-preview1" src="" width="250" alt="미리보기">
           <input id="img-url" type="hidden" style="display: none;" name="url">
         </div>
         <div>
-          제 목<input id="title" type="text" placeholder="제목" name="title">
+          제 목<input id="title" type="text" name="title" value="{{comment.title}}">
         </div>
         <div>
-          내 용<input id="comment" type="textarea" placeholder="내용" name="comment">
+          내 용<input id="comment" type="textarea" name="comment" value="{{comment.comment}}">
           <label id="img-label1" for="img">사진 업로드</label>
           <input id="img" type="file" accept="image/*">
         </div>
-        <button type="submit">등록</button>
+        <button type="submit">수정</button>
       </fieldset>
     </form>
   </div>
+
+  
+  <br>
+    <tbody></tbody>
   </table>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="/sequelize.js"></script>
   <script>
-   // 이미지 업로드
+   
     if (document.getElementById('img')) {
       document.getElementById('img').addEventListener('change', function(e) {
         const formData = new FormData();

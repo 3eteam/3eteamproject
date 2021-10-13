@@ -6,25 +6,45 @@ const fs = require('fs');
 const path = require('path');
 const multer=require('multer');
 
-
-
-//boardwrite로 렌더링(작성하려면 loggedin 상태여야 함)
 router.use((req, res, next) => {
   res.locals.user = req.user;
   next();
 });
 
 try {
-  fs.readdirSync('uploads');
+  fs.readdirSync('boarduploads');
 } catch (error) {
-  console.error('uploads 폴더가 없어 uploads 폴더를 생성합니다.');
-  fs.mkdirSync('uploads');
+  console.error('boarduploads 폴더가 없어 boarduploads 폴더를 생성합니다.');
+  fs.mkdirSync('boarduploads');
 }
 
+// boardwrite 라우터
+router.get('/', isLoggedIn, async (req, res, next) => {
+  try {
+    const posts = await Comment.findAll({ 
+    include: {
+      model: User,
+      attributes: ['id', 'email'],
+    },
+    order: [['createdAt', 'DESC']],
+  });
+  res.render('boardwrite', {
+    title: '3e',
+    comments: posts,
+  });
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+
+
+
+// 이미지 업로드 시 파일이름에 시간을 더해 유니크하게 만들기
 const upload = multer({
   storage: multer.diskStorage({
     destination(req, file, cb) {
-      cb(null, 'uploads/');
+      cb(null, 'boarduploads/');
     },
     filename(req, file, cb) {
       const ext = path.extname(file.originalname);
@@ -34,6 +54,7 @@ const upload = multer({
   limits: { fileSize: 5 * 1024 * 1024 },
 });
 
+// 게시글값 업로드
 router.post('/', async (req, res, next) => {
     try {
       const identity = res.locals.user;
@@ -53,10 +74,14 @@ router.post('/', async (req, res, next) => {
       next(err);
     }
   });
+
+//img 저장
 router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
   console.log(req.file);
   res.json({ url: `/img/${req.file.filename}` });
 });
+
+
 const upload2 = multer();
 router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
   try {
@@ -90,51 +115,6 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
   }
 });
 
-router.get('/', isLoggedIn, async (req, res, next) => {
-  try {
-    const posts = await Comment.findAll({ 
-    include: {
-      model: User,
-      attributes: ['id', 'email'],
-    },
-    order: [['createdAt', 'DESC']],
-  });
-  res.render('boardwrite', {
-    title: '3e',
-    comments: posts,
-  });
-  } catch (error) {
-    console.error(error);
-    next(error);
-  }
-});
 
-
-
-
-  // // 본인 게시글 수정, 삭제하는 부분
-  // router.route('/:id')
-  //   .patch(isLoggedIn, async (req, res, next) => {
-  //     try {
-  //       const result = await Comment.update({
-  //         comment: req.body.comment,
-  //       }, {
-  //         where: { id: req.params.id },
-  //       });
-  //       res.json(result);
-  //     } catch (err) {
-  //       console.error(err);v
-  //       next(err);
-  //     }
-  //   })
-  //   .delete(isLoggedIn, async (req, res, next) => {
-  //     try {
-  //       const result = await Comment.destroy({ where: { id: req.params.id } });
-  //       res.json(result);
-  //     } catch (err) {
-  //       console.error(err);
-  //       next(err);
-  //     }
-  //   });
   
 module.exports=router;

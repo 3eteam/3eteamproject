@@ -222,7 +222,6 @@ src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"
                 <br>
                 <br>
                 <br>
-                <!-- 이미지 넣을 곳 만들어 놓기 -->
                 <table style="border: 2px solid #1259a7;">
                   <tr>
                     <th>번호</th>
@@ -247,6 +246,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"
                     <td colspan="6" height="400" style="max-width: 600px; max-height: 600px;"><img src="{{comments.img}}" /></td>
                   </tr>
                   <tr>
+                    <th>내 용</th>
                     <td colspan="6" height="400" style="text-align: left;" >{{comments.comment}}</td>
                   </tr>
                   <tr>
@@ -263,8 +263,9 @@ src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"
         {% endif %}
         <div >
             {% if comments.UserId === user.id%}
-                <a href="/board\{{comments.id}}">삭제</a> 
-                {% endif %}
+            <a href="/board\{{comments.id}}/boardedit" style="margin-left: 200px; font-weight: bold;">수정</a>     
+            <a href="/board\{{comments.id}}/delete" style="margin-left: 50px; font-weight: bold;">삭제</a> 
+            {% endif %}
         </div>
                 
         </div>
