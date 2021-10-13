@@ -107,11 +107,12 @@
     top: 320px;
     margin-bottom: 10px;
     margin-left: 10px;
+    width: 100px;
   }
 
   .chaat {
     position: relative;
-    width: 580px;
+    width: 230px;
     height: 450px;
     top: -140px;
     left: 350px;
@@ -129,6 +130,215 @@
     top: -440px;
     left: 600px;
   }
+
+
+  /* 메인 게시판 부분 */
+
+  body *,
+        body *:before,
+        body *:after {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body .wrapper {
+            width: 1140px;
+            margin: 0 auto;
+            max-width: 100%;
+            padding: 0 15px;
+        }
+
+        body .clearfix:after {
+            content: " ";
+            clear: both;
+            display: table;
+        }
+        .board {
+    margin-bottom: 30px;
+    position: relative;
+    top: -580px;
+    left: 38%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.board .header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.board .header .title {
+    font-size: 25px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    color: #1259a7;
+}
+
+.board .header .desc {
+    margin-top: 10px;
+}
+
+.board .article table {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+.board .article table th,
+.board .article table td {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.board .article table th {
+    background: #f7f7f7;
+}
+
+.board .article table td.title {
+    text-align: center;
+}
+
+.board .article table td a {
+    cursor: pointer;
+}
+
+.board .article table td.title span {
+    display: inline-block;
+    padding: 3px 5px;
+    color: #fff;
+    font-size: 10px;
+    margin-left: 3px;
+}
+
+.board .article table td.title span.new {
+    background: #f71d1d;
+}
+
+.board .article table td.title span.update {
+    background: #1259a7;
+}
+
+.board .article table td a:hover {
+    text-decoration: underline;
+}
+
+.board .article .search {
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: right;
+}
+
+.board .article .search .count {
+    float: left;
+    border: 1px solid #ddd;
+    padding: 12px;
+}
+
+.board .article .search .bundle {
+    width: 370px;
+    margin-left: auto;
+}
+
+.board .article .search .bundle select {
+    height: 42px;
+    border: 1px solid #ddd;
+    vertical-align: middle;
+    border-radius: 0;
+    padding: 0 5px;
+    float: left;
+    width: 35%;
+}
+
+.board .article .search .bundle input {
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    border-left: 0;
+    border-radius: 0;
+    height: 42px;
+    padding: 0 10px;
+    float: left;
+    width: 53.5%;
+}
+
+.board .article .search button {
+    border: 1px solid #1259a7;
+    background: #1259a7;
+    vertical-align: middle;
+    color: #fff;
+    height: 42px;
+    cursor: pointer;
+    padding: 0 13px;
+    float: left;
+    width: 11.5%;
+}
+
+.board .article .pages {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.board .article .pages ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.board .article .pages ul>li {
+    display: inline-block;
+}
+
+.board .article .pages ul>li>a {
+    cursor: pointer;
+    display: inline-block;
+    padding: 8px 13px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+}
+
+.board .article .pages ul>li>a:hover {
+    background: #eee;
+}
+
+.board .article .pages ul>li.active>a {
+    background: #1259a7;
+    border-color: #1259a7;
+    color: #fff
+}
+
+@media(max-width:767px) {
+    .board .article table .check,
+    .board .article table .num,
+    .board .article table .date,
+    .board .article table .views {
+        display: none;
+    }
+
+    .board .article .search .count {
+        display: none;
+    }
+
+    .board .article .search .bundle {
+        width: 100%;
+    }
+}
+.num {
+  width: 1%;
+}
+
+.nnaa {
+  width: 10%;
+}
+
+.who {
+  width: 2%;
+}
 
   </style>
   <div id="fullpage">
@@ -163,21 +373,57 @@
               <div class="chaat">
                 {% include "chat.html" %}
               </div>
-              <div class="board-wrap">
-              {% for comment in comments %}
-              <tr>
-                  <td class="board-list-content">
-                      <div>
-                      <a class="board-list-content-link" href="/boarddetail/{{comment.id}}">{{comment.title}}</a>
-                      </div>
-                  </td>
-                  <td class="board-list-name">
-                      <div>
-                          {{comment.User.nick}}
-                      </div>
-                  </td>
-              </tr>
-              {% endfor %}
+              <div class="board">
+                <div class="article">
+                    <div class="wrapper">
+                        <table>
+                            <form action="/board" method="POST">
+                                <tr>
+                                    <th class="num">no.</th>
+                                    <th class="nnaa">제 목</th>
+                                    <th class="who">작성자</th>
+                                </tr>
+                            
+                            {% for comment in comments %}
+                            <tr>
+                                <td class="board-list-num">
+                                    <div>
+                                        {{comment.id}}
+                                        <!-- cf) 이미지 넣는 방식 <img src="{{comment.img}}" /> -->
+                                    </div>
+                                </td>
+                                <!-- 해당 타이틀의 글의 세부내용으로 가기 -->
+                                <td class="board-list-content">
+                                    <div>
+                                    <a class="board-list-content-link" href="/boarddetail/{{comment.id}}">{{comment.title}}</a>
+                                    </div>
+                                </td>
+                                <!-- user모델과 연동해서 작성한 사람 nick이 뜰 수 있게 수정 요망 -->
+                                <td class="board-list-name">
+                                    <div>
+                                        {{comment.User.nick}}
+                                    </div>
+                                </td>
+                                <!-- 조회수로 수정 요망 -->
+                            </tr>
+                            
+                            {% endfor %}
+                            <tr>
+                                <td class="num">0</td>
+                                <td class="title">
+                                    <a>이상한말 하지 말아주세여</a>
+                                    <span class="update">공지</span>
+                                </td>
+                                <td>관리자 일동</td>
+                            </tr>
+                        </form>
+                            <tbody>
+                        </table>
+        
+                        <br>
+                        <!-- page 개수 -->
+                    </div>
+                </div>
             </div>
 
               <!-- <div class="iphone">
