@@ -84,16 +84,7 @@ router.route('/:id').get(async(req,res)=>{
         next(err);
   }
 });
-router.route('/delete').get(async(req,res)=>{
-  try {
-    
-     await Cart.destroy();
-        res.redirect('/cart');
-  } catch (err) {
-    console.error(err);
-        next(err);
-  }
-});
+
   
 module.exports=router;
 

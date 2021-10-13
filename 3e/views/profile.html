@@ -2,7 +2,148 @@
 
 
 {% block content %}
-<!-- <style>
+<style>
+
+  
+  .hori_cont{
+    display: flex;
+    margin-bottom: 30px;
+}
+
+
+.profile_wrap{
+    width: 40%;
+
+}
+.profile_img{
+    width: 152px;
+    height: 152px;
+    overflow:hidden;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.profile_img img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.detail{
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+}
+.detail .top{
+    display: flex;
+    align-items: center;
+}
+
+.detail .top .user_name{
+    font-size: 35px;
+    font-weight: 200;
+    display: inline-block;
+    padding-right: 25px;
+    margin-top: 10px;
+}
+
+.detail .top > a{
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    color: #262626;
+    padding: 3px 20px;
+    font-weight: 600;
+    vertical-align: text-bottom;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+
+.detail .middle{
+    display: flex;
+    height: 50px;
+    padding: 18px 0;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+.detail .middle > li{
+    margin-right: 35px;
+}
+.detail .about > span{
+    display:inline-block;
+    cursor: pointer;
+    position:relative;
+}
+
+.detail .about > span:nth-child(1){
+    margin-right: 50px;
+}
+
+
+.detail .about > span:after{
+    content:'';
+    width:0;
+    height:1px;
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    transition:all 0.5s;
+    background:#dd2d76;
+}
+
+.detail .about > span.on:after{
+    width:100%;
+}
+
+.contents_container{
+    /*display: flex;*/
+    flex-wrap: wrap;
+    justify-content: space-between;
+    display: none;
+}
+
+
+.contents_container.active{
+    display: flex;
+}
+
+.contents_container .pic{
+    max-width:300px;
+    max-height:300px;
+    overflow:hidden;
+    margin-bottom: 18px;
+
+
+}
+
+.contents_container .pic img{
+    width: 100%;
+    height: 100%;
+}
+
+
+@media screen and (max-width:1000px){
+
+    .contents_container {
+        justify-content: center;
+
+    }
+
+
+    .contents_container .pic{
+        margin:10px;
+    }
+}
+</style>
+<style>
   body{
   padding: 0;
   margin: 0;
@@ -23,51 +164,17 @@ div{
   left: 110%;
 }
 
-/* 녹색 텍스트 */
-.green{
-  color: #24855b;
-}
 
-.wrap{
-  background-color: #F8F8F8;  
-}
-/* 녹색배경 */
-.greenContainer{  
-  height: 132px;
-  background-color: #24855b;    
-  
-  display: flex;
-  align-items: flex-end;
-  padding: 16px;
-}
 
-.greenContainer .name{
-   font-size: 20px;
-  font-weight: bold;
-  color: #ffffff;
-} 
-.greenContainer .modify{
-  margin-left: auto;
-}
 
-/* 단골상점 , 상품후기 , 적립금 박스 */
-.summaryContainer{
-  background-color: white;  
-  display: flex;  
-  padding: 21px 16px;  
-  height: 90px;
-  margin-bottom: 10px;
-}
+
+
+
 /* 단골상점 , 상품후기 , 적립금 */
 .summaryContainer .item{
   flex-grow: 1
 }
-/* 녹색 숫자 */
-.summaryContainer .number{
-  font-size: 19px;
-  font-weight: bold;
-  color: #24855b;
-}
+
 /* 텍스트 */
 .summaryContainer .item > div:nth-child(2){
   font-size: 13px;
@@ -76,7 +183,7 @@ div{
 /* ================== 주문/배송조회 박스 시작 ==================== */
 .shippingStatusContainer{
   padding: 21px 16px;
-  background-color: white;
+  background-color:none;
   margin-bottom: 10px;
 }
 
@@ -121,7 +228,7 @@ div{
 /*=================== 주문목록 ~ 찜한상품 리스트 ==================*/
 .listContainer{  
   padding: 0;
-  background-color: #ffffff;
+ 
   margin-bottom: 10px;
 }
 .listContainer .item{  
@@ -163,12 +270,6 @@ div{
 
 
 /* 공지사항 이용안내 고객센터 */
-.infoContainer{
-  background-color: white; 
-  display: flex;
-  height: 100px;
-  margin-bottom: 10px;    
-}
 
 .infoContainer .item{
   flex-grow: 1;
@@ -192,7 +293,7 @@ div{
 }
 .infoContainer .item:hover{
 /*   background-color: #f8f8f8; */
-} -->
+}
 </style>
 <style>
   img {
@@ -546,295 +647,62 @@ Remove or comment-out the code block below to see how the browser will fall-back
 }
 
 </style>
-<div>
-
-	<div class="container">
-
-		<div class="profile">
-
-			<div class="profile-image">
-
-				<img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt="">
-
-			</div>
-
-			<div class="profile-user-settings">
-
-				<h1 class="profile-user-name">{{user.nick}}</h1>
-
-				<button class="btn profile-edit-btn">Edit Profile</button>
-
-				<button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
-
-			</div>
-
-			<div class="profile-stats">
-
-				<ul>
-					<li><span class="profile-stat-count">164</span> posts</li>
-					<li><span class="profile-stat-count">188</span> followers</li>
-					<li><span class="profile-stat-count">206</span> following</li>
-				</ul>
-
-			</div>
-
-			<div class="profile-bio">
-
-				<p><span class="profile-real-name">Jane Doe</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️</p>
-
-			</div>
-
-		</div>
-		<!-- End of profile section -->
-
-	</div>
-  <div class="container">
-
-		<div class="gallery">
-
-			<div class="gallery-item" tabindex="0">
-
-				<img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-				<div class="gallery-item-info">
-
-					<ul>
-						<li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 56</li>
-						<li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
-					</ul>
-
-				</div>
-
-			</div>
-
-			<div class="gallery-item" tabindex="0">
-
-				<img src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-				<div class="gallery-item-info">
-
-					<ul>
-						<li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 89</li>
-						<li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 5</li>
-					</ul>
-
-				</div>
-
-			</div>
-
-			<div class="gallery-item" tabindex="0">
-
-				<img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-				<div class="gallery-item-type">
-
-					<span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
-
-				</div>
-
-				<div class="gallery-item-info">
-
-					<ul>
-						<li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 42</li>
-						<li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
-					</ul>
-
-				</div>
-
-			</div>
-
-	<!-- End of container -->
-
-</div>
-
-<!-- <div class="container" style="padding-top:200px; font-size: 20px;">
-  <div class="row">
-    <div class="col-12">
-      <div style="text-align: center; font-size: 40px;">
-        <div class="user-name">{{user.nick +'님 마이페이지' }}</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-12">
-      <div class="user-name">주문 정보</div>
-      <div class="myShopping_activity">
-
-        <div class="my_title">나의 쇼핑 활동</div>
-        {% set totalPrice = 0 %}
-        {% for payment in payments %}
-        {% set totalPrice = totalPrice + payment.price %}
-        <div>{{'주문가격:'+payment.price}}</div>
 
 
 
-        {% endfor %}
-        <div>{{'전체 총 주문가격:'+totalPrice+'원'}}</div>
-        <div class="row">
-          <div class="col-12">
-            {% if totalPrice >10000 and totalPrice <49000 %} 
-            <div class="level_summ ">
-              <div class="member_txt2">
-                <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
-                <br><span class="color" id="group_name"><span class="xans-member-var-group_name">아이언</span></span>
-                등급입니다.
+
+
+<div id="main_container" style="padding-top:100px;">
+
+  <section class="b_inner">
+
+      <div class="hori_cont">
+          <div class="profile_wrap">
+              <div class="profile_img">
+                  이미지
               </div>
-              <img src="/ranks/아이언.png" alt="">
           </div>
 
-          {% elif totalPrice >50000 and totalPrice <100000 %} 
-          <div class="level_summ ">
-            <div class="member_txt2">
-              <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
-              <br><span class="color" id="group_name"><span class="xans-member-var-group_name">브론즈</span></span> 등급입니다.
-            </div>
-            <img src="/ranks/브론즈.png" alt="">
-        </div>
-        {% elif totalPrice >100000 and totalPrice <200000 %} 
-        <div class="level_summ ">
-          <div class="member_txt2">
-            <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
-            <br><span class="color" id="group_name"><span class="xans-member-var-group_name">실버</span></span> 등급입니다.
-          </div>
-          <img src="/ranks/실버.png" alt="">
-      </div>
-      {% elif totalPrice >200000 and totalPrice <500000 %} 
-      <div class="level_summ ">
-        <div class="member_txt2">
-          <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
-          <br><span class="color" id="group_name"><span class="xans-member-var-group_name">골드</span></span> 등급입니다.
-        </div>
-        <img src="/ranks/골드.png" alt="">
-    </div>
-    {% elif totalPrice >500000 and totalPrice <100000 %} 
-    <div class="level_summ ">
-      <div class="member_txt2">
-        <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
-        <br><span class="color" id="group_name"><span class="xans-member-var-group_name">플레티넘</span></span> 등급입니다.
-      </div>
-      <img src="/ranks/플레티넘.png" alt="">
-  </div>
-  {% elif totalPrice >1000000 and totalPrice <5000000 %} 
-  <div class="level_summ ">
-    <div class="member_txt2">
-      <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
-      <br><span class="color" id="group_name"><span class="xans-member-var-group_name">마스터</span></span> 등급입니다.
-    </div>
-    <img src="ranks/마스터.png" alt="">
-</div>
-{% elif totalPrice >5000000 and totalPrice %}
-<div class="level_summ ">
-  <div class="member_txt2">
-    <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
-    <br><span class="color" id="group_name"><span class="xans-member-var-group_name">첼린저</span></span> 등급입니다.
-  </div>
-  <img src="/ranks/챌린저.png" alt="">
-</div>
-{% endif %}
-<div>
-  <a href=""> 멤버쉽 등급별 혜택보기</a>
-</div>
-</div>
-</div>
+          <div class="detail">
+              <div class="top">
+                  <div class="user_name">KindTiger</div>
+                  <a href="profile_edit.html" class="profile_edit">프로필편집</a>
+                  <a href="#" class="logout">로그아웃</a>
+              </div>
 
-<div class="myItem">
-  <div class="item">
-    <a href="https://whoisnerdy.com/member/modify.html">
-      회원정보 수정
-    </a>
-  </div>
-  <div class="item">
-    <a href="/board">
-      게시물 관리
-    </a>
-  </div>
-  <div class="item">
-    <a href="https://whoisnerdy.com/myshop/board_list.html">
-      문의 내역
-    </a>
-  </div>
-</div>
-</div>
-</div>
-</div>
-<div class="row">
-  <div class="col-12">
-    <div class="level_detail ">
+              <ul class="middle">
+                  <li>
+                      <span>게시물</span>
+                      3
+                  </li>
+                  <li>
+                      <span>팔로워</span>
+                      3
+                  </li>
+                  <li>
+                      <span>팔로우</span>
+                      3
+                  </li>
+              </ul>
+              <p class="about">
+                  <span class="nick_name">kindtigerrr</span>
+              </p>
+
+          </div>
+      </div>
+
+    
+
       
-      <div class="member_txt4">
-      </div>
-
-      <div class="member_txt3" id="level_mypage">적립율 1%</div>
-
-      <div class="xans-element- xans-myshop xans-myshop-asyncbenefit myGraph ">
-        <div class="myLevel_graph">
-          <div class="graph_bg">
-            <div class="bar " id="myGrp" style="width: 0%;"></div>
-          </div>
-        </div>
-       
-        <div class=" gradeGuide" id="sGradeAutoDisplayArea">
-          <div class=" sAutoGradeDisplay">
-            <span id="needVal"><span class="xans-member-var-sGradeIncreasePrice">2원</span></span> 추가 구매시 다음달 <span
-              class="xans-member-var-sNextGrade">브론즈</span> 달성
-          </div>
-        </div>
-      </div>
-
-      <div class="member_benefit">
-        <a href="https://whoisnerdy.com/board/free/read.html?no=33981&amp;board_no=1">멤버십 등급별 혜택 보기</a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-12">
-    <div class="xans-element- xans-layout xans-layout-statelogon my_mileage ">
-      <div class="item">
-        <p>사용가능한 적립금</p>
-        <div class="xans-element- xans-myshop xans-myshop-asyncbankbook money "><a
-            href="https://whoisnerdy.com/myshop/mileage/historyList.html"><span
-              id="xans_myshop_bankbook_avail_mileage">1,000원</span></a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
 
 
+		<!-- End of profile section -->
+   
 
-
-
-
-
- -->
 
 
 </div>
 <div class="wrap">
-  <div class="greenContainer">
-    <div>
-      <div class="grade">GOLD</div>
-      <div class="name">Jaden</div>
-    </div>    
-    <div class="modify">i</div>    
-  </div>
-  <div class="summaryContainer">
-    <div class="item">
-        <div class="number">354</div>
-        <div>단골상점</div>
-      </div>
-      <div class="item">
-        <div class="number">354</div>
-        <div>상품후기</div>
-      </div>
-      <div class="item">
-        <div class="number">354</div>
-        <div>적립금(BLCT)</div>
-      </div>
-  </div>  
   <div class="shippingStatusContainer">
     <div class="title">
       주문/배송조회
@@ -878,27 +746,97 @@ Remove or comment-out the code block below to see how the browser will fall-back
         <div class="text">주문목록<span class="circle"></span></div>
         <div class="right"> > </div>
     </a>
+  </div>
+     {% set totalPrice = 0 %}
+    {% for payment in payments %}
+  <div class="listContainer">
+ 
     <a href="#" class="item">
-        <div class="icon">ii</div>
-        <div class="text">상품후기</div>
-        <div class="right"> > </div>
-    </a>
-    <a href="#" class="item">
-        <div class="icon">ii</div>
-        <div class="text">상품문의</div>
-        <div class="right"> > </div>
-    </a>
-    <a href="#" class="item">
-        <div class="icon">ii</div>
-        <div class="text">단골상점</div>
-        <div class="right"> > </div>
-    </a>
-    <a href="#" class="item">
-        <div class="icon">ii</div>
-        <div class="text">찜한상품</div>
+        <div class="icon">.</div>
+    
+        {% set totalPrice = totalPrice + payment.price %}
+        <div>{{'주문가격:'+payment.price}}</div>
+    
+    
+    
+ 
         <div class="right"> > </div>
     </a>
   </div>
+       {% endfor %}
+
+
+<div class="listContainer">
+  <a href="#" class="item">
+    <div class="row"></div>
+      <div class="col-12">
+        {% if totalPrice >10000 and totalPrice <49000 %} 
+        <div class="level_summ ">
+          <div class="member_txt2">
+            <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
+            <br><span class="color" id="group_name"><span class="xans-member-var-group_name">아이언</span></span>
+            등급입니다.
+          </div>
+         
+      </div>
+  
+      {% elif totalPrice >50000 and totalPrice <100000 %} 
+      <div class="level_summ ">
+        <div class="member_txt2">
+          <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
+          <br><span class="color" id="group_name"><span class="xans-member-var-group_name">브론즈</span></span> 등급입니다.
+        </div>
+    
+    </div>
+    {% elif totalPrice >100000 and totalPrice <200000 %} 
+    <div class="level_summ ">
+      <div class="member_txt2">
+        <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
+        <br><span class="color" id="group_name"><span class="xans-member-var-group_name">실버</span></span> 등급입니다.
+      </div>
+ 
+  </div>
+  {% elif totalPrice >200000 and totalPrice <500000 %} 
+  <div class="level_summ ">
+    <div class="member_txt2">
+      <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
+      <br><span class="color" id="group_name"><span class="xans-member-var-group_name">골드</span></span> 등급입니다.
+    </div>
+
+  </div>
+  {% elif totalPrice >500000 and totalPrice <100000 %} 
+  <div class="level_summ ">
+  <div class="member_txt2">
+    <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
+    <br><span class="color" id="group_name"><span class="xans-member-var-group_name">플레티넘</span></span> 등급입니다.
+  </div>
+
+  </div>
+  {% elif totalPrice >1000000 and totalPrice <5000000 %} 
+  <div class="level_summ ">
+  <div class="member_txt2">
+  <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
+  <br><span class="color" id="group_name"><span class="xans-member-var-group_name">마스터</span></span> 등급입니다.
+  </div>
+
+  </div>
+  {% elif totalPrice >5000000 and totalPrice %}
+  <div class="level_summ ">
+  <div class="member_txt2">
+  <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
+  <br><span class="color" id="group_name"><span class="xans-member-var-group_name">첼린저</span></span> 등급입니다.
+  </div>
+
+  </div>
+  {% endif %}
+  <div>
+  <a href=""> 멤버쉽 등급별 혜택보기</a>
+  </div>
+  </div>
+  </div>
+  </a>
+
+</div>
   <div class="listContainer">
     <a href="#" class="item">
         <div class="icon">ii</div>
@@ -910,183 +848,18 @@ Remove or comment-out the code block below to see how the browser will fall-back
           </span>          
         </div>                
         <div class="right">
-          <span class="blct">175 BLCT</span>
-          > </div>
+          <span class="blct"><div>{{'전체 총 주문가격:'+totalPrice+'원'}}</div></span>
+          </div>
     </a>
-    <a href="#" class="item">
-        <div class="icon">ii</div>
-        <div class="text">알림</div>
-        <div class="right"> > </div>
-    </a>
-    <a href="#" class="item">
-        <div class="icon">ii</div>
-        <div class="text">설정</div>
-        <div class="right"> > </div>
-    </a>   
+  
   </div>
-  <div class="infoContainer">
-    <a href="#" class="item">
-      <div>icon</div>
-      <div>공지사항</div>
-    </a>    
-    <a href="#" class="item">
-      <div>icos</div>
-      <div>이용안내</div>
-    </a>    
-    <a href="#" class="item">
-      <div>icon</div>
-      <div>고객센터</div>
-    </a>
-  </div>
+
 </div>
 
-<section id="container">
-
-  <header id="header">
-      <section class="h_inner">
-
-          <h1 class="logo">
-              <a href="index.html">
-                  <div class="sprite_insta_icon"></div>
-                  <div>
-                      <div class="sprite_write_logo"></div>
-                  </div>
-              </a>
-          </h1>
-
-          <div class="search_field">
-              <input type="text" placeholder="검색" tabindex="0">
-
-              <div class="fake_field">
-                  <span class=sprite_small_search_icon></span>
-                  <span>검색</span>
-              </div>
-          </div>
-
-
-          <div class="right_icons">
-              <a href="new_post.html"><div class="sprite_camera_icon"></div></a>
-              <a href="login.html"><div class="sprite_compass_icon"></div></a>
-              <a href="follow.html"><div class="sprite_heart_icon_outline"></div></a>
-              <a href="profile.html"><div class="sprite_user_icon_outline"></div></a>
-          </div>
-      </section>
-  </header>
-
-
-  <div id="main_container">
-
-      <section class="b_inner">
-
-          <div class="hori_cont">
-              <div class="profile_wrap">
-                  <div class="profile_img">
-                      <img src="imgs/thumb.jpeg" alt="착한호랑이">
-                  </div>
-              </div>
-
-              <div class="detail">
-                  <div class="top">
-                      <div class="user_name">KindTiger</div>
-                      <a href="profile_edit.html" class="profile_edit">프로필편집</a>
-                      <a href="#" class="logout">로그아웃</a>
-                  </div>
-
-                  <ul class="middle">
-                      <li>
-                          <span>게시물</span>
-                          3
-                      </li>
-                      <li>
-                          <span>팔로워</span>
-                          3
-                      </li>
-                      <li>
-                          <span>팔로우</span>
-                          3
-                      </li>
-                  </ul>
-                  <p class="about">
-                      <span class="nick_name">kindtigerrr</span>
-                      <span class="book_mark">bookmark</span>
-                  </p>
-
-              </div>
-          </div>
-
-          <div class="mylist_contents contents_container active">
-              <div class="pic">
-                  <a href="#"><img src="imgs/img_section/img01.jpg" alt=""></a>
-              </div>
-              <div class="pic">
-                  <a href="#"><img src="imgs/img_section/img02.jpg" alt=""></a>
-              </div>
-              <div class="pic">
-                  <a href="#"> <img src="imgs/img_section/img03.jpg" alt=""></a>
-              </div>
-              <div class="pic">
-                  <a href="#"> <img src="imgs/img_section/img02.jpg" alt=""></a>
-              </div>
-              <div class="pic">
-                  <a href="#"> <img src="imgs/img_section/img03.jpg" alt=""></a>
-              </div>
-              <div class="pic">
-                  <a href="#"> <img src="imgs/img_section/img01.jpg" alt=""></a>
-              </div>
-              <div class="pic">
-                  <a href="#"> <img src="imgs/img_section/img02.jpg" alt=""></a>
-              </div>
-              <div class="pic">
-                  <a href="#"> <img src="imgs/img_section/img03.jpg" alt=""></a>
-              </div>
-              <div class="pic">
-                  <a href="#"> <img src="imgs/img_section/img01.jpg" alt=""></a>
-              </div>
-          </div>
-
-
-          <div class="bookmark_contents contents_container">
-              <div class="pic">
-                  <a href="#"><img src="imgs/img_section/img03.jpg" alt=""></a>
-              </div>
-              <div class="pic">
-                  <a href="#"><img src="imgs/img_section/img01.jpg" alt=""></a>
-              </div>
-              <div class="pic">
-                  <a href="#"> <img src="imgs/img_section/img02.jpg" alt=""></a>
-              </div>
-              <div class="pic">
-                  <a href="#"> <img src="imgs/img_section/img01.jpg" alt=""></a>
-              </div>
-              <div class="pic">
-                  <a href="#"> <img src="imgs/img_section/img02.jpg" alt=""></a>
-              </div>
-              <div class="pic">
-                  <a href="#"> <img src="imgs/img_section/img03.jpg" alt=""></a>
-              </div>
-              <div class="pic">
-                  <a href="#"> <img src="imgs/img_section/img01.jpg" alt=""></a>
-              </div>
-              <div class="pic">
-                  <a href="#"> <img src="imgs/img_section/img02.jpg" alt=""></a>
-              </div>
-              <div class="pic">
-                  <a href="#"> <img src="imgs/img_section/img02.jpg" alt=""></a>
-              </div>
-          </div>
 
 
 
-
-      </section>
-  </div>
-
-
-</section>
-
-
-<div class="loader"></div>
-
+  
 
 
 
