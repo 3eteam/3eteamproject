@@ -183,7 +183,7 @@
 <br>
 <br>
 <div>
-  <form id="comment-form" action="/boardwrite" method="POST">
+  <form id="comment-form" method="POST">
     <div class="form">
       <div class="wrapper">
         <div class="header">
@@ -206,6 +206,7 @@
               <input id="title" type="text" name="title" value="{{comment.title}}" placeholder="제목은 필수입력 사항입니다.">
             </div>
             <div class="img">
+              <input id="img-url" type="hidden" style="display: none;" name="url">
               <label id="img-label1" for="img">사진 업로드</label>
               <input id="img" type="file" accept="image/*">
             </div>
