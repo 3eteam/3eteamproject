@@ -1936,7 +1936,8 @@
 
 
                                     <div>
-                                      <div class="cap-content">{{cap.content}}</div>
+                                      <div id ='abc'></div>
+                                      <div id ='cap-content1' class="cap-content">{{cap.content}}</div>
                                       <!-- 오소이 TONI MINI 백입니다.<br>
                                       미니멀하고 모던한 형태 및 견고하고 실용적인 상하 구성의 하드웨어 <br>"BAU"는 BAU SERIES의 아이덴티티가 됩니다.
                                       BAU는 결합 및 분리시 간결하게 떨어지는 쉐입과 안정적인 디자인을 위해 반대로 기능적이고 구조적인 요소가 복잡하고 정교하게 숨어 있는 형태로 설계되었습니다.<br>
@@ -1982,12 +1983,63 @@
     crossorigin="anonymous"></script>
   <script src="/shoplist.js"></script>
   <script>
+  //   console.log(1);
+  //   const tag = str.replaceAll("&lt;", "<" ,"&gt;", ">");
+    
+  //   const ddd= document.querySelector('#cap-content1');
+  //   console.log(ddd);
+  //   const abcd = $('#abc');
+  //   abcd.innerTEXT()=tag[0];
+  //   console.log(abcd);
+
+  //   $('#abc').append(abcd);
+
+  //   $(document).ready(function() {
+
+
+  // });
+
+  var price = document.getElementsByClassName('cap-content')[0];
+      price.innerHTML = price.innerHTML.toString().replaceAll("&lt;", "<" ,"&gt;", ">");
+      console.log(price);
+
+
+function buy(items) {
+    const option = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ buys: items }),
+    }
+    fetch(buyURL, option)
+        .then(res => {
+            res.json().then(data => {
+                if (data.res) {
+                    alert("구매 완료하였습니다.\n" +
+                        "[정선아]에게[" + data.priceStr + "]원을 송금하시면 배송됩니다.");
+                    location.reload();
+                }
+                else {
+                    alert("구매 실패하였습니다.");
+                }
+            })
+        });
+}
+
+
+
+
+  </script>
+  <script>
+
     const audioContainer = document.querySelector('#audioContainer');
     const playBtn = document.querySelector('.js-playBtn');
     const stopBtn = document.querySelector('.js-stopBtn')
     const stopBtn2 = document.querySelector('.js-stopBtn2')
 
     let currentAudio = 1;
+
 
 
     function playAudio() {

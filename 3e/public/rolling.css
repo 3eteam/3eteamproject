@@ -36,6 +36,5 @@ html, body {
 
 .animation-text {
     position: absolute;
-    z-index: 10;
     margin: 0 auto;
 }

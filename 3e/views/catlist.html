@@ -1,20 +1,25 @@
-
-
 {% extends 'layout.html' %}
 
 {% block content %}
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+<!--  jQuery, bootstrap -->
+
+<!-- summernote css/js-->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+
 
 <style>
     textarea {
-    resize: vertical;
-    width: 100%;
-    height: 400px;
-}
+        resize: vertical;
+        width: 100%;
+        height: 400px;
+    }
 
-.mgtt {
-    margin-top: 100px;
-}
+    .mgtt {
+        margin-top: 100px;
+    }
 </style>
 
 <form id="twit-form" action="/post" method="post" enctype="multipart/form-data">
@@ -23,20 +28,20 @@
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">상품명</label>
                 <div class="col-sm-9">
-                    <input id= "capname" name ="capname" type="text" class="form-control">
+                    <input id="capname" name="capname" type="text" class="form-control">
                 </div>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">상품코드</label>
                 <div class="col-sm-9">
-                    <input id="capnumber" name ="capnumber" type="text" class="form-control">
+                    <input id="capnumber" name="capnumber" type="text" class="form-control">
                 </div>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">상품가격</label>
                 <div class="col-sm-9">
                     <div class="input-group mb-3">
-                        <input id= "price" name ="price" type="text" class="form-control">
+                        <input id="price" name="price" type="text" class="form-control">
                         <span class="input-group-text">원</span>
                     </div>
                 </div>
@@ -44,14 +49,14 @@
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">브랜드</label>
                 <div class="col-sm-9">
-                    <input id= "brand" name ="brand" type="text" class="form-control">
+                    <input id="brand" name="brand" type="text" class="form-control">
                 </div>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">입고</label>
                 <div class="col-sm-9">
                     <div class="input-group mb-3">
-                        <input id= "quantity" name ="quantity" type="text" class="form-control">
+                        <input id="quantity" name="quantity" type="text" class="form-control">
                         <span class="input-group-text">입고수량</span>
                     </div>
                 </div>
@@ -72,7 +77,7 @@
                     </div>
                 </div>
             </div>
-        <div class="mb-3 row">
+            <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">상품카테고리</label>
                 <div class="col-sm-9">
                     <div class="row">
@@ -102,22 +107,23 @@
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">태그</label>
                 <div class="col-sm-9">
-                    <input id= "tag" name ="tag" type="text" class="form-control">
+                    <input id="tag" name="tag" type="text" class="form-control">
                 </div>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">출고일</label>
                 <div class="col-sm-9">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control">
-                        <span class="input-group-text">일 이내 출고(주말,공휴일 제외)</span>
+                        <span class="input-group-text">2일 이내 출고(주말,공휴일 제외)</span>
                     </div>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">상품 상세설명</label>
                 <div class="col-sm-9">
-                    <textarea id="twit" name="content" maxlength="140"></textarea>
+                    <!-- <textarea class="summernote" id="summernote" name="editordata"
+                        maxlength="140"></textarea> -->
+                        <textarea id="summernote" class="summernote" name="content" maxlength="140"></textarea>
                 </div>
             </div>
             <div class="mb-3 row">
@@ -126,37 +132,12 @@
                     <div class="img-preview">
                         <img id="img-preview" src="" style="display: none;" width="250" alt="미리보기">
                         <input id="img-url" type="hidden" name="url">
-                      </div>
+                    </div>
                     <input id="img" type="file" class="form-control" accept="image/*">
                     <div class="alert alert-secondary" role="alert">
                         <ul>
                             <li>이미지 사이즈 : 400*300</li>
                             <li>파일 사이즈 : 1M 이하</li>
-                            <li>파일 확장자 : png, jpg 등등..</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label class="col-md-3 col-form-label">제품이미지</label>
-                <div class="col-md-9">
-                    <input type="file" class="form-control" multiple>
-                    <div class="alert alert-secondary" role="alert">
-                        <ul>
-                            <li>최대 5개 가능</li>
-                            <li>파일 사이즈 : 1M 이하</li>
-                            <li>파일 확장자 : png, jpg 등등..</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label class="col-md-3 col-form-label">상품설명이미지</label>
-                <div class="col-md-9">
-                    <input type="file" class="form-control" multiple>
-                    <div class="alert alert-secondary" role="alert">
-                        <ul>
-                            <li>파일 사이즈 : 5M 이하</li>
                             <li>파일 확장자 : png, jpg 등등..</li>
                         </ul>
                     </div>
@@ -175,55 +156,100 @@
 </form>
 
 {% for twit in twits %}
-          <div class="twit">
-            
-            {% if twit.img %}
-            <a href="/catlist\{{twit.id}}">삭제</a> 
-              <div class="twit-img"><img src="{{twit.img}}" alt="섬네일" style="width: 100px; height: 100px;"></div>
-            {% endif %}
-          </div>
-        {% endfor %}
+<div class="twit">
+
+    {% if twit.img %}
+    <a href="/catlist\{{twit.id}}">삭제</a>
+    <div class="twit-img"><img src="{{twit.img}}" alt="섬네일" style="width: 100px; height: 100px;"></div>
+    {% endif %}
+</div>
+{% endfor %}
 {% endblock %}
 
 {% block script %}
-  <script>
+<script>
+$(document).ready(function() {
+
+	var toolbar = [
+		    // 글꼴 설정
+		    ['fontname', ['fontname']],
+		    // 글자 크기 설정
+		    ['fontsize', ['fontsize']],
+		    // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
+		    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+		    // 글자색
+		    ['color', ['forecolor','color']],
+		    // 표만들기
+		    ['table', ['table']],
+		    // 글머리 기호, 번호매기기, 문단정렬
+		    ['para', ['ul', 'ol', 'paragraph']],
+		    // 줄간격
+		    ['height', ['height']],
+		    // 그림첨부, 링크만들기, 동영상첨부
+		    ['insert',['picture','link','video']],
+		    // 코드보기, 확대해서보기, 도움말
+		    ['view', ['codeview','fullscreen', 'help']]
+		  ];
+
+	var setting = {
+            height : 300,
+            minHeight : null,
+            maxHeight : null,
+            focus : true,
+            lang : 'ko-KR',
+            toolbar : toolbar,
+            callbacks : { //여기 부분이 이미지를 첨부하는 부분
+            onImageUpload : function(files, editor,
+            welEditable) {
+            for (var i = files.length - 1; i >= 0; i--) {
+            uploadSummernoteImageFile(files[i],
+            this);
+            		}
+            	}
+            }
+         };
+
+        $('#summernote').summernote(setting);
+        });
+</script>
+<script>
     if (document.getElementById('img')) {
-      document.getElementById('img').addEventListener('change', function(e) {
-        const formData = new FormData();
-        console.log(this, this.files);
-        formData.append('img', this.files[0]);
-        axios.post('/post/img', formData)
-          .then((res) => {
-            document.getElementById('img-url').value = res.data.url;
-            document.getElementById('img-preview').src = res.data.url;
-            document.getElementById('img-preview').style.display = 'inline';
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-      });
-    }
-    document.querySelectorAll('.twit-follow').forEach(function(tag) {
-      tag.addEventListener('click', function() {
-        const myId = document.querySelector('#my-id');
-        if (myId) {
-          const userId = tag.parentNode.querySelector('.twit-user-id').value;
-          if (userId !== myId.value) {
-            if (confirm('팔로잉하시겠습니까?')) {
-              axios.post(`/user/${userId}/follow`)
-                .then(() => {
-                  location.reload();
+        document.getElementById('img').addEventListener('change', function (e) {
+            const formData = new FormData();
+            console.log(this, this.files);
+            formData.append('img', this.files[0]);
+            axios.post('/post/img', formData)
+                .then((res) => {
+                    document.getElementById('img-url').value = res.data.url;
+                    document.getElementById('img-preview').src = res.data.url;
+                    document.getElementById('img-preview').style.display = 'inline';
                 })
                 .catch((err) => {
-                  console.error(err);
+                    console.error(err);
                 });
+        });
+    }
+    document.querySelectorAll('.twit-follow').forEach(function (tag) {
+        tag.addEventListener('click', function () {
+            const myId = document.querySelector('#my-id');
+            if (myId) {
+                const userId = tag.parentNode.querySelector('.twit-user-id').value;
+                if (userId !== myId.value) {
+                    if (confirm('팔로잉하시겠습니까?')) {
+                        axios.post(`/user/${userId}/follow`)
+                            .then(() => {
+                                location.reload();
+                            })
+                            .catch((err) => {
+                                console.error(err);
+                            });
+                    }
+                }
             }
-          }
-        }
-      });
+        });
     });
-    
-  </script>
+
+</script>
 
 
 {% endblock %}
