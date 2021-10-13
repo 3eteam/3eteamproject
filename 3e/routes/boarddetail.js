@@ -18,6 +18,13 @@ router.get('/:id', async (req, res, next) => {
         },
         where:{id : req.params.id},
     });
+    //렌더링 되기 전 조회수 1 추가
+    const update = await Comment.update(
+      {
+      viewcount : ++posts.viewcount,
+    },
+    {where:{id : req.params.id}}
+    )
       res.render('boarddetail', {
       title: '게시글 상세페이지 | 3e',
       comments: posts,
