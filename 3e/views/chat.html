@@ -33,6 +33,7 @@
   border-radius: 3px;
   border: none;
   height: 100%;
+  width: 120px;
 }
 .display-container {
   flex: 12;
@@ -156,7 +157,7 @@
               <input type="text" style="background-color: rgb(83, 82, 82);" id="nickname" placeholder="대화명을입력하라우" value='{{user.nick}}' readonly>
             {% else %}
               <label for="nickname" class="dhm">대화명</label>
-              <input type="text" id="nickname" placeholder="대화명을입력하라우" value={{user.nick}}>
+              <input type="text" id="nickname" placeholder="대화명을입력해!" value={{user.nick}}>
             {% endif %}
             <ul id="messages" type="none">
               <li id="usercount"></li>

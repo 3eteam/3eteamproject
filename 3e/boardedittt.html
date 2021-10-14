@@ -2,9 +2,6 @@
 
 {% block content %}
 <style>
-  label{
-    font-weight: 900;
-  }
   .form {
     padding-top: 30px;
     margin-bottom: 30px;
@@ -14,10 +11,9 @@
     margin-bottom: 35px;
     padding-bottom: 35px;
     border-bottom: 1px solid #ddd;
-    margin-left: 50px;
   }
 
-  .form .header .title1 {
+  .form .header .title {
     font-size: 25px;
     font-weight: bold;
     color: #1259a7;
@@ -35,7 +31,7 @@
   }
 
   .form .content {
-    margin: 0 40px;
+    margin: 0 -15px;
   }
 
   .form .content:after {
@@ -61,10 +57,6 @@
 
   .form .content .half .message .length {
     float: right;
-  }
-
-  .upload_photo {
-    margin-top: 30px;
   }
 
   .form .content .half .email {
@@ -165,11 +157,6 @@
     border: 1px solid #1259a7;
     box-shadow: none;
     color: #fff;
-    margin-top: 15px;
-  }
-
-  .form .content .half .action button:hover{
-    background: red;
   }
 
   @media(max-width:767px) {
@@ -186,8 +173,6 @@
       margin: 10px 0 0 0;
     }
   }
-
-  
 </style>
 <br>
 <br>
@@ -198,35 +183,38 @@
 <br>
 <br>
 <div>
-  <form id="comment-form" action="/boardwrite" method="POST">
+  <form id="comment-form" method="POST">
     <div class="form">
       <div class="wrapper">
         <div class="header">
-          <span class="title1">게시글 수정</span>
+          <span class="title">게시글 수정</span>
           <span class="desc">비방/심한 욕설은 제재의 대상이 될 수 있습니다.</span>
         </div>
         <div class="content">
-          <div class="half">
-            <div class="title">
-              <label for="title">제 목 <span class="point">*</span></label>
-              <input id="title" type="text" name="title" value="{{comment.title}}">
-            </div>
-            <div class="upload_photo">
-              <input id="img-url" type="hidden" style="display: none;" name="url">
-              <label id="img-label1" for="img">사진 업로드</label>
-              <input id="img" type="file"  accept="image/*">
-            </div>
-            <div class="action">
-              <button class="btn_jc" type="submit"> 수정</button>
-            </div>
-          </div>
           <div class="half">
             <div class="content">
               <label for="comment">
                 <span>내 용</span>
               </label>
-              <textarea id="comment" name="comment" placeholder="자유롭게 글을 작성해주세요"></textarea>
+              <textarea id="comment" type="textarea" name="comment" value="{{comment.comment}}"
+                placeholder="자유롭게 글을 작성해주세요"></textarea>
             </div>
+          </div>
+          <div class="half">
+            <div class="title">
+              <label for="title">제 목 <span class="point">*</span></label>
+              <input id="title" type="text" name="title" value="{{comment.title}}" placeholder="제목은 필수입력 사항입니다.">
+            </div>
+            <div class="img">
+              <input id="img-url" type="hidden" style="display: none;" name="url">
+              <label id="img-label1" for="img">사진 업로드</label>
+              <input id="img" type="file" accept="image/*">
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="action">
+            <button type="submit">수정</button>
           </div>
         </div>
       </div>
@@ -234,13 +222,10 @@
   </form>
 </div>
 
-
-
-
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/sequelize.js"></script>
 <script>
-  // 이미지 업로드
+
   if (document.getElementById('img')) {
     document.getElementById('img').addEventListener('change', function (e) {
       const formData = new FormData();

@@ -2,6 +2,9 @@
 
 {% block content %}
 <style>
+  label{
+    font-weight: 900;
+  }
   .form {
     padding-top: 30px;
     margin-bottom: 30px;
@@ -11,6 +14,7 @@
     margin-bottom: 35px;
     padding-bottom: 35px;
     border-bottom: 1px solid #ddd;
+    margin-left: 50px;
   }
 
   .form .header .title1 {
@@ -31,7 +35,7 @@
   }
 
   .form .content {
-    margin: 0 -15px;
+    margin: 0 40px;
   }
 
   .form .content:after {
@@ -57,6 +61,10 @@
 
   .form .content .half .message .length {
     float: right;
+  }
+
+  .upload_photo {
+    margin-top: 30px;
   }
 
   .form .content .half .email {
@@ -157,6 +165,11 @@
     border: 1px solid #1259a7;
     box-shadow: none;
     color: #fff;
+    margin-top: 15px;
+  }
+
+  .form .content .half .action button:hover{
+    background: red;
   }
 
   @media(max-width:767px) {
@@ -173,6 +186,8 @@
       margin: 10px 0 0 0;
     }
   }
+
+  
 </style>
 <br>
 <br>
@@ -196,10 +211,13 @@
               <label for="title">제 목 <span class="point">*</span></label>
               <input id="title" type="text" name="title" placeholder="제목은 필수입력 사항입니다.">
             </div>
-            <div >
+            <div class="upload_photo">
               <input id="img-url" type="hidden" style="display: none;" name="url">
               <label id="img-label1" for="img">사진 업로드</label>
               <input id="img" type="file"  accept="image/*">
+            </div>
+            <div class="action">
+              <button class="btn_jc" type="submit"> 제출</button>
             </div>
           </div>
           <div class="half">
@@ -209,11 +227,6 @@
               </label>
               <textarea id="comment" name="comment" placeholder="자유롭게 글을 작성해주세요"></textarea>
             </div>
-          </div>
-          <br>
-          <br>
-          <div class="action">
-            <button type="submit"> 제출</button>
           </div>
         </div>
       </div>

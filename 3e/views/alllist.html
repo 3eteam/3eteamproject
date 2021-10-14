@@ -12,14 +12,7 @@
     flex-direction: column;
     align-content: space-around;
 }
-.right_body {
-   
-    padding-top: 20px;
-    width: 300px;
-    height: 1000px;
-    left: 72%;
-    position: absolute;
-}
+
 .left_body {
    
     margin-right: 100px;
@@ -173,14 +166,12 @@
   <!-- {% if user %} -->
    
   <!-- {% endif %} -->
-  
-  
-  
+
    
  <div class="container allgo">
    <div class="row">
      <div class="col-12">
-      {% for carts in cart %}
+      {% for twit in twits %}
 
       <!-- 바디 영역 -->
       <div class="main_body">
@@ -189,16 +180,16 @@
           <div class="border feed_box">
             <div class="feed_name">
               <div class="profile_box">
-                <img class="profile_img" src="/아이우.jpeg">
+                <img class="profile_img" src="https://i.esdrop.com/d/cl3pewp2aooj/OBaZNw8TQW.png">
               </div>
-              <span class="feed_name_txt">{{carts.brand}} </span>
+              <span class="feed_name_txt">{{twit.brand}} </span>
             </div>
-            <img class="feed_img" src="{{carts.img}}">
+            <img class="feed_img" src="{{twit.img}}">
       
             <div class="feed_icon">
               <div>
                 <span class="material-icons-outlined">
-                  {{carts.content}}
+                  favorite_border
                 </span>
                 <span class="material-icons-outlined">
                   mode_comment
@@ -214,10 +205,10 @@
               </div>
             </div>
             <div class="feed_like">
-              <p class="feed_txt"> <b>좋아요 10개</b>{{carts.content}}</p>
+              <p class="feed_txt"> <b>좋아요 10개</b>{{cap.content}}</p>
             </div>
             <div class="feed_content">
-              <p class="feed_txt"> <b> {{cart.email}}</b></p>
+              <p class="feed_txt"> <b> {{twit.User.nick}}</b></p>
             </div>
             <div class="feed_reply">
               <span class="feed_txt"><div class="twit-brand">{{twit.brand}}</div></span>
@@ -232,47 +223,7 @@
 </div>
 
 
-<div class="right_body">
-  <div class="feed_name" style="justify-content: space-between">
-    <div style="display: flex; align-items: center; ">
-      <div class="big_profile_box">
-        <img class="profile_img"
-             src="/아이우.jpeg">
-      </div>
-      <div class="name_content">
-        <span class="feed_name_txt"> {{useremail.nick}}</span>
-        <span class="name_content_txt"> {{useremail.email}}</span>
-      </div>
-    </div>
 
-    <a class="link_txt" >
-      전환
-    </a>
-  </div>
-
-  <div class="recommend_box">
-    <span style="color: gray"> 장바구니</span>
-    <a href="/cart"><span style="font-size: 12px"> 모두 보기 </span></a>
-  </div>
-
-
-    
-
-    
-{% for carteds in carted%}
-    <div class="feed_name" style="justify-content: space-between">
-      <div class="profile_box">
-        <img class="profile_img"
-             src="{{carteds.img}}">
-      </div>
-      <div class="name_content">
-        <span class="feed_name_txt"> {{carteds.capname}}</span>
-        <span class="name_content_txt"> ￦{{carteds.price}}</span>
-      </div>
-      <a href="/alllist\{{carteds.id}}">삭제</a> 
-    </div>
-
- {% endfor %}
 
 
 
