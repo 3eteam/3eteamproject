@@ -141,7 +141,7 @@
 
   .pro_table2 ul {
     position: relative;
-    width: 150px;
+    width: 170px;
     height: 250px;
     top: 85px;
     left: -40px;
@@ -946,39 +946,39 @@ body {
                                         <span class="opt-val">O S O I</span>
                                 </div>
                                 <div class="option">
-                                        <input class="s-c top" type="radio" name="platform" value="dribbble">
+                                        <input class="s-c top" type="radio" name="platform" value="dribbble" onclick="javascript:hospital('nike')">
                                         <input class="s-c bottom" type="radio" name="platform" value="dribbble">
                                         <i class="fab fa-dribbble"></i>
                                         <span class="label">N I K E</span>
                                         <span class="opt-val">N I K E</span>
                                 </div>
                                 <div class="option">
-                                        <input class="s-c top" type="radio" name="platform" value="behance">
+                                        <input class="s-c top" type="radio" name="platform" value="behance" onclick="javascript:hospital('adidas')">
                                         <input class="s-c bottom" type="radio" name="platform" value="behance">
                                         <i class="fab fa-behance"></i>
                                         <span class="label">A D I D A S</span>
                                         <span class="opt-val">A D I D A S</span>
                                 </div>
                                 <div class="option">
-                                        <input class="s-c top" type="radio" name="platform" value="hackerrank">
+                                        <input class="s-c top" type="radio" name="platform" value="hackerrank" onclick="javascript:hospital('newera')">
                                         <input class="s-c bottom" type="radio" name="platform" value="hackerrank">
                                         <i class="fab fa-hackerrank"></i>
-                                        <span class="label">O S O I</span>
-                                        <span class="opt-val">O S O I</span>
+                                        <span class="label">N E W E R A</span>
+                                        <span class="opt-val">N E W E R A</span>
                                 </div>
                                 <div class="option">
-                                        <input class="s-c top" type="radio" name="platform" value="stackoverflow">
+                                        <input class="s-c top" type="radio" name="platform" value="stackoverflow" onclick="javascript:hospital('nike')">
                                         <input class="s-c bottom" type="radio" name="platform" value="stackoverflow">
                                         <i class="fab fa-stack-overflow"></i>
-                                        <span class="label">O S O I</span>
-                                        <span class="opt-val">O S O I</span>
+                                        <span class="label">C O V E R N A T</span>
+                                        <span class="opt-val">C O V E R N A T</span>
                                 </div>
                                 <div class="option">
                                         <input class="s-c top" type="radio" name="platform" value="freecodecamp">
                                         <input class="s-c bottom" type="radio" name="platform" value="freecodecamp">
                                         <i class="fab fa-free-code-camp"></i>
-                                        <span class="label">O S O I</span>
-                                        <span class="opt-val">O S O I</span>
+                                        <span class="label">C A R H A R T T</span>
+                                        <span class="opt-val">C A R H A R T T</span>
                                 </div>
                                 <div id="option-bg"></div>
                         </div>
@@ -1010,7 +1010,6 @@ body {
                         <li><a href="/alllist" class="btn">전체상품</a></li>
                         <li><a href="/board" class="btn">게시판</a></li>
                         <li><a id="my-profile" href="/profile" class="btn">마이페이지</a></li>
-                        <li><a href="/login" class="btn">주문조회</a></li>
                         <li><a href="/changeinfo" class="btn">회원정보 변경</a></li>
                         {% if user.id < 6%}
                         <li><a id="catlist" href="/catlist" class="btn">관리자모드</a></li>
