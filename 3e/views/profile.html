@@ -1,878 +1,457 @@
 {% extends 'layout.html' %}
 
-
 {% block content %}
 <style>
-
-  
-  .hori_cont{
+  * {
+    list-style: none;
+  }
+  .page-header {
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+  }
+  .content-cluster {
+    width: 1249px;
+    margin: 50 auto 18px;
+    background: #fff;
+    border: 1px solid #c7c7c7;
+    position: relative;
+  }
+  .content-title {
+    padding: 46px 27px 33px;
+}
+.content-title h3 {
+    font-size: 30px;
+    display: inline;
+    font-weight: bold;
+    color: #222;
+    letter-spacing: -1.4px;
+}
+.content-title .title-desc {
+    font-size: 14px;
+    display: inline;
+    font-weight: 600;
+    color: #222;
+    letter-spacing: -0.5px;
+}
+#mypage .content-title {
+    padding-bottom: 15px;
+}
+.mysituation-cluster, .prouduct-cluster {
+    width: 1195px;
+    margin: 0 auto;
+    padding: 0 27px;
+}
+.mysituation-depth {
+    padding: 25px 0 25px;
+    color: #222;
+    font-weight: 600;
+    font-size: 16px;
     display: flex;
+}
+
+.mysituation-depth {
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+.mysituation-depth01 li {
+    width: 33.3%;
+    text-align: center;
+}
+.mysituation-depth span {
+    font-size: 18px;
+    color: #f74f4f;
+    font-weight: bold;
+}
+.mysituation-depth02 li {
+    text-align: center;
+    border-right: 1px solid #dddddd;
+    position: relative;
+    width: 344px;
+    height: 100px;
+}
+.mysituation-depth02 .mydepth02-coupon {
+    width: 158px;
+}
+.mydepth02-list {
+    position: relative;
+    top: 73px;
+}
+.mydepth02-list a {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: -66px;
+}
+.mysituation-depth02 strong {
+    font-size: 50px;
+    font-weight: 400;
+    color: #f74f4f;
+}
+.mygrade-benefit {
+    text-align: center;
+}
+.mygrade-benefit dt {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 50px;
+}
+.mygrade-benefit hr {
+    width: 50px;
+    height: 3px;
+    background: black;
+    border: 0 none;
+    margin: 19px auto 23px;
+    display: block;
+}
+.mygrade-benefit dd p {
+    line-height: 1.4;
+    margin: 0 0 10px;
+}
+.member-state {
+    font-size: 22px;
+    font-weight: bold;
+    color: #222;
+    letter-spacing: -1.0px;
+}
+dd {
+    margin-bottom: .5rem;
+    margin-left: 0;
+}
+.member-state {
+    font-size: 22px;
+    font-weight: bold;
+    color: #222;
+    letter-spacing: -1.0px;
+}
+.member-state-desc {
+    font-size: 16px;
+    color: #222;
+    font-weight: bold;
+}
+.next-grade-price {
+    color: #f74f4f;
+}
+
+
+/* 슬라이드 */
+body .clearfix:after {
+            content: " ";
+            clear: both;
+            display: table;
+        }
+        .slider {
     margin-bottom: 30px;
 }
 
-
-.profile_wrap{
-    width: 40%;
-
-}
-.profile_img{
-    width: 152px;
-    height: 152px;
-    overflow:hidden;
-    border-radius: 50%;
-    margin: 0 auto;
-}
-
-.profile_img img{
-    width: 100%;
-    height: 100%;
-}
-
-
-.detail{
-    /*display: flex;*/
-    /*align-items: center;*/
-    /*flex-direction: column;*/
-    /*justify-content: center;*/
-}
-.detail .top{
-    display: flex;
-    align-items: center;
-}
-
-.detail .top .user_name{
-    font-size: 35px;
-    font-weight: 200;
-    display: inline-block;
-    padding-right: 25px;
-    margin-top: 10px;
-}
-
-.detail .top > a{
-    height: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 120px;
-    border: 1px solid #dbdbdb;
-    border-radius: 3px;
-    color: #262626;
-    padding: 3px 20px;
-    font-weight: 600;
-    vertical-align: text-bottom;
-    text-decoration: none;
-    box-sizing: border-box;
-}
-
-
-.detail .middle{
-    display: flex;
-    height: 50px;
-    padding: 18px 0;
-    font-size: 15px;
-    font-weight: 600;
-}
-
-
-.detail .middle > li{
-    margin-right: 35px;
-}
-.detail .about > span{
-    display:inline-block;
-    cursor: pointer;
-    position:relative;
-}
-
-.detail .about > span:nth-child(1){
-    margin-right: 50px;
-}
-
-
-.detail .about > span:after{
-    content:'';
-    width:0;
-    height:1px;
-    position:absolute;
-    left:0;
-    bottom:-5px;
-    transition:all 0.5s;
-    background:#dd2d76;
-}
-
-.detail .about > span.on:after{
-    width:100%;
-}
-
-.contents_container{
-    /*display: flex;*/
-    flex-wrap: wrap;
-    justify-content: space-between;
-    display: none;
-}
-
-
-.contents_container.active{
-    display: flex;
-}
-
-.contents_container .pic{
-    max-width:300px;
-    max-height:300px;
-    overflow:hidden;
-    margin-bottom: 18px;
-
-
-}
-
-.contents_container .pic img{
-    width: 100%;
-    height: 100%;
-}
-
-
-@media screen and (max-width:1000px){
-
-    .contents_container {
-        justify-content: center;
-
-    }
-
-
-    .contents_container .pic{
-        margin:10px;
-    }
-}
-</style>
-<style>
-  body{
-  padding: 0;
-  margin: 0;
-}
-div{
-  box-sizing: border-box;
-}
-
-/* alert badge */
-.circle{
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  border-radius: 2.5px;
-  background-color: #ff0000;
-  position: absolute;
-  top: -5px;
-  left: 110%;
-}
-
-
-
-
-
-
-
-/* 단골상점 , 상품후기 , 적립금 */
-.summaryContainer .item{
-  flex-grow: 1
-}
-
-/* 텍스트 */
-.summaryContainer .item > div:nth-child(2){
-  font-size: 13px;
-}
-
-/* ================== 주문/배송조회 박스 시작 ==================== */
-.shippingStatusContainer{
-  padding: 21px 16px;
-  background-color:none;
-  margin-bottom: 10px;
-}
-
-/* 주문/배송조회 타이틀 */
-.shippingStatusContainer .title{
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-/* 장바구니 결제완료 배송중 구매확정 [로우] */
-.shippingStatusContainer .status{
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 21px;
-}
-/* 장바구니 결제완료 배송중 구매확정 [아이템]  */
-.shippingStatusContainer .item{
-  display: flex;
-}
-
-.shippingStatusContainer .number{
-  font-size: 31px;
-  font-weight: 500;
-  text-align: center;
-}
-.shippingStatusContainer .text{
-  font-size: 12px;
-  font-weight: normal;
-  color: #c2c2c2;
-  text-align: center;
-}
-.shippingStatusContainer .icon{
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  width: 16px;
-  height: 16px;
-}
-
-
-/*=================== 주문목록 ~ 찜한상품 리스트 ==================*/
-.listContainer{  
-  padding: 0;
- 
-  margin-bottom: 10px;
-}
-.listContainer .item{  
-  display: flex;
-  align-items: center;
-  padding: 16px;
-  color: black;
-  text-decoration: none;  
-  height: 56px;
-  box-sizing: border-box;
-}
-.listContainer .icon{  
-  margin-right: 14px;
-}
-.listContainer .text{
-  font-size: 16px;
-  position: relative;
-}
-.listContainer .right{
-  margin-left: auto;
-}
-
-
-/*=================== 내지갑의 보유 적립금 들어가는 부분 ================*/
-.listContainer .smallLight{
-  font-size: 14px;
-  color: #c2c2c2;  
-}
-.listContainer .smallLight > span{
-  margin-left: 10px;
-}
-
-.listContainer .right .blct{
-  font-size: 14px;
-  font-weight: bold;
-  margin-right: 5px;
-}
-
-
-
-/* 공지사항 이용안내 고객센터 */
-
-.infoContainer .item{
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  font-size: 13px;
-  text-decoration: none;
-  color: black;
-}
-.infoContainer .item > div:first-child{
-  margin-bottom: 2px;
-}
-
-
-
-/*  */
-.listContainer .item:hover{
-/*   background-color: #f8f8f8; */
-}
-.infoContainer .item:hover{
-/*   background-color: #f8f8f8; */
-}
-</style>
-<style>
-  img {
-    display: block;
-}
-
-.container {
-    max-width: 93.5rem;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
-.btn {
-    display: inline-block;
-    font: inherit;
-    background: none;
-    border: none;
-    color: inherit;
-    padding: 0;
-    cursor: pointer;
-}
-
-.btn:focus {
-    outline: 0.5rem auto #4d90fe;
-}
-
-.visually-hidden {
-    position: absolute !important;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-}
-
-/* Profile Section */
-
-.profile {
-    padding: 5rem 0;
-}
-
-.profile::after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
-.profile-image {
-    float: left;
-    width: calc(33.333% - 1rem);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 3rem;
-}
-
-.profile-image img {
-    border-radius: 50%;
-}
-
-.profile-user-settings,
-.profile-stats,
-.profile-bio {
-    float: left;
-    width: calc(66.666% - 2rem);
-}
-
-.profile-user-settings {
-    margin-top: 1.1rem;
-}
-
-.profile-user-name {
-    display: inline-block;
-    font-size: 3.2rem;
-    font-weight: 300;
-}
-
-.profile-edit-btn {
-    font-size: 1.4rem;
-    line-height: 1.8;
-    border: 0.1rem solid #dbdbdb;
-    border-radius: 0.3rem;
-    padding: 0 2.4rem;
-    margin-left: 2rem;
-}
-
-.profile-settings-btn {
-    font-size: 2rem;
-    margin-left: 1rem;
-}
-
-.profile-stats {
-    margin-top: 2.3rem;
-}
-
-.profile-stats li {
-    display: inline-block;
-    font-size: 1.6rem;
-    line-height: 1.5;
-    margin-right: 4rem;
-    cursor: pointer;
-}
-
-.profile-stats li:last-of-type {
-    margin-right: 0;
-}
-
-.profile-bio {
-    font-size: 1.6rem;
-    font-weight: 400;
-    line-height: 1.5;
-    margin-top: 2.3rem;
-}
-
-.profile-real-name,
-.profile-stat-count,
-.profile-edit-btn {
-    font-weight: 600;
-}
-
-/* Gallery Section */
-
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    margin: -1rem -1rem;
-    padding-bottom: 3rem;
-}
-
-.gallery-item {
+.slider>.wrapper {
     position: relative;
-    flex: 1 0 22rem;
-    margin: 1rem;
-    color: #fff;
-    cursor: pointer;
+    padding-right: 385px;
+    left: 200px;
 }
 
-.gallery-item:hover .gallery-item-info,
-.gallery-item:focus .gallery-item-info {
+.slider .slider {
+    padding: 0 50px;
+    position: relative;
+}
+
+.slider .slider .swiper-container {
+    position: static;
+}
+
+.slider .slider .swiper-container .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #eee;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
     align-items: center;
-    position: absolute;
-    top: 0;
+}
+
+.slider .slider .swiper-container .swiper-slide img {
+    display: block;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
 }
 
-.gallery-item-info {
-    display: none;
+.slider .slider .swiper-container .swiper-button-next,
+.slider .slider .swiper-container .swiper-button-prev {
+    padding: 0 15px;
 }
 
-.gallery-item-info li {
-    display: inline-block;
-    font-size: 1.7rem;
-    font-weight: 600;
+.slider .slider .swiper-container .swiper-button-next {
+    right: 0;
 }
 
-.gallery-item-likes {
-    margin-right: 2.2rem;
+.slider .slider .swiper-container .swiper-button-prev {
+    left: 0;
 }
 
-.gallery-item-type {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 2.5rem;
-    text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.1);
+.slider .slider .swiper-container .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #fff;
 }
-
-.fa-clone,
-.fa-comment {
-    transform: rotateY(180deg);
-}
-
-.gallery-image {
+/* .swiper-pagination {
+  top: 10px;
+  z-index: 10;
+} */
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: -10px;
+    left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+}
+.slider .slider .swiper-container .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: rgb(0, 0, 0);
 }
 
-/* Loader */
-
-.loader {
-    width: 5rem;
-    height: 5rem;
-    border: 0.6rem solid #999;
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    margin: 0 auto;
-    animation: loader 500ms linear infinite;
+.slider .texts button {
+    background: none;
+    box-shadow: none;
+    cursor: pointer;
+    border: 1px solid #007aff;
+    color: #007aff;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
+    text-align: center;
 }
 
-/* Media Query */
+.slider .texts button:hover {
+    background: #007aff;
+    border-color: #007aff;
+    color: #fff;
+}
 
-@media screen and (max-width: 40rem) {
-    .profile {
-        display: flex;
-        flex-wrap: wrap;
-        padding: 4rem 0;
+@media(max-width:991px) {
+    .slider>.wrapper {
+        padding-right: 15px;
     }
 
-    .profile::after {
-        display: none;
-    }
-
-    .profile-image,
-    .profile-user-settings,
-    .profile-bio,
-    .profile-stats {
-        float: none;
-        width: auto;
-    }
-
-    .profile-image img {
-        width: 7.7rem;
-    }
-
-    .profile-user-settings {
-        flex-basis: calc(100% - 10.7rem);
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: 1rem;
-    }
-
-    .profile-user-name {
-        font-size: 2.2rem;
-    }
-
-    .profile-edit-btn {
-        order: 1;
+    .slider .slider {
         padding: 0;
-        text-align: center;
-        margin-top: 1rem;
     }
 
-    .profile-edit-btn {
-        margin-left: 0;
+    .slider .slider .swiper-container .swiper-button-next {
+        right: 15px;
     }
 
-    .profile-bio {
-        font-size: 1.4rem;
-        margin-top: 1.5rem;
+    .slider .slider .swiper-container .swiper-button-prev {
+        left: 15px;
     }
 
-    .profile-edit-btn,
-    .profile-bio,
-    .profile-stats {
-        flex-basis: 100%;
-    }
-
-    .profile-stats {
-        order: 1;
-        margin-top: 1.5rem;
-    }
-
-    .profile-stats ul {
-        display: flex;
-        text-align: center;
-        padding: 1.2rem 0;
-        border-top: 0.1rem solid #dadada;
-        border-bottom: 0.1rem solid #dadada;
-    }
-
-    .profile-stats li {
-        font-size: 1.4rem;
-        flex: 1;
-        margin: 0;
-    }
-
-    .profile-stat-count {
-        display: block;
+    .slider .texts {
+        position: static;
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: 15px;
     }
 }
-
-/* Spinner Animation */
-
-@keyframes loader {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/*
-
-The following code will only run if your browser supports CSS grid.
-
-Remove or comment-out the code block below to see how the browser will fall-back to flexbox & floated styling. 
-
-*/
-
-@supports (display: grid) {
-    .profile {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        grid-template-rows: repeat(3, auto);
-        grid-column-gap: 3rem;
-        align-items: center;
-    }
-
-    .profile-image {
-        grid-row: 1 / -1;
-    }
-
-    .gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
-        grid-gap: 2rem;
-    }
-
-    .profile-image,
-    .profile-user-settings,
-    .profile-stats,
-    .profile-bio,
-    .gallery-item,
-    .gallery {
-        width: auto;
-        margin: 0;
-    }
-
-    @media (max-width: 40rem) {
-        .profile {
-            grid-template-columns: auto 1fr;
-            grid-row-gap: 1.5rem;
-        }
-
-        .profile-image {
-            grid-row: 1 / 2;
-        }
-
-        .profile-user-settings {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            grid-gap: 1rem;
-        }
-
-        .profile-edit-btn,
-        .profile-stats,
-        .profile-bio {
-            grid-column: 1 / -1;
-        }
-
-        .profile-user-settings,
-        .profile-edit-btn,
-        .profile-settings-btn,
-        .profile-bio,
-        .profile-stats {
-            margin: 0;
-        }
-    }
-}
-
 </style>
 
 
-
-
-
-<div id="main_container" style="padding-top:100px;">
-
-  <section class="b_inner">
-
-      <div class="hori_cont">
-          <div class="profile_wrap">
-              <div class="profile_img">
-                  이미지
-              </div>
-          </div>
-
-          <div class="detail">
-              <div class="top">
-                  <div class="user_name">KindTiger</div>
-                  <a href="profile_edit.html" class="profile_edit">프로필편집</a>
-                  <a href="#" class="logout">로그아웃</a>
-              </div>
-
-              <ul class="middle">
-                  <li>
-                      <span>게시물</span>
-                      3
-                  </li>
-                  <li>
-                      <span>팔로워</span>
-                      3
-                  </li>
-                  <li>
-                      <span>팔로우</span>
-                      3
-                  </li>
-              </ul>
-              <p class="about">
-                  <span class="nick_name">kindtigerrr</span>
-              </p>
-
-          </div>
-      </div>
-
-    
-
-      
-
-
-		<!-- End of profile section -->
-   
-
-
-
-</div>
-<div class="wrap">
-  <div class="shippingStatusContainer">
-    <div class="title">
-      주문/배송조회
-    </div>
-    <div class="status">
-      
-      <div class="item">
-        <div>
-          <div class="green number">{{payments.Cart.id}}</div>
-          <div class="text">장바구니</div>
-        </div>
-        <div class="icon"> {{pay.id}} </div>
-      </div>     
-      <div class="item">
-        <div>
-          <div class="number">0</div>
-          <div class="text">결제완료</div>
-        </div>
-        <div class="icon"> > </div>
-      </div>     
-      <div class="item">
-        <div>
-          <div class="green number">1</div>
-          <div class="text">배송중</div>
-        </div>
-        <div class="icon"> > </div>
-      </div>     
-      <div class="item">
-        <div>
-          <div class="green number">3</div>
-          <div class="text">구매확정</div>
-        </div>
-      </div>     
-      
-    </div>
-    
-  </div>  
-  <div class="listContainer">
-    <a href="#" class="item">
-        <div class="icon">ii</div>
-        <div class="text">주문목록<span class="circle"></span></div>
-        <div class="right"> > </div>
-    </a>
-  </div>
-     {% set totalPrice = 0 %}
+    {% set totalPrice = 0 %}
     {% for payment in payments %}
-  <div class="listContainer">
- 
-    <a href="#" class="item">
-        <div class="icon">.</div>
-    
-        {% set totalPrice = totalPrice + payment.price %}
-        <div>{{'주문가격:'+payment.price}}</div>
-    
-    
-    
- 
-        <div class="right"> > </div>
-    </a>
+    {% set totalPrice = totalPrice + payment.price %}
+    {% endfor %}
+
+<div class="content-cluster">
+  <div class="content-title">
+    <h3>마이페이지</h3>
+    <p class="title-desc">
+      {{user.nick + '님'}}
+      의 쇼핑몰 현황을 한눈에 볼 수 있습니다!</p>
   </div>
-       {% endfor %}
+  <div class="mysituation-cluster">
+    <ul class="clear mysituation-depth mysituation-depth01">
+      <li class="float_l"><a href="/shop/mypage.html?mypage_type=myorder">진행중인 주문건&nbsp;<span class="highlight">
+            0</span>&nbsp;건</a></li>
+      <li class="float_l"><a href="/shop/mypage.html?mypage_type=myarticle">내가 작성한 게시물</a></li>
+      <li class="float_l"><a href="/changeinfo">회원정보변경</a></li>
+    </ul>
+  </div>
+
+  <div class="mysituation-cluster">
+    <ul class="clear mysituation-depth mysituation-depth02">
+      <li class="float_l mydepth02-coupon">
+        <p class="mydepth02-list"> 보유쿠폰 <a href="/shop/mypage.html?mypage_type=mycoupon"> <strong>
+              0 <span class="hide">장</span></strong></a></p>
+      </li>
+      <li class="float_l">
+        <p class="mydepth02-list"> 적립금(원) <a href="/shop/mypage.html?mypage_type=myreserve"> <strong>
+          {% if totalPrice >1000000 and totalPrice <2000000 %}
+          {{totalPrice * 0.01}}
+          {% elif totalPrice >2000000 and totalPrice <4000000 %}
+          {{totalPrice * 0.03}}
+          {% elif totalPrice >4000000 and totalPrice <7000000 %}
+          {{totalPrice * 0.05}}
+          {% elif totalPrice >7000000 %}
+          {{totalPrice * 0.1}}
+          {% else %}
+          {{totalPrice}}
+          {% endif %}
+          
+          <span class="hide">원</span></strong></a></p>
+      </li>
+      <li class="float_l">
+        <p class="mydepth02-list"> 예치금(원) <a href="/shop/mypage.html?mypage_type=myemoney"> <strong>
+              0 <span class="hide">원</span></strong></a></p>
+              </li>
+              <li class="float_l list-last">
+                <p class="mydepth02-list"> 총 주문금액(원) <a href="/shop/mypage.html?mypage_type=myorder"> <strong>
+                      {% if totalPrice >= 1000 and totalPrice < 1000000 %} {{ (totalPrice - totalPrice % 1000) / 1000 }},{{ totalPrice
+                        % 1000 }} {% elif totalPrice>= 1000000 %}
+                        {{ (totalPrice - totalPrice % 1000000) / 1000000 }},{{ ((totalPrice - (totalPrice - totalPrice % 1000000)) -
+                        totalPrice % 1000) /1000 }},{{ totalPrice % 1000 }}
+                        {% else %}
+                        {{ totalPrice }}
+                        {% endif %} 
+                <span class="hide">원</span></strong></a></p>
+              </li>
+              </ul>
+              </div>
+
+  <div class="mysituation-cluster">
+    <dl class="mygrade-benefit">
+
+      <dt>고객님께서 받고 계신 회원혜택을 확인하세요!</dt>
+      <hr>
+      <dd>
+        <p class="member-state">
+          <span class="member-name">
+            {{user.nick + '님'}}
+          </span>
+          회원님의 회원등급은
+          <!-- 실버등급 -->
+          {% if totalPrice >1000000 and totalPrice <2000000 %}
+          <span class="member-grade" style="color: rgb(161, 161, 161);">
+            [실버 1%할인]
+          </span>
+          입니다.
+        </p>
 
 
-<div class="listContainer">
-  <a href="#" class="item">
-    <div class="row"></div>
-      <div class="col-12">
-        {% if totalPrice >10000 and totalPrice <49000 %} 
-        <div class="level_summ ">
-          <div class="member_txt2">
-            <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
-            <br><span class="color" id="group_name"><span class="xans-member-var-group_name">아이언</span></span>
-            등급입니다.
-          </div>
-         
-      </div>
-  
-      {% elif totalPrice >50000 and totalPrice <100000 %} 
-      <div class="level_summ ">
-        <div class="member_txt2">
-          <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
-          <br><span class="color" id="group_name"><span class="xans-member-var-group_name">브론즈</span></span> 등급입니다.
+
+        <p class="member-state-desc"> <span class="next-grade-price">{{2000000-totalPrice}}</span> 원 더 구매하시면 <span class="next-grade"
+            style="color: rgb(224, 159, 2);">골드 3%할인</span>으로 승급됩니다.</p>
+          <!-- 골드등급 -->
+          {% elif totalPrice >2000000 and totalPrice <4000000 %}
+          <span class="member-grade" style="color:#e7b824;">
+            [골드 3%할인]
+          </span>
+          입니다.
+        </p>
+
+
+
+        <p class="member-state-desc"> <span class="next-grade-price">{{4000000-totalPrice}}</span> 원 더 구매하시면 <span class="next-grade"
+          style="color:#c64a62;">VIP 5%할인</span>으로 승급됩니다.</p>
+          <!-- VIP등급 -->
+          {% elif totalPrice >4000000 and totalPrice <7000000 %}
+          <span class="member-grade" style="color:#c64a62;">
+            [VIP 5%할인]
+          </span>
+          입니다.
+        </p>
+
+
+
+        <p class="member-state-desc"> <span class="next-grade-price">{{70000000-totalPrice}}</span> 원 더 구매하시면 <span class="next-grade"
+          style="color:#6e5da3;">VVIP 10%할인</span>으로 승급됩니다.</p>
+          <!-- VVIP등급 -->
+          {% elif totalPrice >7000000 %}
+          <span class="member-grade" style="color:#6e5da3;">
+            [VVIP 10%할인]
+          </span>
+          입니다.
+        </p>
+
+
+
+        <p class="member-state-desc"> <span class="next-grade-price">{{100000000-totalPrice}}</span> 원 더 구매하시면 <span class="next-grade"
+            style="color: rgb(51, 240, 13);">CEO 100%할인</span>으로 승급됩니다.</p>
+          <!-- 브론즈등급 -->
+          {% else %}
+          <span class="member-grade" style="color:#976f4d;">
+            [브론즈 0%할인]
+          </span>
+          입니다.
+        </p>
+
+
+
+        <p class="member-state-desc"> <span class="next-grade-price">{{1000000-totalPrice}}</span> 원 더 구매하시면 <span class="next-grade"
+          style="color:#777777;">실버 1%할인</span>으로 승급됩니다.</p> 
+          {% endif %}       
+      </dd>
+    </dl>
+  </div>
+
+
+  <!-- 슬라이더 -->
+  <div class="slider">
+    <div class="wrapper">
+        <div class="slider">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://i.esdrop.com/d/cl3pewp2aooj/cVdtqh4M4w.png">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://i.esdrop.com/d/cl3pewp2aooj/YAlcd7t6sM.png">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://i.esdrop.com/d/cl3pewp2aooj/vuPGBOoh6X.png">
+                    </div>
+                    <div class="swiper-slide">
+                      <img src="https://i.esdrop.com/d/cl3pewp2aooj/JStYnId5Cn.png">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="https://i.esdrop.com/d/cl3pewp2aooj/PICMfvDDFE.png">
+                </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
         </div>
-    
     </div>
-    {% elif totalPrice >100000 and totalPrice <200000 %} 
-    <div class="level_summ ">
-      <div class="member_txt2">
-        <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
-        <br><span class="color" id="group_name"><span class="xans-member-var-group_name">실버</span></span> 등급입니다.
-      </div>
- 
-  </div>
-  {% elif totalPrice >200000 and totalPrice <500000 %} 
-  <div class="level_summ ">
-    <div class="member_txt2">
-      <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
-      <br><span class="color" id="group_name"><span class="xans-member-var-group_name">골드</span></span> 등급입니다.
-    </div>
-
-  </div>
-  {% elif totalPrice >500000 and totalPrice <100000 %} 
-  <div class="level_summ ">
-  <div class="member_txt2">
-    <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
-    <br><span class="color" id="group_name"><span class="xans-member-var-group_name">플레티넘</span></span> 등급입니다.
-  </div>
-
-  </div>
-  {% elif totalPrice >1000000 and totalPrice <5000000 %} 
-  <div class="level_summ ">
-  <div class="member_txt2">
-  <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
-  <br><span class="color" id="group_name"><span class="xans-member-var-group_name">마스터</span></span> 등급입니다.
-  </div>
-
-  </div>
-  {% elif totalPrice >5000000 and totalPrice %}
-  <div class="level_summ ">
-  <div class="member_txt2">
-  <strong><span class="xans-member-var-name">{{user.nick}}</span> 크루</strong>님은
-  <br><span class="color" id="group_name"><span class="xans-member-var-group_name">첼린저</span></span> 등급입니다.
-  </div>
-
-  </div>
-  {% endif %}
-  <div>
-  <a href=""> 멤버쉽 등급별 혜택보기</a>
-  </div>
-  </div>
-  </div>
-  </a>
-
-</div>
-  <div class="listContainer">
-    <a href="#" class="item">
-        <div class="icon">ii</div>
-        <div class="text">
-          <span>내지갑</span>
-          <span class="smallLight">
-            <span>|</span>
-            <span>보유 적립금</span>
-          </span>          
-        </div>                
-        <div class="right">
-          <span class="blct"><div>{{'전체 총 주문가격:'+totalPrice+'원'}}</div></span>
-          </div>
-    </a>
-  
-  </div>
-
 </div>
 
 
+</div>
+
+<script>
+  (function() {
+    var swiper = new Swiper(".slider .swiper-container", {
+        autoHeight: true,
+        loop: true,
+        autoplay: {
+            delay: 5000,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
+})();
+</script>
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</body>
 {% endblock %}
