@@ -258,19 +258,29 @@ body .clearfix:after {
         margin-bottom: 15px;
     }
 }
+.setset {
+  position:relative ;
+  top: -999px;
+}
 </style>
 
-
-    {% set totalPrice = 0 %}
-   
-    {% for payment in payments %}
-    {% set totalPrice = totalPrice + payment.price %}
-    {% endfor %}
+<div class="setset">
+  {% if user and user.id %}
+  {% set totalPrice = 0 %}
+  {% for payment in payments %}
+    {% if user.id === payment.UserId %}
+  {% set totalPrice = totalPrice + payment.price %}
+  {{payment.price }}
+    {% endif %}
+  {% endfor %}
+  {% endif %}
+  {{totalPrice}}
+</div>
 
 <div class="content-cluster">
   <div class="content-title">
     <h3>마이페이지</h3>
-   <img src="{{userimg}}" alt="" style="width: 20px;"
+   <img src="{{userimg}}" alt="" style="width: 40px;"
     <p class="title-desc">
       {{user.nick + '님'}}
       의 쇼핑몰 현황을 한눈에 볼 수 있습니다!</p>
@@ -302,7 +312,7 @@ body .clearfix:after {
           {% elif totalPrice >7000000 %}
           {{totalPrice * 0.1}}
           {% else %}
-          {{totalPrice}}
+          {{totalPrice * 0}}
           {% endif %}
           
           <span class="hide">원</span></strong></a></p>
@@ -313,7 +323,7 @@ body .clearfix:after {
               </li>
               <li class="float_l list-last">
                 <p class="mydepth02-list"> 총 주문금액(원) <a href="/shop/mypage.html?mypage_type=myorder"> <strong>
-                      {% if totalPrice >= 1000 and totalPrice < 1000000 %} {{ (totalPrice - totalPrice % 1000) / 1000 }},{{ totalPrice
+                      {% if totalPrice > 10000 and totalPrice < 1000000 %} {{ (totalPrice - totalPrice % 1000) / 1000 }},{{ totalPrice
                         % 1000 }} {% elif totalPrice>= 1000000 %}
                         {{ (totalPrice - totalPrice % 1000000) / 1000000 }},{{ ((totalPrice - (totalPrice - totalPrice % 1000000)) -
                         totalPrice % 1000) /1000 }},{{ totalPrice % 1000 }}
