@@ -46,7 +46,7 @@ router.get('/',async (req, res, next) => {
     
  
   });
-  
+  const userimg=user.img;
   const useremail1 = user.email;
   const usernick = user.nick;
   
@@ -55,6 +55,7 @@ router.get('/',async (req, res, next) => {
     cart: posts,
      carted:carts,
     useremail,
+    userimg,
   
     
   });

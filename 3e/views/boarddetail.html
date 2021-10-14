@@ -270,14 +270,6 @@ src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"
                 
         </div>
     </div>
-<script>
-    // 작성일자 뒤에 필요없는 부분 날려주는 js
-    const date = document.getElementsByClassName("board-list-time1");
-    const chgDate = date.innerText;
-    const classdate = moment(chgDate).format("YYYY-MM-DD");
-    date.innerText = classdate;
-    </script>
-</body>
 
 {% endblock %}
 

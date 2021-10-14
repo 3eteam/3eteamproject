@@ -2987,43 +2987,6 @@
 	bottom: 0px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
-
-@font-face {
-  font-family: Poppins-Regular;
-  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
-}
-
-@font-face {
-  font-family: Poppins-Medium;
-  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
-}
-
-@font-face {
-  font-family: Poppins-Bold;
-  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
-}
-
-@font-face {
-  font-family: Poppins-SemiBold;
-  src: url('../fonts/poppins/Poppins-SemiBold.ttf'); 
-}
-
-/*//////////////////////////////////////////////////////////////////
-[ RESTYLE TAG ]*/
-
 * {
 	margin: 0px; 
 	padding: 0px; 
@@ -3657,13 +3620,21 @@ iframe {
 						<span class="focus-input100"></span>
 					</div>
 
-					<!-- <div class="wrap-input100 validate-input input-group" data-validate="Choose one">
-						<span class="label-input100" for="join-sex">Sex</span>
-						<input class="input100" type="radio" name="gender" value="man" >남 
-						 <p style="font-weight: bold; font-size: 30px;">남</p> -->
-						<!-- <input  class="input100" type="radio" name="gender" value="woman"> 여
-						<span class="focus-input100"></span>
-					</div> --> 
+					<label class="col-md-3 col-form-label" id="img-label" for="img">썸네일이미지</label>
+                <div class="col-md-9">
+                    <div class="img-preview">
+                        <img id="img-preview" src="" style="display: none;" width="250" alt="미리보기">
+                        <input id="img-url" type="hidden" name="url">
+                    </div>
+                    <input id="img" type="file" class="form-control" accept="image/*">
+                    <div class="alert alert-secondary" role="alert">
+                        <ul>
+                            <li>이미지 사이즈 : 400*300</li>
+                            <li>파일 사이즈 : 1M 이하</li>
+                            <li>파일 확장자 : png, jpg 등등..</li>
+                        </ul>
+                    </div>
+                </div>
 
 
 					<div class="flex-m w-full p-b-33">
@@ -3699,8 +3670,28 @@ iframe {
 			</div>
 		</div>
 	</div>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
+<script>
+	
+    if (document.getElementById('img')) {
+        document.getElementById('img').addEventListener('change', function (e) {
+            const formData = new FormData();
+            console.log(this, this.files);
+            formData.append('img', this.files[0]);
+            axios.post('/auth/img', formData)
+                .then((res) => {
+                    document.getElementById('img-url').value = res.data.url;
+                    document.getElementById('img-preview').src = res.data.url;
+                    document.getElementById('img-preview').style.display = 'inline';
+                })
+                .catch((err) => {
+                    console.error(err);
+                });
+        });
+    }
+</script>
 	<script>
+
 		const audioContainer = document.querySelector('#audioContainer');
 const playBtn = document.querySelector('.js-playBtn');
 const stopBtn = document.querySelector('.js-stopBtn')
@@ -6186,11 +6177,11 @@ var loadBuffer = function(self) {
  * Send the XHR request wrapped in a try/catch.
  * @param  {Object} xhr XHR to send.
  */
-var safeXhrSend = function(xhr) {
+ var safeXhrSend = function(xhr) {
   try {
-	xhr.send();
+   xhr.onerror();
   } catch (e) {
-	xhr.onerror();
+   xhr.onerror();
   }
 };
 
@@ -6992,7 +6983,7 @@ var setupPanner = function(sound, type) {
 <script>
 
 	var sound = new Howl({
-		src: ['static/notification-4.wav'],
+		src: ["//image.musinsa.com/showcase/rmtcrwxchoigyeoul/assets/media/bgm.mp3?v=2"],
 		volume: 1.0,
 		autoplay: true,
 		onend : () => {
@@ -7096,7 +7087,7 @@ var setupPanner = function(sound, type) {
 		
 	
 	
-	})(jQuery);
+	});
 	</script>
 {% block script %}
 <script>
