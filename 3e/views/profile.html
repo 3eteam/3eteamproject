@@ -262,6 +262,7 @@ body .clearfix:after {
 
 
     {% set totalPrice = 0 %}
+   
     {% for payment in payments %}
     {% set totalPrice = totalPrice + payment.price %}
     {% endfor %}
@@ -269,9 +270,11 @@ body .clearfix:after {
 <div class="content-cluster">
   <div class="content-title">
     <h3>마이페이지</h3>
+   <img src="{{userimg}}" alt="" style="width: 20px;"
     <p class="title-desc">
       {{user.nick + '님'}}
       의 쇼핑몰 현황을 한눈에 볼 수 있습니다!</p>
+      {{payments.User.img}}
   </div>
   <div class="mysituation-cluster">
     <ul class="clear mysituation-depth mysituation-depth01">
