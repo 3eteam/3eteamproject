@@ -33,7 +33,7 @@ const alllistRouter = require('./routes/alllist');
 const cartRouter = require('./routes/cart');
 const profileRouter = require('./routes/profile');
 const boarddetailRouter = require('./routes/boarddetail');
-
+const changeinfoRouter = require('./routes/changeinfo');
 
 
 
@@ -122,7 +122,7 @@ app.use('/alllist',alllistRouter);
 app.use('/cart',cartRouter);
 app.use('/profile',profileRouter);
 app.use('/boarddetail',boarddetailRouter);
-
+app.use('/changeinfo',changeinfoRouter);
 
 
 
