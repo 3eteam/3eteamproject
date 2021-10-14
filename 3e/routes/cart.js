@@ -85,7 +85,21 @@ router.route('/:id').get(async(req,res)=>{
   }
 });
 
-  
+//  전체삭제
+router.route('/:id/deleteall').get(async(req,res)=>{
+  try {
+    
+     await Cart.destroy(
+       {where:{UserId:req.params.id}});
+        res.redirect('/cart');
+  } catch (err) {
+    console.error(err);
+        next(err);
+  }
+});
+
+
+
 module.exports=router;
 
 

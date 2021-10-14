@@ -30,6 +30,7 @@ router.get('/', async (req, res, next) => {
       model: User,
       attributes: ['id','nick'],
     },
+    
     order: [['id', 'DESC']],
   });
   res.render('main', {
