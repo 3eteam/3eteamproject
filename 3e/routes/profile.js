@@ -11,6 +11,7 @@ router.get('/',async (req, res, next) => {
         model:User,
         attributes: ['email','nick'],
       },
+      
       order: [['createdAt', 'DESC']],
     });
     res.render('profile', {
@@ -22,6 +23,21 @@ router.get('/',async (req, res, next) => {
       next(error);
     }
   });
-  
+  router.get('/',async (req, res, next) => {
+    try {
+      const posts = await Cart.findOne({ 
+     
+      
+    
+    });
+    res.render('profile', {
+      title: '3e',
+      pay: posts,
+    });
+    } catch (error) {
+      console.error(error);
+      next(error);
+    }
+  });
 
 module.exports = router;

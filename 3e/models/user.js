@@ -17,6 +17,10 @@ module.exports = class User extends Sequelize.Model {
         type: Sequelize.STRING(15),
         allowNull: true,
       },
+      img: {//이미지
+        type: Sequelize.STRING(300),
+        allowNull: true,
+      },
       phone: {
         type: Sequelize.STRING(50),
         allowNull: true,
@@ -51,25 +55,25 @@ module.exports = class User extends Sequelize.Model {
       underscored: false,
       modelName: 'User',
       tableName: 'users',
-      paranoid: true,
+      paranoid: false,
       charset: 'utf8',
       collate: 'utf8_general_ci',
     });
   }
 
   static associate(db) {
-    db.User.hasMany(db.Post);
+    db.User.hasOne(db.Post);
     db.User.hasOne(db.Cart);
     db.User.hasMany(db.Comment);
-    db.User.belongsToMany(db.User, {
-      foreignKey: 'followingId',
-      as: 'Followers',
-      through: 'Follow',
-    });
-    db.User.belongsToMany(db.User, {
-      foreignKey: 'followerId',
-      as: 'Followings',
-      through: 'Follow',
-    });
+    // db.User.belongsToMany(db.User, {
+    //   foreignKey: 'followingId',
+    //   as: 'Followers',
+    //   through: 'Follow',
+    // });
+    // db.User.belongsToMany(db.User, {
+    //   foreignKey: 'followerId',
+    //   as: 'Followings',
+    //   through: 'Follow',
+    // });
   }
 };
