@@ -1,0 +1,68 @@
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/images/icons/favicon.ico" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.js"></script>
+  <title>{{title}}</title>
+  <link defer href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap"rel="stylesheet'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+  
+  
+
+  <script>
+    window.GitpleConfig = { "appCode": "jwvlvvKRAlBZJf8Nb3VLTO1olv3wd3" };
+    !function () { function e() { function e() { var e = t.contentDocument, a = e.createElement("script"); a.type = "text/javascript", a.async = !0, a.src = window[n] && window[n].url ? window[n].url + "/inapp-web/gitple-loader.js" : "https://app.gitple.io/inapp-web/gitple-loader.js", a.charset = "UTF-8", e.head && e.head.appendChild(a) } var t = document.getElementById(a); t || ((t = document.createElement("iframe")).id = a, t.style.display = "none", t.style.width = "0", t.style.height = "0", t.addEventListener ? t.addEventListener("load", e, !1) : t.attachEvent ? t.attachEvent("onload", e) : t.onload = e, document.body.appendChild(t)) } var t = window, n = "GitpleConfig", a = "gitple-loader-frame"; if (!window.Gitple) { document; var i = function () { i.ex && i.ex(arguments) }; i.q = [], i.ex = function (e) { i.processApi ? i.processApi.apply(void 0, e) : i.q && i.q.push(e) }, window.Gitple = i, t.attachEvent ? t.attachEvent("onload", e) : t.addEventListener("load", e, !1) } }();
+    Gitple('boot', {
+      id: '12345', // [필수] 상담고객 식별 ID
+      name: '홍길동',
+      email: 'gildong1@gmail.com',
+      phone: '010-1234-1234',
+      meta: {      // [선택] 아래 세부 정보 참고
+        'Company': 'Gitple',
+        'Link': '<a href="https://gitple.io/" target="_blank">내부정보</a>',
+        '고객정보': '<a href="https://myService/api/customer?id=12345" target="_blank">고객정보</a>',
+        '이슈생성': '<a href="https://github.com/gitple/cs/issues/new?title=이슈제목&body=고객이슈내용" target="_blank">이슈생성</a>'
+      }
+    });
+
+    
+  </script>
+</head>
+
+<body>
+
+  {% include "header.html" %}
+
+
+  {% block content %}
+  {% endblock %}
+  
+
+  
+
+
+  {% block script %}
+  {% endblock %}
+  <!-- <script> 
+  $(document).ready(function() { $('#summernote').summernote(); }); 
+  </script> -->
+</body>
+
+</html>

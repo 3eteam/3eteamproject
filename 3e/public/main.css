@@ -1,0 +1,415 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%;}
+.btn {
+  display: inline-block;
+  padding: 0 5px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+  background: white;
+  border: 1px solid silver;
+  color: crimson;
+  height: 37px;
+  line-height: 37px;
+  vertical-align: top;
+  font-size: 12px;
+}
+input[type='text'], input[type='email'], input[type='password'], textarea {
+  border-radius: 4px;
+  height: 37px;
+  padding: 10px;
+  border: 1px solid silver;
+}
+.container { width: 100%; height: 100%; }
+@media screen and (min-width: 800px) {
+  .container { width: 800px; margin: 0 auto; }
+}
+.input-group { margin-bottom: 15px; }
+.input-group label { width: 25%; display: inline-block; }
+.input-group input { width: 70%; }
+.half { float: left; width: 50%; margin: 10px 0; }
+#join { float: right; }
+.profile-wrap {
+  width: 100%;
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px 0;
+}
+@media screen and (min-width: 800px) {
+  .profile-wrap { width: 290px; margin-bottom: 0; }
+}
+
+.user-name { font-weight: bold; font-size: 18px; }
+.count { font-weight: bold; color: crimson; font-size: 18px; }
+.timeline {
+  margin-top: 10px;
+  width: 100%;
+  display: inline-block;
+  border-radius: 4px;
+  vertical-align: top;
+}
+@media screen and (min-width: 800px) { .timeline { width: 500px; } }
+#twit-form {
+  border-bottom: 1px solid silver;
+  padding: 10px;
+  background: lightcoral;
+  overflow: hidden;
+}
+#img-preview { max-width: 100%; }
+#img-label {
+  float: left;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid crimson;
+  padding: 0 10px;
+  color: white;
+  font-size: 12px;
+  height: 37px;
+  line-height: 37px;
+}
+#img { display: none; }
+#twit { width: 100%; min-height: 72px; }
+#twit-btn {
+  float: right;
+  color: white;
+  background: crimson;
+  border: none;
+}
+.twit {
+  border: 1px solid silver;
+  border-radius: 4px;
+  padding: 10px;
+  position: relative;
+  margin-bottom: 10px;
+}
+.twit-author { display: inline-block; font-weight: bold; margin-right: 10px; }
+.twit-follow {
+  padding: 1px 5px;
+  background: #fff;
+  border: 1px solid silver;
+  border-radius: 5px;
+  color: crimson;
+  font-size: 12px;
+  cursor: pointer;
+}
+.twit-img { text-align: center; }
+.twit-img img { max-width: 75%; }
+.error-message { color: red; font-weight: bold; }
+#search-form { text-align: right; }
+#join-form { padding: 10px; text-align: center; }
+#hashtag-form { text-align: right; }
+footer { text-align: center; }
+
+
+/* 챗 */
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.user-container {
+  background: #a9bdce;
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.5rem;
+}
+.user-container label {
+  font-size: 14px;
+  margin-right: 1rem;
+}
+.user-container input {
+  border-radius: 3px;
+  border: none;
+  height: 100%;
+}
+.display-container {
+  flex: 12;
+  background: #b2c7d9;
+  overflow-y: scroll;
+}
+.input-container {
+  flex: 1;
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+}
+.input-container span {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.3rem;
+  width: 100%;
+}
+.chatting-input {
+  font-size: 12px;
+  height: 100%;
+  flex: 8;
+  border: none;
+}
+.send-button {
+  flex: 1;
+  background: #ffeb33;
+  border: none;
+  height: 100%;
+  border-radius: 3px;
+}
+
+.chatting-list li {
+  width: 90%;
+  padding: 0.3rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin-top: 0.5rem;
+}
+.profile .user {
+  font-size: 10px;
+  margin-bottom: 0.3rem;
+}
+.profile .image {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 50px;
+  height: 50px;
+}
+
+.message {
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-size: 12px;
+  margin: 0 5px;
+  flex: 7;
+}
+
+.time {
+  font-size: 10px;
+  margin: 0 5px;
+}
+
+.sent {
+  flex-direction: row-reverse;
+  float: right;
+}
+
+.sent .message {
+  background: #ffeb33;
+}
+
+.received .message {
+  background: #fff;
+}
+
+/* 챗끝 */
+
+
+/**/
+.basketdiv {
+  width: 100%;
+  border-top: 1px solid #e0e0e0;
+  float: left;
+  font-size: 0.9375em;
+  margin-bottom: 20px;
+}
+  .basketdiv .row.head {
+      border-bottom: 2px solid #888;
+      box-sizing: border-box;
+      background-color: #f4f4f4;
+      font-weight: 500;
+  }
+  .basketdiv .data {
+      border-bottom: 1px dashed #888;
+      box-sizing: border-box;
+      cursor: pointer;
+      float: left;
+      width: 100%;
+  }
+  .basketdiv .data .empty{
+      text-align: center;
+      padding: 12px 0;
+  }
+  .basketdiv .row.head .subdiv {
+      background-color: #f4f4f4;
+  }
+  .basketdiv .row > .subdiv {
+      display: block;
+      float: left;
+  }
+  .basketdiv .row > .subdiv:nth-child(1) {
+      width: 50%;
+  }
+  .basketdiv .row > .subdiv:nth-child(2) {
+      width: 40%;
+  }
+  .basketdiv .row > .subdiv:nth-child(3) {
+      width: 10%;
+  }
+  .basketdiv2 .row > .subdiv:nth-child(1) {
+      width: 60%;
+  }
+  .basketdiv2 .row > .subdiv:nth-child(2) {
+      width: 40%;
+  }
+  .basketdiv .row > div > div {
+      display: block;
+      float: left;
+      text-align: center;
+      margin: 0;
+      padding: 12px 0;
+  }
+  .basketdiv .row.data > div > div {
+      height: 60px;
+      line-height: 60px;
+  }
+      .basketdiv .data .num .updown {
+          color: #0075ff;
+          font-size: 2em;
+          letter-spacing: -5px;
+      }
+      .basketdiv .check {
+          width: 10%;
+      }
+  .basketdiv .check input[type=checkbox] {
+      transform: scale(1.5);
+  }
+  .basketdiv .img{
+      width: 20%;
+  }
+  .basketdiv .pname{
+      width: 70%;
+  }
+  .basketdiv2 .pname {
+      width: 80%;
+  }
+  .basketdiv .basketprice {
+      width: 33%;
+  }
+  .basketdiv .num {
+      width: 33%;
+    min-width: 105px;
+  }
+  .basketdiv .sum {
+      width: 34%;
+    max-width: 80px;
+      color: #0000aa;
+  }
+  .basketdiv .point {
+      width: 50%;
+  }
+  .basketdiv2 .basketprice {
+      width: 25%;
+  }
+
+  .basketdiv2 .num {
+      width: 25%;
+  }
+
+  .basketdiv2 .sum {
+      width: 25%;
+      color: #0000aa;
+  }
+
+  .basketdiv2 .point {
+      width: 25%;
+  }
+  .basketdiv .basketcmd{
+      width: 100%;
+  }
+  .basketdiv .data .pname {
+      text-align: left !important;
+    line-height: 1.2 !important;
+  }
+  .basketdiv .data .price, .basketdiv .data .sum, .basketdiv .data .point {
+      text-align: right;
+  }
+  .baseform > tbody > tr > td:first-child {
+      width: 100px;
+  }
+
+.buttongroup {
+  padding: 11px 0;
+  margin: 50px 0;
+}
+.narrowbuttongroup{
+  margin: 15px 0;
+}
+  .buttongroup.center {
+      text-align: center;
+  }
+  .buttongroup input[type=text], .buttongroup input[type=password] {
+      height: 30px;
+  }
+  .buttongroup button, .buttongroup a {
+      margin-right: 5px;
+  }
+      .buttongroup button:last-child, .buttongroup a:last-child {
+          margin-right: 0;
+      }
+
+  .abutton, .abutton:link, .abutton:visited, .abutton:active, input[type=button] {
+      background-color: #383838;
+      border: 1px solid #888888;
+      color: #ffffff;
+      cursor: pointer;
+      letter-spacing: -1px;
+      padding: 3px 5px;
+      margin: 2px 3px;
+      width: auto;
+      word-break: keep-all;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 0.9375em;
+  }
+
+.abutton-alt {
+  background-color: #d3e2c6;
+}
+
+.red {
+  color:#b00;
+}
+.blue {
+color: #0075ff;
+}
+.basketrowcmd, .sumcount, .summoney{
+text-align: right;
+margin-bottom: 10px;
+}
+.sumcount, .summoney{
+font-size: 1.25em;
+  font-weight: bold;
+}
+.buttongroup{
+text-align: center;
+}
+.buttongroup a{
+text-decoration: none;
+}
+.cmd a, .cmd span {
+  padding: 12px 30px;
+  box-sizing: border-box;
+  margin-top: 10px;
+  font-size: 1.2em;
+  color: #000;
+  background-color: #f4f4f4;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+}
+.cmd.small a, .cmd.small span {
+  padding: 6px 20px;
+  font-size: 0.8125em;
+}
+
+.orderform .p_num {
+  text-align: right;
+  width: 40px;
+  font-size: 1em;
+}
+
+/* header start*/
+
+/* header end*/

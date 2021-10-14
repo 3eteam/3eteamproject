@@ -1,0 +1,185 @@
+<style>
+.wrapperr {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 360px;
+    width: 203px;
+    position: relative;
+    top: 118px;
+    left: 84px;
+    border-radius: 10px;
+}
+
+#nickname {
+  color: black;
+}
+.nname {
+  color: #fff;
+}
+.user-container {
+  background: #292929;
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.3rem;
+}
+.user-container label {
+  font-size: 14px;
+  margin-right: 1rem;
+}
+.user-container input {
+  border-radius: 3px;
+  border: none;
+  height: 100%;
+  width: 120px;
+}
+.display-container {
+  flex: 12;
+  background: #000000;
+  overflow-y: scroll;
+}
+.input-container {
+  flex: 1;
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+}
+.input-container span {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+.chatting-input {
+  font-size: 12px;
+  height: 100%;
+  flex: 8;
+  border: none;
+  color: #262626;
+  border: solid 1px black;
+}
+.send-button {
+  flex: 1;
+  background: #ffeb33;
+  border: none;
+  height: 100%;
+  border-radius: 3px;
+  color: #262626;
+}
+
+.chatting-list li {
+  width: 90%;
+  padding: 0.3rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin-top: 0.5rem;
+  
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+.profile .user {
+  font-size: 14px;
+  margin-bottom: 0.3rem;
+  color: #fff;
+}
+.profile .image {
+  border-radius: 30%;
+  object-fit: cover;
+  width: 50px;
+  height: 50px;
+  padding: 4px;
+}
+
+.message {
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-size: 15px;
+  margin: 0 5px;
+  color: #262626;
+  flex: 7;
+}
+
+.time {
+  font-size: 10px;
+  margin: 0 5px;
+  color: #fff;
+}
+
+.sent {
+  flex-direction: row-reverse;
+  padding-top: 3px;
+  float: right;
+  width: 100%;
+}
+
+.sent .message {
+  background: #ffeb33;
+}
+
+.received .message {
+  background: #fff;
+}
+
+.received {
+  float:left;
+  width: 98%;
+}
+
+.dhm {
+  color: #fff;
+}
+
+.phonec {
+  background-image: url('https://i.esdrop.com/d/cl3pewp2aooj/9gAa4LY8Y0.png');
+  background-repeat: no-repeat;
+  background-size : cover;
+  width: 360px;
+    height: 550px;
+    position: relative;
+    top: -72px;
+    left: -76px;
+}
+</style>
+<div class="phonec">
+  <div class="wrapperr">
+          <div class="user-container">
+            {% if user and user.id %}
+              <label for="nickname" class="nname">대화명</label>
+              <input type="text" style="background-color: rgb(83, 82, 82);" id="nickname" placeholder="대화명을입력하라우" value='{{user.nick}}' readonly>
+            {% else %}
+              <label for="nickname" class="dhm">대화명</label>
+              <input type="text" id="nickname" placeholder="대화명을입력해!" value={{user.nick}}>
+            {% endif %}
+            <ul id="messages" type="none">
+              <li id="usercount"></li>
+            </ul>
+          </div>
+          <div class="display-container">
+              <ul class="chatting-list">
+              
+              </ul>
+          </div>
+          <div class="input-container">
+              <span>
+                  <input type="text" class="chatting-input" >
+                  <button class="send-button">전송</button>
+              </span>
+          </div>
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="./chat.js"></script>
+<script>
+  
+</script>
+<!-- <script src="/3e/node_modules/socket.io/client-dist/socket.io.js"></script> -->

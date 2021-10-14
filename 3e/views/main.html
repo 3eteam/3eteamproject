@@ -1,0 +1,566 @@
+
+  {% extends 'layout.html' %}
+ 
+
+  {% block content %}
+  <style>
+  .bgimg{
+    /* background-image: url('https://image.musinsa.com/images/campaign_img/2021100718312100000035811.png'); */
+    margin: 0;
+    border: 0;
+    padding: 0;
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+  }
+  .bgimg2{ 
+    background-color: #ffcc00;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+  }
+  #bg {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    min-height: 100%;
+  }
+
+  .main2 {
+    display: flex;
+    position: relative;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    border-radius: 20px;
+    flex-direction: column;
+  }
+
+    /* 풀페이지! */
+
+  html,body {width:100%;height:100%;margin:0px;padding:0px;overflow:hidden;font-family:sans-serif;}
+	
+	#fullpage {position:relative;top:0px;z-index:9;width:100%;height:100%;}
+	.fullsection{width:100%;height:100%;position:relative;display: flex;}
+
+	ul, li{margin:0;padding:0;list-style:none}
+	.quick {position:fixed;right:20px;top:50%;transform:translateY(-50%); z-index:100000}
+	.quick li {width:10px;height:10px;margin-bottom:10px; border-radius:15px;border:2px solid #fff;cursor:pointer;}
+	.quick .on {background:#fff;}
+
+  /* .main1 {
+    display: flex;
+  } */
+  .temtem {
+    height: 100vh;
+    width: 85%;
+  }
+  .temtem2 {
+    height: 100vh;
+    width: 30%;
+  }
+
+  #slide{
+
+  position:relative;
+
+  width: 500px;
+
+  }
+
+  #slide li{
+
+  position:absolute;
+
+  top:0;
+
+  left:0;
+
+  display:none;
+
+  -webkit-display:block;
+
+  }
+
+  #slide img{
+
+  width:330px;
+
+  height: 300px;
+  margin: 10px;
+
+  } 
+
+  .kakalink img{
+    width: 330px;
+    height: 140px;
+    flex-direction: column;
+  }
+
+  .kakalink {
+    position: relative;
+    top: 320px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: 100px;
+  }
+
+  .chaat {
+    position: relative;
+    width: 230px;
+    height: 450px;
+    top: -140px;
+    left: 350px;
+  }
+
+  .iphone {
+    width: 580px;
+    height: 450px;
+    position: relative;
+  }
+  .board-wrap{
+    position: relative;
+    width: 380px;
+    height: 450px;
+    top: -440px;
+    left: 600px;
+  }
+
+
+  /* 메인 게시판 부분 */
+
+  body *,
+        body *:before,
+        body *:after {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body .wrapper {
+            width: 740px;
+            margin: 0 auto;
+            max-width: 100%;
+            padding: 0 15px;
+        }
+
+        body .clearfix:after {
+            content: " ";
+            clear: both;
+            display: table;
+        }
+        .board {
+    margin-bottom: 30px;
+    position: relative;
+    top: -580px;
+    left: 45%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.board .header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.board .header .title {
+    font-size: 25px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    color: #1259a7;
+}
+
+.board .header .desc {
+    margin-top: 10px;
+}
+
+.board .article table {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+.board .article table th,
+.board .article table td {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.board .article table th {
+    background: #f7f7f7;
+}
+
+.board .article table td.title {
+    text-align: center;
+}
+
+.board .article table td a {
+    cursor: pointer;
+}
+
+.board .article table td.title span {
+    display: inline-block;
+    padding: 3px 5px;
+    color: #fff;
+    font-size: 10px;
+    margin-left: 3px;
+}
+
+.board .article table td.title span.new {
+    background: #f71d1d;
+}
+
+.board .article table td.title span.update {
+    background: #1259a7;
+}
+
+.board .article table td a:hover {
+    text-decoration: underline;
+}
+
+.board .article .search {
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: right;
+}
+
+.board .article .search .count {
+    float: left;
+    border: 1px solid #ddd;
+    padding: 12px;
+}
+
+.board .article .search .bundle {
+    width: 370px;
+    margin-left: auto;
+}
+
+.board .article .search .bundle select {
+    height: 42px;
+    border: 1px solid #ddd;
+    vertical-align: middle;
+    border-radius: 0;
+    padding: 0 5px;
+    float: left;
+    width: 35%;
+}
+
+.board .article .search .bundle input {
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    border-left: 0;
+    border-radius: 0;
+    height: 42px;
+    padding: 0 10px;
+    float: left;
+    width: 53.5%;
+}
+
+.board .article .search button {
+    border: 1px solid #1259a7;
+    background: #1259a7;
+    vertical-align: middle;
+    color: #fff;
+    height: 42px;
+    cursor: pointer;
+    padding: 0 13px;
+    float: left;
+    width: 11.5%;
+}
+
+.board .article .pages {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.board .article .pages ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.board .article .pages ul>li {
+    display: inline-block;
+}
+
+.board .article .pages ul>li>a {
+    cursor: pointer;
+    display: inline-block;
+    padding: 8px 13px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+}
+
+.board .article .pages ul>li>a:hover {
+    background: #eee;
+}
+
+.board .article .pages ul>li.active>a {
+    background: #1259a7;
+    border-color: #1259a7;
+    color: #fff
+}
+
+@media(max-width:767px) {
+    .board .article table .check,
+    .board .article table .num,
+    .board .article table .date,
+    .board .article table .views {
+        display: none;
+    }
+
+    .board .article .search .count {
+        display: none;
+    }
+
+    .board .article .search .bundle {
+        width: 100%;
+    }
+}
+.num {
+  width: 1%;
+}
+
+.nnaa {
+  width: 10%;
+}
+
+.who {
+  width: 2%;
+}
+
+.ffk {
+  position: relative;
+  top: -253px;
+}
+
+  </style>
+  <div id="fullpage">
+    <div class='quick'><ul></ul></div>
+    <div class="fullsection full1" pageNum="1">
+      <div class="vh-100 col-xl-12 col-lg-12 col-md-12 col-sm-12 bg-white main1" style="height:700px;">
+        <div class="bgimg">
+          
+          <div class="ccc">
+            {% include "blog2.html" %}
+          </div>
+        </div>
+        <div class="temtem">
+        </div>
+        <div class="temtem2">
+
+        </div>
+      </div>
+    </div>
+    <div class="main_content">
+      <div class="bgimg2">
+        <div class="fullsection full2" pageNum="2">
+          <div class="vh-60 col-xl-11 col-lg-11 col-md-11 col-sm-11 bg-white main2" style="height:470px;">
+
+              <div id="slide" val="1" mx="2">
+                <li id="img1"><img src="https://i.esdrop.com/d/cl3pewp2aooj/DGQe9N5fSK.jpg" alt=""/></li>
+                <li id="img2"><img src="https://i.esdrop.com/d/cl3pewp2aooj/UouIaHu316.jpg" alt=""/></li>
+              </div>
+              <div class="kakalink">
+                <a href=""><img src="https://i.esdrop.com/d/cl3pewp2aooj/sNDfIupA2v.jpg" alt="" srcset=""></a>
+              </div>
+              <div class="chaat">
+                {% include "chat.html" %}
+              </div>
+              <div class="board">
+                <div class="article">
+                    <div class="wrapper">
+                        <table>
+                            <form action="/board" method="POST">
+                                <tr>
+                                    <th class="num">no.</th>
+                                    <th class="nnaa">제 목</th>
+                                    <th class="who">작성자</th>
+                                </tr>
+                            
+                            {% for comment in comments %}
+                            <tr>
+                                <td class="board-list-num">
+                                    <div>
+                                        {{comment.id}}
+                                        <!-- cf) 이미지 넣는 방식 <img src="{{comment.img}}" /> -->
+                                    </div>
+                                </td>
+                                <!-- 해당 타이틀의 글의 세부내용으로 가기 -->
+                                <td class="board-list-content">
+                                    <div>
+                                    <a class="board-list-content-link" href="/boarddetail/{{comment.id}}">{{comment.title}}</a>
+                                    </div>
+                                </td>
+                                <!-- user모델과 연동해서 작성한 사람 nick이 뜰 수 있게 수정 요망 -->
+                                <td class="board-list-name">
+                                    <div>
+                                        {{comment.User.nick}}
+                                    </div>
+                                </td>
+                                <!-- 조회수로 수정 요망 -->
+                            </tr>
+                            
+                            {% endfor %}
+                            <tr>
+                                <td class="num">0</td>
+                                <td class="title">
+                                    <a>이상한말 하지 말아주세여</a>
+                                    <span class="update">공지</span>
+                                </td>
+                                <td>관리자 일동</td>
+                            </tr>
+                        </form>
+                            <tbody>
+                        </table>
+        
+                        <br>
+                        <!-- page 개수 -->
+                    </div>
+                </div>
+            </div>
+
+            <img class="ffk" src="https://i.esdrop.com/d/cl3pewp2aooj/MAEYM9dPkY.png" alt="">
+
+              <!-- <div class="iphone">
+                <img src="https://i.esdrop.com/d/cl3pewp2aooj/9gAa4LY8Y0.png" alt="" srcset="">
+              </div> -->
+          </div>
+        </div>
+    </div>
+  </div>
+     <div class="fullsection full3" pageNum="3">
+      
+      
+    </div>
+  </div>
+    
+    
+  
+
+  <script type="text/javascript"> 
+
+    imgslide(); //페이지가 로딩될때 함수를 실행합니다
+    
+    function imgslide(){
+    
+      $val = $("#slide").attr("val"); //현재 이미지 번호를 가져옵니다
+    
+      $mx = $("#slide").attr("mx"); //총 이미지 개수를 가져옵니다
+    
+      $("#img"+$val).hide(); //현재 이미지를 사라지게 합니다.
+    
+      if( $val == $mx ){ $val = 1; } //현재이미지가 마지막 번호라면 1번으로 되돌립니다.
+    
+      else{ $val++; } //마지막 번호가 아니라면 카운트를 증가시켜줍니다
+    
+      $("#img"+$val).fadeIn(500); //변경된 번호의 이미지영역을 나타나게 합니다.괄호 안에 숫자는 페이드인 되는 시간을 나타냅니다.
+    
+      $("#slide").attr('val',$val); //변경된 이미지영역의 번호를 부여합니다.
+    
+      setTimeout('imgslide()',4000); //1초 뒤에 다시 함수를 호출합니다.(숫자값 1000당 1초)
+    
+    }
+    
+    </script>
+
+<script>
+
+
+$(document).ready(function(){
+	fullset();
+	quickClick();
+});
+function fullset(){
+	var pageindex = $("#fullpage > .fullsection").size(); //fullpage 안에 섹션이(.fullsection) 몇개인지 확인하기
+	for(var i=1;i<=pageindex;i++){
+		$("#fullpage > .quick > ul").append("<li></li>");
+	}
+	$("#fullpage .quick ul :first-child").addClass("on"); //일단 화면이 로드 되었을때는 퀵버튼에 1번째에 불이 들어오게
+	//마우스 휠 이벤트
+	$(window).bind("mousewheel", function(event){
+		var page = $(".quick ul li.on");
+		//alert(page.index()+1);  // 현재 on 되어있는 페이지 번호
+		if($("body").find("#fullpage:animated").length >= 1) return false;
+		//마우스 휠을 위로
+		if(event.originalEvent.wheelDelta >= 0) {
+			var before=page.index();
+			if(page.index() >= 0) page.prev().addClass("on").siblings(".on").removeClass("on");//퀵버튼옮기기
+			var pagelength=0;
+			for(var i=1; i<(before); i++)
+			{
+				pagelength += $(".full"+i).height();
+			}
+			if(page.index() > 0){ //첫번째 페이지가 아닐때 (index는 0부터 시작임)
+				page=page.index()-1;
+				$("#fullpage").animate({"top": -pagelength + "px"},1000, "swing");
+			}else{
+			}	
+		}else{ // 마우스 휠을 아래로	
+			var nextPage=parseInt(page.index()+1); //다음페이지번호
+			var lastPageNum=parseInt($(".quick ul li").size()); //마지막 페이지번호
+			//현재페이지번호 <= (마지막 페이지 번호 - 1)
+			//이럴때 퀵버튼옮기기
+			if(page.index() <= $(".quick ul li").size()-1){ 
+				page.next().addClass("on").siblings(".on").removeClass("on");
+			}
+			
+			if(nextPage < lastPageNum){ //마지막 페이지가 아닐때만 animate !
+				var pagelength=0;
+				for(var i = 1; i<(nextPage+1); i++){ 
+					//총 페이지 길이 구하기
+					//ex) 현재 1번페이지에서 2번페이지로 내려갈때는 1번페이지 길이 + 2번페이지 길이가 더해짐
+					pagelength += $(".full"+i).height();
+				}
+				$("#fullpage").animate({"top": -pagelength + "px"},1000, "swing");
+			}
+			else{ // 현재 마지막 페이지 일때는
+			};		
+			
+		}
+	});
+	$(window).resize(function(){ 
+		//페이지가 100%이기때문에 브라우저가 resize 될때마다 스크롤 위치가 그대로 남아있는것을 방지하기 위해
+		var resizeindex = $(".quick ul li.on").index()+1;
+		
+		var pagelength=0;
+		for(var i = 1; i<resizeindex; i++){ 
+			//총 페이지 길이 구하기
+			//ex) 현재 1번페이지에서 2번페이지로 내려갈때는 1번페이지 길이 + 2번페이지 길이가 더해짐
+			pagelength += $(".full"+i).height();
+		}
+
+		$("#fullpage").animate({"top": -pagelength + "px"},0);
+	});
+}
+// 사이드 퀵버튼 클릭 이동
+function quickClick(){
+	$(".quick li").click(function(){
+		var gnbindex = $(this).index()+1;
+		var length=0;
+		for(var i=1; i<(gnbindex); i++)
+		{
+			length+=$(".full"+i).height();
+		}
+		if($("body").find("#fullpage:animated").length >= 1) return false;
+		$(this).addClass("on").siblings("li").removeClass("on");
+		
+		$("#fullpage").animate({"top": -length + "px"},800, "swing");
+		return false;
+	});
+}
+
+</script>
+
+  {% endblock %} 

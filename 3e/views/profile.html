@@ -1,0 +1,470 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<style>
+  * {
+    list-style: none;
+  }
+  .page-header {
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+  }
+  .content-cluster {
+    width: 1249px;
+    margin: 50 auto 18px;
+    background: #fff;
+    border: 1px solid #c7c7c7;
+    position: relative;
+  }
+  .content-title {
+    padding: 46px 27px 33px;
+}
+.content-title h3 {
+    font-size: 30px;
+    display: inline;
+    font-weight: bold;
+    color: #222;
+    letter-spacing: -1.4px;
+}
+.content-title .title-desc {
+    font-size: 14px;
+    display: inline;
+    font-weight: 600;
+    color: #222;
+    letter-spacing: -0.5px;
+}
+#mypage .content-title {
+    padding-bottom: 15px;
+}
+.mysituation-cluster, .prouduct-cluster {
+    width: 1195px;
+    margin: 0 auto;
+    padding: 0 27px;
+}
+.mysituation-depth {
+    padding: 25px 0 25px;
+    color: #222;
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+}
+
+.mysituation-depth {
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+.mysituation-depth01 li {
+    width: 33.3%;
+    text-align: center;
+}
+.mysituation-depth span {
+    font-size: 18px;
+    color: #f74f4f;
+    font-weight: bold;
+}
+.mysituation-depth02 li {
+    text-align: center;
+    border-right: 1px solid #dddddd;
+    position: relative;
+    width: 344px;
+    height: 100px;
+}
+.mysituation-depth02 .mydepth02-coupon {
+    width: 158px;
+}
+.mydepth02-list {
+    position: relative;
+    top: 73px;
+}
+.mydepth02-list a {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: -66px;
+}
+.mysituation-depth02 strong {
+    font-size: 50px;
+    font-weight: 400;
+    color: #f74f4f;
+}
+.mygrade-benefit {
+    text-align: center;
+}
+.mygrade-benefit dt {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 50px;
+}
+.mygrade-benefit hr {
+    width: 50px;
+    height: 3px;
+    background: black;
+    border: 0 none;
+    margin: 19px auto 23px;
+    display: block;
+}
+.mygrade-benefit dd p {
+    line-height: 1.4;
+    margin: 0 0 10px;
+}
+.member-state {
+    font-size: 22px;
+    font-weight: bold;
+    color: #222;
+    letter-spacing: -1.0px;
+}
+dd {
+    margin-bottom: .5rem;
+    margin-left: 0;
+}
+.member-state {
+    font-size: 22px;
+    font-weight: bold;
+    color: #222;
+    letter-spacing: -1.0px;
+}
+.member-state-desc {
+    font-size: 16px;
+    color: #222;
+    font-weight: bold;
+}
+.next-grade-price {
+    color: #f74f4f;
+}
+
+
+/* 슬라이드 */
+body .clearfix:after {
+            content: " ";
+            clear: both;
+            display: table;
+        }
+        .slider {
+    margin-bottom: 30px;
+}
+
+.slider>.wrapper {
+    position: relative;
+    padding-right: 385px;
+    left: 200px;
+}
+
+.slider .slider {
+    padding: 0 50px;
+    position: relative;
+}
+
+.slider .slider .swiper-container {
+    position: static;
+}
+
+.slider .slider .swiper-container .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #eee;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.slider .slider .swiper-container .swiper-slide img {
+    display: block;
+    width: 100%;
+}
+
+.slider .slider .swiper-container .swiper-button-next,
+.slider .slider .swiper-container .swiper-button-prev {
+    padding: 0 15px;
+}
+
+.slider .slider .swiper-container .swiper-button-next {
+    right: 0;
+}
+
+.slider .slider .swiper-container .swiper-button-prev {
+    left: 0;
+}
+
+.slider .slider .swiper-container .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #fff;
+}
+/* .swiper-pagination {
+  top: 10px;
+  z-index: 10;
+} */
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+}
+.slider .slider .swiper-container .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: rgb(0, 0, 0);
+}
+
+.slider .texts button {
+    background: none;
+    box-shadow: none;
+    cursor: pointer;
+    border: 1px solid #007aff;
+    color: #007aff;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.slider .texts button:hover {
+    background: #007aff;
+    border-color: #007aff;
+    color: #fff;
+}
+
+@media(max-width:991px) {
+    .slider>.wrapper {
+        padding-right: 15px;
+    }
+
+    .slider .slider {
+        padding: 0;
+    }
+
+    .slider .slider .swiper-container .swiper-button-next {
+        right: 15px;
+    }
+
+    .slider .slider .swiper-container .swiper-button-prev {
+        left: 15px;
+    }
+
+    .slider .texts {
+        position: static;
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: 15px;
+    }
+}
+.setset {
+  position:relative ;
+  top: -999px;
+}
+</style>
+
+<div class="setset">
+  {% if user and user.id %}
+  {% set totalPrice = 0 %}
+  {% for payment in payments %}
+    {% if user.id === payment.UserId %}
+  {% set totalPrice = totalPrice + payment.price %}
+  {{payment.price }}
+    {% endif %}
+  {% endfor %}
+  {% endif %}
+  {{totalPrice}}
+</div>
+
+<div class="content-cluster">
+  <div class="content-title">
+    <h3>마이페이지</h3>
+   <img src="{{userimg}}" alt="" style="width: 40px;"
+    <p class="title-desc">
+      {{user.nick + '님'}}
+      의 쇼핑몰 현황을 한눈에 볼 수 있습니다!</p>
+      {{payments.User.img}}
+  </div>
+  <div class="mysituation-cluster">
+    <ul class="clear mysituation-depth mysituation-depth01">
+      <li class="float_l"><a href="/shop/mypage.html?mypage_type=myorder">진행중인 주문건&nbsp;<span class="highlight">
+            0</span>&nbsp;건</a></li>
+      <li class="float_l"><a href="/shop/mypage.html?mypage_type=myarticle">내가 작성한 게시물</a></li>
+      <li class="float_l"><a href="/changeinfo">회원정보변경</a></li>
+    </ul>
+  </div>
+
+  <div class="mysituation-cluster">
+    <ul class="clear mysituation-depth mysituation-depth02">
+      <li class="float_l mydepth02-coupon">
+        <p class="mydepth02-list"> 보유쿠폰 <a href="/shop/mypage.html?mypage_type=mycoupon"> <strong>
+              0 <span class="hide">장</span></strong></a></p>
+      </li>
+      <li class="float_l">
+        <p class="mydepth02-list"> 적립금(원) <a href="/shop/mypage.html?mypage_type=myreserve"> <strong>
+          {% if totalPrice >1000000 and totalPrice <2000000 %}
+          {{totalPrice * 0.01}}
+          {% elif totalPrice >2000000 and totalPrice <4000000 %}
+          {{totalPrice * 0.03}}
+          {% elif totalPrice >4000000 and totalPrice <7000000 %}
+          {{totalPrice * 0.05}}
+          {% elif totalPrice >7000000 %}
+          {{totalPrice * 0.1}}
+          {% else %}
+          {{totalPrice * 0}}
+          {% endif %}
+          
+          <span class="hide">원</span></strong></a></p>
+      </li>
+      <li class="float_l">
+        <p class="mydepth02-list"> 예치금(원) <a href="/shop/mypage.html?mypage_type=myemoney"> <strong>
+              0 <span class="hide">원</span></strong></a></p>
+              </li>
+              <li class="float_l list-last">
+                <p class="mydepth02-list"> 총 주문금액(원) <a href="/shop/mypage.html?mypage_type=myorder"> <strong>
+                      {% if totalPrice > 10000 and totalPrice < 1000000 %} {{ (totalPrice - totalPrice % 1000) / 1000 }},{{ totalPrice
+                        % 1000 }} {% elif totalPrice>= 1000000 %}
+                        {{ (totalPrice - totalPrice % 1000000) / 1000000 }},{{ ((totalPrice - (totalPrice - totalPrice % 1000000)) -
+                        totalPrice % 1000) /1000 }},{{ totalPrice % 1000 }}
+                        {% else %}
+                        {{ totalPrice }}
+                        {% endif %} 
+                <span class="hide">원</span></strong></a></p>
+              </li>
+              </ul>
+              </div>
+
+  <div class="mysituation-cluster">
+    <dl class="mygrade-benefit">
+
+      <dt>고객님께서 받고 계신 회원혜택을 확인하세요!</dt>
+      <hr>
+      <dd>
+        <p class="member-state">
+          <span class="member-name">
+            {{user.nick + '님'}}
+          </span>
+          회원님의 회원등급은
+          <!-- 실버등급 -->
+          {% if totalPrice >1000000 and totalPrice <2000000 %}
+          <span class="member-grade" style="color: rgb(161, 161, 161);">
+            [실버 1%할인]
+          </span>
+          입니다.
+        </p>
+
+
+
+        <p class="member-state-desc"> <span class="next-grade-price">{{2000000-totalPrice}}</span> 원 더 구매하시면 <span class="next-grade"
+            style="color: rgb(224, 159, 2);">골드 3%할인</span>으로 승급됩니다.</p>
+          <!-- 골드등급 -->
+          {% elif totalPrice >2000000 and totalPrice <4000000 %}
+          <span class="member-grade" style="color:#e7b824;">
+            [골드 3%할인]
+          </span>
+          입니다.
+        </p>
+
+
+
+        <p class="member-state-desc"> <span class="next-grade-price">{{4000000-totalPrice}}</span> 원 더 구매하시면 <span class="next-grade"
+          style="color:#c64a62;">VIP 5%할인</span>으로 승급됩니다.</p>
+          <!-- VIP등급 -->
+          {% elif totalPrice >4000000 and totalPrice <7000000 %}
+          <span class="member-grade" style="color:#c64a62;">
+            [VIP 5%할인]
+          </span>
+          입니다.
+        </p>
+
+
+
+        <p class="member-state-desc"> <span class="next-grade-price">{{70000000-totalPrice}}</span> 원 더 구매하시면 <span class="next-grade"
+          style="color:#6e5da3;">VVIP 10%할인</span>으로 승급됩니다.</p>
+          <!-- VVIP등급 -->
+          {% elif totalPrice >7000000 %}
+          <span class="member-grade" style="color:#6e5da3;">
+            [VVIP 10%할인]
+          </span>
+          입니다.
+        </p>
+
+
+
+        <p class="member-state-desc"> <span class="next-grade-price">{{100000000-totalPrice}}</span> 원 더 구매하시면 <span class="next-grade"
+            style="color: rgb(51, 240, 13);">CEO 100%할인</span>으로 승급됩니다.</p>
+          <!-- 브론즈등급 -->
+          {% else %}
+          <span class="member-grade" style="color:#976f4d;">
+            [브론즈 0%할인]
+          </span>
+          입니다.
+        </p>
+
+
+
+        <p class="member-state-desc"> <span class="next-grade-price">{{1000000-totalPrice}}</span> 원 더 구매하시면 <span class="next-grade"
+          style="color:#777777;">실버 1%할인</span>으로 승급됩니다.</p> 
+          {% endif %}       
+      </dd>
+    </dl>
+  </div>
+
+
+  <!-- 슬라이더 -->
+  <div class="slider">
+    <div class="wrapper">
+        <div class="slider">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://i.esdrop.com/d/cl3pewp2aooj/cVdtqh4M4w.png">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://i.esdrop.com/d/cl3pewp2aooj/YAlcd7t6sM.png">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://i.esdrop.com/d/cl3pewp2aooj/vuPGBOoh6X.png">
+                    </div>
+                    <div class="swiper-slide">
+                      <img src="https://i.esdrop.com/d/cl3pewp2aooj/JStYnId5Cn.png">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="https://i.esdrop.com/d/cl3pewp2aooj/PICMfvDDFE.png">
+                </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+<script>
+  (function() {
+    var swiper = new Swiper(".slider .swiper-container", {
+        autoHeight: true,
+        loop: true,
+        autoplay: {
+            delay: 5000,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
+})();
+</script>
+
+
+</body>
+{% endblock %}

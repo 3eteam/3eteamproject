@@ -1,0 +1,349 @@
+{% extends 'layout.html' %}
+<!-- <div class="carts" style="padding-top: 200px;">
+
+<form action="/payment" method="POST">
+  {% for carts in cart %}
+
+  <div class="cart">
+    <input type="hidden" name="capname" value="{{'carts.capname'}}">{{carts.capname}}
+  
+   
+   <input type="hidden" name="capnumber" value="{{carts.capnumber}}">{{carts.capnumber}}
+   <div class="cart-brand" name="brand" value="{{carts.brand}}" >{{carts.brand}}</div>
+    <div class="cap-content">{{cart.content}}</div>
+    <input type="hidden" name="price" value="{{carts.price +'원'}}">{{carts.price +'원'}}
+    <input type="hidden" name="img" value="{{cap.img}}">{{carts.img}}
+    <div class="cap-img"><img src="{{cap.img}}" alt="섬네일">
+      {% endfor %}
+    <button class="twit-follow" type="submit" class="btn" >결제하기</button>
+
+      
+
+    </form> -->
+
+
+{% block content %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&family=Noto+Serif+KR:wght@300&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap');
+
+    .shoppingCart-section {
+        background-color: rgba(0, 0, 0, 0);
+        margin: 0 auto;
+        width: 950px;
+        min-width: 700px;
+        padding-bottom: 30px;
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .shoppingCart-items-table tr:first-child td,
+    .shoppingCart-items-table tr:nth-child(2) td {
+        height: 10px;
+        padding: 10px;
+    }
+
+    .shoppingCart-items-table tr:first-child {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+
+    .shoppingCart-item-img img {
+        height: 100%;
+    }
+
+    .shoppingCart-item a {
+        display: inline-block;
+        height: 15px;
+        padding-bottom: 30px;
+    }
+
+    .shoppingCart-items-table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    .shoppingCart-items-table tr {
+        border-top: 1px solid rgba(0, 0, 0, 0.2);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    .shoppingCart-items-table tr:last-child {
+        border-top: 1px solid rgba(0, 0, 0, 0.2);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+
+    .shoppingCart-items-table tr:last-child td {
+        height: 30px;
+        padding: 20px;
+    }
+
+    .shoppingCart-items-table td {
+        height: 100px;
+    }
+
+    .shoppingCart-items-table td button {
+        display: block;
+    }
+
+    .shoppingCart-items-table {
+        width: 100%;
+    }
+
+    .buy-all {
+        float: right;
+        cursor: pointer;
+        color: white;
+        border: 2px solid tan;
+        background-color: rosybrown;
+        border: none;
+        height: 30px;
+        width: 80px;
+        margin-top: 20px;
+        position: relative;
+        left: -400px;
+        width: 100px;
+        top: -50;
+    }
+
+    .buy-item,
+    .delete-item {
+        cursor: pointer;
+        color: white;
+        border: 2px solid tan;
+        background-color: rosybrown;
+        border: none;
+        height: 25px;
+        width: 50px;
+        margin-bottom: 3px;
+    }
+
+    .shoppingCart-header {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .shoppingCart-header>h3 {
+        font-family: 'Sunflower', sans-serif;
+        background-color: white;
+        border-bottom: 3px solid rgb(230, 214, 197);
+        color: rgb(59, 57, 57);
+        display: inline-block;
+        font-size: 25px;
+    }
+
+    .input-container {
+        border: 1px solid black;
+    }
+</style>
+
+
+
+
+<section class="shoppingCart-section" style="padding-top: 200px;">
+    <div class=shoppingCart-header>
+        <h3> Shopping Cart </h3>
+    </div>
+    <div class="shoppingCart-items">
+        <table class="shoppingCart-items-table">
+            <tr>
+                <td>
+                    일반 상품
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <a>이미지</a>
+                </td>
+                <td>
+                    <a>상품 이름</a>
+                </td>
+                <td>
+                    <a>가격</a>
+                </td>
+                <td></td>
+            </tr>
+          {% if cart.UserId === cart.id %}
+          {% endif %}
+            {% set totalPrice = 0 %}
+        
+             
+
+            {% for carts in cart%}
+                {% set totalPrice = totalPrice + carts.Cart.price %}
+                <tr>
+                    <td class="shoppingCart-item-img">
+                        <img src="{{carts.Cart.img}}" />
+                    </td>
+                    <td>
+                        <a class="item-name">{{carts.Cart.capname}}</a>
+                    </td>
+                    <td>
+                        <a class="item-price">￦{{carts.Cart.price}}</a>  
+                   
+                    </td>
+                    <td>
+                        <!-- <button id="delete" value="{{user.id}}" name="id"  > -->
+                        <!-- onclick="removeComment(value)" -->
+                        
+                        <a href="/cart\{{carts.Cart.id}}">삭제</a> 
+                    </td>
+                </tr>
+                {% endfor %}
+            
+
+            <tr>
+                <td>[ 기본 배송 ]</td>
+                <td style="text-align:right">
+                    <a>총액</a>
+                </td>
+                <td>
+
+                    <a class="item-price-all">￦{{totalPrice}}</a>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+        <input type="hidden" name="price" value="{{totalPrice}}">
+        <input type="hidden" name="comment" value="{{totalPrice}}">
+    </div>
+</section>
+<form action="/payment" method="POST" target="param">
+    <input type="hidden" name="price" value="{{totalPrice}}">
+    <button  type="submit"class="buy-all"onclick="hello();">모두 구매</button>
+    <a id="delete" class="buy-all" href="/cart\{{user.id}}/deleteall">전체삭제</a> 
+    
+   
+</form>
+<iframe id="if" name="param"></iframe>
+
+<script src="https://cdn.bootpay.co.kr/js/bootpay-3.3.2.min.js" type="application/javascript"></script>
+<script>
+const deleted = document.getElementById('delete');
+    // document.getElementById("btn1").addEventListener('click', hello);
+
+    function hello() {
+        window.BootPay.request({
+            price: '{{totalPrice}}', //실제 결제되는 가격
+            application_id: "61625a957b5ba4002152c251",
+            name: 'nocap', //결제창에서 보여질 이름
+            pg: 'kcp',
+            method: '', //결제수단, 입력하지 않으면 결제수단 선택부터 화면이 시작합니다.
+            show_agree_window: 0, // 부트페이 정보 동의 창 보이기 여부
+            items: [
+                {
+                    item_name: '나는 아이템', //상품명
+                    qty: 1, //수량
+                    unique: '123', //해당 상품을 구분짓는 primary key
+                    price: 1000, //상품 단가
+                    cat1: 'TOP', // 대표 상품의 카테고리 상, 50글자 이내
+                    cat2: '티셔츠', // 대표 상품의 카테고리 중, 50글자 이내
+                    cat3: '라운드 티', // 대표상품의 카테고리 하, 50글자 이내
+                }
+            ],
+            user_info: {
+                username: '사용자 이름',
+                email: '사용자 이메일',
+                addr: '사용자 주소',
+                phone: '010-1234-4567'
+            },
+            order_id: '고유order_id_1234', //고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
+            params: { callback1: '그대로 콜백받을 변수 1', callback2: '그대로 콜백받을 변수 2', customvar1234: '변수명도 마음대로' },
+            account_expire_at: '2020-10-25', // 가상계좌 입금기간 제한 ( yyyy-mm-dd 포멧으로 입력해주세요. 가상계좌만 적용됩니다. )
+            extra: {
+                start_at: '2019-05-10', // 정기 결제 시작일 - 시작일을 지정하지 않으면 그 날 당일로부터 결제가 가능한 Billing key 지급
+                end_at: '2022-05-10', // 정기결제 만료일 -  기간 없음 - 무제한
+                vbank_result: 1, // 가상계좌 사용시 사용, 가상계좌 결과창을 볼지(1), 말지(0), 미설정시 봄(1)
+                quota: '0,2,3', // 결제금액이 5만원 이상시 할부개월 허용범위를 설정할 수 있음, [0(일시불), 2개월, 3개월] 허용, 미설정시 12개월까지 허용,
+                theme: 'purple', // [ red, purple(기본), custom ]
+                custom_background: '#00a086', // [ theme가 custom 일 때 background 색상 지정 가능 ]
+                custom_font_color: '#ffffff' // [ theme가 custom 일 때 font color 색상 지정 가능 ]
+            }
+        }).error(function (data) {
+            //결제 진행시 에러가 발생하면 수행됩니다.
+            console.log(data);
+        }).cancel(function (data) {
+            //결제가 취소되면 수행됩니다.
+            console.log(data);
+        }).ready(function (data) {
+            // 가상계좌 입금 계좌번호가 발급되면 호출되는 함수입니다.
+            console.log(data);
+        }).confirm(function (data) {
+            //결제가 실행되기 전에 수행되며, 주로 재고를 확인하는 로직이 들어갑니다.
+            //주의 - 카드 수기결제일 경우 이 부분이 실행되지 않습니다.
+            console.log(data);
+            var enable = true; // 재고 수량 관리 로직 혹은 다른 처리
+            if (enable) {
+                BootPay.transactionConfirm(data);
+                delchk() // 조건이 맞으면 승인 처리를 한다.
+            } else {
+                BootPay.removePaymentWindow(); // 조건이 맞지 않으면 결제 창을 닫고 결제를 승인하지 않는다.
+            }
+        }).close(function (data) {
+            // 결제창이 닫힐때 수행됩니다. (성공,실패,취소에 상관없이 모두 수행됨)
+            console.log(data);
+        }).done(function (data) {
+            //결제가 정상적으로 완료되면 수행됩니다
+            //비즈니스 로직을 수행하기 전에 결제 유효성 검증을 하시길 추천합니다.
+            console.log(data);
+        });
+    };
+
+
+
+</script>
+<script>
+    
+    function delchk(){
+    
+        location.href = "/cart/{{user.id}}/deleteall";
+        
+    
+}
+</script>
+
+<script>
+   
+    const buyURL = '/cart\{{user.id}}/deleteall';
+    function buy(frm) {
+
+        frm.action = '/cart\{{user.id}}/deleteall';
+
+frm.submit(); 
+
+        // if (!confirm('정말구매하시겠습니까? 이가격에요..?')) {
+        //     return false;
+        // }
+        // const option = {
+           
+        //     method: "POST",
+            
+  
+        // //     headers: {
+        // //         'Content-Type': 'application/json',
+        // //     },
+        // //     body: JSON.stringify({ buys: items }),
+        //  }
+        // fetch(buyURL, option)
+        //     .then(res => {
+        //         res.json().then(data => {
+        //             if (data.res) {
+        //                 alert("구매 완료하였습니다.\n" +
+        //                     "[정선아]에게[" + data.priceStr + "]원을 송금하시면 배송됩니다.");
+        //                 location.reload();
+        //             }
+        //             else {
+        //                 alert("구매 실패하였습니다.");
+        //             }
+        //         })
+        //     });
+    }
+
+
+
+</script>
+{% endblock %}
