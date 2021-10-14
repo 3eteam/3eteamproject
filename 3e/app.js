@@ -66,7 +66,7 @@ io.on("connection",(socket)=>{
 })
 
 passportConfig(); // 패스포트 설정
-app.set('port', process.env.PORT || 8001);
+app.set('port', process.env.PORT || 6001);
 app.set('view engine', 'html');
 nunjucks.configure('views', {
   express: app,
