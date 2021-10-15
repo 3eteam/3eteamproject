@@ -323,7 +323,7 @@ body .clearfix:after {
               </li>
               <li class="float_l list-last">
                 <p class="mydepth02-list"> 총 주문금액(원) <a href="/shop/mypage.html?mypage_type=myorder"> <strong>
-                      {% if totalPrice > 10000 and totalPrice < 1000000 %} {{ (totalPrice - totalPrice % 1000) / 1000 }},{{ totalPrice
+                      {% if totalPrice > 100000 and totalPrice < 1000000 %} {{ (totalPrice - totalPrice % 1000) / 1000 }},{{ totalPrice
                         % 1000 }} {% elif totalPrice>= 1000000 %}
                         {{ (totalPrice - totalPrice % 1000000) / 1000000 }},{{ ((totalPrice - (totalPrice - totalPrice % 1000000)) -
                         totalPrice % 1000) /1000 }},{{ totalPrice % 1000 }}

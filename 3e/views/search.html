@@ -3,7 +3,20 @@
 
 {% block content %}
 
-
+<style>
+  .twit {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  .tagg{
+    font-size: 15px;
+    font-weight: 500;
+  }
+</style>
 
 <div class="twits" style="padding-top: 200px;">
     
@@ -13,9 +26,14 @@
       <div class="twit">
         <input type="hidden" value="{{twit.id}}" name="twit.id"class="twit-id">
         {% if title === twit.tag %}
+        <div class="tagg">"{{twit.tag}}" 을 검색하셨습니다</div>
+        <span class="feed_name_txt">{{twit.brand}} </span>
         <div class="twit-content">{{twit.capname}}</div>
         <div class="twit-content">{{twit.content}}</div>
-        <div class="twit-content">{{twit.img}}</div>
+        <div class="twit-content"><img class="feed_img" src="{{twit.img}}"></div>
+        <span class="material-icons-outlined">
+          가격 : {{twit.price}} 원
+        </span>
        {% endif %}
       </div>
     {% endfor %}

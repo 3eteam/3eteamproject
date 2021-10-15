@@ -903,7 +903,11 @@ body {
   }
 }
 
-
+.xx{
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+}
 
 
 </style>
@@ -1011,7 +1015,7 @@ body {
                         <li><a href="/board" class="btn">게시판</a></li>
                         <li><a id="my-profile" href="/profile" class="btn">마이페이지</a></li>
                         <li><a href="/changeinfo" class="btn">회원정보 변경</a></li>
-                        {% if user.id < 4%}
+                        {% if user.id < 5%}
                         <li><a id="catlist" href="/catlist" class="btn">관리자모드</a></li>
                         {% endif %}
                       </ul>
@@ -1059,8 +1063,12 @@ body {
       <!-- 팝업 될 곳 -->
       <div class="light_box">
         <!-- <img class="light_exit" src="https://i.esdrop.com/d/cl3pewp2aooj/L802XbEqdW.png"> -->
-
+          <a href="/" class="xx" style="color: white; 
+  float: right;
+  font-size: 80px;
+  margin-right: 50px;">X</a>
         <div class="containerrr">
+
           <form autocomplete="off" class="formm" id="hashtag-form" action="/search/hashtag">
             <div class="finder">
               <div class="finder__outer">
@@ -1068,9 +1076,11 @@ body {
                   <div class="finder__icon" ref="icon"></div>
                   <input class="finder__input" type="text" name="hashtag" />
                   <button class="btn ser_btn">검색</button>
+                  
                 </div>
               </div>
             </div>
+            
           </form>
         </div>
 

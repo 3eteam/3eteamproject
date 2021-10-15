@@ -12,6 +12,7 @@
     flex-wrap: wrap;
 }
 .right_body {
+  position: fixed;
     padding-top: 20px;
     width: 300px;
     height: 1000px;
@@ -162,7 +163,7 @@
           <div class="border feed_box">
             <div class="feed_name">
               <div class="profile_box">
-                <img class="profile_img" src="/아이우.jpeg">
+                <img class="profile_img" src="https://i.esdrop.com/d/cl3pewp2aooj/OBaZNw8TQW.png">
               </div>
               <span class="feed_name_txt">{{carts.brand}} </span>
             </div>
@@ -216,14 +217,12 @@
     <span style="color: gray"> 장바구니</span>
     <a href="/cart"><span style="font-size: 12px"> 모두 보기 </span></a>
   </div>
-</div>
 
 
-    
 
-    
-{% for carteds in carted%}
-    <div class="feed_name" style="justify-content: space-between; position: fixed;">
+{% for carteds in carted %}
+{% if user.id === carteds.UserId %}
+    <div class="feed_name" style="justify-content: space-between; ">
       <div class="profile_box">
         <img class="profile_img"
              src="{{carteds.img}}">
@@ -234,8 +233,10 @@
       </div>
       <a href="/alllist\{{carteds.id}}">삭제</a> 
     </div>
-
- {% endfor %}
+    {% endif %}
+  {% endfor %}
+</div>
+ 
 
 
 

@@ -39,6 +39,8 @@ router.use((req, res, next) => {
   const upload2 = multer();
 router.post('/', upload2.none(), async (req, res, next) => {
   try {
+
+    const userid= res.locals.user;
     console.log(req.user);
     const payment = await Payment.create({
       
@@ -51,6 +53,8 @@ router.post('/', upload2.none(), async (req, res, next) => {
       capname:req.body.capname,
       price:req.body.price,
       quantity:req.body.quantity,
+      UserId:userid.id,
+    
 
 
 
