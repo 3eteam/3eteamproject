@@ -11,6 +11,53 @@
 
 
 <style>
+.feed_img{
+    width: 100%;
+    object-fit: contain;
+}
+.feed_content{
+    padding: 0px 10px;
+}
+.feed_reply{
+    padding: 0px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.feed_txt{
+    font-size: 14px;
+}
+
+
+.feed_icon{
+    padding: 5px 5px 0px 5px;
+    display: flex;
+    justify-content: space-between;
+}span{
+     padding-right: 5px;
+}
+
+.feed_name{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.feed_name_txt{
+    font-size: 14px;
+    padding: 0px 10px;
+    font-weight: bold;
+}
+
+
+.feed_box {
+    background-color: white;
+    width: 480px;
+    margin: 10px;
+    min-height: auto;
+    padding-bottom: 10px;
+}
     textarea {
         resize: vertical;
         width: 100%;
@@ -151,20 +198,42 @@
                     <button id="twit-btn" type="submit" class="btn btn-lg btn-danger">저장하기</button>
                 </div>
             </div>
+            <div class="mb-3 row " >
+                {% for twit in twits %}
+                <div class="border feed_box">
+                    <span class="feed_name_txt">{{twit.brand}} </span>
+                    <div class="feed_name">
+                         
+                      <div class="profile_box">
+                        {% if twit.img %}
+                   
+                    <div class="twit-img"><img src="{{twit.img}}" alt="섬네일" style="width: 400px; height: 400px;"></div>
+                    {% endif %}
+                       <a href="/catlist\{{twit.id}}">삭제</a>
+                    </div>
+                   
+                    <div class="feed_icon">
+                    
+                 
+                
+                    </div>
+                  
+                  
+                  </div>
+            </div>
+                {% endfor %}
+               
+            </div>
         </div>
     </div>
 </form>
 
-{% for twit in twits %}
-<div class="twit">
 
-    {% if twit.img %}
-    <a href="/catlist\{{twit.id}}">삭제</a>
-    <div class="twit-img"><img src="{{twit.img}}" alt="섬네일" style="width: 100px; height: 100px;"></div>
-    {% endif %}
-</div>
-{% endfor %}
 {% endblock %}
+
+
+
+
 
 {% block script %}
 <script>
