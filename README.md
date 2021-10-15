@@ -8,7 +8,7 @@ node.js을 이용한 2번쨰 프로젝트
 멤버소개
 
 이동녘:[깃허브](https://github.com/dongnycklee)  
-한경현:[깃허브]()  
+한경현:[깃허브](https://github.com/kyunghyunHan)  
 이성재:[깃허브]()
 --
 
