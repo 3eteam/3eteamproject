@@ -21,7 +21,7 @@
 <h2>프로젝트명</h2>
 <p>NOCAP(쇼핑몰, 커뮤니티)</p>
 ------
-프로젝트 소개: 
+### 프로젝트 소개: 
 
 <img width="700" alt="스크린샷 2021-10-15 오후 3 51 02" src="https://user-images.githubusercontent.com/89692626/137611758-973688ea-0418-4b07-a945-e0b17c3d6fb0.png">
 웹사이트 첫 화면(index.html)
