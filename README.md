@@ -4,10 +4,10 @@
 
 # 프로젝트명
 
-## 🚗🚙🚕3E('NOCAP') - 쇼핑몰 커뮤니티
+## 👜👢🧢3E('NOCAP') - 쇼핑몰 커뮤니티
 ## 프로젝트 시작일 :2021-09-29
 
-## 🚘[**서비스로 이동**](/)
+## 👜👢🧢[**서비스로 이동**](http://54.180.155.42:6002/)
 
 
 
@@ -139,88 +139,51 @@ Member.
 
 # 발생한 이슈 & 해결 방법
 
-### "REST 구조를 더 깊게 이해할 수 있는 계기"
+### "Nodejs 처리에서의 문제점 파악 ,db및 구조설계 "
 
-- session처리
+- Nunjucks 템플릿 엔진 사용에 미숙으로 인한 에러발생
 
-[상황] 메인 서버에서 로그인 확인 후 회원 정보를 클라이언트 서버 쪽으로 넘겨주어 session을 저장해야 함
+[상황] nunjucks 동적인 처리 미숙으로 인해 템플릿 에러발생
 
-[문제] sessionStorage를 사용하여 저장하면 보안에 취약하여 사용자 개인정보를 저장하기에 부적합함
+[문제] nunjucks 동적인 처리 미숙으로 인해 템플릿 에러발생
 
-[해결] 클라이언트 서버에 controller를 만들어 Rest Template 사용, 메인 서버에서 받은 로그인한 회원의 정보를 클라이언트 controller에서 저장함
+[해결] public파일 생성후 에러 해결
 
-- Rest Template 사용 시 변수의 casting error
+- nunjucks for문 구현 시 화면에 구현 장애
 
-[상황] Rest구조 구현 시 Rest Template 활용
+[상황] 장바구니 구현시 nunjucks 활용
 
-[문제] 두 번이나 컨트롤러를 거치는 구조라 객체를 주고받을 때 문제가 발생, 변수의 casting error
+[문제] for문 과 mysql 관계 설정 미숙으로 인해 화면에 렌더링이 안댐
 
-[해결] exchange 메서드를 사용, header와 body를 직접 지정하고, request method 도 지정하여 데이터 통신
+[해결] nunjucks 와 관게쿼리 해결 완료 로 인해 문제해결
 
-### “새롭게 배운 Spring Boot 와 JPA 개념 이해 및 적용”
+- 라우트 get,post,CRUD 메서드 연결 구현 이해부족
 
-- JPA @Query와 @OneToMany 
+[상황] 게시물,장바구니,상품등록,회원가입 구현에 있어서 에러발생
 
-[상황] 테이블 2개를 조인해야 하는데 조건이 붙음
+[문제] 게시물,장바구니,상품등록등 등 관계쿼리 사용부분에 있어서 CRUD에 대한 이해부족으로 인해 장애발생
 
-[문제] @Query("select d from DCarpoolEntity d join RsvEntity r where r.r_confirm is null or = 'B' order by d.d_date desc")로 조건을 넣어줬는데 bean을 생성하지 못하거나 'idx'를 찾지 못한다는 여러 오류가 발생
+[해결] 추가적인 학습과 관계쿼리 추가로 이해하면서 보안하여 장애 해결
 
-[해결] @Query를 쓸 때는 @OneToMany & @ManyToOne와 같이 entity내부에서 관계설정을 해주지 못함 (join이 겹치기 때문), @Query를 쓰지 않고 값을 한꺼번에 받아온 다음, service 내에서 필터링 처리 → DTO생성하여 필요한 데이터 넣어줌
+- Git 브랜치 활용 미숙
 
-- JPA @ManyToOne과 @ID
+[상황] 코드 병합
 
-[상황] 탑승자가 예약한 카풀 리스트를 뽑아야 하는 상황, RESERVATION 테이블 & D_CARPOOL 테이블 JOIN하려고 @ManyToOne으로 관계 설정을 한 뒤 RESERVATION의 p_idx값으로 데이터를 list로 출력해야 함
+[문제] 각자 코드 작성 한것에 대한 코드 병합시 에러발생 (코드 병합시 코드 삭제댐)
 
-[문제] list으로 출력은 되나 들어있는 데이터가 첫번째 데이터로 반복
-예) 뽑아야하는 데이터가 5개면 list 안의 객체가 5개이나 RESERVATION정보 & D_CARPOOL(조인 테이블)정보가 첫번째 객체의 내용으로 반복됨
+[해결] 분업화 및 소통활성화 후에 코드 병합시 순차적으로 병합 
 
-[해결] RsvEntity (RESERVATION)의 r_idx에 @ID를 부여 (= DB의 RESERVATION 테이블의 pk와 동일하게 맞춤)
 
-- JPA @Column의 nullable
-
-[상황] 탑승자의 예약 정보를 출력해야 함
-
-[문제] r_confirm = null인경우 (값이 null인 경우)에는 오류 발생
-
-[해결] 해당 컬럼에 @Column(nullable = true) 작성
-
-- JPA 테이블 조인 시 동일한 이름의 변수가 있다!
-
-[상황] 두개의 테이블을 조인하여 사용해야 함
-
-[문제] 둘 다 'dr_idx'라는 동일한 이름의 변수를 가지고 있음
-
-[해결] 한 쪽 entity에 해당 컬럼에 (insertable = false, updatable = false) 작성
-
-- JPA list출력시 'java.lang.StackOverflowError: null'
-
-[상황] @OneToMany로 관계설정한 두 테이블의 정보를 조인하여 list로 출력하려고 함
-
-[문제] 무한루프에 빠짐
-
-[해결] 각 entity 안에서 @Override했던 toString()을 삭제
-
-참고: [stackoverflow](https://stackoverflow.com/questions/17445657/hibernate-onetomany-java-lang-stackoverflowerror/17445773)
-
-**JPA 깨달은 점 >**
-
-JPA는 관계형데이터베이스(RDB)와 달리 데이터를 하나의 객체(entity)로 간주하기 때문에 메모리 데이터베이스에 더 적합하다. 따라서 sql문을 직접 쓰지 않고 어노테이션으로 id, column을 설정하면 DB에서 데이터를 가져와 사용할 수 있다. 
-
-entity안에는 내가 필요한 변수(컬럼)만 써주어도 되고, @ID는 select문을 쓰는 경우 필요하지 않다. ex) PassengerEntity, RRouteEntity 변수에 따로 pk를 @ID로 맞추지 않았음.
-
-entity간 관계설정을 해줄때 특히 중요한 점 상황에 맞춰 어떠한 방식으로 관계설정을 할 지 정해햐 하는 것이다. ex) DCarpoolEntity와 RsvEntity 조인 → 두 기능이 동일한 entity를 사용해야 하기 때문에 @OneToMany, @ManyToOne 양방향으로 관계 설정함. 어노테이션으로 FK를 설정하므로 DB상의 PK에 해당되는 entity의 변수에 @ID를 지정해줘야함.
-
-→ 단순하고 반복적인 쿼리문을 만드는 수고는 덜었지만, 복잡한 조인문 등을 구현하는 데는 오히려 어려움을 겪음. 관계형데이터베이스를 활용할 때는 쿼리문을 직접 작성하여 사용하는 것이 더 간편해보임.
 
 ### "NodeJs를 통해 실시간 통신을 구현"
 
 - 실시간 채팅 구현
 
-[상황] 카풀 예약을 완료한 운전자&탑승자 간 실시간 채팅을 하도록 해야 함
+[상황] 사용자들끼리 실시간 쇼핑관련 소통을하기위한 채팅
 
-[문제] 기존에 써왔던 ajax와 같은 기술로는 실시간 채팅에 부적합함
+[문제] socket.io서버 를 코드에 추가할 떄 오류 발생
 
-[해결] NodeJs의 Socket.io를 사용하여 접속한 운전자, 탑승자가 동시에 채팅이 가능하도록 함
+[해결] 서버의 순서도를 재배치 함으로써 문제 해결
 
 - socket.id와 idx
 
@@ -234,15 +197,13 @@ entity간 관계설정을 해줄때 특히 중요한 점 상황에 맞춰 어떠
 
 [상황] 'ooo님이 채팅방에 입장/퇴장 하셨습니다' 기능을 추가해야함
 
-[문제] 현재 해당 사용자가 socket에 connected인 상태인지 확인해줘야 함
+[문제] 시간 부족으로 인해 미완성
 
-[해결]  현재 connected된 아이디를 저장할 수 있는 배열 생성, 사용자가 연결/연결해제 시 상대방에게 바로 알람가도록 함
-→ room을 먼저 생성하여 사용자를 join하는 room 채팅이 더 간편함
+[해결]  나중에 보안 할 예정
 
 **NodeJs socket.io 깨달은 점 >**
 
-한 명의 운전자와 한 명의 탑승자 간의 채팅이기에 socket.id를 사용하는 1:1 채팅을 구현했음. 하지만 '입장', '퇴장'과 같이 상대방에게 알람을 띄우는 기능을 구현해보니 room을 먼저 생성하여 사용자를 join하는 room 채팅이 더 간편하다는 것을 알았음.
-
+실시간 사용자들끼리의  채팅이기에 socket.id를 사용하는 1:1 채팅을 구현했음. socket.io 특성 상 사용자 지정에 대한 이해도 숙지 
 # 상세 설명
 
 ### DB구조 (ERD)
