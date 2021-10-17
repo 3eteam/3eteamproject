@@ -201,9 +201,9 @@ Member.
 실시간 사용자들끼리의  채팅이기에 socket.id를 사용하는 1:1 채팅을 구현했음. socket.io 특성 상 사용자 지정에 대한 이해도 숙지 
 
 # AWS 활용(EC2, RDS)  
-<img width="500" alt="" src="user-images.githubusercontent.com/89692626/137617766-8652f29b-36c9-4e1a-9b5c-5ce2d865ed78.png">  
-<img width="500" alt="" src="user-images.githubusercontent.com/89692626/137617768-28c4dfcd-6be2-4a03-b915-8705c1caf915.png">  
-<img width="500" alt="" src="user-images.githubusercontent.com/89692626/137617769-95c341c6-665f-4a51-ae94-39ee7eabca87.png">  
+<img width="500" alt="34" src="user-images.githubusercontent.com/89692626/137617766-8652f29b-36c9-4e1a-9b5c-5ce2d865ed78.png">  
+<img width="500" alt="35" src="user-images.githubusercontent.com/89692626/137617768-28c4dfcd-6be2-4a03-b915-8705c1caf915.png">  
+<img width="500" alt="36" src="user-images.githubusercontent.com/89692626/137617769-95c341c6-665f-4a51-ae94-39ee7eabca87.png">  
 
 
 
