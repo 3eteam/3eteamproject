@@ -214,7 +214,7 @@ Member.
 ![](flow.png)
 
 ### 프로젝트 설명 PPT
-[구글 프레젠테이션 파일](https://docs.google.com/presentation/d/1_1OVTik6grzxKbo3_WMnwzl9_Jl6KYHD/edit#slide=id.p1)
+[구글 프레젠테이션 파일](https://docs.google.com/presentation/d/1OXVmXrEVzpxmP-WIhmVdoelkYk0yFbY2/edit?usp=sharing&ouid=116791032032435384891&rtpof=true&sd=true)
 
 # 시연 영상
 [유튜브](https://www.youtube.com/watch?v=OLT4m52D7nY)
