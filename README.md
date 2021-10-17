@@ -227,7 +227,7 @@ Member.
 서버(app.js) : [코드](https://github.com/3eteam/3eteamproject/blob/f2a2e1500f375490e0b2090779ab612237ae2039/3e/app.js)
 -> 각 페이지별 라우터 설정, passport 6002번, express 모듈로 넌적스를 http로 연결
 
-페이지별 설명(views-html)
+페이지별 설명(views-html)   
 main : <img width="500" alt="KakaoTalk_20211017_155220801" src="https://user-images.githubusercontent.com/89692626/137615265-9ad9ddb3-b1d6-4db4-bdb6-f2149972f03c.png">
 <img width="500" alt="KakaoTalk_20211017_155218347" src="https://user-images.githubusercontent.com/89692626/137615273-95e3f65a-1164-441f-ac89-3f3542a194f2.png">
 
