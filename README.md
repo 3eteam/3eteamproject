@@ -206,14 +206,14 @@ Member.
 실시간 사용자들끼리의  채팅이기에 socket.id를 사용하는 1:1 채팅을 구현했음. socket.io 특성 상 사용자 지정에 대한 이해도 숙지 
 # 상세 설명
 
+
+
+
 ### DB구조 (ERD)
 ![KakaoTalk_Photo_2021-10-17-15-22-45](https://user-images.githubusercontent.com/88940298/137614327-8508ccda-6572-4a70-af91-d1f9063c4a60.jpeg)
 
-### 전체 흐름도
 
-![](flow.png)
-
-### 프로젝트 설명 PPT
+### 프로젝트 기획안 PPT
 [구글 프레젠테이션 파일](https://docs.google.com/presentation/d/1OXVmXrEVzpxmP-WIhmVdoelkYk0yFbY2/edit?usp=sharing&ouid=116791032032435384891&rtpof=true&sd=true)
 
 # 시연 영상
