@@ -207,8 +207,7 @@ Member.
 # 상세 설명
 
 ### DB구조 (ERD)
-
-![](db.png)
+![KakaoTalk_Photo_2021-10-17-15-22-45](https://user-images.githubusercontent.com/88940298/137614327-8508ccda-6572-4a70-af91-d1f9063c4a60.jpeg)
 
 ### 전체 흐름도
 
