@@ -205,7 +205,9 @@ Member.
 
 실시간 사용자들끼리의  채팅이기에 socket.id를 사용하는 1:1 채팅을 구현했음. socket.io 특성 상 사용자 지정에 대한 이해도 숙지 
 # 상세 설명
+전체 코드 : [코드](https://github.com/3eteam/3eteamproject)
 
+app.js : [코드](https://github.com/3eteam/3eteamproject/blob/f2a2e1500f375490e0b2090779ab612237ae2039/3e/app.js)
 
 
 
