@@ -371,7 +371,7 @@ AWS의 EC2를 활용하여 배포를 하였습니다
 [구글 프레젠테이션 파일](https://docs.google.com/presentation/d/1OXVmXrEVzpxmP-WIhmVdoelkYk0yFbY2/edit?usp=sharing&ouid=116791032032435384891&rtpof=true&sd=true)
 
 # 시연 영상
-[유튜브](https://www.youtube.com/watch?v=OLT4m52D7nY)
-
-
+[유튜브첫페이지 전반적인 틀,index 영상](https://www.youtube.com/watch?v=FMPbevKqxzo)
+[유튜브시연영상1](https://www.youtube.com/watch?v=tTzy22FIxdk)
+[유튜브시연영상2](https://www.youtube.com/watch?v=OSPGKf2z3MY)
 
