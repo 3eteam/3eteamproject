@@ -330,6 +330,10 @@ Socket.io 를 사용하여 접속자끼리의 실시간 채팅을만들었습니
 
 관리자 모드에 post.js에 multer 모듈을 사용하여 이미지업로드를 uploads폴더에 자동 저장하며 url만 데이터베이스에 삽입
 
+get에서 불러온 데이터베이스 값을 twits에 저장하여 하단부분에 렌더링
+
+특정 id값만 불러와 전체상품 데이터베이스(Post)의 해당 특정 id값만 삭제
+
 관리자만 관리자모드에접근하여사용할수있게했습니다
 관리자모드에서 저장하게 되면 모든 물품이 하단에 위치하여생성 삭제가능하며
 삭제할시 전체 물품 데이터베이스에서 데이터삭제
@@ -339,13 +343,25 @@ Socket.io 를 사용하여 접속자끼리의 실시간 채팅을만들었습니
 <img width="400" alt="9" src="https://user-images.githubusercontent.com/89692626/137616135-b6a95861-90cc-4617-8ee6-9fff2eaa6648.png">   
 <img width="400" alt="10" src="https://user-images.githubusercontent.com/89692626/137616142-e4a68889-f17b-45a3-bd52-292862b73263.png">  
   
+  
+ 넌적스 
+  if문 및 for문을 사용하여 전체상품중 nike에 해당하는 컬럼값을가져와 
+for문 사용하여 물품정렬
+
+form 태그 사용 물품의 가격 이름 브랜드 등 
+장바구니데이터베이스로 정보전달
+사용하여
+  
+  
+  
+  
 ## alllist :   
 <img width="400" alt="12" src="https://user-images.githubusercontent.com/89692626/137616175-df939fbd-b875-4f22-9397-02e1a6c74f71.png">  
 <img width="400" alt="13" src="https://user-images.githubusercontent.com/89692626/137616199-51fcfcb7-9c24-41d2-9bbb-c7aa68749d06.png">  
 <img width="400" alt="14" src="https://user-images.githubusercontent.com/89692626/137616235-8f035ea5-9872-436d-979f-72e7dbe269a0.png">  
   
   
-  전체상품 페이지 라우터이며 관리자페이지에서 업로드한 전체물품을 확인할 수 있으며, 전체물품을 확인가능하며 장바구니도 옆에구현하여 전체물품을 보면서 삭제할수 있게 기능을 구현하였음
+  전체상품 페이지 라우터이며 관리자페이지에서 업로드한 전체물품을 확인할 수 있으며,get으로 전체물품을 불러온 후 정렬을 하였으며  전체물품을 확인가능하며 장바구니도 옆에구현하여 전체물품을 보면서 삭제할수 있게 기능을 구현하였음
   
 ## search :   
 <img width="400" alt="15" src="https://user-images.githubusercontent.com/89692626/137616275-b2377a89-77a0-4d6a-bcf4-9c39fcc8980d.png">  
