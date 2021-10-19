@@ -227,14 +227,26 @@ Member.
 # AWS 활용(EC2, RDS)  
 <img width="500" alt="34" src="https://user-images.githubusercontent.com/89692626/137617870-177cb2d9-854b-423a-b04d-3bf45de24ae9.png">     
 <img width="1000" alt="35" src="https://user-images.githubusercontent.com/89692626/137617902-f1bfc9b5-8462-4300-9365-4bd45017b2f3.png">    
-<img width="1000" alt="36" src="https://user-images.githubusercontent.com/89692626/137617905-318f133b-24b3-48ee-800d-3e491d550487.png">    
+<img width="1000" alt="36" src="https://user-images.githubusercontent.com/89692626/137617905-318f133b-24b3-48ee-800d-3e491d550487.png"> 
+
+
+데이터베이스 AWS EC2방식 체택 인스턴스 생성후 키값생성 후
+서버 연결
 <img width="400" alt="41" src="https://user-images.githubusercontent.com/89692626/137617959-d52e400d-d98f-4f6d-a035-948354a394ad.png">
 <img width="400" alt="42" src="https://user-images.githubusercontent.com/89692626/137617960-c55d109a-dad6-4357-9c5f-87e25edac9dd.png">
 <img width="400" alt="43" src="https://user-images.githubusercontent.com/89692626/137617961-14e02f5a-e202-41a7-9035-75bd4fd9eadd.png">
 <img width="400" alt="44" src="https://user-images.githubusercontent.com/89692626/137617962-37868599-b3c1-4225-b012-1d4a30439032.png">
 
+
+데이터베이스 AWS EC2방식 체택 인스턴스 생성후 키값생성 후
+서버 연결
+
 AWS의 RDS로 데이터베이스를 공유하여 협업하여 프로젝트를 진행하였고
 AWS의 EC2를 활용하여 배포를 하였습니다
+
+서버 연결하기 전 SCREEN을 활용 cmd창을 닫거나 컴퓨터를 종료하여도 서버가 계속 돌아가게 유지했습니다
+
+
 
 
 
@@ -315,7 +327,14 @@ Socket.io 를 사용하여 접속자끼리의 실시간 채팅을만들었습니
 <img width="500" alt="6" src="https://user-images.githubusercontent.com/89692626/137615998-5f48cb9a-28ea-4ce7-a7df-04bae5e03e36.png">  
 <img width="500" alt="7" src="https://user-images.githubusercontent.com/89692626/137616060-072cef9a-be20-4cd1-9a7c-986eb67b0af3.png">  
 <img width="500" alt="8" src="https://user-images.githubusercontent.com/89692626/137616064-b5da190d-3dc7-4094-983e-b37d0deb1b16.png">  
-  
+
+관리자 모드에 post.js에 multer 모듈을 사용하여 이미지업로드를 uploads폴더에 자동 저장하며 url만 데이터베이스에 삽입
+
+관리자만 관리자모드에접근하여사용할수있게했습니다
+관리자모드에서 저장하게 되면 모든 물품이 하단에 위치하여생성 삭제가능하며
+삭제할시 전체 물품 데이터베이스에서 데이터삭제
+
+
 ## nike :   
 <img width="400" alt="9" src="https://user-images.githubusercontent.com/89692626/137616135-b6a95861-90cc-4617-8ee6-9fff2eaa6648.png">   
 <img width="400" alt="10" src="https://user-images.githubusercontent.com/89692626/137616142-e4a68889-f17b-45a3-bd52-292862b73263.png">  
@@ -326,8 +345,12 @@ Socket.io 를 사용하여 접속자끼리의 실시간 채팅을만들었습니
 <img width="400" alt="14" src="https://user-images.githubusercontent.com/89692626/137616235-8f035ea5-9872-436d-979f-72e7dbe269a0.png">  
   
   
+  전체상품 페이지 라우터이며 관리자페이지에서 업로드한 전체물품을 확인할 수 있으며, 전체물품을 확인가능하며 장바구니도 옆에구현하여 전체물품을 보면서 삭제할수 있게 기능을 구현하였음
+  
 ## search :   
 <img width="400" alt="15" src="https://user-images.githubusercontent.com/89692626/137616275-b2377a89-77a0-4d6a-bcf4-9c39fcc8980d.png">  
+
+전체상품에서 입력한 태그값을 입력시 검색이 되게해놧으며 검색 후 물품 장바구니에 추가 가능
   
 ## cart :   
 <img width="400" alt="16" src="https://user-images.githubusercontent.com/89692626/137616301-2a3ad31a-9388-41ca-8c30-43441c59d250.png">  
@@ -337,6 +360,12 @@ Socket.io 를 사용하여 접속자끼리의 실시간 채팅을만들었습니
 <img width="400" alt="26" src="https://user-images.githubusercontent.com/89692626/137616471-affad1db-6fb4-4826-9051-7a5a6dce756d.png">  
 <img width="400" alt="27" src="https://user-images.githubusercontent.com/89692626/137616472-50152136-9c18-4a2d-b19c-2ce2e6ba0c70.png">  
   
+  
+  브랜드상품페이지에서 상품을 post방식으로 보내게 되면 cart데이터베이스 담겨 userid에 해당하는 물품을 반환하여 랜더링 됨
+  또한 삭제시 데이터베이에서 개별삭제되며
+  전체삭제시 userid값에 해당하는 장바구니 데이터 전부삭제
+  결제시 payments 데이터베이스에 주문정보가 입력되며
+  결제 시 해당 유저id 값에 해당하는 장바구니 데이터베이스 데이터 전부 
 ## profile :  
 
 <img width="400" alt="29" src="https://user-images.githubusercontent.com/89692626/137616555-458eeff7-4a3b-4def-acdc-52df795f3bea.png">  
